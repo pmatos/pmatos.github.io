@@ -1,0 +1,80 @@
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <url>
+    <loc>https://www.marcomicale.eu/blog/my-first-blog-post.html</loc>
+    
+    <lastmod>2021-06-19T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/blog/my-second-blog-post.html</loc>
+    
+    <lastmod>2021-06-19T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/blog/my-third-blog-post.html</loc>
+    
+    <lastmod>2021-06-19T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/manifest.webmanifest</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/robots.txt</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/sitemap.xml</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/chi-sono.html</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/blog.html</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.marcomicale.eu/</loc>
+    
+    <lastmod>2022-07-05T12:31:11Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>1.00</priority>
+    
+    <priority>0.80</priority>
+  </url>
+</urlset>
