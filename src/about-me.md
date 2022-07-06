@@ -6,7 +6,7 @@ tags: pages
 permalink: "{{ title | slugify }}.html"
 eleventyNavigation:
   key: "{{ title | slugify }}"
-  title: Chi sono
+  title: About me
   order: 2
 ---
 
