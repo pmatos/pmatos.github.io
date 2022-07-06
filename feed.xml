@@ -6,25 +6,25 @@
 				   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
 				   xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
 	<channel>
-		<title>Minimalism</title>
+		<title>pmatos rambles</title>
 		<link>/index.html</link>
 		<image>
     		<url>/img/social/home.png</url>
 			<link>/index.html</link>
 		</image>
 		<description></description>
-		<copyright>Copyright 2022 Autore</copyright>
-        <language>it-IT</language>
+		<copyright>Copyright 2022 Paulo Matos</copyright>
+        <language>en-US</language>
 		<author>
-			<name>Autore</name>
-			<email>marcomicale@gmail.com</email>
+			<name>Paulo Matos</name>
+			<email>p@ocmatos.com</email>
 		</author>
 		
 		<item>
 			<title>My third Blog Post</title>
 			
-			<link>https://www.marcomicale.eu/blog/my-third-blog-post.html</link>
-			<updated>2022-07-06T09:27:35Z</updated>
+			<link>https://p.ocmatos.com/blog/my-third-blog-post.html</link>
+			<updated>2022-07-06T09:37:54Z</updated>
 			<description>This is the third post on my blog asap sa the autenticsb. Soluta ex corrupti quod libero.</description>
 			<content type="html">&lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ex corrupti quod libero eligendi id tempore molestiae, laboriosam magni cum maxime modi accusamus minima vitae quae, rerum doloribus quis magnam.&lt;/p&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque molestias, blanditiis ipsam corporis, expedita ex illo porro sed, a non in pariatur culpa explicabo est tempore eveniet aut ea voluptatem.&lt;/p&gt;
@@ -34,16 +34,16 @@
 &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ex corrupti quod libero eligendi id tempore molestiae, laboriosam magni cum maxime modi accusamus minima vitae quae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae asperiores earum neque fugiat unde commodi, nesciunt natus eaque est excepturi voluptatum obcaecati recusandae consequatur tempore eius? Earum quos quidem at.&lt;/p&gt;
 </content>
 			<author>
-				<name>Autore</name>
-				<email>marcomicale@gmail.com</email>
+				<name>Paulo Matos</name>
+				<email>p@ocmatos.com</email>
 			</author>
 		</item>
 		
 		<item>
 			<title>My second Blog Post</title>
 			
-			<link>https://www.marcomicale.eu/blog/my-second-blog-post.html</link>
-			<updated>2022-07-06T09:27:35Z</updated>
+			<link>https://p.ocmatos.com/blog/my-second-blog-post.html</link>
+			<updated>2022-07-06T09:37:54Z</updated>
 			<description>This is the second post on my blog asap sa the autenticsb.</description>
 			<content type="html">&lt;div class=&quot;lead&quot;&gt;
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
@@ -237,16 +237,16 @@ Until now, trying to style an article, document, or blog post with Tailwind has 
 &lt;p&gt;What I&#39;ve written here is probably long enough, but adding this final sentence can&#39;t hurt.&lt;/p&gt;
 </content>
 			<author>
-				<name>Autore</name>
-				<email>marcomicale@gmail.com</email>
+				<name>Paulo Matos</name>
+				<email>p@ocmatos.com</email>
 			</author>
 		</item>
 		
 		<item>
 			<title>My First Blog Post</title>
 			
-			<link>https://www.marcomicale.eu/blog/my-first-blog-post.html</link>
-			<updated>2022-07-06T09:27:35Z</updated>
+			<link>https://p.ocmatos.com/blog/my-first-blog-post.html</link>
+			<updated>2022-07-06T09:37:54Z</updated>
 			<description>This is the first post on my blog, lorem ipsum dolor sit amet consectetur adipisicing elit.</description>
 			<content type="html">&lt;div class=&quot;lead&quot;&gt;
 Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.&lt;/div&gt;
@@ -439,35 +439,20 @@ Until now, trying to style an article, document, or blog post with Tailwind has 
 &lt;p&gt;What I&#39;ve written here is probably long enough, but adding this final sentence can&#39;t hurt.&lt;/p&gt;
 </content>
 			<author>
-				<name>Autore</name>
-				<email>marcomicale@gmail.com</email>
+				<name>Paulo Matos</name>
+				<email>p@ocmatos.com</email>
 			</author>
 		</item>
 		 
 	</channel>
 	
 	<channel>
-		<title>Chi sono</title>
+		<title>About me</title>
 		
-		<link>https://www.marcomicale.eu/chi-sono.html</link>
+		<link>https://p.ocmatos.com/about-me.html</link>
 		<description>è una pagina come tante, oppure tante pagine sono come lei?</description>
-		<content type="html">&lt;h1&gt;Aboute Me&lt;/h1&gt;
-&lt;p&gt;Ab corrupti repellendus magni beatae assumenda dolore temporibus alias cumque nemo rerum, quisquam explicabo vitae dicta aliquam numquam deleniti dolorem iste, sint unde maiores? Illum quas eaque amet ipsum quibusdam, vero perspiciatis repellat veniam, voluptas et eligendi consectetur maxime recusandae cum eos quia tempore impedit ipsa? Laboriosam numquam, eius maiores libero expedita beatae id sit! Dolorem quisquam nisi, in nemo minima sit mollitia, quam voluptatibus et dolores, inventore earum nam ea iste. Accusantium ipsam commodi nam aspernatur aperiam quo illum sapiente expedita autem praesentium at iste possimus atque aliquid reiciendis natus error architecto non provident soluta odit blanditiis, itaque aliquam optio. Minus quisquam eligendi, voluptas quo quae, porro fugiat delectus magnam voluptate numquam pariatur illo debitis praesentium accusantium, amet in. Eveniet non blanditiis debitis.&lt;/p&gt;
-&lt;!-- 
-Una breve biografia è un qualcosa di difficile, perché ti costringe a menzionare solo alcuni avvenimenti &quot;importanti&quot; della tua vita e a tralasciarne moltissimi altri.  
-Tuttavia siamo ciò che siamo proprio in virtù delle scelte e delle azioni che abbiamo compiuto, nessuna esclusa. Questo curriculum, conseguentemente, sarà lungo (quello breve lo puoi scaricare [qui](file/Marco_Micale_Curriculum_Vitae.pdf &quot;Curriculum Vitae di Marco Micale&quot;)) perché in ogni cosa che ho fatto, ho messo tutto me stesso, e perché se sono come sono oggi lo devo ad ogni singola esperienza, ad ogni singola persona che ho incontrato lungo il mio percorso.
-
-Comunque andiamo al sodo. Sono Marco Micale, sono uno studente di giurisprudenza presso l&#39;università di Palermo, un webmaster e un blogger a tempo perso.
-
-Le mie passioni sono l&#39;informatica e la Politica (da notare la lettera maiuscola).
-
-Ho studiato al liceo classico del mio paese (Termini Imerese), dove sono stato eletto per 3 mandati consecutivi rappresentante d&#39;istituto alla consulta provinciale degli studenti; qui al mio secondo mandato ho ricoperto l&#39;incarico di presidente della commissione Antimafia ed ho realizzato un progetto con il MIUR. Mi sono diplomato nel Luglio 2011 e in Settembre mi sono immatricolato a Giurisprudenza.
-
-Dal 2010 mi sono dedicato moltissimo al volontariato, dapprima come volontario del GCVPC, poi come membro dell&#39;UNICEF Italia e di recente come Volontario presso una mensa per i più bisognosi.
-
-All&#39;università non studio soltanto, infatti sono membro e presidente di una delle più importanti associazione studentesche attive ad UniPa la N.R.G., e sono stato candidato al consiglio di corso di Studi e al Consiglio degli Studenti della Scuola delle Scienze Giuridiche ed Economico-Sociali.  
-La mia vita è frenetica e molto stancante, ma a me piace così. Di tanto in tanto svolgo qualche lavoretto freelancer (per mantenermi gli studi), realizzo loghi e siti oltre a curare l&#39;aspetto social di alcuni brand.
- --&gt;
+		<content type="html">&lt;h1&gt;About Me&lt;/h1&gt;
+&lt;p&gt;Not much to say at the moment...&lt;/p&gt;
 </content>
 	</channel>
 	 

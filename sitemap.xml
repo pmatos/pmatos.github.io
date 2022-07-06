@@ -5,7 +5,7 @@
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
   <url>
-    <loc>https://www.marcomicale.eu/blog/my-first-blog-post.html</loc>
+    <loc>https://p.ocmatos.com/blog/my-first-blog-post.html</loc>
     
     <lastmod>2021-06-19T00:00:00Z</lastmod>
     
@@ -13,7 +13,7 @@
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/blog/my-second-blog-post.html</loc>
+    <loc>https://p.ocmatos.com/blog/my-second-blog-post.html</loc>
     
     <lastmod>2021-06-19T00:00:00Z</lastmod>
     
@@ -21,7 +21,7 @@
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/blog/my-third-blog-post.html</loc>
+    <loc>https://p.ocmatos.com/blog/my-third-blog-post.html</loc>
     
     <lastmod>2021-06-19T00:00:00Z</lastmod>
     
@@ -29,49 +29,49 @@
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/manifest.webmanifest</loc>
+    <loc>https://p.ocmatos.com/manifest.webmanifest</loc>
     
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
-    
-    <priority>0.80</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.marcomicale.eu/robots.txt</loc>
-    
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/sitemap.xml</loc>
+    <loc>https://p.ocmatos.com/robots.txt</loc>
     
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
-    
-    <priority>0.80</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.marcomicale.eu/chi-sono.html</loc>
-    
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/blog.html</loc>
+    <loc>https://p.ocmatos.com/sitemap.xml</loc>
     
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
   
   <url>
-    <loc>https://www.marcomicale.eu/</loc>
+    <loc>https://p.ocmatos.com/about-me.html</loc>
     
-    <lastmod>2022-07-06T09:26:56Z</lastmod>
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog.html</loc>
+    
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/</loc>
+    
+    <lastmod>2022-07-06T09:37:12Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
     
