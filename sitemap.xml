@@ -5,25 +5,65 @@
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
   <url>
-    <loc>https://p.ocmatos.com/blog/my-first-blog-post.html</loc>
+    <loc>https://p.ocmatos.com/blog/s10-overview.html</loc>
     
-    <lastmod>2021-06-19T00:00:00Z</lastmod>
-    
-    <priority>0.80</priority>
-  </url>
-  
-  <url>
-    <loc>https://p.ocmatos.com/blog/my-second-blog-post.html</loc>
-    
-    <lastmod>2021-06-19T00:00:00Z</lastmod>
+    <lastmod>2018-05-21T00:00:00Z</lastmod>
     
     <priority>0.80</priority>
   </url>
   
   <url>
-    <loc>https://p.ocmatos.com/blog/my-third-blog-post.html</loc>
+    <loc>https://p.ocmatos.com/blog/a-brief-look-at-the-webkit-workflow.html</loc>
     
-    <lastmod>2021-06-19T00:00:00Z</lastmod>
+    <lastmod>2019-10-02T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/cross-arch-reproducibility-using-containers.html</loc>
+    
+    <lastmod>2020-01-16T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/creduce-it-s-a-kind-of-magic.html</loc>
+    
+    <lastmod>2020-02-17T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/announcing-racket-bitvectors-bv.html</loc>
+    
+    <lastmod>2020-05-31T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/announcing-html-examples-html-examples.html</loc>
+    
+    <lastmod>2020-06-01T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/jsc-what-are-my-options.html</loc>
+    
+    <lastmod>2020-06-05T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
+    <loc>https://p.ocmatos.com/blog/a-tour-of-the-for-of-implementation-for-32bits-jsc.html</loc>
+    
+    <lastmod>2020-11-20T00:00:00Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -31,7 +71,7 @@
   <url>
     <loc>https://p.ocmatos.com/manifest.webmanifest</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -39,7 +79,7 @@
   <url>
     <loc>https://p.ocmatos.com/robots.txt</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -47,7 +87,7 @@
   <url>
     <loc>https://p.ocmatos.com/sitemap.xml</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -55,7 +95,7 @@
   <url>
     <loc>https://p.ocmatos.com/about-me.html</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -63,7 +103,7 @@
   <url>
     <loc>https://p.ocmatos.com/blog.html</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -71,7 +111,7 @@
   <url>
     <loc>https://p.ocmatos.com/</loc>
     
-    <lastmod>2022-07-06T10:16:39Z</lastmod>
+    <lastmod>2022-07-06T13:29:20Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
     
