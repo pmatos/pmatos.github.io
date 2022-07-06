@@ -12,5 +12,5 @@ eleventyNavigation:
 # Blog
 
 <div class="lead">
-In questa pagina troverai un'antologia di pensieri, considerazioni, facezie di varia natura ed anche qualche articolo più serio. Mi auguro che la loro lettura ti sia piacevole tanto quanto lo è stato per me scriverli.
+This is what I try to call a blog... we will see how it goes.
 </div>
