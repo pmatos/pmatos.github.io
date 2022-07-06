@@ -2,16 +2,16 @@ module.exports = {
   //
   // Website Meta
   //  
-  language: "it-IT",
-  lang: "it",
-  siteName: "Minimalism",
-  shortName: "Minimalism",
-  motto: "Simplicity is the ultimate sophistication.",
-  authorName: "Autore",
+  language: "en-US",
+  lang: "EN",
+  siteName: "pmatos rambles",
+  shortName: "pmatos",
+  motto: "Programming, sports and music - enjoy!",
+  authorName: "Paulo Matos",
   siteDescription: "",
   sitekeyword: "",
-  creationDate: "02/02/2022", // change this data
-  url: process.env.URL || "https://www.marcomicale.eu", // change this url
+  creationDate: "06/07/2022",
+  url: process.env.URL || "https://p.ocmatos.com",
   robots: "index, follow",
   //
   // Color App
@@ -21,14 +21,14 @@ module.exports = {
   //
   // Contact me
   //
-  mail: "marcomicale@gmail.com",
-  telephone: "",
+  mail: "p@ocmatos.com",
+  //telephone: "",
   //
   // Social Network
   //
-  twitterUser: "", 
-  facebookUser: "",
-  githubUser: "",
-  telegramkUser: "",
-  linkedinkUser: "",
+  twitterUser: "pocmatos", 
+  //facebookUser: "",
+  githubUser: "pmatos",
+  //telegramkUser: "",
+  linkedinkUser: "pmatos",
 };

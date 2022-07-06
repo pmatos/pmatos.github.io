@@ -11,4 +11,4 @@ eleventyNavigation:
 
 # Home Page
 
-Homepage body text!
+Welcome, you might find the Blog more interesting than this blank initial page.
