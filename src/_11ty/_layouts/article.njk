@@ -3,7 +3,6 @@ title: Articolo del Blog
 description: Questa è la descrizione di uno degli articoli del blog
 tags: post
 date: Created
-luogo: Palermo
 type: article
 ---
 <!DOCTYPE html>
@@ -14,7 +13,6 @@ type: article
     {% include "nav.njk" %}
     <article>
         <small class="info">
-            {{ luogo }}&nbsp;
             <time datetime="{{page.date}}">{{page.date | readableDate}}</time>&nbsp;&ndash;&nbsp;
             {{content | readingTime}}&nbsp;of&nbsp;Reading&nbsp;Time
         </small>

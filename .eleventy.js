@@ -1,8 +1,9 @@
-// Inseriment plugins
+// Insert plugins
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const readingTime = require("eleventy-plugin-reading-time");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 // Helper packages
 const htmlmin = require("html-minifier");
@@ -10,6 +11,21 @@ const { DateTime } = require("luxon");
 
 // 11ty
 module.exports = function (eleventyConfig) {
+  // set markdown footnote processor
+  let markdownIt = require("markdown-it");
+  let markdownItFootnote = require("markdown-it-footnote");
+
+  let options = {
+    html: true,    // Enable HTML tags in source
+    breaks: false, // Convert '\n' in paragraphs into <br>
+    linkify: true  // Autoconvert URL-like text to links
+  };
+  
+  // configure the library with options
+  let markdownLib =  markdownIt(options).use(markdownItFootnote);
+  // set the library to process markdown files
+  eleventyConfig.setLibrary("md", markdownLib);
+
   // Apri automaticamente il browser
   eleventyConfig.setBrowserSyncConfig({ open: true });
 
@@ -18,6 +34,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(socialImages);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(readingTime);
+
+  // Syntax highlighting
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Non badare ai file di questa cartella
   eleventyConfig.ignores.delete("src/_11ty/_social/**/*.*");
