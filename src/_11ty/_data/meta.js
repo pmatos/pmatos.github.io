@@ -6,7 +6,7 @@ module.exports = {
   lang: "EN",
   siteName: "pmatos rambles",
   shortName: "pmatos",
-  motto: "Programming, sports and music - enjoy!",
+  motto: "Programming, sports and music - oh wow - enjoy!",
   authorName: "Paulo Matos",
   siteDescription: "",
   sitekeyword: "",
