@@ -4,6 +4,7 @@ const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const readingTime = require("eleventy-plugin-reading-time");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const svgContents = require("eleventy-plugin-svg-contents");
 
 // Helper packages
 const htmlmin = require("html-minifier");
@@ -28,6 +29,9 @@ module.exports = function (eleventyConfig) {
 
   // Apri automaticamente il browser
   eleventyConfig.setBrowserSyncConfig({ open: true });
+
+  // svg include
+  eleventyConfig.addPlugin(svgContents);
 
   // 11ty attivazione plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -74,6 +78,7 @@ module.exports = function (eleventyConfig) {
 
   // e alla fine
   return {
+    markdownTemplateEngine: "njk", // Use nunjucks for templating
     passthroughFileCopy: true,
     // Directory: in, out, etc...
     dir: {
