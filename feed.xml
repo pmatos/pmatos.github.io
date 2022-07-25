@@ -24,7 +24,7 @@
 			<title>A tour of the `for..of` implementation for 32bits JSC</title>
 			
 			<link>https://p.ocmatos.com/blog/a-tour-of-the-for-of-implementation-for-32bits-jsc.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:36Z</updated>
 			<description>We look at the implementation of the `for-of` intrinsic in 32bit JSC (javascriptCore).</description>
 			<content type="html">&lt;h2&gt;Context&lt;/h2&gt;
 &lt;p&gt;On April 18, 2020, Keith Miller from Apple committed a change titled &lt;a href=&quot;https://trac.webkit.org/changeset/260323/webkit&quot;&gt;Redesign how we do for-of iteration for JSArrays&lt;/a&gt;. This patch adds an intrinsic for the &lt;code&gt;for-of&lt;/code&gt; javascript construct when they are being iterated with the built-in &lt;code&gt;Symbol.iterator&lt;/code&gt;. However, the implementation is only for 64 bit architectures. At &lt;a href=&quot;https://www.igalia.com/&quot;&gt;Igalia&lt;/a&gt;, we maintain and support javascriptCore 32bits so on July 29, 2020, &lt;a href=&quot;https://trac.webkit.org/changeset/265036/webkit&quot;&gt;I committed support&lt;/a&gt; for the &lt;code&gt;for-of&lt;/code&gt; intrinsics work on 32 bit architectures as joint work with &lt;a href=&quot;https://caiolima.github.io/&quot;&gt;Caio Lima&lt;/a&gt;.&lt;/p&gt;
@@ -267,7 +267,7 @@ Following helpers used by &lt;code&gt;emit_op_iterator_open&lt;/code&gt;, we hav
 			<title>JSC - what are my options?</title>
 			
 			<link>https://p.ocmatos.com/blog/jsc-what-are-my-options.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>Compilers tend to be large pieces of software that provide an enormous amount of options. We take a quick look at how to find what JavaScriptCore (JSC) provides.</description>
 			<content type="html">&lt;p&gt;Compilers tend to be large pieces of software that provide an enormous amount of options. We take a quick look at how to find what JavaScriptCore (JSC) provides.&lt;/p&gt;
 &lt;p&gt;If you grab a copy of the WebKit source, you can easily build &lt;code&gt;jsc&lt;/code&gt; with &lt;code&gt;Tools/Scripts/build-jsc --release --jsc-only&lt;/code&gt; (from the WebKit root directory). As usual, running the resulting binary will get you into a JavaScript REPL. For example (&lt;code&gt;$&lt;/code&gt; indicates the shell prompt):&lt;/p&gt;
@@ -293,7 +293,7 @@ Following helpers used by &lt;code&gt;emit_op_iterator_open&lt;/code&gt;, we hav
 			<title>Announcing HTML examples (`html-examples`)</title>
 			
 			<link>https://p.ocmatos.com/blog/announcing-html-examples-html-examples.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>Announcing a new racket package `html-examples` to convert an `examples` block to HTML for inclusion in your own page.</description>
 			<content type="html">&lt;p&gt;Announcing a new racket package &lt;a href=&quot;https://pkgs.racket-lang.org/package/html-examples&quot;&gt;&lt;code&gt;html-examples&lt;/code&gt;&lt;/a&gt; to convert an &lt;a href=&quot;https://docs.racket-lang.org/scribble/eval.html#(form._((lib._scribble%2Fexample..rkt)._examples))&quot;&gt;&lt;code&gt;examples&lt;/code&gt;&lt;/a&gt; block to HTML for inclusion in your own page.&lt;/p&gt;
 &lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ raco pkg &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; html-examples&lt;/code&gt;&lt;/pre&gt;
@@ -310,7 +310,7 @@ Following helpers used by &lt;code&gt;emit_op_iterator_open&lt;/code&gt;, we hav
 			<title>Announcing Racket Bitvectors (`bv`)</title>
 			
 			<link>https://p.ocmatos.com/blog/announcing-racket-bitvectors-bv.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>Announcing a new racket package `bv` for manipulating bitvectors with a `rosette`-style API.</description>
 			<content type="html">&lt;p&gt;Announcing a new racket package &lt;a href=&quot;https://pkgs.racket-lang.org/package/bv&quot;&gt;&lt;code&gt;bv&lt;/code&gt;&lt;/a&gt; for manipulating bitvectors with a &lt;code&gt;rosette&lt;/code&gt;-style API.&lt;/p&gt;
 &lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;$ raco pkg &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; bv&lt;/code&gt;&lt;/pre&gt;
@@ -330,7 +330,7 @@ Following helpers used by &lt;code&gt;emit_op_iterator_open&lt;/code&gt;, we hav
 			<title>CReduce - it&#39;s a kind of magic!</title>
 			
 			<link>https://p.ocmatos.com/blog/creduce-it-s-a-kind-of-magic.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>During my tenure as a C compiler developer working on GCC and LLVM there was an indispensable tool when it came to fixing bugs and that was C-Reduce, or its precursor delta. Turns out this magic applies well to JavaScript, so lets take a quick glance at what it is and how to use it.</description>
 			<content type="html">&lt;p&gt;When I started compiler work &lt;a href=&quot;http://delta.tigris.org/&quot;&gt;delta&lt;/a&gt; was all the rage. It would turn a testcase with thousands of lines into a single small one with perhaps no more than 15 crashing your compiler in exactly the same way as the original testcase. I have used and abused this tool but it turns out it could be improved. John Regehr and his team did so with &lt;a href=&quot;https://embed.cs.utah.edu/creduce/&quot;&gt;C-Reduce&lt;/a&gt; (who by he way also developed &lt;a href=&quot;https://embed.cs.utah.edu/csmith/&quot;&gt;C-Smith&lt;/a&gt;, but that&#39;s another store entirely).&lt;/p&gt;
 &lt;p&gt;C-Reduce takes things to another level squeezing that testcase ever farther until it&#39;s just a few bytes, and yet still crashing your compiler in the same interesting way it did before. In C and C++ this is a very important tool and its use is not &lt;a href=&quot;https://gcc.gnu.org/wiki/A_guide_to_testcase_reduction&quot;&gt;recommended&lt;/a&gt; often enough. It&#39;s very important and in languages like C and C++ because the preprocessor can a seemingly small example into a behemoth of a source file and therefore reducing the testcase appropriately is extremely important. The recommendation page for &lt;a href=&quot;https://gcc.gnu.org/bugs/&quot;&gt;reporting GCC bugs&lt;/a&gt; goes as far as saying:&lt;/p&gt;
@@ -385,7 +385,7 @@ replacements and back until you find your bug. How great would it be if you coul
 			<title>Cross-Arch Reproducibility using Containers</title>
 			
 			<link>https://p.ocmatos.com/blog/cross-arch-reproducibility-using-containers.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>Use of containers for cross architecture reproducibility using `docker` and `podman`, which I then go on to apply to JSC.</description>
 			<content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Part of my work for Igalia is on the 32bit support on MIPS (little endian) and ARM for JSC (JavaScriptCore - the JavaScript compiler in WebKit) and one of the problems we face is that of reproducibility of failures.&lt;/p&gt;
@@ -488,7 +488,7 @@ in mind when using this technology.&lt;/p&gt;
 			<title>A Brief Look at the WebKit Workflow</title>
 			
 			<link>https://p.ocmatos.com/blog/a-brief-look-at-the-webkit-workflow.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>Some notes taken while learning about the workflow for contributing to JSC (the JavaScript Compiler) in WebKit.</description>
 			<content type="html">&lt;p&gt;Since I joined &lt;a href=&quot;https://www.igalia.com/&quot;&gt;Igalia&lt;/a&gt; back in May, I have been working on WebKit. After more than a decade working on GCC and LLVM, moving codebases, workflows, and compilation techniques and optimizations meant I was in very unfamiliar territory.&lt;/p&gt;
 &lt;div style=&quot;text-align:center;&quot;&gt;
@@ -610,7 +610,7 @@ in mind when using this technology.&lt;/p&gt;
 			<title>S10 Overview</title>
 			
 			<link>https://p.ocmatos.com/blog/s10-overview.html</link>
-			<updated>2022-07-13T09:26:44Z</updated>
+			<updated>2022-07-25T12:43:37Z</updated>
 			<description>What is superoptimization? What is S10? Here&#39;s an overview.</description>
 			<content type="html">&lt;h2&gt;Superoptimization&lt;/h2&gt;
 &lt;p&gt;Superoptimization was introduced by H. Massalin in his paper &lt;em&gt;Superoptimizer: a look at the smallest program&lt;/em&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://p.ocmatos.com/blog/s10-overview.html#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt; back in 1987. The idea is that for every sequence of instructions for a given computer architecture and a metric, there is an infinite number of sequences which perform the same task (are semantically equivalent to the original sequence), but one of them is the best one with respect to the metric.&lt;/p&gt;
