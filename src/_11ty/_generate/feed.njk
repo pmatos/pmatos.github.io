@@ -1,50 +1,39 @@
+---json
+{
+  "permalink": "feed.xml",
+  "eleventyExcludeFromCollections": true,
+  "metadata": {
+    "title": "pmatos rambles",
+    "subtitle": "Programming, sports and music - oh wow - enjoy!",
+    "language": "en",
+    "url": "https://p.ocmatos.com/",
+    "author": {
+      "name": "Paulo Matos",
+      "email": "p@ocmatos.com"
+    }
+  }
+}
 ---
-permalink: feed.xml
-eleventyExcludeFromCollections: true 
----
-<?xml version="1.0" encoding="UTF-8"?>
-<feed version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"
-				   xmlns:wfw="http://wellformedweb.org/CommentAPI/" 
-				   xmlns:dc="http://purl.org/dc/elements/1.1/" 
-				   xmlns:atom="http://www.w3.org/2005/Atom" 
-				   xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
-				   xmlns:slash="http://purl.org/rss/1.0/modules/slash/">
-	<channel>
-		<title>{{meta.siteName}}</title>
-		<link>{{'/index.html' | url}}</link>
-		<image>
-    		<url>{{'/img/social/home.png' | url}}</url>
-			<link>{{'/index.html' | url}}</link>
-		</image>
-		<description>{{meta.siteDescription}}</description>
-		<copyright>Copyright {% year %} {{meta.authorName}}</copyright>
-        <language>{{meta.language}}</language>
-		<author>
-			<name>{{meta.authorName}}</name>
-			<email>{{meta.mail}}</email>
-		</author>
-		{% for pages in collections.post | reverse %}
-		<item>
-			<title>{{pages.data.title}}</title>
-			{% set absolutePostUrl %}{{pages.url | url | absoluteUrl(meta.url)}}{% endset %}
-			<link>{{absolutePostUrl}}</link>
-			<updated>{{collections.posts | getNewestCollectionItemDate | dateToRfc3339}}</updated>
-			<description>{{pages.data.description}}</description>
-			<content type="html">{{pages.templateContent | htmlToAbsoluteUrls(absolutePostUrl)}}</content>
-			<author>
-				<name>{{meta.authorName}}</name>
-				<email>{{meta.mail}}</email>
-			</author>
-		</item>
-		{% endfor %} 
-	</channel>
-	{% for pages in collections.pages %}
-	<channel>
-		<title>{{pages.data.title}}</title>
-		{% set absolutePostUrl %}{{pages.url | url | absoluteUrl(meta.url)}}{% endset %}
-		<link>{{absolutePostUrl}}</link>
-		<description>{{pages.data.description}}</description>
-		<content type="html">{{pages.templateContent | htmlToAbsoluteUrls(absolutePostUrl)}}</content>
-	</channel>
-	{% endfor %} 
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.url }}">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ permalink | url | absoluteUrl(metadata.url) }}" rel="self"/>
+  <link href="{{ metadata.url }}"/>
+  <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ metadata.url }}</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  {%- for post in collections.posts | reverse %}
+  {%- set absolutePostUrl = post.url | url | absoluteUrl(metadata.url) %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content xml:lang="{{ metadata.language }}" type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
 </feed>
