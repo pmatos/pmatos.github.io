@@ -5,6 +5,8 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const readingTime = require("eleventy-plugin-reading-time");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
+const lyInsert = require("./filters/lyInsert")
+
 // Helper packages
 const htmlmin = require("html-minifier");
 const { DateTime } = require("luxon");
@@ -40,6 +42,8 @@ module.exports = function (eleventyConfig) {
 
   // Non badare ai file di questa cartella
   eleventyConfig.ignores.delete("src/_11ty/_social/**/*.*");
+
+  eleventyConfig.addPairedShortcode("lyInsert", lyInsert);
 
   // Copia alcuni file statici
   eleventyConfig
