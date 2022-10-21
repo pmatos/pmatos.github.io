@@ -71,7 +71,7 @@
   <url>
     <loc>https://p.ocmatos.com/manifest.webmanifest</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -79,7 +79,7 @@
   <url>
     <loc>https://p.ocmatos.com/robots.txt</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -87,7 +87,7 @@
   <url>
     <loc>https://p.ocmatos.com/sitemap.xml</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -95,7 +95,7 @@
   <url>
     <loc>https://p.ocmatos.com/about-me.html</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -103,7 +103,7 @@
   <url>
     <loc>https://p.ocmatos.com/blog.html</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -111,7 +111,7 @@
   <url>
     <loc>https://p.ocmatos.com/</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
     
@@ -119,9 +119,9 @@
   </url>
   
   <url>
-    <loc>https://p.ocmatos.com/racket-money-mailing-list.html</loc>
+    <loc>https://p.ocmatos.com/racket-money.html</loc>
     
-    <lastmod>2022-10-21T06:46:12Z</lastmod>
+    <lastmod>2022-10-21T07:00:38Z</lastmod>
     
     <priority>0.80</priority>
   </url>
