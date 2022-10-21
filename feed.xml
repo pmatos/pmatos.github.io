@@ -4,16 +4,41 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2022-07-26T11:42:04Z</updated>
+  <updated>2022-10-21T06:46:55Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
     <email>p@ocmatos.com</email>
   </author>
   <entry>
+    <title>Racket Money Mailing List</title>
+    <link href="https://p.ocmatos.com/racket-money-mailing-list.html"/>
+    <updated>2022-10-21T06:46:12Z</updated>
+    <id>https://p.ocmatos.com/racket-money-mailing-list.html</id>
+    <content xml:lang="en" type="html">&lt;h1&gt;Racket Money&lt;/h1&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;The &lt;code&gt;racket-money&lt;/code&gt; email list is for a relatively candid discussion about making money with the Racket programming language.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;racket-money&lt;/code&gt; has 92 subscribers, as of 2022-10-21.&lt;/p&gt;
+&lt;h1&gt;Policy&lt;/h1&gt;
+&lt;p&gt;To encourage candid and genuine contributions, in an era of even children having carefully-PR-managed &#39;social media&#39; personas, :) &lt;code&gt;racket-money&lt;/code&gt; is instead experimenting with being a private email list, with a policy of no messages viewable on the Web nor in Google Groups, and no quoting/forwarding/etc. messages elsewhere.&lt;/p&gt;
+&lt;p&gt;When you send a message to &lt;code&gt;racket-money&lt;/code&gt;, the only people who should ever be able to see that message are the people who were subscribed to the list at the time that you sent the message.&lt;/p&gt;
+&lt;p&gt;We&#39;re trying this policy because some people said it would encourage them to say more than they would otherwise, and we have already seen that. This policy has its pros and cons but seems worth a try. (For public messages, use &lt;a href=&quot;https://groups.google.com/forum/#!forum/racket-users&quot;&gt;racket-users&lt;/a&gt; instead.)&lt;/p&gt;
+&lt;p&gt;BTW, &lt;code&gt;racket-money&lt;/code&gt; is intended to be constructive and welcoming, to all who are interested in its topic.&lt;/p&gt;
+&lt;h1&gt;Subscribe&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Please read the above policy, and be sure that you can follow it, in good faith.&lt;/li&gt;
+&lt;li&gt;Email all the current list members, &lt;a href=&quot;mailto:racket-money@googlegroups.com&quot;&gt;racket-money@googlegroups.com&lt;/a&gt;, introducing yourself. For example, your background, and/or why you are interested in the topic. Even if you feel like you don&#39;t have anything to say yet -- one sentence is fine. These introduction posts encourage everyone to share: &lt;em&gt;If this is your first night at Fight Club, you have to fight?&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Without waiting, also email a blank message to &lt;a href=&quot;mailto:racket-money+subscribe@googlegroups.com&quot;&gt;racket-money+subscribe@googlegroups.com&lt;/a&gt;. (Sorry this has to be an additional step right now, with Google Groups.)&lt;/li&gt;
+&lt;li&gt;Wait a short time for a human to approve your message and your subscription (this step is only to try to keep out bots/spam, not to gatekeep anyone).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;Support&lt;/h1&gt;
+&lt;p&gt;If you notice any problem with &lt;code&gt;racket-money&lt;/code&gt;, please &lt;a href=&quot;mailto:p@ocmatos.com&quot;&gt;get in touch&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>index</title>
     <link href="https://p.ocmatos.com/"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Home Page&lt;/h1&gt;
 &lt;p&gt;Welcome, you might find the Blog more interesting than this blank initial page.&lt;/p&gt;
@@ -22,7 +47,7 @@
   <entry>
     <title>Blog</title>
     <link href="https://p.ocmatos.com/blog.html"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/blog.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Blog&lt;/h1&gt;
 &lt;div class=&quot;lead&quot;&gt;
@@ -33,7 +58,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title>About me</title>
     <link href="https://p.ocmatos.com/about-me.html"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/about-me.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;About Me&lt;/h1&gt;
 &lt;p&gt;Not much to say at the moment...&lt;/p&gt;
@@ -42,7 +67,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/sitemap.xml"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/sitemap.xml</id>
     <content xml:lang="en" type="html">&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.sitemaps.org/schemas/sitemap/0.9
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd&quot;&gt;
@@ -114,7 +139,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/manifest.webmanifest&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -122,7 +147,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/robots.txt&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -130,7 +155,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/sitemap.xml&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -138,7 +163,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/about-me.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -146,7 +171,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/blog.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -154,9 +179,17 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-07-26T11:41:23Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     &lt;changefreq&gt;yearly&lt;/changefreq&gt;
     &lt;priority&gt;1.00&lt;/priority&gt;
+    
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  
+  &lt;url&gt;
+    &lt;loc&gt;https://p.ocmatos.com/racket-money-mailing-list.html&lt;/loc&gt;
+    
+    &lt;lastmod&gt;2022-10-21T06:46:12Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -165,7 +198,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/robots.txt"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/robots.txt</id>
     <content xml:lang="en" type="html">User-agent: Googlebot
 Disallow: 
@@ -206,7 +239,7 @@ Sitemap: https://p.ocmatos.com/sitemap.xml</content>
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/manifest.webmanifest"/>
-    <updated>2022-07-26T11:41:23Z</updated>
+    <updated>2022-10-21T06:46:12Z</updated>
     <id>https://p.ocmatos.com/manifest.webmanifest</id>
     <content xml:lang="en" type="html">{
   &quot;dir&quot;: &quot;ltr&quot;,  
