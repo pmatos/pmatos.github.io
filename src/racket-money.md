@@ -1,12 +1,12 @@
 ---
-title: Racket Money Mailing List
+title: Racket Money
 layout: page.njk
 keyword: test
 tags: pages
 permalink: "{{ title | slugify }}.html"
 ---
 
-# Racket Money
+# Racket Money Mailing List
 
 # Introduction
 
