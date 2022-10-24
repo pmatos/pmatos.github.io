@@ -12,7 +12,7 @@ Last Saturday, on the 24th of September of 2022 I played piano publicly for the 
 Earlier this year, on January 18, I started playing the piano with a 30-minute lesson. What I mean by "started playing", is learning the location of the middle C on the piano. Or that when reading sheet music all of the following notes are the same - indeed, these are all middle C.
 
 {% lyInsert "middlec.svg" %}
-\version "2.22.2"
+\version "2.22.1"
 
 \header {
     tagline = ""
