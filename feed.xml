@@ -4,7 +4,7 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2022-10-24T14:26:43Z</updated>
+  <updated>2022-10-24T14:56:50Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
@@ -13,7 +13,7 @@
   <entry>
     <title>Racket Money</title>
     <link href="https://p.ocmatos.com/racket-money.html"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/racket-money.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Racket Money Mailing List&lt;/h1&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -38,7 +38,7 @@
   <entry>
     <title>index</title>
     <link href="https://p.ocmatos.com/"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Home Page&lt;/h1&gt;
 &lt;p&gt;Welcome, you might find the Blog more interesting than this blank initial page.&lt;/p&gt;
@@ -47,7 +47,7 @@
   <entry>
     <title>Blog</title>
     <link href="https://p.ocmatos.com/blog.html"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/blog.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Blog&lt;/h1&gt;
 &lt;div class=&quot;lead&quot;&gt;
@@ -58,7 +58,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title>About me</title>
     <link href="https://p.ocmatos.com/about-me.html"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/about-me.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;About Me&lt;/h1&gt;
 &lt;p&gt;Not much to say at the moment...&lt;/p&gt;
@@ -67,7 +67,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/sitemap.xml"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/sitemap.xml</id>
     <content xml:lang="en" type="html">&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.sitemaps.org/schemas/sitemap/0.9
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd&quot;&gt;
@@ -137,9 +137,17 @@ This is what I try to call a blog... we will see how it goes.
   &lt;/url&gt;
   
   &lt;url&gt;
+    &lt;loc&gt;https://p.ocmatos.com/blog/from-middle-c-to-concert.html&lt;/loc&gt;
+    
+    &lt;lastmod&gt;2022-10-24T00:00:00Z&lt;/lastmod&gt;
+    
+    &lt;priority&gt;0.80&lt;/priority&gt;
+  &lt;/url&gt;
+  
+  &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/manifest.webmanifest&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -147,7 +155,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/robots.txt&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -155,7 +163,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/sitemap.xml&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -163,7 +171,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/about-me.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -171,7 +179,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/blog.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -179,7 +187,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     &lt;changefreq&gt;yearly&lt;/changefreq&gt;
     &lt;priority&gt;1.00&lt;/priority&gt;
     
@@ -189,7 +197,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/racket-money.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-24T14:25:38Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T14:55:38Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -198,7 +206,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/robots.txt"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/robots.txt</id>
     <content xml:lang="en" type="html">User-agent: Googlebot
 Disallow: 
@@ -239,7 +247,7 @@ Sitemap: https://p.ocmatos.com/sitemap.xml</content>
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/manifest.webmanifest"/>
-    <updated>2022-10-24T14:25:38Z</updated>
+    <updated>2022-10-24T14:55:38Z</updated>
     <id>https://p.ocmatos.com/manifest.webmanifest</id>
     <content xml:lang="en" type="html">{
   &quot;dir&quot;: &quot;ltr&quot;,  
@@ -314,6 +322,67 @@ Sitemap: https://p.ocmatos.com/sitemap.xml</content>
     }
   ]
   }</content>
+  </entry>
+  <entry>
+    <title>From Middle-C to Concert</title>
+    <link href="https://p.ocmatos.com/blog/from-middle-c-to-concert.html"/>
+    <updated>2022-10-24T00:00:00Z</updated>
+    <id>https://p.ocmatos.com/blog/from-middle-c-to-concert.html</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Last Saturday, on the 24th of September of 2022 I played piano publicly for the first time in a local concert organized for students of my piano teacher - &lt;a href=&quot;http://www.takako-ono.com/&quot;&gt;Takako Ono&lt;/a&gt;. My performance was far from perfect, but I am proud of it. This is a brief overview of my lessons and practice over the last 8 months.&lt;/p&gt;
+&lt;p&gt;Earlier this year, on January 18, I started playing the piano with a 30-minute lesson. What I mean by &amp;quot;started playing&amp;quot;, is learning the location of the middle C on the piano. Or that when reading sheet music all of the following notes are the same - indeed, these are all middle C.&lt;/p&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;https://p.ocmatos.com/img/middlec.svg&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;I knew what middle C was... I had been playing Ukulele for a while so I knew it was the note on the second string of the Ukulele, if it was tuned in standard tuning but was unaware of its relationship to the piano.&lt;/p&gt;
+&lt;p&gt;I quickly learned to love the uniformity of the piano. If middle C is here, then the next note D is the white key next to it, and the E is the next one after. Also, there&#39;s only one place to play a given note.&lt;/p&gt;
+&lt;p&gt;I was beyond excited to be learning the piano. For a long time, I had been wanting to learn the piano, which I always saw as the king of all instruments. Taking the plunge and showing up to piano lessons was a dream come true. We started using the book &lt;a href=&quot;https://www.alfred.com/alfreds-basic-adult-piano-course-lesson-book-1/p/00-2236/&quot;&gt;Alfred&#39;s Basic Adult Piano Course: Level 1&lt;/a&gt; and over the months that followed we made steady progress on that. We would practice a couple of pieces one hand at a time during the lesson and I would perfect those at home to perform them in the following lesson. If all was ok, great - we moved ahead. If not, we would practice more together and I would perfect them again at home. We quickly got to June and my teacher asked me if I would like to play publicly in a student concert. I immediately said &amp;quot;Yes&amp;quot;, which seemed to take her by surprise. Apparently, adult students and especially beginner students are not keen on joining concerts. At this point, we chose two pieces: Allegretto by Vanhal and Nächtliche Reise by Gurlitt. She played the pieces for me and I loved them so being able to play three months later seemed amazing. Of course, now I needed to be able to focus on them as they were slightly trickier than my weekly ones from Alfred&#39;s book. So for the following lessons, I focused on them and at home, I did the same. Every lesson was focused on perfecting some parts of each piece. And on Saturday it all came together.&lt;/p&gt;
+&lt;p&gt;My wife, both of my children, and my parents-in-law came to the concert and although I was anxious the whole day, I got slightly less anxious before. I didn&#39;t get nervous until pretty much it was my turn to play, but I didn&#39;t have a meltdown. That felt like it came later. The Vanhal piece was always the one I had the most trouble with and Gurlitt was the one that seemed easier. However, I played Vanhal first after the tradition of playing older pieces first. Vanhal was going very well and the first repetition was flawless. During the second repetition I thought that &amp;quot;it&#39;s just a matter of finishing the second repetition and then the easy piece is coming.&amp;quot;. I deviated my look a bit from the keys as it occurred to me and as I looked into the keys, I forgot where in the scale I was and missed a beat. Damn! I continued as if nothing happened and I grew increasingly nervous wondering what else was going to happen. My brain went haywire as I started the easier piece and I missed a couple of beats. This was supposed to be the easy piece but I was murdering it. But like everything else, it came to an end. As I get up from the piano, everyone was clapping and afterward many people came to congratulate me but I was disappointed and couldn&#39;t shake the feeling I had screwed up.&lt;/p&gt;
+&lt;p&gt;My wife filmed it and I later watched, half covering my face in embarrassment, but noticed that actually, it sounded quite nice. And although, yes, there were a couple of lapses, unless you know the piece you wouldn&#39;t necessarily notice them.&lt;/p&gt;
+&lt;p&gt;I am just very excited I had the opportunity to join this concert and can&#39;t wait to do better, on harder pieces, next time.&lt;/p&gt;
+&lt;p&gt;When I decide to take on a new hobby, I want to give it all and be the best amateur I can be. I believe that you need a strategy instead of going at it Adhoc given you&#39;re doing it in your spare time and you have to fit things in with your family life.
+So I will finish off with a few points and tips for absolute beginners from my journey that might be more interesting to read than the above memory dump. These are things that worked very well for me and that I would advise you to consider but they are in no way gospel or remotely generalizable. But if you see you&#39;re in a position to try them out, please do.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Immerse yourself. If you are going to do a hobby make sure you stay up to date on developments and what&#39;s going on. Personally, I subscribed to Pianist, subscribed to &lt;a href=&quot;https://www.reddit.com/r/piano&quot;&gt;r/piano&lt;/a&gt; and &lt;a href=&quot;https://www.reddit.com/r/pianolearning&quot;&gt;r/pianolearning&lt;/a&gt;, follow several pianists on Twitter like &lt;a href=&quot;https://twitter.com/lang_lang&quot;&gt;@lang_lang&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/lars_vogt&quot;&gt;@lars_vogt&lt;/a&gt;, or &lt;a href=&quot;https://twitter.com/daniil_trifonov&quot;&gt;@daniil_trifonov&lt;/a&gt;, and started listening to podcasts related to piano playing like the &lt;a href=&quot;https://open.spotify.com/show/72OQO63V0y3jZ0fh4tVlwj&quot;&gt;Josh Wright Piano Podcast&lt;/a&gt;. In addition to that my knowledge and feeling for classical music were zero. Since then, I have been regularly putting on some classical music, looking at the scores (even if all pieces are impossible for me to play), and trying to appreciate how hard it must be to play them. I don&#39;t read a huge amount except on holidays when I tend to disconnect and read quite a bit. So these last Summer holidays saw me going through 3 books related to Piano playing that I recommend: &lt;a href=&quot;https://www.goodreads.com/book/show/17332356-play-it-again&quot;&gt;Play it Again: An Amateur Against the Impossible&lt;/a&gt; by Alan Rusbridger, &lt;a href=&quot;https://www.goodreads.com/book/show/2727587-journey-of-a-thousand-miles&quot;&gt;Journey of a Thousand Miles: My Story&lt;/a&gt; by Lang Lang and David Ritz, and &lt;a href=&quot;https://www.goodreads.com/book/show/589577.Piano_Notes&quot;&gt;Piano Notes: The World of the Pianist&lt;/a&gt; by Charles Rosen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Measure your progress. It&#39;s hard to know how much time you&#39;re actually putting in if you don&#39;t measure. You might guess but most likely you&#39;ll be wrong. I use a file where I write down all post-lesson notes about the lesson and track all my time in front of the piano at home using &lt;a href=&quot;https://instrumentive.com/&quot;&gt;Instrumentive&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set a long-term goal to challenge yourself. Hard long-term goals are important in my opinion. They keep you focused with something to look forward to. If you were running, maybe a marathon could be a long-term goal. In piano, maybe playing a certain piece publicly (and this can mean to others or even just to your family who you invite for a concert). Some people recommend that you share that with others, or even post online for further motivation. I generally prefer to keep those (sometimes ridiculous goals) within a small circle of people. But I guess that&#39;s just a personal preference.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Research the best. Within your chosen hobby there are always some who are at the top of it. Follow them on social media, read about them, and see how they practice, train, etc. How they got to where they are, etc. It&#39;s likely that as a hobbyist you might not be able to emulate everything they do or how they do it. However, I think that just knowing what&#39;s possible is incredibly motivating. At the moment, I always keep an eye on Lang Lang, Daniil Trifonov, and Josh Wright.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Find support. Sometimes you have hobbies that are very social like playing football, poker, etc. Some other times it can be lonely like triathlon racing or piano playing. In any case, you should try to find some support... a little fan base. That can be your family or close circle of friends. Plan to play a piece for them, and ask them to criticize you. Keep playing, and improving. During the two weeks preceding my first public performance, I asked my wife and children to listen to me play every single evening before bedtime. They were and are my support, my fan base, and those who&#39;ll cheer for me even if I screw up. Find those people!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lastly: Prioritize, prioritize, prioritize! You&#39;ll need to prioritize a lot. If you need to take one or two hours of your day, you&#39;ll need to prioritize. Do I need to take that coffee break? Can I optimize my commute? Do I really need to watch that series on Netflix, etc? In the end, we all have 24 hours per day. What matters, is how we spend those 24 hours. There&#39;s no magic!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Book references:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Alfred&#39;s Basic Adult Piano Course : Level 1 (ISBN: 978-0739082416).&lt;/li&gt;
+&lt;li&gt;Play it Again: An Amateur Against the Impossible (ISBN: 978-1250875402)&lt;/li&gt;
+&lt;li&gt;Journey of a Thousand Miles: My Story by Lang Land and David Ritz (ISBN: 978-0385524575)&lt;/li&gt;
+&lt;li&gt;Piano Notes: The World of the Pianist by Charles Rosen (ISBN: 978-0140298635)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Music references:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Allegretto by J. B. Vanhal&lt;/li&gt;
+&lt;li&gt;Nächtliche Reise by C. Gurlitt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Online Forums:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/piano&quot;&gt;&lt;code&gt;r/piano&lt;/code&gt;&lt;/a&gt;, take a look especially at the &lt;a href=&quot;https://www.reddit.com/r/piano/wiki/faq/&quot;&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/pianolearning&quot;&gt;&lt;code&gt;r/pianolearning&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Others:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.pianistmagazine.com/&quot;&gt;Pianist Magazine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://open.spotify.com/show/72OQO63V0y3jZ0fh4tVlwj&quot;&gt;Josh Wright Piano Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://instrumentive.com/&quot;&gt;Instrumentive Progress Tracking App&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
   </entry>
   <entry>
     <title>A tour of the `for..of` implementation for 32bits JSC</title>
