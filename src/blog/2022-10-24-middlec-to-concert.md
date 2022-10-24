@@ -22,8 +22,8 @@ Earlier this year, on January 18, I started playing the piano with a 30-minute l
   \new PianoStaff \with {
     instrumentName = "Piano"
   } <<
-  \new Staff = "right" \with {} {           \relative c' { c r c r c r c r c r} }
-  \new Staff = "left" \with {} { \clef bass \relative c' { r c r c r c r c r c} } 
+  \new Staff = "right" \with {} {           \relative c' { c r c r c r c r c r \bar "|." } }
+  \new Staff = "left" \with {} { \clef bass \relative c' { r c r c r c r c r c \bar "|." } } 
   >>
   \layout {}
 }
