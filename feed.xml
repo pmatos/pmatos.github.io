@@ -4,7 +4,7 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2022-10-21T07:07:22Z</updated>
+  <updated>2022-10-24T12:21:11Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
@@ -13,7 +13,7 @@
   <entry>
     <title>Racket Money</title>
     <link href="https://p.ocmatos.com/racket-money.html"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/racket-money.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Racket Money Mailing List&lt;/h1&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -38,7 +38,7 @@
   <entry>
     <title>index</title>
     <link href="https://p.ocmatos.com/"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Home Page&lt;/h1&gt;
 &lt;p&gt;Welcome, you might find the Blog more interesting than this blank initial page.&lt;/p&gt;
@@ -47,7 +47,7 @@
   <entry>
     <title>Blog</title>
     <link href="https://p.ocmatos.com/blog.html"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/blog.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;Blog&lt;/h1&gt;
 &lt;div class=&quot;lead&quot;&gt;
@@ -58,7 +58,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title>About me</title>
     <link href="https://p.ocmatos.com/about-me.html"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/about-me.html</id>
     <content xml:lang="en" type="html">&lt;h1&gt;About Me&lt;/h1&gt;
 &lt;p&gt;Not much to say at the moment...&lt;/p&gt;
@@ -67,7 +67,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/sitemap.xml"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/sitemap.xml</id>
     <content xml:lang="en" type="html">&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.sitemaps.org/schemas/sitemap/0.9
                       http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd&quot;&gt;
@@ -139,7 +139,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/manifest.webmanifest&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -147,7 +147,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/robots.txt&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -155,7 +155,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/sitemap.xml&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -163,7 +163,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/about-me.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -171,7 +171,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/blog.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -179,7 +179,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     &lt;changefreq&gt;yearly&lt;/changefreq&gt;
     &lt;priority&gt;1.00&lt;/priority&gt;
     
@@ -189,7 +189,7 @@ This is what I try to call a blog... we will see how it goes.
   &lt;url&gt;
     &lt;loc&gt;https://p.ocmatos.com/racket-money.html&lt;/loc&gt;
     
-    &lt;lastmod&gt;2022-10-21T07:06:30Z&lt;/lastmod&gt;
+    &lt;lastmod&gt;2022-10-24T12:20:21Z&lt;/lastmod&gt;
     
     &lt;priority&gt;0.80&lt;/priority&gt;
   &lt;/url&gt;
@@ -198,7 +198,7 @@ This is what I try to call a blog... we will see how it goes.
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/robots.txt"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/robots.txt</id>
     <content xml:lang="en" type="html">User-agent: Googlebot
 Disallow: 
@@ -239,7 +239,7 @@ Sitemap: https://p.ocmatos.com/sitemap.xml</content>
   <entry>
     <title></title>
     <link href="https://p.ocmatos.com/manifest.webmanifest"/>
-    <updated>2022-10-21T07:06:30Z</updated>
+    <updated>2022-10-24T12:20:21Z</updated>
     <id>https://p.ocmatos.com/manifest.webmanifest</id>
     <content xml:lang="en" type="html">{
   &quot;dir&quot;: &quot;ltr&quot;,  
