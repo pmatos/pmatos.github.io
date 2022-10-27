@@ -13,6 +13,9 @@ const { DateTime } = require("luxon");
 
 // 11ty
 module.exports = function (eleventyConfig) {
+  // Watch the filters folder
+  eleventyConfig.addWatchTarget("./filters");
+
   // set markdown footnote processor
   let markdownIt = require("markdown-it");
   let markdownItFootnote = require("markdown-it-footnote");
