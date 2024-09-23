@@ -5,7 +5,7 @@ tags: ["fex", "igalia"]
 date: 2024-09-23
 layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
-draft: true
+eleventyExcludeFromCollections: true
 ---
 
 In this blog post, I describe my recent work on improving and optimizing the handling of X87 code in FEX. This work landed on July 22, 2024, through commit [https://github.com/FEX-Emu/FEX/commit/a1378f94ce8e7843d5a3cd27bc72847973f8e7ec](https://github.com/FEX-Emu/FEX/commit/a1378f94ce8e7843d5a3cd27bc72847973f8e7ec) (tests and updates to size benchmarks landed separately).
