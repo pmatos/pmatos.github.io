@@ -4,7 +4,7 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/igalia.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2024-09-25T10:09:37Z</updated>
+  <updated>2024-09-25T10:13:21Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
@@ -77,14 +77,6 @@
 &lt;p&gt;Instead of lowering each x87 instruction in x87.cpp to its components as discussed earlier, we simply generate stack operation IR instructions (all of these added new since there were no stack operations in the IR). Then an optimization pass goes through the IR on a per block basis and optimizes the operations and lowers them.&lt;/p&gt;
 &lt;p&gt;Here’s a step-by-step explanation of how this scheme works for the code above. When the above code gets to the OpcodeDispatcher, there’ll be one function a reasonable amount of opcodes, but generally one per functionality, meaning that although there are several opcodes for different versions of fadd, there is a single function in OpcodeDispatcher for x87 (in x87.cpp) implementing it.&lt;/p&gt;
 &lt;p&gt;Each of these functions will just transform the incoming instruction into an IR node that deals with the stack. These stack IR operations have Stack in its name. See &lt;a href=&quot;https://github.com/FEX-Emu/FEX/blob/FEX-2409/FEXCore/Source/Interface/IR/IR.json&quot;&gt;IR.json&lt;/a&gt; for a list of these.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  fld qword [rsp] -&amp;gt; LoadMem + PushStack
-  fsincos -&amp;gt; F80SinCosStack
-  fmul st0, st0 -&amp;gt; F80MulStack
-  fxch -&amp;gt; F80StackXchange
-  fmul st0, st0 -&amp;gt; F80MulStack
-  faddp -&amp;gt; F80AddStack + PopStackDestroy
-  fstp qword [rsp] -&amp;gt; StoreStackMemory + PopStackDestroy
-&lt;/code&gt;&lt;/pre&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
