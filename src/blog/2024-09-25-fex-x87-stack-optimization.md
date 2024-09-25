@@ -21,7 +21,7 @@ float PytIdent(float x) {
 
 Here is how this can be translated into assembly:
 
-```assembly
+```
   sub rsp, 4
   movss [rsp], xmm0
   fld [rsp]
