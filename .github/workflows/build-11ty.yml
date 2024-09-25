@@ -27,7 +27,7 @@ jobs:
           AWS_LAMBDA_FUNCTION_NAME: trickpuppeteer
         run: |
           npm ci
-          npm run build
+          npm run go!
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
