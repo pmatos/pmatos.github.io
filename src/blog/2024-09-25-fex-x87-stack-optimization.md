@@ -98,16 +98,6 @@ Here’s a step-by-step explanation of how this scheme works for the code above.
 
 Each of these functions will just transform the incoming instruction into an IR node that deals with the stack. These stack IR operations have Stack in its name. See [IR.json](https://github.com/FEX-Emu/FEX/blob/FEX-2409/FEXCore/Source/Interface/IR/IR.json) for a list of these.
 
-```
-  fld qword [rsp] -> LoadMem + PushStack
-  fsincos -> F80SinCosStack
-  fmul st0, st0 -> F80MulStack
-  fxch -> F80StackXchange
-  fmul st0, st0 -> F80MulStack
-  faddp -> F80AddStack + PopStackDestroy
-  fstp qword [rsp] -> StoreStackMemory + PopStackDestroy
-```
-
 | x86 Asm            | IR nodes                               |
 | ------------------ | -------------------------------------- |
 | `fld qword [rsp]`  | `LoadMem` + `PushStack`                |
