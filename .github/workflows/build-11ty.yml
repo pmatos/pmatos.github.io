@@ -15,7 +15,7 @@ jobs:
       - name: Install lilypond
         run: |
           sudo apt update
-          sudo apt install lilypond
+          sudo apt install lilypond chromium-browser
 
       - name: Use Node.js 18
         uses: actions/setup-node@v4
