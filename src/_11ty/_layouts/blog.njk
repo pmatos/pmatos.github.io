@@ -21,7 +21,7 @@ type: website
                 <p>{{post.data.description | safe}}</p>
                 <small class="info">
                     <time datetime="{{post.date}}">{{post.date | readableDate}}</time>&nbsp;&nbsp;&ndash;&nbsp;
-                    {{post | readingTime}}&nbsp;of&nbsp;Reading&nbsp;Time
+                    {{post}}&nbsp;of&nbsp;Reading&nbsp;Time
                 </small>
             </li>
         {%- endfor -%}

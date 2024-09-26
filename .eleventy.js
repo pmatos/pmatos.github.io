@@ -2,7 +2,6 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const readingTime = require("eleventy-plugin-reading-time");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const lyInsert = require("./filters/lyInsert")
@@ -38,7 +37,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(socialImages);
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(readingTime);
 
   // Syntax highlighting
   eleventyConfig.addPlugin(syntaxHighlight);
