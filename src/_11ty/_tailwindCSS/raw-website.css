@@ -82,6 +82,21 @@
   }
 }
 
+@layer utilities {
+
+  /* Default (light mode) */
+  img[src$=".svg"] {
+    filter: none;
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    img[src$=".svg"] {
+      filter: invert(1) brightness(2);
+      /* Invert the colors for dark mode */
+    }
+  }
+}
 @media screen(sm) {
   html {
     @apply px-6 text-lg;
