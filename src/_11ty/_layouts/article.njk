@@ -13,8 +13,7 @@ type: article
     {% include "nav.njk" %}
     <article>
         <small class="info">
-            <time datetime="{{page.date}}">{{page.date | readableDate}}</time>&nbsp;&ndash;&nbsp;
-            {{content}}&nbsp;of&nbsp;Reading&nbsp;Time
+            <time datetime="{{page.date}}">{{page.date | readableDate}}</time>
         </small>
         <h1>{{ title }}</h1>
         {{content | safe}}
