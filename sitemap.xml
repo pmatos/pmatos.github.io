@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://p.ocmatos.com/blog/creduce-it-s-a-kind-of-magic.html</loc>
+    <loc>https://p.ocmatos.com/blog/creduce-its-a-kind-of-magic.html</loc>
     
     <lastmod>2020-02-17T00:00:00Z</lastmod>
     
@@ -77,6 +77,14 @@
   </url>
   
   <url>
+    <loc>https://p.ocmatos.com/blog/webassembly-reference-types-in-clang-llvm.html</loc>
+    
+    <lastmod>2023-06-13T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
     <loc>https://p.ocmatos.com/blog/fex-x87-stack-optimization.html</loc>
     
     <lastmod>2024-09-25T00:00:00Z</lastmod>
@@ -87,7 +95,7 @@
   <url>
     <loc>https://p.ocmatos.com/manifest.webmanifest</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -95,7 +103,7 @@
   <url>
     <loc>https://p.ocmatos.com/robots.txt</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -103,7 +111,7 @@
   <url>
     <loc>https://p.ocmatos.com/sitemap.xml</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -111,7 +119,7 @@
   <url>
     <loc>https://p.ocmatos.com/about-me.html</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -119,7 +127,7 @@
   <url>
     <loc>https://p.ocmatos.com/blog.html</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -127,7 +135,7 @@
   <url>
     <loc>https://p.ocmatos.com/</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
     
@@ -137,7 +145,7 @@
   <url>
     <loc>https://p.ocmatos.com/racket-money.html</loc>
     
-    <lastmod>2024-09-26T12:05:54Z</lastmod>
+    <lastmod>2025-07-11T13:57:12Z</lastmod>
     
     <priority>0.80</priority>
   </url>
