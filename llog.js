@@ -22,13 +22,15 @@ class LinkLogCLI {
 
     async acquireLock() {
         try {
-            await fs.access(LOCKFILE);
-            throw new Error('Another llog process is already running');
+            // Use atomic operation with exclusive flags to prevent race conditions
+            const fileHandle = await fs.open(LOCKFILE, 'wx'); // 'w' for write, 'x' for exclusive (fail if exists)
+            await fileHandle.writeFile(process.pid.toString());
+            await fileHandle.close();
+            this.lockAcquired = true;
+            console.log('📝 Acquired process lock');
         } catch (error) {
-            if (error.code === 'ENOENT') {
-                await fs.writeFile(LOCKFILE, process.pid.toString());
-                this.lockAcquired = true;
-                console.log('📝 Acquired process lock');
+            if (error.code === 'EEXIST') {
+                throw new Error('Another llog process is already running');
             } else {
                 throw error;
             }
