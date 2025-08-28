@@ -243,11 +243,11 @@ class LinkLogCLI {
                         
                         // Clean up title
                         title = title.replace(/\s+/g, ' ')
-                                    .replace(/&amp;/g, '&')
                                     .replace(/&lt;/g, '<')
                                     .replace(/&gt;/g, '>')
                                     .replace(/&quot;/g, '"')
-                                    .replace(/&#039;/g, "'");
+                                    .replace(/&#039;/g, "'")
+                                    .replace(/&amp;/g, '&');
 
                         resolve(title);
                     } catch (error) {
