@@ -1,3 +1,17 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "id": "daeb2ffc1b24055b",
+      "url": "https://fex-emu.com/",
+      "title": "FEX-Emu – A fast linux usermode x86 and x86-64 emulator",
+      "summary": "FEX-Emu is a fast Linux-based x86 and x86-64 emulator designed to run user-mode applications. This emulator could be useful for developers, researchers, or anyone interested in running legacy x86 software on modern systems without the overhead of a full virtual machine. The webpage likely provides details about the emulator's features, performance, and potential use cases.",
+      "tags": [
+        "emulator",
+        "x86",
+        "linux",
+        "usermode"
+      ],
+      "dateAdded": "2025-08-28T13:37:40.433Z"
+    }
+  ]
 }
