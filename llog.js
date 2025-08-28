@@ -178,6 +178,7 @@ class LinkLogCLI {
                     data += chunk;
                     // Stop reading after we have enough data to extract title
                     if (data.length > 50000) {
+                        res.removeAllListeners();
                         res.destroy();
                     }
                 });
@@ -208,6 +209,7 @@ class LinkLogCLI {
             });
 
             req.on('timeout', () => {
+                req.removeAllListeners();
                 req.destroy();
                 reject(new Error(`Timeout fetching ${url}`));
             });
@@ -444,6 +446,7 @@ Respond with only the tags separated by commas, like: programming, javascript, t
 
             req.on('error', reject);
             req.on('timeout', () => {
+                req.removeAllListeners();
                 req.destroy();
                 reject(new Error('Request timeout'));
             });
