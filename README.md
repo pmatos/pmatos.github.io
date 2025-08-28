@@ -276,6 +276,117 @@ If you get errors about LilyPond not being found:
 
 MIT License - see LICENSE file for details
 
+## Link Log CLI (llog.js)
+
+The `llog.js` tool is a command-line interface for managing your link log - a curated collection of interesting links with AI-generated summaries and metadata.
+
+### Features
+
+- **Automatic metadata fetching**: Extracts page titles from URLs
+- **AI-powered summaries**: Uses Claude API to generate brief, informative summaries
+- **Tag suggestions**: Automatically suggests relevant tags based on content
+- **Duplicate detection**: Prevents adding the same URL twice
+- **Atomic operations**: Uses file locking and backup/rollback for reliability
+- **Auto-deployment**: Builds site, commits changes, and verifies deployment
+- **Deployment verification**: Waits and confirms the new entry is live online
+
+### Prerequisites
+
+- **Claude API Key**: Set `CLAUDE_API_KEY` or `ANTHROPIC_API_KEY` environment variable
+- **Git repository**: Must be run in a git repository with remote configured
+- **Node.js dependencies**: Run `npm install` to install required packages
+
+### Usage
+
+```bash
+# Basic usage - add a URL (tags will be auto-suggested)
+./llog.js "https://example.com/interesting-article"
+
+# Add URL with custom tags
+./llog.js "https://example.com/js-tutorial" #javascript #tutorial #web
+
+# The tool will:
+# 1. Fetch the page title
+# 2. Generate an AI summary
+# 3. Add suggested tags (if none provided)
+# 4. Update src/_11ty/_data/linklog.json
+# 5. Build the site
+# 6. Commit and push changes
+# 7. Verify the entry appears online
+```
+
+### Configuration
+
+#### Environment Variables
+
+- `CLAUDE_API_KEY` or `ANTHROPIC_API_KEY` - Required for AI features
+- `LLOG_DEPLOY_TIMEOUT` - Deployment verification timeout in minutes (default: 10)
+
+#### Site URL Detection
+
+The tool automatically detects your site URL from:
+1. `src/_11ty/_data/meta.js` file (URL field)
+2. Git remote origin (converts GitHub URLs to GitHub Pages format)
+3. Fallback to `https://localhost:8080`
+
+### Data Storage
+
+Link log entries are stored in `src/_11ty/_data/linklog.json` with the following structure:
+
+```json
+{
+  "entries": [
+    {
+      "id": "a1b2c3d4",
+      "url": "https://example.com/article",
+      "title": "Interesting Article Title",
+      "summary": "AI-generated summary of the article...",
+      "tags": ["programming", "tutorial"],
+      "dateAdded": "2024-01-15T10:30:00.000Z"
+    }
+  ]
+}
+```
+
+### Safety Features
+
+- **Process locking**: Prevents multiple instances from running simultaneously
+- **Backup and rollback**: Creates backups before making changes
+- **Duplicate detection**: Checks for existing URLs before adding
+- **Input sanitization**: Validates and sanitizes URLs and tags
+- **Atomic operations**: Either all operations succeed or everything is rolled back
+- **Signal handling**: Graceful cleanup on interruption (Ctrl+C)
+
+### Error Handling
+
+If any step fails, the tool will:
+1. Restore backup files
+2. Reset git changes to initial state
+3. Release process lock
+4. Exit with error code 1
+
+Common error scenarios:
+- Invalid or unreachable URLs
+- Missing Claude API key
+- Network timeouts
+- Build failures
+- Git operation failures
+- Duplicate URL detection
+
+### Deployment Verification
+
+After pushing changes, the tool verifies deployment by:
+1. Fetching the linklog page from your live site
+2. Checking if the new entry ID appears in the HTML
+3. Using exponential backoff (5s → 60s max intervals)
+4. Timing out after configurable period (default 10 minutes)
+
+This ensures your link is actually visible to visitors before completing successfully.
+
+### Integration with Eleventy
+
+The linklog data is automatically available in your Eleventy templates via the `linklog.json` data file. You can create a linklog page template that displays these entries with their titles, summaries, and tags.
+
 ## Author
 
 Paulo Matos - [p@ocmatos.com](mailto:p@ocmatos.com)
