@@ -136,8 +136,16 @@ class LinkLogCLI {
         return crypto.randomBytes(8).toString('hex');
     }
 
-    async fetchPageTitle(url) {
-        console.log(`🔍 Fetching page title from ${url}...`);
+    async fetchPageTitle(url, redirectCount = 0) {
+        const maxRedirects = 5;
+        
+        if (redirectCount === 0) {
+            console.log(`🔍 Fetching page title from ${url}...`);
+        }
+        
+        if (redirectCount >= maxRedirects) {
+            throw new Error(`Too many redirects (${maxRedirects}) for ${url}`);
+        }
         
         return new Promise((resolve, reject) => {
             const urlObj = new URL(url);
@@ -159,7 +167,7 @@ class LinkLogCLI {
                 
                 // Handle redirects
                 if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                    return this.fetchPageTitle(res.headers.location).then(resolve).catch(reject);
+                    return this.fetchPageTitle(res.headers.location, redirectCount + 1).then(resolve).catch(reject);
                 }
                 
                 if (res.statusCode !== 200) {
@@ -391,7 +399,13 @@ Respond with only the tags separated by commas, like: programming, javascript, t
         throw new Error('Deployment verification failed - entry not visible after 10 minutes');
     }
 
-    async fetchPageContent(url) {
+    async fetchPageContent(url, redirectCount = 0) {
+        const maxRedirects = 5;
+        
+        if (redirectCount >= maxRedirects) {
+            throw new Error(`Too many redirects (${maxRedirects}) for ${url}`);
+        }
+        
         return new Promise((resolve, reject) => {
             const urlObj = new URL(url);
             const client = urlObj.protocol === 'https:' ? https : http;
@@ -412,7 +426,7 @@ Respond with only the tags separated by commas, like: programming, javascript, t
                 
                 // Handle redirects
                 if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                    return this.fetchPageContent(res.headers.location).then(resolve).catch(reject);
+                    return this.fetchPageContent(res.headers.location, redirectCount + 1).then(resolve).catch(reject);
                 }
                 
                 if (res.statusCode !== 200) {
