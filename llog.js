@@ -346,6 +346,36 @@ Respond with only the tags separated by commas, like: programming, javascript, t
         }
     }
 
+    async getGitRemoteUrl() {
+        try {
+            const remoteUrl = execSync('git remote get-url origin', { stdio: 'pipe', encoding: 'utf8' }).trim();
+            
+            // Convert various Git URL formats to HTTPS GitHub Pages URL
+            if (remoteUrl.includes('github.com')) {
+                // Handle SSH format: git@github.com:user/repo.git
+                if (remoteUrl.startsWith('git@github.com:')) {
+                    const repoPath = remoteUrl.replace('git@github.com:', '').replace('.git', '');
+                    const [user, repo] = repoPath.split('/');
+                    return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
+                }
+                
+                // Handle HTTPS format: https://github.com/user/repo.git
+                if (remoteUrl.startsWith('https://github.com/')) {
+                    const repoPath = remoteUrl.replace('https://github.com/', '').replace('.git', '');
+                    const [user, repo] = repoPath.split('/');
+                    return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
+                }
+            }
+            
+            // Fallback for non-GitHub remotes
+            console.warn('⚠️ Non-GitHub remote detected, using default URL');
+            return 'https://localhost:8080'; // Default for unknown remotes
+        } catch (error) {
+            console.warn('⚠️ Could not parse git remote URL:', error.message);
+            return 'https://localhost:8080'; // Final fallback
+        }
+    }
+
     async commitAndPush() {
         console.log('📤 Committing and pushing changes...');
         try {
@@ -362,14 +392,14 @@ Respond with only the tags separated by commas, like: programming, javascript, t
     async verifyDeployment(entryId) {
         console.log('🌐 Verifying online deployment...');
         
-        // Get the site URL from meta.js or use GitHub Pages default
+        // Get the site URL from meta.js, then git remote, then default
         let siteUrl;
         try {
             const metaFile = await fs.readFile(path.join(__dirname, 'src/_11ty/_data/meta.js'), 'utf8');
             const urlMatch = metaFile.match(/url:\s*(?:process\.env\.URL\s*\|\|\s*)?["']([^"']+)["']/);
-            siteUrl = urlMatch ? urlMatch[1] : 'https://pmatos.github.io';
+            siteUrl = urlMatch ? urlMatch[1] : await this.getGitRemoteUrl();
         } catch (error) {
-            siteUrl = 'https://pmatos.github.io';
+            siteUrl = await this.getGitRemoteUrl();
         }
 
         const linklogUrl = `${siteUrl}/linklog.html`;
