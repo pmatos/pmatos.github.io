@@ -5,7 +5,29 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip"
+  # Monitor npm dependencies
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      # Group all Eleventy-related updates
+      eleventy:
+        patterns:
+          - "@11ty/*"
+          - "eleventy*"
+      # Group all development dependencies
+      dev-dependencies:
+        dependency-type: "development"
+    
+  # Monitor GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      # Group all GitHub Actions updates
+      actions:
+        patterns:
+          - "actions/*"
+          - "peaceiris/*"
