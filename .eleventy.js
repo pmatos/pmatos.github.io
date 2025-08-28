@@ -1,13 +1,13 @@
 // Insert plugins
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const socialImages = require("@11tyrocks/eleventy-plugin-social-images");
+// const socialImages = require("@11tyrocks/eleventy-plugin-social-images"); // Removed due to security vulnerabilities
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const lyInsert = require("./filters/lyInsert")
 
 // Helper packages
-const htmlmin = require("html-minifier");
+const htmlmin = require("html-minifier-terser");
 const { DateTime } = require("luxon");
 
 // 11ty
@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
 
   // 11ty attivazione plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(socialImages);
+  // eleventyConfig.addPlugin(socialImages); // Removed due to security vulnerabilities
   eleventyConfig.addPlugin(pluginRss);
 
   // Syntax highlighting
