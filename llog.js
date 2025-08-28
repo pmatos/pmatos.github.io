@@ -418,17 +418,31 @@ Focus on what the content is likely about and why it might be interesting or use
         }
     }
 
-    async suggestTags(content) {
+    async suggestTags(content, existingTags = []) {
         console.log('🏷️ Suggesting tags...');
         
         try {
-            const prompt = `Based on this content, suggest 2-4 relevant tags (single words only, lowercase, no spaces):
+            let prompt;
+            if (existingTags.length === 0) {
+                prompt = `Based on this content, suggest 2-4 relevant tags (single words only, lowercase, no spaces):
 
 ${content}
 
 Respond with only the tags separated by commas, like: programming, javascript, tutorial, web`;
+            } else {
+                prompt = `Based on this content, suggest additional relevant tags if they would add value (single words only, lowercase, no spaces). The user has already provided these tags: ${existingTags.join(', ')}
+
+${content}
+
+Only suggest additional tags if they provide meaningful categorization not covered by existing tags. It's perfectly fine to suggest no additional tags if the existing ones are sufficient. Respond with only the additional tags separated by commas, or respond with just "none" if no additional tags are needed.`;
+            }
 
             const response = await this.callClaudeAPI(prompt);
+            
+            if (response.toLowerCase().trim() === 'none') {
+                return [];
+            }
+            
             const tags = response.split(',').map(tag => tag.trim().toLowerCase()).filter(tag => tag.length > 0);
             return tags.slice(0, 4); // Max 4 tags
         } catch (error) {
@@ -652,11 +666,11 @@ Respond with only the tags separated by commas, like: programming, javascript, t
             let finalTags = [...tags];
             if (finalTags.length === 0) {
                 // If no user tags provided, use suggested tags
-                const suggestedTags = await this.suggestTags(`${title} ${summary}`);
+                const suggestedTags = await this.suggestTags(`${title} ${summary}`, []);
                 finalTags = suggestedTags;
             } else {
                 // If user provided tags, add suggested tags that aren't already present
-                const suggestedTags = await this.suggestTags(`${title} ${summary}`);
+                const suggestedTags = await this.suggestTags(`${title} ${summary}`, finalTags);
                 for (const suggestedTag of suggestedTags) {
                     if (!finalTags.includes(suggestedTag)) {
                         finalTags.push(suggestedTag);
