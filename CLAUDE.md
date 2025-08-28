@@ -87,3 +87,32 @@ This is a personal blog/website built with **Eleventy (11ty)** and **Tailwind CS
 - **Development**: Netlify with auto-deploy from main branch
 - **Production**: GitHub Actions workflow builds and deploys to GitHub Pages
 - **Special Requirements**: LilyPond must be installed in build environment for music notation
+
+## Development Notes
+
+### LilyPond Integration
+The `{% lyInsert %}` shortcode in `.eleventy.js` uses `filters/lyInsert.js` to process music notation. This filter:
+- Creates temporary files with LilyPond syntax
+- Executes `lilypond` command with SVG output and cropping
+- Returns the SVG content directly to be embedded in pages
+- Requires `lilypond` to be available in PATH
+
+### Tailwind Configuration
+The `tailwind.config.js` uses extensive custom theme configuration:
+- Custom screens breakpoints starting from 450px
+- Full color palette retained from default Tailwind
+- Custom font stacks with Roboto Serif for serif content
+- Typography plugin enabled for prose content
+
+### Static Assets Organization
+Static files are organized under `src/_11ty/_static/`:
+- `app/sw.js` - Service worker for PWA functionality
+- `favicon/` - Generated PWA icons and splash screens (created by pwa-asset-generator)
+- `img/` - Blog post images organized by date and topic
+
+### Content Processing
+- Markdown-it with footnote support for enhanced content
+- HTML minification in production builds
+- RSS feed generation at `/feed/`
+- Automatic sitemap generation
+- Social media meta tag generation
