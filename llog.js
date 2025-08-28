@@ -453,34 +453,50 @@ Respond with only the tags separated by commas, like: programming, javascript, t
         }
 
         const linklogUrl = `${siteUrl}/linklog.html`;
-        const maxAttempts = 20; // 10 minutes with 30s intervals
         
-        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        // Configurable timeout (default 10 minutes)
+        const timeoutMinutes = parseInt(process.env.LLOG_DEPLOY_TIMEOUT) || 10;
+        const maxDuration = timeoutMinutes * 60 * 1000; // Convert to milliseconds
+        const startTime = Date.now();
+        
+        let attempt = 0;
+        let backoffDelay = 5000; // Start with 5 second delay
+        const maxBackoffDelay = 60000; // Max 1 minute between attempts
+        
+        while (Date.now() - startTime < maxDuration) {
+            attempt++;
+            
             try {
-                console.log(`📡 Checking deployment (attempt ${attempt}/${maxAttempts})...`);
+                const elapsed = Math.round((Date.now() - startTime) / 1000);
+                console.log(`📡 Checking deployment (attempt ${attempt}, ${elapsed}s elapsed)...`);
                 
                 const pageContent = await this.fetchPageContent(linklogUrl);
                 
                 // Check if our entry ID appears in the page
                 if (pageContent.includes(entryId)) {
-                    console.log('✅ Deployment verified - entry is live!');
+                    const totalTime = Math.round((Date.now() - startTime) / 1000);
+                    console.log(`✅ Deployment verified - entry is live! (${totalTime}s)`);
                     return true;
-                }
-                
-                if (attempt < maxAttempts) {
-                    console.log('⏳ Entry not yet visible, waiting 30 seconds...');
-                    await this.sleep(30000);
                 }
                 
             } catch (error) {
                 console.log(`⚠️ Attempt ${attempt} failed: ${error.message}`);
-                if (attempt < maxAttempts) {
-                    await this.sleep(30000);
-                }
             }
+            
+            // Check if we have time for another attempt
+            if (Date.now() - startTime + backoffDelay >= maxDuration) {
+                break;
+            }
+            
+            console.log(`⏳ Entry not yet visible, waiting ${Math.round(backoffDelay/1000)}s...`);
+            await this.sleep(backoffDelay);
+            
+            // Exponential backoff with jitter
+            backoffDelay = Math.min(backoffDelay * 1.5 + Math.random() * 1000, maxBackoffDelay);
         }
         
-        throw new Error('Deployment verification failed - entry not visible after 10 minutes');
+        const totalMinutes = Math.round((Date.now() - startTime) / 60000);
+        throw new Error(`Deployment verification failed - entry not visible after ${totalMinutes} minutes`);
     }
 
     async fetchPageContent(url, redirectCount = 0) {
