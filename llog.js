@@ -105,17 +105,67 @@ class LinkLogCLI {
             throw new Error('URL is required');
         }
 
-        const url = args[0];
-        const tags = args.slice(1).filter(arg => arg.startsWith('#')).map(tag => tag.substring(1));
+        const rawUrl = args[0];
+        const rawTags = args.slice(1).filter(arg => arg.startsWith('#')).map(tag => tag.substring(1));
 
-        // Basic URL validation
+        // Sanitize and validate URL
+        const url = this.sanitizeUrl(rawUrl);
         try {
             new URL(url);
         } catch (error) {
             throw new Error(`Invalid URL: ${url}`);
         }
 
+        // Sanitize tags
+        const tags = rawTags.map(tag => this.sanitizeTag(tag)).filter(tag => tag.length > 0);
+
         return { url, tags };
+    }
+
+    sanitizeUrl(url) {
+        if (typeof url !== 'string') {
+            throw new Error('URL must be a string');
+        }
+        
+        // Trim whitespace and remove potentially dangerous characters
+        let sanitized = url.trim();
+        
+        // Ensure URL has protocol
+        if (!sanitized.match(/^https?:\/\//i)) {
+            sanitized = 'https://' + sanitized;
+        }
+        
+        // Remove any control characters and non-printable characters
+        sanitized = sanitized.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+        
+        // Basic length check
+        if (sanitized.length > 2048) {
+            throw new Error('URL too long (max 2048 characters)');
+        }
+        
+        return sanitized;
+    }
+
+    sanitizeTag(tag) {
+        if (typeof tag !== 'string') {
+            return '';
+        }
+        
+        // Remove whitespace, special characters, and convert to lowercase
+        let sanitized = tag.trim().toLowerCase();
+        
+        // Remove any non-alphanumeric characters except hyphens and underscores
+        sanitized = sanitized.replace(/[^a-z0-9_-]/g, '');
+        
+        // Remove leading/trailing hyphens and underscores
+        sanitized = sanitized.replace(/^[-_]+|[-_]+$/g, '');
+        
+        // Limit length
+        if (sanitized.length > 50) {
+            sanitized = sanitized.substring(0, 50);
+        }
+        
+        return sanitized;
     }
 
     async loadLinkLogData() {
