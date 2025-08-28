@@ -45,6 +45,10 @@
     "temp": "^0.9.4"
   },
   "dependencies": {
+    "commander": "^12.0.0",
     "svg2roughjs": "^3.0.1"
+  },
+  "bin": {
+    "llog": "./llog.js"
   }
 }

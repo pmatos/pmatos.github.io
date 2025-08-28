@@ -1,0 +1,57 @@
+---
+title: Link Log
+description: Interesting links from around the web, summarized and tagged
+keyword: links, linklog, bookmarks
+type: website
+---
+<!DOCTYPE html>
+<html lang="en">
+{% include "head-website.njk" %}
+<!-- Start Body -->
+<body>
+    {% include "nav.njk" %}
+    <main>
+        <div class="elenco-posts">
+            <div class="posts">
+                {{content | safe}}
+            </div>
+            
+            {% if linklog.entries.length > 0 %}
+                {% for entry in linklog.entries %}
+                <article class="posts linklog-entry" id="entry-{{entry.id}}">
+                    <header>
+                        <h2><a href="{{entry.url}}" target="_blank" rel="noopener noreferrer">{{entry.title}}</a></h2>
+                        <small class="info">
+                            <time datetime="{{entry.dateAdded}}">{{entry.dateAdded | readableDate}}</time>
+                            {% if entry.tags.length > 0 %}
+                                · 
+                                {% for tag in entry.tags %}
+                                    <span class="tag">#{{tag}}</span>{% if not loop.last %} {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </small>
+                    </header>
+                    
+                    <div class="linklog-summary">
+                        <p>{{entry.summary}}</p>
+                    </div>
+                    
+                    <footer class="linklog-meta">
+                        <small class="external-link">
+                            🔗 <a href="{{entry.url}}" target="_blank" rel="noopener noreferrer">{{entry.url | truncate(60)}}</a>
+                        </small>
+                    </footer>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="posts">
+                    <p class="no-entries">No links in the log yet. Use <code>llog &lt;url&gt; [#tags...]</code> to add some!</p>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    {% include "utterances.njk" %}
+    {% include "footer.njk" %}
+</body>
+<!-- End Body -->
+</html>
