@@ -3,6 +3,7 @@
 const { program } = require('commander');
 const fs = require('fs').promises;
 const path = require('path');
+const os = require('os');
 const { execSync } = require('child_process');
 const crypto = require('crypto');
 const https = require('https');
@@ -10,6 +11,7 @@ const http = require('http');
 
 const LOCKFILE = path.join(__dirname, '.llog.lock');
 const LINKLOG_DATA_FILE = path.join(__dirname, 'src/_11ty/_data/linklog.json');
+const CONFIG_FILE = path.join(os.homedir(), 'llog.conf');
 const BACKUP_SUFFIX = '.backup';
 
 class LinkLogCLI {
@@ -49,11 +51,42 @@ class LinkLogCLI {
         }
     }
 
-    validateApiKey() {
-        const apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
-        if (!apiKey) {
-            throw new Error('CLAUDE_API_KEY or ANTHROPIC_API_KEY environment variable must be set. Please set one of these environment variables to use Claude API for generating summaries and tags.');
+    async loadConfig() {
+        try {
+            const configContent = await fs.readFile(CONFIG_FILE, 'utf8');
+            const config = {};
+            
+            for (const line of configContent.split('\n')) {
+                const trimmedLine = line.trim();
+                if (trimmedLine && !trimmedLine.startsWith('#')) {
+                    const [key, value] = trimmedLine.split('=', 2);
+                    if (key && value) {
+                        config[key.trim()] = value.trim();
+                    }
+                }
+            }
+            
+            return config;
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                return {};
+            }
+            throw new Error(`Failed to read config file ${CONFIG_FILE}: ${error.message}`);
         }
+    }
+
+    async validateApiKey() {
+        let apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
+        
+        if (!apiKey) {
+            const config = await this.loadConfig();
+            apiKey = config.CLAUDE_API_KEY || config.ANTHROPIC_API_KEY;
+        }
+        
+        if (!apiKey) {
+            throw new Error(`API key not found. Please set one of:\n- Environment variable: CLAUDE_API_KEY or ANTHROPIC_API_KEY\n- Config file: ${CONFIG_FILE} with CLAUDE_API_KEY=your_key or ANTHROPIC_API_KEY=your_key`);
+        }
+        
         console.log('✅ API key validation passed');
     }
 
@@ -292,9 +325,15 @@ class LinkLogCLI {
     }
 
     async callClaudeAPI(prompt) {
-        const apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
+        let apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
+        
         if (!apiKey) {
-            throw new Error('CLAUDE_API_KEY or ANTHROPIC_API_KEY environment variable not set');
+            const config = await this.loadConfig();
+            apiKey = config.CLAUDE_API_KEY || config.ANTHROPIC_API_KEY;
+        }
+        
+        if (!apiKey) {
+            throw new Error('CLAUDE_API_KEY or ANTHROPIC_API_KEY not found in environment variables or config file');
         }
 
         const payload = JSON.stringify({
@@ -580,7 +619,7 @@ Respond with only the tags separated by commas, like: programming, javascript, t
     async run(args) {
         try {
             await this.acquireLock();
-            this.validateApiKey();
+            await this.validateApiKey();
 
             const { url, tags } = this.parseArguments(args);
             console.log(`🚀 Processing URL: ${url}`);
