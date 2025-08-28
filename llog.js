@@ -401,20 +401,18 @@ Respond with only the tags separated by commas, like: programming, javascript, t
             const remoteUrl = execSync('git remote get-url origin', { stdio: 'pipe', encoding: 'utf8' }).trim();
             
             // Convert various Git URL formats to HTTPS GitHub Pages URL
-            if (remoteUrl.includes('github.com')) {
-                // Handle SSH format: git@github.com:user/repo.git
-                if (remoteUrl.startsWith('git@github.com:')) {
-                    const repoPath = remoteUrl.replace('git@github.com:', '').replace('.git', '');
-                    const [user, repo] = repoPath.split('/');
-                    return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
-                }
-                
-                // Handle HTTPS format: https://github.com/user/repo.git
-                if (remoteUrl.startsWith('https://github.com/')) {
-                    const repoPath = remoteUrl.replace('https://github.com/', '').replace('.git', '');
-                    const [user, repo] = repoPath.split('/');
-                    return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
-                }
+            // Handle SSH format: git@github.com:user/repo.git
+            if (remoteUrl.startsWith('git@github.com:')) {
+                const repoPath = remoteUrl.replace('git@github.com:', '').replace('.git', '');
+                const [user, repo] = repoPath.split('/');
+                return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
+            }
+            
+            // Handle HTTPS format: https://github.com/user/repo.git
+            if (remoteUrl.startsWith('https://github.com/')) {
+                const repoPath = remoteUrl.replace('https://github.com/', '').replace('.git', '');
+                const [user, repo] = repoPath.split('/');
+                return `https://${user}.github.io${repo === `${user}.github.io` ? '' : `/${repo}`}`;
             }
             
             // Fallback for non-GitHub remotes
