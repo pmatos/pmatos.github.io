@@ -69,9 +69,11 @@ module.exports = function (eleventyConfig) {
 
   // Data leggibile
   eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
-    );
+    // Handle both Date objects and ISO string dates
+    const dateTime = typeof dateObj === 'string' 
+      ? DateTime.fromISO(dateObj, { zone: "utc" })
+      : DateTime.fromJSDate(dateObj, { zone: "utc" });
+    return dateTime.toFormat("dd LLL yyyy");
   });
 
   // Data Feed

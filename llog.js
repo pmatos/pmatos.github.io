@@ -648,11 +648,20 @@ Respond with only the tags separated by commas, like: programming, javascript, t
             // Generate summary
             const summary = await this.generateSummary(url, title);
             
-            // Suggest additional tags if none provided
+            // Combine user tags with suggested tags
             let finalTags = [...tags];
             if (finalTags.length === 0) {
+                // If no user tags provided, use suggested tags
                 const suggestedTags = await this.suggestTags(`${title} ${summary}`);
                 finalTags = suggestedTags;
+            } else {
+                // If user provided tags, add suggested tags that aren't already present
+                const suggestedTags = await this.suggestTags(`${title} ${summary}`);
+                for (const suggestedTag of suggestedTags) {
+                    if (!finalTags.includes(suggestedTag)) {
+                        finalTags.push(suggestedTag);
+                    }
+                }
             }
 
             // Create new entry
