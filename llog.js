@@ -17,6 +17,7 @@ class LinkLogCLI {
         this.lockAcquired = false;
         this.backupFiles = [];
         this.gitStashApplied = false;
+        this.initialCommitHash = null;
     }
 
     async acquireLock() {
@@ -73,9 +74,9 @@ class LinkLogCLI {
         }
 
         // Git reset if we made commits
-        if (this.gitStashApplied) {
+        if (this.gitStashApplied && this.initialCommitHash) {
             try {
-                execSync('git reset --hard HEAD~1', { stdio: 'pipe' });
+                execSync(`git reset --hard ${this.initialCommitHash}`, { stdio: 'pipe' });
                 console.log('↩️ Reverted git commit');
             } catch (error) {
                 console.error('❌ Failed to revert git commit:', error.message);
@@ -324,6 +325,15 @@ Respond with only the tags separated by commas, like: programming, javascript, t
         }
     }
 
+    async storeInitialCommitHash() {
+        try {
+            this.initialCommitHash = execSync('git rev-parse HEAD', { stdio: 'pipe', encoding: 'utf8' }).trim();
+            console.log(`📍 Stored initial commit: ${this.initialCommitHash.substring(0, 8)}`);
+        } catch (error) {
+            console.warn('⚠️ Could not store initial commit hash:', error.message);
+        }
+    }
+
     async commitAndPush() {
         console.log('📤 Committing and pushing changes...');
         try {
@@ -441,6 +451,9 @@ Respond with only the tags separated by commas, like: programming, javascript, t
             if (tags.length > 0) {
                 console.log(`🏷️ Tags: ${tags.join(', ')}`);
             }
+
+            // Store initial commit hash for potential rollback
+            await this.storeInitialCommitHash();
 
             // Create backup of data file
             await this.createBackup(LINKLOG_DATA_FILE);
