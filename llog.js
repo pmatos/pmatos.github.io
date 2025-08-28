@@ -18,6 +18,7 @@ class LinkLogCLI {
         this.backupFiles = [];
         this.gitStashApplied = false;
         this.initialCommitHash = null;
+        this.pushCompleted = false;
     }
 
     async acquireLock() {
@@ -48,6 +49,14 @@ class LinkLogCLI {
         }
     }
 
+    validateApiKey() {
+        const apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
+        if (!apiKey) {
+            throw new Error('CLAUDE_API_KEY or ANTHROPIC_API_KEY environment variable must be set. Please set one of these environment variables to use Claude API for generating summaries and tags.');
+        }
+        console.log('✅ API key validation passed');
+    }
+
     async createBackup(filePath) {
         const backupPath = filePath + BACKUP_SUFFIX;
         try {
@@ -75,13 +84,25 @@ class LinkLogCLI {
             }
         }
 
-        // Git reset if we made commits
-        if (this.gitStashApplied && this.initialCommitHash) {
+        // Handle git rollback based on whether push was completed
+        if (this.gitStashApplied) {
             try {
-                execSync(`git reset --hard ${this.initialCommitHash}`, { stdio: 'pipe' });
-                console.log('↩️ Reverted git commit');
+                if (this.pushCompleted) {
+                    // If push was completed, create a revert commit and push it
+                    console.log('🔄 Creating revert commit for pushed changes...');
+                    const lastCommitHash = execSync('git rev-parse HEAD', { stdio: 'pipe', encoding: 'utf8' }).trim();
+                    execSync(`git revert ${lastCommitHash} --no-edit`, { stdio: 'pipe' });
+                    execSync('git push origin main', { stdio: 'pipe' });
+                    console.log('↩️ Created and pushed revert commit');
+                } else {
+                    // If push wasn't completed, safe to do hard reset
+                    if (this.initialCommitHash) {
+                        execSync(`git reset --hard ${this.initialCommitHash}`, { stdio: 'pipe' });
+                        console.log('↩️ Reverted git commit');
+                    }
+                }
             } catch (error) {
-                console.error('❌ Failed to revert git commit:', error.message);
+                console.error('❌ Failed to revert git changes:', error.message);
             }
         }
 
@@ -424,13 +445,14 @@ Respond with only the tags separated by commas, like: programming, javascript, t
         }
     }
 
-    async commitAndPush() {
+    async commitAndPush(url) {
         console.log('📤 Committing and pushing changes...');
         try {
             execSync('git add .', { stdio: 'pipe' });
-            execSync('git commit -m "Add link to linklog"', { stdio: 'pipe' });
+            execSync(`git commit -m "Add link to linklog: ${url}"`, { stdio: 'pipe' });
             this.gitStashApplied = true;
             execSync('git push origin main', { stdio: 'pipe' });
+            this.pushCompleted = true;
             console.log('✅ Changes committed and pushed');
         } catch (error) {
             throw new Error(`Git operations failed: ${error.message}`);
@@ -558,6 +580,7 @@ Respond with only the tags separated by commas, like: programming, javascript, t
     async run(args) {
         try {
             await this.acquireLock();
+            this.validateApiKey();
 
             const { url, tags } = this.parseArguments(args);
             console.log(`🚀 Processing URL: ${url}`);
@@ -612,7 +635,7 @@ Respond with only the tags separated by commas, like: programming, javascript, t
             await this.buildSite();
 
             // Commit and push
-            await this.commitAndPush();
+            await this.commitAndPush(url);
 
             // Verify deployment
             await this.verifyDeployment(newEntry.id);
