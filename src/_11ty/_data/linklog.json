@@ -1,3 +1,12 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "id": "ea619f65d2df81fc",
+      "url": "https://fex-emu.com/",
+      "title": "FEX-Emu – A fast linux usermode x86 and x86-64 emulator",
+      "summary": "Interesting link: FEX-Emu – A fast linux usermode x86 and x86-64 emulator",
+      "tags": [],
+      "dateAdded": "2025-08-28T13:28:11.835Z"
+    }
+  ]
 }
