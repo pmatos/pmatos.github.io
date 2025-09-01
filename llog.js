@@ -263,17 +263,32 @@ class LinkLogCLI {
                 path: urlObj.pathname + urlObj.search,
                 method: 'GET',
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.5',
+                    'Accept-Encoding': 'identity',
+                    'Connection': 'close',
+                    'Upgrade-Insecure-Requests': '1'
                 },
-                timeout: 10000
+                timeout: 30000
             };
 
             const req = client.request(options, (res) => {
                 let data = '';
+                let titleFound = false;
                 
                 // Handle redirects
                 if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                    return this.fetchPageTitle(res.headers.location, redirectCount + 1).then(resolve).catch(reject);
+                    let redirectUrl = res.headers.location;
+                    
+                    // Handle relative redirects by resolving against current URL
+                    try {
+                        new URL(redirectUrl);
+                    } catch (e) {
+                        redirectUrl = new URL(redirectUrl, url).href;
+                    }
+                    
+                    return this.fetchPageTitle(redirectUrl, redirectCount + 1).then(resolve).catch(reject);
                 }
                 
                 if (res.statusCode !== 200) {
@@ -281,19 +296,18 @@ class LinkLogCLI {
                 }
 
                 res.on('data', chunk => {
+                    if (titleFound) return;
+                    
                     data += chunk;
-                    // Stop reading after we have enough data to extract title
-                    if (data.length > 50000) {
+                    
+                    // Try to extract title as soon as we have enough data
+                    const titleMatch = data.match(/<title[^>]*>([^<]+)<\/title>/i);
+                    if (titleMatch && !titleFound) {
+                        titleFound = true;
                         res.removeAllListeners();
                         res.destroy();
-                    }
-                });
-
-                res.on('end', () => {
-                    try {
-                        // Extract title from HTML
-                        const titleMatch = data.match(/<title[^>]*>([^<]+)<\/title>/i);
-                        let title = titleMatch ? titleMatch[1].trim() : urlObj.hostname;
+                        
+                        let title = titleMatch[1].trim();
                         
                         // Clean up title
                         title = title.replace(/\s+/g, ' ')
@@ -304,8 +318,37 @@ class LinkLogCLI {
                                     .replace(/&amp;/g, '&');
 
                         resolve(title);
-                    } catch (error) {
+                        return;
+                    }
+                    
+                    // Stop reading after we have enough data without finding title
+                    if (data.length > 100000) {
+                        titleFound = true;
+                        res.removeAllListeners();
+                        res.destroy();
                         resolve(urlObj.hostname);
+                    }
+                });
+
+                res.on('end', () => {
+                    if (!titleFound) {
+                        try {
+                            // Extract title from HTML
+                            const titleMatch = data.match(/<title[^>]*>([^<]+)<\/title>/i);
+                            let title = titleMatch ? titleMatch[1].trim() : urlObj.hostname;
+                            
+                            // Clean up title
+                            title = title.replace(/\s+/g, ' ')
+                                        .replace(/&lt;/g, '<')
+                                        .replace(/&gt;/g, '>')
+                                        .replace(/&quot;/g, '"')
+                                        .replace(/&#039;/g, "'")
+                                        .replace(/&amp;/g, '&');
+
+                            resolve(title);
+                        } catch (error) {
+                            resolve(urlObj.hostname);
+                        }
                     }
                 });
             });
@@ -317,7 +360,7 @@ class LinkLogCLI {
             req.on('timeout', () => {
                 req.removeAllListeners();
                 req.destroy();
-                reject(new Error(`Timeout fetching ${url}`));
+                reject(new Error(`Timeout fetching ${url} after 30 seconds`));
             });
 
             req.end();

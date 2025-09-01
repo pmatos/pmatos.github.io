@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "8be03b5b047bb020",
+      "url": "https://levelup.gitconnected.com/vibe-coding-as-a-coding-veteran-cd370fe2be50",
+      "title": "Vibe Coding as a Coding Veteran. From 8-bit Assembly to English-as-Code | by Marco Benedetti | Aug, 2025 | Level Up Coding",
+      "summary": "This article is likely about the author's journey as a coding veteran, from working with 8-bit assembly to embracing a more expressive and intuitive approach to coding, referred to as \"vibe coding.\" The article may provide insights and perspectives from an experienced programmer on the evolution of coding practices and the potential benefits of this more natural, language-based approach to programming.",
+      "tags": [
+        "agentic",
+        "coding",
+        "veteran",
+        "journey",
+        "evolution",
+        "programming-paradigms"
+      ],
+      "dateAdded": "2025-09-01T07:30:06.709Z"
+    },
+    {
       "id": "daeb2ffc1b24055b",
       "url": "https://fex-emu.com/",
       "title": "FEX-Emu – A fast linux usermode x86 and x86-64 emulator",
