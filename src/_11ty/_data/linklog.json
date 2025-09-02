@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "3a119a552ff9d1ae",
+      "url": "https://martinfowler.com/articles/202508-ai-thoughts.html",
+      "title": "Some thoughts on LLMs and Software Development",
+      "summary": "This webpage from renowned software engineer Martin Fowler likely discusses the implications of large language models (LLMs) on software development. As LLMs are increasingly applied to tasks like code generation and text summarization, Fowler's insights on how these AI systems may impact the software development workflow and practices could be valuable for developers and software teams looking to understand and leverage this emerging technology.",
+      "tags": [
+        "llms",
+        "software-development",
+        "code-generation",
+        "ai-in-software"
+      ],
+      "dateAdded": "2025-09-02T19:39:21.000Z"
+    },
+    {
       "id": "45c13f05f09bbf81",
       "url": "https://cartesian.app/",
       "title": "The Interactive Handbook on Data Structures and Algorithms",

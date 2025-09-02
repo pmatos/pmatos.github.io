@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "45c13f05f09bbf81",
+      "url": "https://cartesian.app/",
+      "title": "The Interactive Handbook on Data Structures and Algorithms",
+      "summary": "The Interactive Handbook on Data Structures and Algorithms is a web-based resource that provides an interactive learning experience for exploring fundamental data structures and algorithms. It likely features visual representations, interactive examples, and explanations to help users understand and apply these crucial computer science concepts, making it a potentially valuable tool for students, developers, and anyone interested in improving their problem-solving skills.",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "interactive",
+        "handbook"
+      ],
+      "dateAdded": "2025-09-02T09:34:05.238Z"
+    },
+    {
       "id": "3c9b1946fb562def",
       "url": "https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html",
       "title": "Vibe Coding Terminal Editor",
