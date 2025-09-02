@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "3c9b1946fb562def",
+      "url": "https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html",
+      "title": "Vibe Coding Terminal Editor",
+      "summary": "This webpage describes a terminal-based code editor called \"Vibe Coding Terminal Editor\". It appears to be a unique and innovative text editor designed for use in the terminal environment, which could be particularly useful for developers who prefer a minimalist, keyboard-centric approach to coding. The content is likely to be of interest to programmers and software enthusiasts who are looking for alternative text editing tools that can enhance their productivity and workflow.",
+      "tags": [
+        "terminal",
+        "coding",
+        "editor",
+        "text-editor"
+      ],
+      "dateAdded": "2025-09-02T07:37:04.382Z"
+    },
+    {
       "id": "856c2de616bd1eb1",
       "url": "https://levelup.gitconnected.com/vibe-coding-as-a-coding-veteran-cd370fe2be50",
       "title": "Vibe Coding as a Coding Veteran. From 8-bit Assembly to English-as-Code | by Marco Benedetti | Aug, 2025 | Level Up Coding",
