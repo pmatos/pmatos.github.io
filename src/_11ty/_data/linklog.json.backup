@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "f15e577a7c6facf3",
+      "url": "https://www.swebench.com/",
+      "title": "SWE-bench Leaderboards",
+      "summary": "The SWE-bench Leaderboards webpage provides performance rankings and benchmarks for software engineering tools and technologies. This information can be useful for developers and organizations looking to compare and evaluate different software engineering solutions, helping them make informed decisions about the tools and frameworks they choose to use in their projects.",
+      "tags": [
+        "software-engineering",
+        "benchmarking",
+        "performance",
+        "rankings"
+      ],
+      "dateAdded": "2025-09-02T19:43:50.595Z"
+    },
+    {
       "id": "3a119a552ff9d1ae",
       "url": "https://martinfowler.com/articles/202508-ai-thoughts.html",
       "title": "Some thoughts on LLMs and Software Development",

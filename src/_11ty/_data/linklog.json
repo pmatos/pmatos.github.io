@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "d5385096fe201527",
+      "url": "https://lucumr.pocoo.org/2025/6/12/agentic-coding/",
+      "title": "Agentic Coding Recommendations | Armin Ronacher's Thoughts and Writings",
+      "summary": "This webpage discusses \"agentic coding\" recommendations, which likely refers to a programming approach that promotes agency, autonomy, and responsibility for developers. The article is written by Armin Ronacher, a well-known figure in the Python community, suggesting the content may offer valuable insights and best practices for software development and engineering practices.",
+      "tags": [
+        "agentic",
+        "coding",
+        "recommendations",
+        "python"
+      ],
+      "dateAdded": "2025-09-03T09:02:54.007Z"
+    },
+    {
       "id": "f15e577a7c6facf3",
       "url": "https://www.swebench.com/",
       "title": "SWE-bench Leaderboards",
