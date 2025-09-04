@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "d226628f5ed6d56c",
+      "url": "https://nymag.com/intelligencer/article/seo-is-dead-say-hello-to-geo.html",
+      "title": "SEO Is Dead. Say Hello to GEO.",
+      "summary": "The article discusses the shift from traditional search engine optimization (SEO) towards a greater emphasis on geographical optimization (GEO). It suggests that as search engines become more sophisticated, businesses need to focus on tailoring their content and strategies to local audiences and their specific needs, rather than relying solely on broad SEO techniques. This shift could have significant implications for marketing and visibility for businesses of all sizes.",
+      "tags": [
+        "seo",
+        "geo",
+        "local-marketing",
+        "search-engine-optimization"
+      ],
+      "dateAdded": "2025-09-03T13:03:53.783Z"
+    },
+    {
       "id": "d5385096fe201527",
       "url": "https://lucumr.pocoo.org/2025/6/12/agentic-coding/",
       "title": "Agentic Coding Recommendations | Armin Ronacher's Thoughts and Writings",
