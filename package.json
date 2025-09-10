@@ -9,9 +9,9 @@
     "dev": "run-p dev:*",
     "go!": "run-s clean icon css:* eleventy",
     "clean": "rimraf public",
-    "css:website": "npx tailwindcss -i src/_11ty/_tailwindCSS/raw-website.css -o public/css/style.css --minify",
+    "css:website": "npx @tailwindcss/cli -i src/_11ty/_tailwindCSS/raw-website.css -o public/css/style.css --minify",
     "eleventy": "eleventy",
-    "dev:css": "npx tailwindcss -i src/_11ty/_tailwindCSS/raw-website.css -o public/css/style.css --watch --minify",
+    "dev:css": "npx @tailwindcss/cli -i src/_11ty/_tailwindCSS/raw-website.css -o public/css/style.css --watch --minify",
     "dev:11ty": "eleventy --serve --watch",
     "icon": "npx pwa-asset-generator logo.png ./src/_11ty/_static/favicon -b -m -q 100 -t png -f -w -e "
   },
@@ -42,6 +42,7 @@
     "temp": "^0.9.4"
   },
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
     "commander": "^14.0.0",
     "svg2roughjs": "^3.0.1"
   },

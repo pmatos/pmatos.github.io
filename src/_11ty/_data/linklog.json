@@ -1,19 +1,6 @@
 {
   "entries": [
     {
-      "id": "75a30c7af5ae41ac",
-      "url": "https://www.builder.io/blog/agents-md",
-      "title": "Improve your AI code output with AGENTS.md (+ my best tips)",
-      "summary": "This webpage likely provides tips and guidance on how to improve the output of AI code using the AGENTS.md framework. The content is likely focused on best practices and techniques for leveraging this framework to enhance the effectiveness and quality of AI-generated code, which could be useful for developers and engineers working with AI-powered systems.",
-      "tags": [
-        "ai",
-        "agents",
-        "code",
-        "tips"
-      ],
-      "dateAdded": "2025-09-10T11:36:40.135Z"
-    },
-    {
       "id": "a4bbfecea41be2e0",
       "url": "https://jxnl.co/writing/2025/08/28/context-engineering-index/",
       "title": "Context Engineering Series: Building Better Agentic RAG Systems - Jason Liu",
