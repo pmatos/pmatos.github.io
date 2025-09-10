@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="https://p.ocmatos.com/">
+  <title>pmatos rambles - Link Log</title>
+  <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
+  <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
+  <link href="https://p.ocmatos.com/linklog.html"/>
+  <updated>2025-09-05T06:00:33.312Z</updated>
+  <id>https://p.ocmatos.com/linklog-feed.xml</id>
+  <author>
+    <name>Paulo Matos</name>
+    <email>p@ocmatos.com</email>
+  </author>
+  <entry>
+    <title>FEX-Emu – A fast linux usermode x86 and x86-64 emulator</title>
+    <link href="https://fex-emu.com/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-daeb2ffc1b24055b" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-daeb2ffc1b24055b</id>
+    <updated>2025-08-28T13:37:40.433Z</updated>
+    <summary type="text">FEX-Emu is a fast Linux-based x86 and x86-64 emulator designed to run user-mode applications. This emulator could be useful for developers, researchers, or anyone interested in running legacy x86 software on modern systems without the overhead of a full virtual machine. The webpage likely provides details about the emulator&#39;s features, performance, and potential use cases.</summary>
+    <content type="html"><![CDATA[
+      <p>FEX-Emu is a fast Linux-based x86 and x86-64 emulator designed to run user-mode applications. This emulator could be useful for developers, researchers, or anyone interested in running legacy x86 software on modern systems without the overhead of a full virtual machine. The webpage likely provides details about the emulator&#39;s features, performance, and potential use cases.</p>
+      <p><strong>Tags:</strong>
+          #fex, 
+          #emulator, 
+          #x86, 
+          #linux, 
+          #usermode
+      </p>
+      <p><a href="https://fex-emu.com/" target="_blank" rel="noopener noreferrer">🔗 https://fex-emu.com/</a></p>
+    ]]></content>
+    <category term="fex" />
+    <category term="emulator" />
+    <category term="x86" />
+    <category term="linux" />
+    <category term="usermode" />
+  </entry>
+  <entry>
+    <title>Vibe Coding as a Coding Veteran. From 8-bit Assembly to English-as-Code | by Marco Benedetti | Aug, 2025 | Level Up Coding</title>
+    <link href="https://levelup.gitconnected.com/vibe-coding-as-a-coding-veteran-cd370fe2be50" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-856c2de616bd1eb1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-856c2de616bd1eb1</id>
+    <updated>2025-09-01T07:34:24.866Z</updated>
+    <summary type="text">This article is written by a coding veteran who has experience working with various programming languages and technologies, from low-level 8-bit assembly to more modern, English-like coding approaches. It is likely to provide insights and perspectives on the evolution of programming and the author&#39;s journey as a seasoned developer, which could be valuable for readers interested in the progression of the field and the experiences of experienced programmers.</summary>
+    <content type="html"><![CDATA[
+      <p>This article is written by a coding veteran who has experience working with various programming languages and technologies, from low-level 8-bit assembly to more modern, English-like coding approaches. It is likely to provide insights and perspectives on the evolution of programming and the author&#39;s journey as a seasoned developer, which could be valuable for readers interested in the progression of the field and the experiences of experienced programmers.</p>
+      <p><strong>Tags:</strong>
+          #coding, 
+          #veteran, 
+          #assembly, 
+          #evolution
+      </p>
+      <p><a href="https://levelup.gitconnected.com/vibe-coding-as-a-coding-veteran-cd370fe2be50" target="_blank" rel="noopener noreferrer">🔗 https://levelup.gitconnected.com/vibe-coding-as-a-coding-veteran-cd370fe2be50</a></p>
+    ]]></content>
+    <category term="coding" />
+    <category term="veteran" />
+    <category term="assembly" />
+    <category term="evolution" />
+  </entry>
+  <entry>
+    <title>Vibe Coding Terminal Editor</title>
+    <link href="https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-3c9b1946fb562def" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-3c9b1946fb562def</id>
+    <updated>2025-09-02T07:37:04.382Z</updated>
+    <summary type="text">This webpage describes a terminal-based code editor called &quot;Vibe Coding Terminal Editor&quot;. It appears to be a unique and innovative text editor designed for use in the terminal environment, which could be particularly useful for developers who prefer a minimalist, keyboard-centric approach to coding. The content is likely to be of interest to programmers and software enthusiasts who are looking for alternative text editing tools that can enhance their productivity and workflow.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage describes a terminal-based code editor called &quot;Vibe Coding Terminal Editor&quot;. It appears to be a unique and innovative text editor designed for use in the terminal environment, which could be particularly useful for developers who prefer a minimalist, keyboard-centric approach to coding. The content is likely to be of interest to programmers and software enthusiasts who are looking for alternative text editing tools that can enhance their productivity and workflow.</p>
+      <p><strong>Tags:</strong>
+          #terminal, 
+          #coding, 
+          #editor, 
+          #text-editor
+      </p>
+      <p><a href="https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html" target="_blank" rel="noopener noreferrer">🔗 https://matklad.github.io/2025/08/31/vibe-coding-terminal-editor.html</a></p>
+    ]]></content>
+    <category term="terminal" />
+    <category term="coding" />
+    <category term="editor" />
+    <category term="text-editor" />
+  </entry>
+  <entry>
+    <title>The Interactive Handbook on Data Structures and Algorithms</title>
+    <link href="https://cartesian.app/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-45c13f05f09bbf81" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-45c13f05f09bbf81</id>
+    <updated>2025-09-02T09:34:05.238Z</updated>
+    <summary type="text">The Interactive Handbook on Data Structures and Algorithms is a web-based resource that provides an interactive learning experience for exploring fundamental data structures and algorithms. It likely features visual representations, interactive examples, and explanations to help users understand and apply these crucial computer science concepts, making it a potentially valuable tool for students, developers, and anyone interested in improving their problem-solving skills.</summary>
+    <content type="html"><![CDATA[
+      <p>The Interactive Handbook on Data Structures and Algorithms is a web-based resource that provides an interactive learning experience for exploring fundamental data structures and algorithms. It likely features visual representations, interactive examples, and explanations to help users understand and apply these crucial computer science concepts, making it a potentially valuable tool for students, developers, and anyone interested in improving their problem-solving skills.</p>
+      <p><strong>Tags:</strong>
+          #data-structures, 
+          #algorithms, 
+          #interactive, 
+          #handbook
+      </p>
+      <p><a href="https://cartesian.app/" target="_blank" rel="noopener noreferrer">🔗 https://cartesian.app/</a></p>
+    ]]></content>
+    <category term="data-structures" />
+    <category term="algorithms" />
+    <category term="interactive" />
+    <category term="handbook" />
+  </entry>
+  <entry>
+    <title>Some thoughts on LLMs and Software Development</title>
+    <link href="https://martinfowler.com/articles/202508-ai-thoughts.html" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-3a119a552ff9d1ae" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-3a119a552ff9d1ae</id>
+    <updated>2025-09-02T19:39:21.000Z</updated>
+    <summary type="text">This webpage from renowned software engineer Martin Fowler likely discusses the implications of large language models (LLMs) on software development. As LLMs are increasingly applied to tasks like code generation and text summarization, Fowler&#39;s insights on how these AI systems may impact the software development workflow and practices could be valuable for developers and software teams looking to understand and leverage this emerging technology.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage from renowned software engineer Martin Fowler likely discusses the implications of large language models (LLMs) on software development. As LLMs are increasingly applied to tasks like code generation and text summarization, Fowler&#39;s insights on how these AI systems may impact the software development workflow and practices could be valuable for developers and software teams looking to understand and leverage this emerging technology.</p>
+      <p><strong>Tags:</strong>
+          #llms, 
+          #software-development, 
+          #code-generation, 
+          #ai-in-software
+      </p>
+      <p><a href="https://martinfowler.com/articles/202508-ai-thoughts.html" target="_blank" rel="noopener noreferrer">🔗 https://martinfowler.com/articles/202508-ai-thoughts.html</a></p>
+    ]]></content>
+    <category term="llms" />
+    <category term="software-development" />
+    <category term="code-generation" />
+    <category term="ai-in-software" />
+  </entry>
+  <entry>
+    <title>SWE-bench Leaderboards</title>
+    <link href="https://www.swebench.com/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-f15e577a7c6facf3" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-f15e577a7c6facf3</id>
+    <updated>2025-09-02T19:43:50.595Z</updated>
+    <summary type="text">The SWE-bench Leaderboards webpage provides performance rankings and benchmarks for software engineering tools and technologies. This information can be useful for developers and organizations looking to compare and evaluate different software engineering solutions, helping them make informed decisions about the tools and frameworks they choose to use in their projects.</summary>
+    <content type="html"><![CDATA[
+      <p>The SWE-bench Leaderboards webpage provides performance rankings and benchmarks for software engineering tools and technologies. This information can be useful for developers and organizations looking to compare and evaluate different software engineering solutions, helping them make informed decisions about the tools and frameworks they choose to use in their projects.</p>
+      <p><strong>Tags:</strong>
+          #software-engineering, 
+          #benchmarking, 
+          #performance, 
+          #rankings
+      </p>
+      <p><a href="https://www.swebench.com/" target="_blank" rel="noopener noreferrer">🔗 https://www.swebench.com/</a></p>
+    ]]></content>
+    <category term="software-engineering" />
+    <category term="benchmarking" />
+    <category term="performance" />
+    <category term="rankings" />
+  </entry>
+  <entry>
+    <title>Agentic Coding Recommendations | Armin Ronacher&#39;s Thoughts and Writings</title>
+    <link href="https://lucumr.pocoo.org/2025/6/12/agentic-coding/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-d5385096fe201527" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-d5385096fe201527</id>
+    <updated>2025-09-03T09:02:54.007Z</updated>
+    <summary type="text">This webpage discusses &quot;agentic coding&quot; recommendations, which likely refers to a programming approach that promotes agency, autonomy, and responsibility for developers. The article is written by Armin Ronacher, a well-known figure in the Python community, suggesting the content may offer valuable insights and best practices for software development and engineering practices.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage discusses &quot;agentic coding&quot; recommendations, which likely refers to a programming approach that promotes agency, autonomy, and responsibility for developers. The article is written by Armin Ronacher, a well-known figure in the Python community, suggesting the content may offer valuable insights and best practices for software development and engineering practices.</p>
+      <p><strong>Tags:</strong>
+          #agentic, 
+          #coding, 
+          #recommendations, 
+          #python
+      </p>
+      <p><a href="https://lucumr.pocoo.org/2025/6/12/agentic-coding/" target="_blank" rel="noopener noreferrer">🔗 https://lucumr.pocoo.org/2025/6/12/agentic-coding/</a></p>
+    ]]></content>
+    <category term="agentic" />
+    <category term="coding" />
+    <category term="recommendations" />
+    <category term="python" />
+  </entry>
+  <entry>
+    <title>SEO Is Dead. Say Hello to GEO.</title>
+    <link href="https://nymag.com/intelligencer/article/seo-is-dead-say-hello-to-geo.html" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-d226628f5ed6d56c" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-d226628f5ed6d56c</id>
+    <updated>2025-09-03T13:03:53.783Z</updated>
+    <summary type="text">The article discusses the shift from traditional search engine optimization (SEO) towards a greater emphasis on geographical optimization (GEO). It suggests that as search engines become more sophisticated, businesses need to focus on tailoring their content and strategies to local audiences and their specific needs, rather than relying solely on broad SEO techniques. This shift could have significant implications for marketing and visibility for businesses of all sizes.</summary>
+    <content type="html"><![CDATA[
+      <p>The article discusses the shift from traditional search engine optimization (SEO) towards a greater emphasis on geographical optimization (GEO). It suggests that as search engines become more sophisticated, businesses need to focus on tailoring their content and strategies to local audiences and their specific needs, rather than relying solely on broad SEO techniques. This shift could have significant implications for marketing and visibility for businesses of all sizes.</p>
+      <p><strong>Tags:</strong>
+          #seo, 
+          #geo, 
+          #local-marketing, 
+          #search-engine-optimization
+      </p>
+      <p><a href="https://nymag.com/intelligencer/article/seo-is-dead-say-hello-to-geo.html" target="_blank" rel="noopener noreferrer">🔗 https://nymag.com/intelligencer/article/seo-is-dead-say-hello-to-geo.html</a></p>
+    ]]></content>
+    <category term="seo" />
+    <category term="geo" />
+    <category term="local-marketing" />
+    <category term="search-engine-optimization" />
+  </entry>
+  <entry>
+    <title>Claude Code Docs, Guides &amp; Best Practices | ClaudeLog</title>
+    <link href="https://claudelog.com/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-8616252b9d22d1e0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-8616252b9d22d1e0</id>
+    <updated>2025-09-04T07:26:04.453Z</updated>
+    <summary type="text">The webpage &quot;Claude Code Docs, Guides &amp; Best Practices | ClaudeLog&quot; likely contains information and resources related to the AI assistant named Claude. This website may offer guides, documentation, and best practices for developers and users who want to integrate or work with the Claude AI system, providing valuable insights and support for effectively utilizing this AI technology.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage &quot;Claude Code Docs, Guides &amp; Best Practices | ClaudeLog&quot; likely contains information and resources related to the AI assistant named Claude. This website may offer guides, documentation, and best practices for developers and users who want to integrate or work with the Claude AI system, providing valuable insights and support for effectively utilizing this AI technology.</p>
+      <p><strong>Tags:</strong>
+          #claude, 
+          #ai, 
+          #documentation, 
+          #bestpractices
+      </p>
+      <p><a href="https://claudelog.com/" target="_blank" rel="noopener noreferrer">🔗 https://claudelog.com/</a></p>
+    ]]></content>
+    <category term="claude" />
+    <category term="ai" />
+    <category term="documentation" />
+    <category term="bestpractices" />
+  </entry>
+  <entry>
+    <title>Context Engineering Series: Building Better Agentic RAG Systems - Jason Liu</title>
+    <link href="https://jxnl.co/writing/2025/08/28/context-engineering-index/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-a4bbfecea41be2e0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-a4bbfecea41be2e0</id>
+    <updated>2025-09-05T06:00:33.312Z</updated>
+    <summary type="text">This webpage is part of a series called &quot;Context Engineering&quot; and appears to focus on building better Agentic RAG (Reinforcement, Attention, and Generalization) systems. The content is likely to explore techniques and strategies for improving the performance and capabilities of these types of AI systems, which could be of interest to researchers, engineers, and developers working in the field of artificial intelligence and machine learning.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage is part of a series called &quot;Context Engineering&quot; and appears to focus on building better Agentic RAG (Reinforcement, Attention, and Generalization) systems. The content is likely to explore techniques and strategies for improving the performance and capabilities of these types of AI systems, which could be of interest to researchers, engineers, and developers working in the field of artificial intelligence and machine learning.</p>
+      <p><strong>Tags:</strong>
+          #context, 
+          #engineering, 
+          #artificial-intelligence, 
+          #machine-learning
+      </p>
+      <p><a href="https://jxnl.co/writing/2025/08/28/context-engineering-index/" target="_blank" rel="noopener noreferrer">🔗 https://jxnl.co/writing/2025/08/28/context-engineering-index/</a></p>
+    ]]></content>
+    <category term="context" />
+    <category term="engineering" />
+    <category term="artificial-intelligence" />
+    <category term="machine-learning" />
+  </entry>
+</feed>
