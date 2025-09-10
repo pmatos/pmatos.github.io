@@ -10,18 +10,33 @@
         <ul>
             {%- for entry in navPages %}
             <li {% if entry.url == page.url %} class="active" {% endif %}>
-                <a href="{{ entry.url | url }}">
-                    {%- if entry.title == "Blog" %}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon" title="Blog RSS Feed">
-                            <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
-                        </svg>
-                    {%- elif entry.title == "Link Log" %}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon" title="Link Log RSS Feed">
-                            <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
-                        </svg>
-                    {%- endif %}
-                    {{entry.title}}
-                </a>
+                {%- if entry.title == "Blog" %}
+                    <div style="display: inline-flex; align-items: center; gap: 0.25rem;">
+                        <a href="{{'/feed.xml' | url}}" title="Blog RSS Feed" style="display: inline-flex; align-items: center; text-decoration: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon" style="width: 12px; height: 12px; flex-shrink: 0; color: #f97316;">
+                                <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
+                            </svg>
+                        </a>
+                        <a href="{{ entry.url | url }}" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; color: #374151;">
+                            <span>{{entry.title}}</span>
+                        </a>
+                    </div>
+                {%- elif entry.title == "Link Log" %}
+                    <div style="display: inline-flex; align-items: center; gap: 0.25rem;">
+                        <a href="{{'/linklog-feed.xml' | url}}" title="Link Log RSS Feed" style="display: inline-flex; align-items: center; text-decoration: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon" style="width: 12px; height: 12px; flex-shrink: 0; color: #f97316;">
+                                <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
+                            </svg>
+                        </a>
+                        <a href="{{ entry.url | url }}" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; color: #374151;">
+                            <span>{{entry.title}}</span>
+                        </a>
+                    </div>
+                {%- else %}
+                    <a href="{{ entry.url | url }}" style="text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; color: #374151;">
+                        {{entry.title}}
+                    </a>
+                {%- endif %}
             </li>
             {%- endfor %}   
         </ul>
