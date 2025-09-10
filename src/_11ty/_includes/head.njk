@@ -38,11 +38,19 @@
 <!-- CSS -->
     <link rel="preload" href="{{'/css/style.css' | url}}" as="style">
     <link rel="stylesheet" href="{{'/css/style.css' | url}}" media="all">
-<!-- Sitemap -->
+<!-- RSS Feeds -->
     <link rel="sitemap"
           type="application/rss+xml"
           title="RSS Feed for {{meta.siteName}} "
           href="{{'/feed.xml' | url}}" />
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="{{meta.siteName}} - Blog Feed"
+          href="{{'/feed.xml' | url}}" />
+    <link rel="alternate"
+          type="application/rss+xml"
+          title="{{meta.siteName}} - Link Log Feed"
+          href="{{'/linklog-feed.xml' | url}}" />
 <!-- Favicon -->
     <link rel="shortcut icon" href="{{'/favicon/favicon.ico' | url}} " sizes="any" />
     <link rel="icon" type="image/svg+xml" href="{{'/favicon/safari-pinned-tab.svg' | url}}" />
@@ -77,6 +85,8 @@
 {% include "favicon.njk" %}
     <!-- Prism syntax highlighting -->
     <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <!-- Dark Mode Toggle -->
+    <script src="{{'/js/dark-mode.js' | url}}" defer></script>
     <!-- Service Worker -->
     <script>
         if ("serviceWorker" in navigator)

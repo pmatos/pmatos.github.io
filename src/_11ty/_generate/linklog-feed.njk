@@ -1,0 +1,51 @@
+---json
+{
+  "permalink": "linklog-feed.xml",
+  "eleventyExcludeFromCollections": true,
+  "metadata": {
+    "title": "pmatos rambles - Link Log",
+    "subtitle": "Interesting links from around the web, summarized and tagged",
+    "language": "en",
+    "url": "https://p.ocmatos.com/",
+    "author": {
+      "name": "Paulo Matos",
+      "email": "p@ocmatos.com"
+    }
+  }
+}
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ metadata.url }}">
+  <title>{{ metadata.title }}</title>
+  <subtitle>{{ metadata.subtitle }}</subtitle>
+  <link href="{{ permalink | url | absoluteUrl(metadata.url) }}" rel="self"/>
+  <link href="{{ metadata.url }}linklog.html"/>
+  <updated>{% if linklog.entries.length > 0 %}{{ linklog.entries[0].dateAdded }}{% else %}2025-09-10T00:00:00Z{% endif %}</updated>
+  <id>{{ metadata.url }}linklog-feed.xml</id>
+  <author>
+    <name>{{ metadata.author.name }}</name>
+    <email>{{ metadata.author.email }}</email>
+  </author>
+  {%- for entry in linklog.entries | reverse %}
+  <entry>
+    <title>{{ entry.title }}</title>
+    <link href="{{ entry.url }}" rel="alternate" type="text/html"/>
+    <link href="{{ metadata.url }}linklog.html#entry-{{ entry.id }}" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>{{ metadata.url }}linklog.html#entry-{{ entry.id }}</id>
+    <updated>{{ entry.dateAdded }}</updated>
+    <summary type="text">{{ entry.summary }}</summary>
+    <content type="html"><![CDATA[
+      <p>{{ entry.summary }}</p>
+      <p><strong>Tags:</strong> 
+        {%- for tag in entry.tags %}
+          #{{ tag }}{% if not loop.last %}, {% endif %}
+        {%- endfor %}
+      </p>
+      <p><a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">🔗 {{ entry.url }}</a></p>
+    ]]></content>
+    {%- for tag in entry.tags %}
+    <category term="{{ tag }}" />
+    {%- endfor %}
+  </entry>
+  {%- endfor %}
+</feed>
