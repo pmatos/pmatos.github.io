@@ -8,19 +8,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run dev` - Start development server with watch mode (runs both CSS and 11ty watch)
 - `npm run start` - Start Eleventy development server
 - `npm run build` - Build the site using Eleventy
-- `npm run go!` - Full production build (clean + icons + CSS + build + social images)
+- `npm run go!` - Full production build (clean + icons + CSS + build)  
+- `npm run build:ci` - CI build (clean + CSS + build, no icon generation)
 
 ### Individual Build Steps
 - `npm run clean` - Remove the public directory
 - `npm run css:website` - Build and minify main CSS from Tailwind
-- `npm run css:social-img` - Build CSS for social image generation
 - `npm run eleventy` - Run 11ty build
-- `npm run social-images` - Generate social media images for all pages
 - `npm run icon` - Generate PWA icons and splash screens from logo.png
 
 ### Dependencies
 - **LilyPond** - Required for music notation rendering (install via `sudo apt install lilypond`)
-- **Chromium** - Required for social image generation
+- **Chromium** - Required for icon generation (only needed for `npm run go!`, not CI builds)
 
 ## Architecture Overview
 

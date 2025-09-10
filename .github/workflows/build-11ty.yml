@@ -15,7 +15,7 @@ jobs:
       - name: Install lilypond
         run: |
           sudo apt update
-          sudo apt install lilypond chromium-browser
+          sudo apt install lilypond
 
       - name: Use Node.js 20
         uses: actions/setup-node@v5
@@ -23,11 +23,10 @@ jobs:
           node-version: 20
 
       - name: Install dependencies & build
-        env:
-          AWS_LAMBDA_FUNCTION_NAME: trickpuppeteer
+        timeout-minutes: 10
         run: |
           npm ci
-          npm run go!
+          npm run build:ci
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

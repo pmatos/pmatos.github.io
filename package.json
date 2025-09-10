@@ -8,6 +8,7 @@
     "start": "eleventy --serve",
     "dev": "run-p dev:*",
     "go!": "run-s clean icon css:* eleventy",
+    "build:ci": "run-s clean css:* eleventy",
     "clean": "rimraf public",
     "css:website": "npx @tailwindcss/cli -i src/_11ty/_tailwindCSS/raw-website.css -o public/css/style.css --minify",
     "eleventy": "eleventy",

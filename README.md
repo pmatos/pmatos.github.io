@@ -57,9 +57,13 @@ This command will:
 2. Generate PWA icons from `logo.png`
 3. Build and minify CSS with Tailwind
 4. Build the site with Eleventy
-5. Generate social media images
 
-For a basic build without icons and social images:
+For a CI/server build without icon generation:
+```bash
+npm run build:ci
+```
+
+For a basic Eleventy build only:
 ```bash
 npm run build
 ```
@@ -235,12 +239,11 @@ To include music notation in your posts, use the `lyInsert` shortcode:
 |---------|------------|
 | `npm run dev` | Start development server with hot-reload |
 | `npm run start` | Start Eleventy development server |
-| `npm run build` | Build the site |
-| `npm run go!` | Full production build |
+| `npm run build` | Build the site (Eleventy only) |
+| `npm run go!` | Full production build (with icon generation) |
+| `npm run build:ci` | CI build (no icon generation) |
 | `npm run clean` | Remove the public directory |
 | `npm run css:website` | Build website CSS |
-| `npm run css:social-img` | Build social image CSS |
-| `npm run social-images` | Generate social media images |
 | `npm run icon` | Generate PWA icons from logo.png |
 
 ## Environment Variables
