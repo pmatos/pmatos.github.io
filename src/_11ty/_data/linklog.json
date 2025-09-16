@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "c3f9575d9470f8f7",
+      "url": "https://www.task-master.dev/",
+      "title": "Taskmaster AI - The PM for your AI agent",
+      "summary": "Taskmaster AI is a tool that aims to help manage and coordinate the workflow of AI agents. By providing a centralized platform to monitor, control, and optimize the performance of AI systems, Taskmaster AI could be a valuable resource for organizations and individuals seeking to effectively deploy and manage their AI-powered applications.",
+      "tags": [
+        "taskmaster",
+        "ai",
+        "workflow",
+        "performance"
+      ],
+      "dateAdded": "2025-09-16T21:21:13.785Z"
+    },
+    {
       "id": "076362174d815e33",
       "url": "https://www.linkedin.com/pulse/understanding-claude-code-sub-agents-when-use-them-michael-hofer-rz9le/",
       "title": "Claude Code Sub-Agents: When NOT to Use Them",
