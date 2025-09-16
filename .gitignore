@@ -12,4 +12,6 @@ src/_11ty/_social
 
 # Idee
 .idea
+
 .llog.lock
+src/_11ty/_data/linklog.json.backup
