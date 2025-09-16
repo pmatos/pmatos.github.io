@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-16T06:57:10.684Z</updated>
+  <updated>2025-09-16T21:21:13.785Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -275,5 +275,27 @@
     <category term="subagents" />
     <category term="ai" />
     <category term="assistant" />
+  </entry>
+  <entry>
+    <title>Taskmaster AI - The PM for your AI agent</title>
+    <link href="https://www.task-master.dev/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c3f9575d9470f8f7" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c3f9575d9470f8f7</id>
+    <updated>2025-09-16T21:21:13.785Z</updated>
+    <summary type="text">Taskmaster AI is a tool that aims to help manage and coordinate the workflow of AI agents. By providing a centralized platform to monitor, control, and optimize the performance of AI systems, Taskmaster AI could be a valuable resource for organizations and individuals seeking to effectively deploy and manage their AI-powered applications.</summary>
+    <content type="html"><![CDATA[
+      <p>Taskmaster AI is a tool that aims to help manage and coordinate the workflow of AI agents. By providing a centralized platform to monitor, control, and optimize the performance of AI systems, Taskmaster AI could be a valuable resource for organizations and individuals seeking to effectively deploy and manage their AI-powered applications.</p>
+      <p><strong>Tags:</strong>
+          #taskmaster, 
+          #ai, 
+          #workflow, 
+          #performance
+      </p>
+      <p><a href="https://www.task-master.dev/" target="_blank" rel="noopener noreferrer">🔗 https://www.task-master.dev/</a></p>
+    ]]></content>
+    <category term="taskmaster" />
+    <category term="ai" />
+    <category term="workflow" />
+    <category term="performance" />
   </entry>
 </feed>
