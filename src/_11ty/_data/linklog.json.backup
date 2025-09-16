@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "25e34ce1eef1b72b",
+      "url": "https://www.builder.io/blog/agents-md",
+      "title": "Improve your AI code output with AGENTS.md (+ my best tips)",
+      "summary": "This webpage discusses how to improve the output of AI code using an AGENTS.md file. It likely provides tips and strategies for creating effective prompts and instructions for AI models to produce better and more relevant results. The content may be useful for developers, researchers, or anyone working with AI-generated content and looking to optimize their workflows.",
+      "tags": [
+        "ai",
+        "code",
+        "agents",
+        "prompts"
+      ],
+      "dateAdded": "2025-09-10T14:18:07.178Z"
+    },
+    {
       "id": "a4bbfecea41be2e0",
       "url": "https://jxnl.co/writing/2025/08/28/context-engineering-index/",
       "title": "Context Engineering Series: Building Better Agentic RAG Systems - Jason Liu",

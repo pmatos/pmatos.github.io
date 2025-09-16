@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "076362174d815e33",
+      "url": "https://www.linkedin.com/pulse/understanding-claude-code-sub-agents-when-use-them-michael-hofer-rz9le/",
+      "title": "Claude Code Sub-Agents: When NOT to Use Them",
+      "summary": "This article discusses the use of Claude Code sub-agents, which are AI-powered assistants that can be integrated into various applications. The author provides guidance on when it might not be appropriate to use these sub-agents, highlighting potential limitations and considerations that users should keep in mind. The content is likely useful for individuals or organizations interested in leveraging AI-driven tools and assistants, as it offers insights into the practical application and potential drawbacks of this technology.",
+      "tags": [
+        "claude",
+        "subagents",
+        "ai",
+        "assistant"
+      ],
+      "dateAdded": "2025-09-16T06:57:10.684Z"
+    },
+    {
       "id": "25e34ce1eef1b72b",
       "url": "https://www.builder.io/blog/agents-md",
       "title": "Improve your AI code output with AGENTS.md (+ my best tips)",
