@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-16T06:57:10.684Z</updated>
+  <updated>2025-09-10T14:18:07.178Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -253,27 +253,5 @@
     <category term="code" />
     <category term="agents" />
     <category term="prompts" />
-  </entry>
-  <entry>
-    <title>Claude Code Sub-Agents: When NOT to Use Them</title>
-    <link href="https://www.linkedin.com/pulse/understanding-claude-code-sub-agents-when-use-them-michael-hofer-rz9le/" rel="alternate" type="text/html"/>
-    <link href="https://p.ocmatos.com/linklog.html#entry-076362174d815e33" rel="alternate" type="text/html" title="Linklog Entry"/>
-    <id>https://p.ocmatos.com/linklog.html#entry-076362174d815e33</id>
-    <updated>2025-09-16T06:57:10.684Z</updated>
-    <summary type="text">This article discusses the use of Claude Code sub-agents, which are AI-powered assistants that can be integrated into various applications. The author provides guidance on when it might not be appropriate to use these sub-agents, highlighting potential limitations and considerations that users should keep in mind. The content is likely useful for individuals or organizations interested in leveraging AI-driven tools and assistants, as it offers insights into the practical application and potential drawbacks of this technology.</summary>
-    <content type="html"><![CDATA[
-      <p>This article discusses the use of Claude Code sub-agents, which are AI-powered assistants that can be integrated into various applications. The author provides guidance on when it might not be appropriate to use these sub-agents, highlighting potential limitations and considerations that users should keep in mind. The content is likely useful for individuals or organizations interested in leveraging AI-driven tools and assistants, as it offers insights into the practical application and potential drawbacks of this technology.</p>
-      <p><strong>Tags:</strong>
-          #claude, 
-          #subagents, 
-          #ai, 
-          #assistant
-      </p>
-      <p><a href="https://www.linkedin.com/pulse/understanding-claude-code-sub-agents-when-use-them-michael-hofer-rz9le/" target="_blank" rel="noopener noreferrer">🔗 https://www.linkedin.com/pulse/understanding-claude-code-sub-agents-when-use-them-michael-hofer-rz9le/</a></p>
-    ]]></content>
-    <category term="claude" />
-    <category term="subagents" />
-    <category term="ai" />
-    <category term="assistant" />
   </entry>
 </feed>
