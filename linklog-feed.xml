@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-16T21:21:13.785Z</updated>
+  <updated>2025-09-16T21:24:45.710Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -297,5 +297,27 @@
     <category term="ai" />
     <category term="workflow" />
     <category term="performance" />
+  </entry>
+  <entry>
+    <title>GitHub - ruvnet/claude-flow: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP protocol. Ranked #1 in agent-based frameworks.</title>
+    <link href="https://github.com/ruvnet/claude-flow" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-5377111fa6198d8a" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-5377111fa6198d8a</id>
+    <updated>2025-09-16T21:24:45.710Z</updated>
+    <summary type="text">This GitHub repository appears to be for a platform called &quot;Claude-Flow&quot; that is designed for orchestrating and deploying intelligent multi-agent systems, particularly in the context of conversational AI development. The platform seems to offer enterprise-grade architecture, distributed swarm intelligence, and native support for the Claude language, making it a potentially powerful and versatile tool for building advanced conversational AI applications.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository appears to be for a platform called &quot;Claude-Flow&quot; that is designed for orchestrating and deploying intelligent multi-agent systems, particularly in the context of conversational AI development. The platform seems to offer enterprise-grade architecture, distributed swarm intelligence, and native support for the Claude language, making it a potentially powerful and versatile tool for building advanced conversational AI applications.</p>
+      <p><strong>Tags:</strong>
+          #agent-orchestration, 
+          #conversational-ai, 
+          #swarm-intelligence, 
+          #claude-flow
+      </p>
+      <p><a href="https://github.com/ruvnet/claude-flow" target="_blank" rel="noopener noreferrer">🔗 https://github.com/ruvnet/claude-flow</a></p>
+    ]]></content>
+    <category term="agent-orchestration" />
+    <category term="conversational-ai" />
+    <category term="swarm-intelligence" />
+    <category term="claude-flow" />
   </entry>
 </feed>
