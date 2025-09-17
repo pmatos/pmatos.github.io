@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "05310cb90d277c15",
+      "url": "https://www.galois.com/articles/claude-can-sometimes-prove-it",
+      "title": "Galois - Claude Can (Sometimes) Prove It",
+      "summary": "This webpage discusses the work of Claude, a member of the Galois team, and his ability to \"sometimes prove it.\" The title suggests the content is likely about Claude's approach to proving certain types of problems or claims, which could be of interest to those working in software verification, formal methods, or related areas of computer science and mathematics.",
+      "tags": [
+        "galois",
+        "claude",
+        "verification",
+        "proof"
+      ],
+      "dateAdded": "2025-09-17T12:14:36.748Z"
+    },
+    {
       "id": "f714de256bae3103",
       "url": "https://www.cerebras.ai/blog/introducing-cerebras-code",
       "title": "Cerebras",
