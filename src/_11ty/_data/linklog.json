@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "f714de256bae3103",
+      "url": "https://www.cerebras.ai/blog/introducing-cerebras-code",
+      "title": "Cerebras",
+      "summary": "The webpage titled \"Introducing Cerebras Code\" on the Cerebras website likely discusses the company's new software development tools or programming language. As Cerebras is a leading AI hardware company, this new \"Cerebras Code\" offering is likely aimed at making it easier for developers to create and optimize AI applications to run on Cerebras' specialized hardware, which could be highly useful for researchers and companies working on advanced AI projects.",
+      "tags": [
+        "ai",
+        "hardware",
+        "software",
+        "tools"
+      ],
+      "dateAdded": "2025-09-17T01:49:44.498Z"
+    },
+    {
       "id": "5377111fa6198d8a",
       "url": "https://github.com/ruvnet/claude-flow",
       "title": "GitHub - ruvnet/claude-flow: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code support via MCP protocol. Ranked #1 in agent-based frameworks.",
