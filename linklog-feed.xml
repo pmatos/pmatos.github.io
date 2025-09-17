@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-17T01:49:44.498Z</updated>
+  <updated>2025-09-17T12:14:36.748Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -341,5 +341,27 @@
     <category term="hardware" />
     <category term="software" />
     <category term="tools" />
+  </entry>
+  <entry>
+    <title>Galois - Claude Can (Sometimes) Prove It</title>
+    <link href="https://www.galois.com/articles/claude-can-sometimes-prove-it" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-05310cb90d277c15" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-05310cb90d277c15</id>
+    <updated>2025-09-17T12:14:36.748Z</updated>
+    <summary type="text">This webpage discusses the work of Claude, a member of the Galois team, and his ability to &quot;sometimes prove it.&quot; The title suggests the content is likely about Claude&#39;s approach to proving certain types of problems or claims, which could be of interest to those working in software verification, formal methods, or related areas of computer science and mathematics.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage discusses the work of Claude, a member of the Galois team, and his ability to &quot;sometimes prove it.&quot; The title suggests the content is likely about Claude&#39;s approach to proving certain types of problems or claims, which could be of interest to those working in software verification, formal methods, or related areas of computer science and mathematics.</p>
+      <p><strong>Tags:</strong>
+          #galois, 
+          #claude, 
+          #verification, 
+          #proof
+      </p>
+      <p><a href="https://www.galois.com/articles/claude-can-sometimes-prove-it" target="_blank" rel="noopener noreferrer">🔗 https://www.galois.com/articles/claude-can-sometimes-prove-it</a></p>
+    ]]></content>
+    <category term="galois" />
+    <category term="claude" />
+    <category term="verification" />
+    <category term="proof" />
   </entry>
 </feed>
