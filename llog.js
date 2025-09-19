@@ -242,21 +242,21 @@ class LinkLogCLI {
         return crypto.randomBytes(8).toString('hex');
     }
 
-    async fetchPageTitle(url, redirectCount = 0) {
+    async fetchPageContent(url, redirectCount = 0) {
         const maxRedirects = 5;
-        
+
         if (redirectCount === 0) {
-            console.log(`🔍 Fetching page title from ${url}...`);
+            console.log(`🔍 Fetching page content from ${url}...`);
         }
-        
+
         if (redirectCount >= maxRedirects) {
             throw new Error(`Too many redirects (${maxRedirects}) for ${url}`);
         }
-        
+
         return new Promise((resolve, reject) => {
             const urlObj = new URL(url);
             const client = urlObj.protocol === 'https:' ? https : http;
-            
+
             const options = {
                 hostname: urlObj.hostname,
                 port: urlObj.port,
@@ -273,83 +273,41 @@ class LinkLogCLI {
                 timeout: 30000
             };
 
+            const self = this; // Capture 'this' context for callbacks
             const req = client.request(options, (res) => {
                 let data = '';
-                let titleFound = false;
-                
+
                 // Handle redirects
                 if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
                     let redirectUrl = res.headers.location;
-                    
+
                     // Handle relative redirects by resolving against current URL
                     try {
                         new URL(redirectUrl);
                     } catch (e) {
                         redirectUrl = new URL(redirectUrl, url).href;
                     }
-                    
-                    return this.fetchPageTitle(redirectUrl, redirectCount + 1).then(resolve).catch(reject);
+
+                    return self.fetchPageContent(redirectUrl, redirectCount + 1).then(resolve).catch(reject);
                 }
-                
+
                 if (res.statusCode !== 200) {
                     return reject(new Error(`HTTP ${res.statusCode}: ${res.statusMessage}`));
                 }
 
                 res.on('data', chunk => {
-                    if (titleFound) return;
-                    
                     data += chunk;
-                    
-                    // Try to extract title as soon as we have enough data
-                    const titleMatch = data.match(/<title[^>]*>([^<]+)<\/title>/i);
-                    if (titleMatch && !titleFound) {
-                        titleFound = true;
-                        res.removeAllListeners();
-                        res.destroy();
-                        
-                        let title = titleMatch[1].trim();
-                        
-                        // Clean up title
-                        title = title.replace(/\s+/g, ' ')
-                                    .replace(/&lt;/g, '<')
-                                    .replace(/&gt;/g, '>')
-                                    .replace(/&quot;/g, '"')
-                                    .replace(/&#039;/g, "'")
-                                    .replace(/&amp;/g, '&');
 
-                        resolve(title);
-                        return;
-                    }
-                    
-                    // Stop reading after we have enough data without finding title
-                    if (data.length > 100000) {
-                        titleFound = true;
+                    // Stop reading after we have enough data (limit to ~500KB)
+                    if (data.length > 500000) {
                         res.removeAllListeners();
                         res.destroy();
-                        resolve(urlObj.hostname);
+                        resolve(self.extractContentFromHtml(data, urlObj.hostname));
                     }
                 });
 
                 res.on('end', () => {
-                    if (!titleFound) {
-                        try {
-                            // Extract title from HTML
-                            const titleMatch = data.match(/<title[^>]*>([^<]+)<\/title>/i);
-                            let title = titleMatch ? titleMatch[1].trim() : urlObj.hostname;
-                            
-                            // Clean up title
-                            title = title.replace(/\s+/g, ' ')
-                                        .replace(/&lt;/g, '<')
-                                        .replace(/&gt;/g, '>')
-                                        .replace(/&quot;/g, '"')
-                                        .replace(/&#039;/g, "'")
-                                        .replace(/&amp;/g, '&');
-
-                            resolve(title);
-                        } catch (error) {
-                            resolve(urlObj.hostname);
-                        }
-                    }
+                    resolve(self.extractContentFromHtml(data, urlObj.hostname));
                 });
             });
 
@@ -365,6 +323,60 @@ class LinkLogCLI {
 
             req.end();
         });
+    }
+
+    extractContentFromHtml(html, fallbackTitle) {
+        try {
+            // Extract title
+            const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+            let title = titleMatch ? titleMatch[1].trim() : fallbackTitle;
+
+            // Clean up title
+            title = title.replace(/\s+/g, ' ')
+                        .replace(/&lt;/g, '<')
+                        .replace(/&gt;/g, '>')
+                        .replace(/&quot;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&amp;/g, '&');
+
+            // Extract main content - remove scripts, styles, and other non-content elements
+            let content = html
+                .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+                .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+                .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, '')
+                .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, '')
+                .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, '')
+                .replace(/<aside[^>]*>[\s\S]*?<\/aside>/gi, '')
+                .replace(/<!--[\s\S]*?-->/g, '')
+                .replace(/<[^>]+>/g, ' ') // Remove all HTML tags
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&quot;/g, '"')
+                .replace(/&#039;/g, "'")
+                .replace(/&amp;/g, '&')
+                .replace(/&nbsp;/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            // Limit content length for API (roughly 2000 words to stay within token limits)
+            if (content.length > 10000) {
+                content = content.substring(0, 10000) + '...';
+            }
+
+            return { title, content };
+        } catch (error) {
+            return { title: fallbackTitle, content: '' };
+        }
+    }
+
+    async fetchPageTitle(url, redirectCount = 0) {
+        // Legacy function - use fetchPageContent for new functionality
+        try {
+            const { title } = await this.fetchPageContent(url, redirectCount);
+            return title;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async callClaudeAPI(prompt) {
@@ -442,22 +454,37 @@ class LinkLogCLI {
         });
     }
 
-    async generateSummary(url, title) {
+    async generateSummary(url, title, content = '') {
         console.log('🤖 Generating summary with Claude...');
-        
+
         try {
-            const prompt = `Please provide a brief 2-3 sentence summary of this webpage based on its title and URL:
-            
+            let prompt;
+            if (content && content.length > 50) {
+                // Use actual content for summary
+                prompt = `Please provide a brief 2-3 sentence summary of this webpage based on its actual content:
+
+Title: ${title}
+URL: ${url}
+Content: ${content}
+
+Focus on the main points, key information, and why this content might be interesting or useful. Be concise and informative.`;
+            } else {
+                // Fallback to title/URL only if no content available
+                console.warn('⚠️ No content available, using title/URL for summary generation');
+                prompt = `Please provide a brief 2-3 sentence summary of this webpage based on its title and URL:
+
 Title: ${title}
 URL: ${url}
 
 Focus on what the content is likely about and why it might be interesting or useful. Be concise and informative.`;
+            }
 
             const summary = await this.callClaudeAPI(prompt);
             return summary;
         } catch (error) {
-            console.warn(`⚠️ Could not generate summary: ${error.message}`);
-            return `Interesting link: ${title}`;
+            console.error(`❌ Could not generate summary: ${error.message}`);
+            console.log('📝 Summary will be marked as "No Summary" for manual completion later');
+            return 'No Summary';
         }
     }
 
@@ -699,11 +726,28 @@ Only suggest additional tags if they provide meaningful categorization not cover
                 throw new Error(`URL already exists in linklog with ID: ${existingEntry.id}`);
             }
 
-            // Fetch page information
-            const title = await this.fetchPageTitle(url);
-            
+            // Fetch page information and content
+            let title, content;
+            try {
+                const pageInfo = await this.fetchPageContent(url);
+                title = pageInfo.title;
+                content = pageInfo.content;
+                console.log(`✅ Successfully extracted ${content.length} characters of content`);
+            } catch (error) {
+                console.error(`❌ Failed to fetch page content: ${error.message}`);
+                console.log('📝 Will generate summary without content');
+                // Fallback to title-only extraction
+                try {
+                    title = await this.fetchPageTitle(url);
+                } catch (titleError) {
+                    console.error(`❌ Failed to fetch page title: ${titleError.message}`);
+                    title = new URL(url).hostname;
+                }
+                content = '';
+            }
+
             // Generate summary
-            const summary = await this.generateSummary(url, title);
+            const summary = await this.generateSummary(url, title, content);
             
             // Combine user tags with suggested tags
             let finalTags = [...tags];
