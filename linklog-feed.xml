@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-17T12:14:36.748Z</updated>
+  <updated>2025-09-19T14:34:21.706Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -363,5 +363,27 @@
     <category term="claude" />
     <category term="verification" />
     <category term="proof" />
+  </entry>
+  <entry>
+    <title>Coders End, From Typers To Thinkers | etsd.tech</title>
+    <link href="https://etsd.tech/posts/coders-end/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-0c24c58df117a0c8" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-0c24c58df117a0c8</id>
+    <updated>2025-09-19T14:34:21.706Z</updated>
+    <summary type="text">This webpage likely discusses the evolution of the software development profession, from coders who primarily focus on typing code to thinkers who focus on problem-solving and higher-level design. The article may explore the changing skill sets and mindsets required for successful software development in the modern era, which could be useful for both aspiring and experienced developers looking to stay ahead of industry trends.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage likely discusses the evolution of the software development profession, from coders who primarily focus on typing code to thinkers who focus on problem-solving and higher-level design. The article may explore the changing skill sets and mindsets required for successful software development in the modern era, which could be useful for both aspiring and experienced developers looking to stay ahead of industry trends.</p>
+      <p><strong>Tags:</strong>
+          #software-development, 
+          #coding, 
+          #problem-solving, 
+          #mindset
+      </p>
+      <p><a href="https://etsd.tech/posts/coders-end/" target="_blank" rel="noopener noreferrer">🔗 https://etsd.tech/posts/coders-end/</a></p>
+    ]]></content>
+    <category term="software-development" />
+    <category term="coding" />
+    <category term="problem-solving" />
+    <category term="mindset" />
   </entry>
 </feed>
