@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "0c24c58df117a0c8",
+      "url": "https://etsd.tech/posts/coders-end/",
+      "title": "Coders End, From Typers To Thinkers | etsd.tech",
+      "summary": "This webpage likely discusses the evolution of the software development profession, from coders who primarily focus on typing code to thinkers who focus on problem-solving and higher-level design. The article may explore the changing skill sets and mindsets required for successful software development in the modern era, which could be useful for both aspiring and experienced developers looking to stay ahead of industry trends.",
+      "tags": [
+        "software-development",
+        "coding",
+        "problem-solving",
+        "mindset"
+      ],
+      "dateAdded": "2025-09-19T14:34:21.706Z"
+    },
+    {
       "id": "05310cb90d277c15",
       "url": "https://www.galois.com/articles/claude-can-sometimes-prove-it",
       "title": "Galois - Claude Can (Sometimes) Prove It",
