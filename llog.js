@@ -273,8 +273,8 @@ class LinkLogCLI {
                 timeout: 30000
             };
 
-            const self = this; // Capture 'this' context for callbacks
-            const req = client.request(options, (res) => {
+            const self = this;
+            const req = client.request(options, function(res) {
                 let data = '';
 
                 // Handle redirects
@@ -295,19 +295,21 @@ class LinkLogCLI {
                     return reject(new Error(`HTTP ${res.statusCode}: ${res.statusMessage}`));
                 }
 
-                res.on('data', chunk => {
+                res.on('data', function(chunk) {
                     data += chunk;
 
                     // Stop reading after we have enough data (limit to ~500KB)
                     if (data.length > 500000) {
                         res.removeAllListeners();
                         res.destroy();
-                        resolve(self.extractContentFromHtml(data, urlObj.hostname));
+                        const result = self.extractContentFromHtml(data, urlObj.hostname);
+                        resolve(result);
                     }
                 });
 
-                res.on('end', () => {
-                    resolve(self.extractContentFromHtml(data, urlObj.hostname));
+                res.on('end', function() {
+                    const result = self.extractContentFromHtml(data, urlObj.hostname);
+                    resolve(result);
                 });
             });
 
