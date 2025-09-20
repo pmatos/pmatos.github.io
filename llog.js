@@ -644,59 +644,6 @@ Only suggest additional tags if they provide meaningful categorization not cover
         throw new Error(`Deployment verification failed - entry not visible after ${totalMinutes} minutes`);
     }
 
-    async fetchPageContent(url, redirectCount = 0) {
-        const maxRedirects = 5;
-        
-        if (redirectCount >= maxRedirects) {
-            throw new Error(`Too many redirects (${maxRedirects}) for ${url}`);
-        }
-        
-        return new Promise((resolve, reject) => {
-            const urlObj = new URL(url);
-            const client = urlObj.protocol === 'https:' ? https : http;
-            
-            const options = {
-                hostname: urlObj.hostname,
-                port: urlObj.port,
-                path: urlObj.pathname + urlObj.search,
-                method: 'GET',
-                headers: {
-                    'User-Agent': 'llog-verification/1.0'
-                },
-                timeout: 10000
-            };
-
-            const req = client.request(options, (res) => {
-                let data = '';
-                
-                // Handle redirects
-                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                    return this.fetchPageContent(res.headers.location, redirectCount + 1).then(resolve).catch(reject);
-                }
-                
-                if (res.statusCode !== 200) {
-                    return reject(new Error(`HTTP ${res.statusCode}`));
-                }
-
-                res.on('data', chunk => {
-                    data += chunk;
-                });
-
-                res.on('end', () => {
-                    resolve(data);
-                });
-            });
-
-            req.on('error', reject);
-            req.on('timeout', () => {
-                req.removeAllListeners();
-                req.destroy();
-                reject(new Error('Request timeout'));
-            });
-
-            req.end();
-        });
-    }
 
     async sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
