@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-24T11:41:01.785Z</updated>
+  <updated>2025-09-24T11:58:06.139Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -423,5 +423,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="payments" />
     <category term="protocol" />
     <category term="commerce" />
+  </entry>
+  <entry>
+    <title>Chrome DevTools (MCP) for your AI agent &amp;nbsp;|&amp;nbsp; Blog &amp;nbsp;|&amp;nbsp; Chrome for Developers</title>
+    <link href="https://developer.chrome.com/blog/chrome-devtools-mcp" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-55597fe0d08907ac" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-55597fe0d08907ac</id>
+    <updated>2025-09-24T11:58:06.139Z</updated>
+    <summary type="text">The webpage announces the launch of a public preview for the new Chrome DevTools Model Context Protocol (MCP) server, which allows AI coding assistants to debug web pages directly in Chrome and benefit from DevTools debugging capabilities. This improves the accuracy of AI agents when identifying and fixing issues in web development. The article provides details on what MCP is, how it can be used for various debugging and performance tasks, and how to get started with the Chrome DevTools MCP server.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage announces the launch of a public preview for the new Chrome DevTools Model Context Protocol (MCP) server, which allows AI coding assistants to debug web pages directly in Chrome and benefit from DevTools debugging capabilities. This improves the accuracy of AI agents when identifying and fixing issues in web development. The article provides details on what MCP is, how it can be used for various debugging and performance tasks, and how to get started with the Chrome DevTools MCP server.</p>
+      <p><strong>Tags:</strong>
+          #chrome, 
+          #devtools, 
+          #mcp, 
+          #ai
+      </p>
+      <p><a href="https://developer.chrome.com/blog/chrome-devtools-mcp" target="_blank" rel="noopener noreferrer">🔗 https://developer.chrome.com/blog/chrome-devtools-mcp</a></p>
+    ]]></content>
+    <category term="chrome" />
+    <category term="devtools" />
+    <category term="mcp" />
+    <category term="ai" />
   </entry>
 </feed>
