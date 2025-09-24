@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "853b54f0cd141da4",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+      "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
+      "summary": "Google has announced the Agent Payments Protocol (AP2), an open protocol developed with leading payments and technology companies to facilitate secure and trusted agent-led payments across platforms. AP2 aims to establish a common framework for users, merchants, and payment providers to transact with confidence, addressing key challenges like authorization, authenticity, and accountability in AI-driven commerce. The protocol leverages mandates and verifiable credentials to create a non-repudiable audit trail, enabling new commerce experiences like smarter shopping, personalized offers, and coordinated tasks. AP2 is designed to support a variety of payment methods, including cryptocurrencies, and Google is inviting the broader payments and technology community to collaborate on its evolution.",
+      "tags": [
+        "agent",
+        "payments",
+        "protocol",
+        "commerce"
+      ],
+      "dateAdded": "2025-09-24T11:41:01.785Z"
+    },
+    {
       "id": "0c24c58df117a0c8",
       "url": "https://etsd.tech/posts/coders-end/",
       "title": "Coders End, From Typers To Thinkers | etsd.tech",
