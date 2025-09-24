@@ -618,7 +618,7 @@ Only suggest additional tags if they provide meaningful categorization not cover
                 const pageContent = await this.fetchPageContent(linklogUrl);
                 
                 // Check if our entry ID appears in the page
-                if (pageContent.includes(entryId)) {
+                if (pageContent.content.includes(entryId)) {
                     const totalTime = Math.round((Date.now() - startTime) / 1000);
                     console.log(`✅ Deployment verified - entry is live! (${totalTime}s)`);
                     return true;
