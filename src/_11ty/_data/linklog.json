@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "55597fe0d08907ac",
+      "url": "https://developer.chrome.com/blog/chrome-devtools-mcp",
+      "title": "Chrome DevTools (MCP) for your AI agent &nbsp;|&nbsp; Blog &nbsp;|&nbsp; Chrome for Developers",
+      "summary": "The webpage announces the launch of a public preview for the new Chrome DevTools Model Context Protocol (MCP) server, which allows AI coding assistants to debug web pages directly in Chrome and benefit from DevTools debugging capabilities. This improves the accuracy of AI agents when identifying and fixing issues in web development. The article provides details on what MCP is, how it can be used for various debugging and performance tasks, and how to get started with the Chrome DevTools MCP server.",
+      "tags": [
+        "chrome",
+        "devtools",
+        "mcp",
+        "ai"
+      ],
+      "dateAdded": "2025-09-24T11:58:06.139Z"
+    },
+    {
       "id": "853b54f0cd141da4",
       "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
       "title": "Announcing Agent Payments Protocol (AP2) | Google Cloud Blog",
