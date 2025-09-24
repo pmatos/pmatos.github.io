@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-09-24T11:41:01.785Z</updated>
+  <updated>2025-09-19T14:34:21.706Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -401,27 +401,5 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="coding" />
     <category term="problem-solving" />
     <category term="mindset" />
-  </entry>
-  <entry>
-    <title>Announcing Agent Payments Protocol (AP2) | Google Cloud Blog</title>
-    <link href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" rel="alternate" type="text/html"/>
-    <link href="https://p.ocmatos.com/linklog.html#entry-853b54f0cd141da4" rel="alternate" type="text/html" title="Linklog Entry"/>
-    <id>https://p.ocmatos.com/linklog.html#entry-853b54f0cd141da4</id>
-    <updated>2025-09-24T11:41:01.785Z</updated>
-    <summary type="text">Google has announced the Agent Payments Protocol (AP2), an open protocol developed with leading payments and technology companies to facilitate secure and trusted agent-led payments across platforms. AP2 aims to establish a common framework for users, merchants, and payment providers to transact with confidence, addressing key challenges like authorization, authenticity, and accountability in AI-driven commerce. The protocol leverages mandates and verifiable credentials to create a non-repudiable audit trail, enabling new commerce experiences like smarter shopping, personalized offers, and coordinated tasks. AP2 is designed to support a variety of payment methods, including cryptocurrencies, and Google is inviting the broader payments and technology community to collaborate on its evolution.</summary>
-    <content type="html"><![CDATA[
-      <p>Google has announced the Agent Payments Protocol (AP2), an open protocol developed with leading payments and technology companies to facilitate secure and trusted agent-led payments across platforms. AP2 aims to establish a common framework for users, merchants, and payment providers to transact with confidence, addressing key challenges like authorization, authenticity, and accountability in AI-driven commerce. The protocol leverages mandates and verifiable credentials to create a non-repudiable audit trail, enabling new commerce experiences like smarter shopping, personalized offers, and coordinated tasks. AP2 is designed to support a variety of payment methods, including cryptocurrencies, and Google is inviting the broader payments and technology community to collaborate on its evolution.</p>
-      <p><strong>Tags:</strong>
-          #agent, 
-          #payments, 
-          #protocol, 
-          #commerce
-      </p>
-      <p><a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol" target="_blank" rel="noopener noreferrer">🔗 https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol</a></p>
-    ]]></content>
-    <category term="agent" />
-    <category term="payments" />
-    <category term="protocol" />
-    <category term="commerce" />
   </entry>
 </feed>
