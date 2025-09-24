@@ -105,24 +105,23 @@ class LinkLogCLI {
 
     async rollback() {
         console.log('🔄 Rolling back changes...');
-        
-        // Restore backed up files
-        for (const { original, backup } of this.backupFiles) {
-            try {
-                await fs.copyFile(backup, original);
-                await fs.unlink(backup);
-                console.log(`↩️ Restored ${path.basename(original)}`);
-            } catch (error) {
-                console.error(`❌ Failed to restore ${path.basename(original)}: ${error.message}`);
-            }
-        }
 
-        // Handle git rollback based on whether push was completed
+        // Handle git rollback BEFORE restoring files to avoid uncommitted changes
         if (this.gitStashApplied) {
             try {
                 if (this.pushCompleted) {
                     // If push was completed, create a revert commit and push it
                     console.log('🔄 Creating revert commit for pushed changes...');
+
+                    // Stash any current changes first to ensure clean working tree
+                    try {
+                        execSync('git stash push -m "temp stash for revert"', { stdio: 'pipe' });
+                        console.log('📦 Stashed current changes temporarily');
+                    } catch (stashError) {
+                        // If stashing fails, it's likely because there are no changes
+                        console.log('📦 No changes to stash');
+                    }
+
                     const lastCommitHash = execSync('git rev-parse HEAD', { stdio: 'pipe', encoding: 'utf8' }).trim();
                     execSync(`git revert ${lastCommitHash} --no-edit`, { stdio: 'pipe' });
                     execSync('git push origin main', { stdio: 'pipe' });
@@ -136,6 +135,17 @@ class LinkLogCLI {
                 }
             } catch (error) {
                 console.error('❌ Failed to revert git changes:', error.message);
+            }
+        }
+
+        // Restore backed up files after git operations are complete
+        for (const { original, backup } of this.backupFiles) {
+            try {
+                await fs.copyFile(backup, original);
+                await fs.unlink(backup);
+                console.log(`↩️ Restored ${path.basename(original)}`);
+            } catch (error) {
+                console.error(`❌ Failed to restore ${path.basename(original)}: ${error.message}`);
             }
         }
 
