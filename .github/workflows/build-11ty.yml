@@ -18,7 +18,7 @@ jobs:
           sudo apt install lilypond
 
       - name: Use Node.js 20
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 20
 
