@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "c16cc52e6bbcb2e9",
+      "url": "https://sharif.io/28-ideas-2025",
+      "title": "The 28 AI tools I wish existed",
+      "summary": "This article presents 28 ideas for AI-powered tools that the author wishes existed, covering a wide range of applications from photo editing and writing assistance to specialized agents for tasks like decompiling code and building personalized curriculum. The author highlights the current capabilities of AI models and expresses a desire for more user-friendly, task-specific tools that could enhance various aspects of daily life and work. The article suggests that the author is interested in exploring the potential of AI to streamline and augment human activities across various domains.",
+      "tags": [
+        "ai",
+        "tools",
+        "wishlist",
+        "productivity"
+      ],
+      "dateAdded": "2025-10-22T09:52:11.698Z"
+    },
+    {
       "id": "55597fe0d08907ac",
       "url": "https://developer.chrome.com/blog/chrome-devtools-mcp",
       "title": "Chrome DevTools (MCP) for your AI agent",
