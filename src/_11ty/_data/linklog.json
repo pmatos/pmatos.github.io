@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "a0b65690615614de",
+      "url": "https://hedgehogreview.com/issues/lessons-of-babel/articles/perplexity",
+      "title": "Perplexity | Lessons of Babel | Issues | The Hedgehog Review",
+      "summary": "This article provides a critical overview of the history and current state of artificial intelligence (AI) development. It highlights the limitations and hype surrounding AI, noting that while there have been genuine advances, particularly in machine learning and generative AI, there is also significant confusion and misrepresentation of the technology's capabilities. The article cautions against the inflated claims and misunderstandings propagated by \"AI prophets\" and discusses the need for more realistic and nuanced discussions about the current state and future potential of AI.",
+      "tags": [
+        "ai",
+        "technology",
+        "criticism",
+        "limitations"
+      ],
+      "dateAdded": "2025-10-23T13:41:52.084Z"
+    },
+    {
       "id": "d686c2e9217c9603",
       "url": "https://www.xda-developers.com/connected-claude-with-obsidian-and-never-looking-back/",
       "title": "I connected Claude with Obsidian, and I'm never looking back",
