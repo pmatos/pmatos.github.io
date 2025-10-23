@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "d686c2e9217c9603",
+      "url": "https://www.xda-developers.com/connected-claude-with-obsidian-and-never-looking-back/",
+      "title": "I connected Claude with Obsidian, and I'm never looking back",
+      "summary": "This article discusses the author's experience of integrating the AI assistant Claude with the note-taking app Obsidian. The author found that this integration revolutionized their workflow, allowing them to automate tasks like tracking pitch ideas, managing reading lists, and generating flashcards for studying. While the author encountered some limitations with Claude's usage restrictions, they believe the benefits of the integration, such as the email integration and the ability to offload administrative tasks, more than make up for these drawbacks. The article suggests that integrating Obsidian with an AI tool can greatly enhance the platform's capabilities for power users.",
+      "tags": [
+        "obsidian",
+        "ai",
+        "productivity",
+        "workflow"
+      ],
+      "dateAdded": "2025-10-23T12:37:43.288Z"
+    },
+    {
       "id": "c16cc52e6bbcb2e9",
       "url": "https://sharif.io/28-ideas-2025",
       "title": "The 28 AI tools I wish existed",
