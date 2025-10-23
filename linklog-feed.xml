@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-10-22T09:52:11.698Z</updated>
+  <updated>2025-10-23T12:37:43.288Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -467,5 +467,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="tools" />
     <category term="wishlist" />
     <category term="productivity" />
+  </entry>
+  <entry>
+    <title>I connected Claude with Obsidian, and I&#39;m never looking back</title>
+    <link href="https://www.xda-developers.com/connected-claude-with-obsidian-and-never-looking-back/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-d686c2e9217c9603" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-d686c2e9217c9603</id>
+    <updated>2025-10-23T12:37:43.288Z</updated>
+    <summary type="text">This article discusses the author&#39;s experience of integrating the AI assistant Claude with the note-taking app Obsidian. The author found that this integration revolutionized their workflow, allowing them to automate tasks like tracking pitch ideas, managing reading lists, and generating flashcards for studying. While the author encountered some limitations with Claude&#39;s usage restrictions, they believe the benefits of the integration, such as the email integration and the ability to offload administrative tasks, more than make up for these drawbacks. The article suggests that integrating Obsidian with an AI tool can greatly enhance the platform&#39;s capabilities for power users.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the author&#39;s experience of integrating the AI assistant Claude with the note-taking app Obsidian. The author found that this integration revolutionized their workflow, allowing them to automate tasks like tracking pitch ideas, managing reading lists, and generating flashcards for studying. While the author encountered some limitations with Claude&#39;s usage restrictions, they believe the benefits of the integration, such as the email integration and the ability to offload administrative tasks, more than make up for these drawbacks. The article suggests that integrating Obsidian with an AI tool can greatly enhance the platform&#39;s capabilities for power users.</p>
+      <p><strong>Tags:</strong>
+          #obsidian, 
+          #ai, 
+          #productivity, 
+          #workflow
+      </p>
+      <p><a href="https://www.xda-developers.com/connected-claude-with-obsidian-and-never-looking-back/" target="_blank" rel="noopener noreferrer">🔗 https://www.xda-developers.com/connected-claude-with-obsidian-and-never-looking-back/</a></p>
+    ]]></content>
+    <category term="obsidian" />
+    <category term="ai" />
+    <category term="productivity" />
+    <category term="workflow" />
   </entry>
 </feed>
