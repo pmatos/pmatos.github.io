@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-10-23T13:41:52.084Z</updated>
+  <updated>2025-10-24T13:09:24.465Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -511,5 +511,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="technology" />
     <category term="criticism" />
     <category term="limitations" />
+  </entry>
+  <entry>
+    <title>Vibing a Non-Trivial Ghostty Feature – Mitchell Hashimoto</title>
+    <link href="https://mitchellh.com/writing/non-trivial-vibing" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-fab370ffce8b10e1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-fab370ffce8b10e1</id>
+    <updated>2025-10-24T13:09:24.465Z</updated>
+    <summary type="text">This article by Mitchell Hashimoto describes his process of using AI-powered &quot;agentic coding&quot; to develop a non-trivial feature for his Ghostty macOS application - an unobtrusive update notification system that avoids interrupting the user&#39;s workflow. Hashimoto provides detailed insights into his approach, including initial planning, prototyping the UI with AI assistance, encountering and resolving challenges, and iteratively improving the codebase. The article highlights Hashimoto&#39;s strategic use of AI as a collaborative tool, rather than a replacement for human expertise, and emphasizes the importance of maintaining a deep understanding of the codebase when working with AI-generated solutions.</summary>
+    <content type="html"><![CDATA[
+      <p>This article by Mitchell Hashimoto describes his process of using AI-powered &quot;agentic coding&quot; to develop a non-trivial feature for his Ghostty macOS application - an unobtrusive update notification system that avoids interrupting the user&#39;s workflow. Hashimoto provides detailed insights into his approach, including initial planning, prototyping the UI with AI assistance, encountering and resolving challenges, and iteratively improving the codebase. The article highlights Hashimoto&#39;s strategic use of AI as a collaborative tool, rather than a replacement for human expertise, and emphasizes the importance of maintaining a deep understanding of the codebase when working with AI-generated solutions.</p>
+      <p><strong>Tags:</strong>
+          #programming, 
+          #ai, 
+          #macos, 
+          #ghostty
+      </p>
+      <p><a href="https://mitchellh.com/writing/non-trivial-vibing" target="_blank" rel="noopener noreferrer">🔗 https://mitchellh.com/writing/non-trivial-vibing</a></p>
+    ]]></content>
+    <category term="programming" />
+    <category term="ai" />
+    <category term="macos" />
+    <category term="ghostty" />
   </entry>
 </feed>
