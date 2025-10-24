@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-10-23T12:37:43.288Z</updated>
+  <updated>2025-10-23T13:41:52.084Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -489,5 +489,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="ai" />
     <category term="productivity" />
     <category term="workflow" />
+  </entry>
+  <entry>
+    <title>Perplexity | Lessons of Babel | Issues | The Hedgehog Review</title>
+    <link href="https://hedgehogreview.com/issues/lessons-of-babel/articles/perplexity" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-a0b65690615614de" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-a0b65690615614de</id>
+    <updated>2025-10-23T13:41:52.084Z</updated>
+    <summary type="text">This article provides a critical overview of the history and current state of artificial intelligence (AI) development. It highlights the limitations and hype surrounding AI, noting that while there have been genuine advances, particularly in machine learning and generative AI, there is also significant confusion and misrepresentation of the technology&#39;s capabilities. The article cautions against the inflated claims and misunderstandings propagated by &quot;AI prophets&quot; and discusses the need for more realistic and nuanced discussions about the current state and future potential of AI.</summary>
+    <content type="html"><![CDATA[
+      <p>This article provides a critical overview of the history and current state of artificial intelligence (AI) development. It highlights the limitations and hype surrounding AI, noting that while there have been genuine advances, particularly in machine learning and generative AI, there is also significant confusion and misrepresentation of the technology&#39;s capabilities. The article cautions against the inflated claims and misunderstandings propagated by &quot;AI prophets&quot; and discusses the need for more realistic and nuanced discussions about the current state and future potential of AI.</p>
+      <p><strong>Tags:</strong>
+          #ai, 
+          #technology, 
+          #criticism, 
+          #limitations
+      </p>
+      <p><a href="https://hedgehogreview.com/issues/lessons-of-babel/articles/perplexity" target="_blank" rel="noopener noreferrer">🔗 https://hedgehogreview.com/issues/lessons-of-babel/articles/perplexity</a></p>
+    ]]></content>
+    <category term="ai" />
+    <category term="technology" />
+    <category term="criticism" />
+    <category term="limitations" />
   </entry>
 </feed>
