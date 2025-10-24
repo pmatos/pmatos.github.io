@@ -1,19 +1,6 @@
 {
   "entries": [
     {
-      "id": "f565a3e254b75f11",
-      "url": "https://mitchellh.com/writing/non-trivial-vibing",
-      "title": "Vibing a Non-Trivial Ghostty Feature – Mitchell Hashimoto",
-      "summary": "This article discusses Mitchell Hashimoto's experience using AI and \"agentic coding tools\" to develop a non-trivial feature for his Ghostty app - an unobtrusive macOS update notification system. Hashimoto shares the step-by-step process of how he worked with the AI, including prototyping the UI, hitting roadblocks, and ultimately pivoting to a different implementation when the AI couldn't solve a specific issue. The article provides insights into Hashimoto's AI-assisted development approach and the challenges he faced along the way.",
-      "tags": [
-        "ai",
-        "development",
-        "macos",
-        "ghostty"
-      ],
-      "dateAdded": "2025-10-24T11:07:56.968Z"
-    },
-    {
       "id": "a0b65690615614de",
       "url": "https://hedgehogreview.com/issues/lessons-of-babel/articles/perplexity",
       "title": "Perplexity | Lessons of Babel | Issues | The Hedgehog Review",
