@@ -391,6 +391,78 @@ class LinkLogCLI {
         }
     }
 
+    async fetchRawHtml(url, redirectCount = 0) {
+        const maxRedirects = 5;
+
+        if (redirectCount >= maxRedirects) {
+            throw new Error(`Too many redirects (${maxRedirects}) for ${url}`);
+        }
+
+        return new Promise((resolve, reject) => {
+            const urlObj = new URL(url);
+            const client = urlObj.protocol === 'https:' ? https : http;
+
+            const options = {
+                hostname: urlObj.hostname,
+                port: urlObj.port,
+                path: urlObj.pathname + urlObj.search,
+                method: 'GET',
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.5',
+                    'Accept-Encoding': 'identity',
+                    'Connection': 'close',
+                    'Upgrade-Insecure-Requests': '1'
+                },
+                timeout: 30000
+            };
+
+            const self = this;
+            const req = client.request(options, function(res) {
+                let data = '';
+
+                // Handle redirects
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                    let redirectUrl = res.headers.location;
+
+                    // Handle relative redirects by resolving against current URL
+                    try {
+                        new URL(redirectUrl);
+                    } catch (e) {
+                        redirectUrl = new URL(redirectUrl, url).href;
+                    }
+
+                    return self.fetchRawHtml(redirectUrl, redirectCount + 1).then(resolve).catch(reject);
+                }
+
+                if (res.statusCode !== 200) {
+                    return reject(new Error(`HTTP ${res.statusCode}: ${res.statusMessage}`));
+                }
+
+                res.on('data', function(chunk) {
+                    data += chunk;
+                });
+
+                res.on('end', function() {
+                    resolve(data);
+                });
+            });
+
+            req.on('error', (error) => {
+                reject(new Error(`Failed to fetch ${url}: ${error.message}`));
+            });
+
+            req.on('timeout', () => {
+                req.removeAllListeners();
+                req.destroy();
+                reject(new Error(`Timeout fetching ${url} after 30 seconds`));
+            });
+
+            req.end();
+        });
+    }
+
     async callClaudeAPI(prompt) {
         let apiKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
         
@@ -624,11 +696,12 @@ Only suggest additional tags if they provide meaningful categorization not cover
             try {
                 const elapsed = Math.round((Date.now() - startTime) / 1000);
                 console.log(`📡 Checking deployment (attempt ${attempt}, ${elapsed}s elapsed)...`);
-                
-                const pageContent = await this.fetchPageContent(linklogUrl);
-                
-                // Check if our entry ID appears in the page
-                if (pageContent.content.includes(entryId)) {
+
+                const rawHtml = await this.fetchRawHtml(linklogUrl);
+
+                // Check if our entry ID appears in the HTML as an id attribute
+                const entryIdPattern = `id="entry-${entryId}"`;
+                if (rawHtml.includes(entryIdPattern)) {
                     const totalTime = Math.round((Date.now() - startTime) / 1000);
                     console.log(`✅ Deployment verified - entry is live! (${totalTime}s)`);
                     return true;
