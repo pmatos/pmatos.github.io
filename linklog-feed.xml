@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-10-25T14:24:49.220Z</updated>
+  <updated>2025-10-25T14:27:55.622Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -555,5 +555,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="security" />
     <category term="autonomy" />
     <category term="cloud" />
+  </entry>
+  <entry>
+    <title>Living dangerously with Claude</title>
+    <link href="https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-9c5e70bcf0b868f4" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-9c5e70bcf0b868f4</id>
+    <updated>2025-10-25T14:27:55.622Z</updated>
+    <summary type="text">This blog post discusses the benefits and risks of running coding agents like Claude in &quot;YOLO mode&quot; with minimal restrictions. The author shares several projects he was able to quickly complete by letting Claude Code figure things out in this unrestricted mode. However, he cautions that this approach is dangerous due to the risk of prompt injection attacks that could leak sensitive data. The post advocates for using sandboxing techniques to safely run coding agents, and provides technical details on how this can be implemented using tools like Apple&#39;s sandbox-exec command.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses the benefits and risks of running coding agents like Claude in &quot;YOLO mode&quot; with minimal restrictions. The author shares several projects he was able to quickly complete by letting Claude Code figure things out in this unrestricted mode. However, he cautions that this approach is dangerous due to the risk of prompt injection attacks that could leak sensitive data. The post advocates for using sandboxing techniques to safely run coding agents, and provides technical details on how this can be implemented using tools like Apple&#39;s sandbox-exec command.</p>
+      <p><strong>Tags:</strong>
+          #coding, 
+          #ai, 
+          #security, 
+          #sandbox
+      </p>
+      <p><a href="https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/" target="_blank" rel="noopener noreferrer">🔗 https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/</a></p>
+    ]]></content>
+    <category term="coding" />
+    <category term="ai" />
+    <category term="security" />
+    <category term="sandbox" />
   </entry>
 </feed>
