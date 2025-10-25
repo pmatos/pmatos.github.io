@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "9c5e70bcf0b868f4",
+      "url": "https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/",
+      "title": "Living dangerously with Claude",
+      "summary": "This blog post discusses the benefits and risks of running coding agents like Claude in \"YOLO mode\" with minimal restrictions. The author shares several projects he was able to quickly complete by letting Claude Code figure things out in this unrestricted mode. However, he cautions that this approach is dangerous due to the risk of prompt injection attacks that could leak sensitive data. The post advocates for using sandboxing techniques to safely run coding agents, and provides technical details on how this can be implemented using tools like Apple's sandbox-exec command.",
+      "tags": [
+        "coding",
+        "ai",
+        "security",
+        "sandbox"
+      ],
+      "dateAdded": "2025-10-25T14:27:55.622Z"
+    },
+    {
       "id": "74f121284b0e10d0",
       "url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
       "title": "Making Claude Code more secure and autonomous with sandboxing \\ Anthropic",
