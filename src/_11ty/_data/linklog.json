@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "74f121284b0e10d0",
+      "url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+      "title": "Making Claude Code more secure and autonomous with sandboxing \\ Anthropic",
+      "summary": "This webpage discusses two new security features introduced in Anthropic's Claude Code: a sandboxed bash tool and Claude Code on the web. The sandboxed bash tool allows Claude to run commands within defined filesystem and network boundaries, reducing the need for permission prompts and increasing security against potential prompt injection attacks. The Claude Code on the web feature executes each session in an isolated cloud sandbox, ensuring sensitive credentials are never exposed to the running code. These new features aim to make Claude Code more secure and autonomous for developers.",
+      "tags": [
+        "sandboxing",
+        "security",
+        "autonomy",
+        "cloud"
+      ],
+      "dateAdded": "2025-10-25T14:24:49.220Z"
+    },
+    {
       "id": "fab370ffce8b10e1",
       "url": "https://mitchellh.com/writing/non-trivial-vibing",
       "title": "Vibing a Non-Trivial Ghostty Feature – Mitchell Hashimoto",
