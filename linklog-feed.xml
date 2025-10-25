@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-10-24T13:09:24.465Z</updated>
+  <updated>2025-10-25T14:24:49.220Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -533,5 +533,27 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="ai" />
     <category term="macos" />
     <category term="ghostty" />
+  </entry>
+  <entry>
+    <title>Making Claude Code more secure and autonomous with sandboxing &#92; Anthropic</title>
+    <link href="https://www.anthropic.com/engineering/claude-code-sandboxing" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-74f121284b0e10d0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-74f121284b0e10d0</id>
+    <updated>2025-10-25T14:24:49.220Z</updated>
+    <summary type="text">This webpage discusses two new security features introduced in Anthropic&#39;s Claude Code: a sandboxed bash tool and Claude Code on the web. The sandboxed bash tool allows Claude to run commands within defined filesystem and network boundaries, reducing the need for permission prompts and increasing security against potential prompt injection attacks. The Claude Code on the web feature executes each session in an isolated cloud sandbox, ensuring sensitive credentials are never exposed to the running code. These new features aim to make Claude Code more secure and autonomous for developers.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage discusses two new security features introduced in Anthropic&#39;s Claude Code: a sandboxed bash tool and Claude Code on the web. The sandboxed bash tool allows Claude to run commands within defined filesystem and network boundaries, reducing the need for permission prompts and increasing security against potential prompt injection attacks. The Claude Code on the web feature executes each session in an isolated cloud sandbox, ensuring sensitive credentials are never exposed to the running code. These new features aim to make Claude Code more secure and autonomous for developers.</p>
+      <p><strong>Tags:</strong>
+          #sandboxing, 
+          #security, 
+          #autonomy, 
+          #cloud
+      </p>
+      <p><a href="https://www.anthropic.com/engineering/claude-code-sandboxing" target="_blank" rel="noopener noreferrer">🔗 https://www.anthropic.com/engineering/claude-code-sandboxing</a></p>
+    ]]></content>
+    <category term="sandboxing" />
+    <category term="security" />
+    <category term="autonomy" />
+    <category term="cloud" />
   </entry>
 </feed>
