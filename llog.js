@@ -572,33 +572,37 @@ Focus on what the content is likely about and why it might be interesting or use
         }
     }
 
-    async suggestTags(content, existingTags = []) {
-        console.log('🏷️ Suggesting tags...');
-        
+    async suggestTags(content, existingTags = [], numTagsToSuggest = 5) {
+        console.log(`🏷️ Suggesting ${numTagsToSuggest} additional tag(s)...`);
+
         try {
             let prompt;
             if (existingTags.length === 0) {
-                prompt = `Based on this content, suggest 2-4 relevant tags (single words only, lowercase, no spaces):
+                prompt = `Based on this content, suggest exactly ${numTagsToSuggest} relevant tags (single words only, lowercase, no spaces):
 
 ${content}
 
-Respond with only the tags separated by commas, like: programming, javascript, tutorial, web`;
+Respond with only the tags separated by commas, like: programming, javascript, tutorial, web, api`;
             } else {
-                prompt = `Based on this content, suggest additional relevant tags if they would add value (single words only, lowercase, no spaces). The user has already provided these tags: ${existingTags.join(', ')}
+                prompt = `Based on this content, suggest exactly ${numTagsToSuggest} additional relevant tags (single words only, lowercase, no spaces). The user has already provided these tags: ${existingTags.join(', ')}
 
 ${content}
 
-Only suggest additional tags if they provide meaningful categorization not covered by existing tags. It's perfectly fine to suggest no additional tags if the existing ones are sufficient. Respond with only the additional tags separated by commas, or respond with just "none" if no additional tags are needed.`;
+IMPORTANT:
+- Suggest exactly ${numTagsToSuggest} NEW tags that are different from the existing tags
+- Do NOT include any of the existing tags in your response
+- Only suggest tags that provide meaningful additional categorization
+- Respond with only the new tags separated by commas`;
             }
 
             const response = await this.callClaudeAPI(prompt);
-            
+
             if (response.toLowerCase().trim() === 'none') {
                 return [];
             }
-            
+
             const tags = response.split(',').map(tag => tag.trim().toLowerCase()).filter(tag => tag.length > 0);
-            return tags.slice(0, 4); // Max 4 tags
+            return tags.slice(0, numTagsToSuggest); // Return exact number requested
         } catch (error) {
             console.warn(`⚠️ Could not suggest tags: ${error.message}`);
             return [];
@@ -780,22 +784,20 @@ Only suggest additional tags if they provide meaningful categorization not cover
 
             // Generate summary
             const summary = await this.generateSummary(url, title, content);
-            
-            // Combine user tags with suggested tags
+
+            // Combine user tags with suggested tags (max 5 tags unless user provides more)
             let finalTags = [...tags];
-            if (finalTags.length === 0) {
-                // If no user tags provided, use suggested tags
-                const suggestedTags = await this.suggestTags(`${title} ${summary}`, []);
-                finalTags = suggestedTags;
-            } else {
-                // If user provided tags, add suggested tags that aren't already present
-                const suggestedTags = await this.suggestTags(`${title} ${summary}`, finalTags);
-                for (const suggestedTag of suggestedTags) {
-                    if (!finalTags.includes(suggestedTag)) {
-                        finalTags.push(suggestedTag);
-                    }
-                }
+            const tagsToRequest = Math.max(0, 5 - tags.length);
+
+            if (tagsToRequest > 0) {
+                // Request additional tags from Claude to reach 5 total
+                const suggestedTags = await this.suggestTags(`${title} ${summary}`, tags, tagsToRequest);
+                finalTags = [...tags, ...suggestedTags];
+
+                // Remove any duplicates (keep first occurrence - user tags have priority)
+                finalTags = finalTags.filter((tag, index, self) => self.indexOf(tag) === index);
             }
+            // If user provided 5+ tags, finalTags already equals tags (no AI suggestion needed)
 
             // Create new entry
             const newEntry = {
