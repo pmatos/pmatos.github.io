@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.16",
-    "commander": "^14.0.1",
+    "commander": "^14.0.2",
     "svg2roughjs": "^3.0.1"
   },
   "bin": {
