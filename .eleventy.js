@@ -50,7 +50,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig
     .addPassthroughCopy({ "src/_11ty/_static/app/*.*": "/" })
     .addPassthroughCopy({ "src/_11ty/_static/favicon": "favicon" })
-    .addPassthroughCopy({ "src/_11ty/_static/img": "img" });
+    .addPassthroughCopy({ "src/_11ty/_static/img": "img" })
+    .addPassthroughCopy({ "src/_11ty/_static/examples": "examples" });
 
   // Mostrare l'anno nel footer
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
