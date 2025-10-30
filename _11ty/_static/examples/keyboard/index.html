@@ -1,0 +1,297 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Web Audio Keyboard</title><style>* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        #spectrum-canvas {
+            background: #0f172a;
+            border: 4px solid #475569;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .keyboard-container {
+            background: #475569;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+        }
+
+        .keyboard {
+            position: relative;
+            display: flex;
+            gap: 4px;
+        }
+
+        .white-key {
+            width: 60px;
+            height: 250px;
+            background: white;
+            border: 2px solid #1e293b;
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            transition: all 0.05s;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .white-key:hover {
+            background: #f1f5f9;
+        }
+
+        .white-key:active, .white-key.active {
+            background: #bfdbfe;
+            transform: scale(0.95);
+        }
+
+        .black-key {
+            width: 40px;
+            height: 160px;
+            background: #1e293b;
+            border: 2px solid #0f172a;
+            border-radius: 0 0 6px 6px;
+            cursor: pointer;
+            transition: all 0.05s;
+            position: absolute;
+            z-index: 10;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+        }
+
+        .black-key:hover {
+            background: #334155;
+        }
+
+        .black-key:active, .black-key.active {
+            background: #1e40af;
+            transform: scale(0.95);
+        }
+
+        .key-label {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .white-key .key-label {
+            color: #1e293b;
+        }
+
+        .black-key .key-label {
+            color: white;
+        }
+
+        .note-name {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .key-hint {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        .frequency-display {
+            margin-top: 20px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }</style></head><body><h1>🎹 Web Audio Keyboard</h1><p class="subtitle">Click keys or use keyboard (a-k)</p><canvas id="spectrum-canvas" width="800" height="200"></canvas><div class="keyboard-container"><div class="keyboard" id="keyboard"></div></div><div class="frequency-display">Frequency: <span id="freq-display">—</span> Hz</div><script>// Musical notes with frequencies
+        const notes = [
+            { note: 'C', freq: 261.63, color: 'white', key: 'a' },
+            { note: 'C#', freq: 277.18, color: 'black', key: 'w' },
+            { note: 'D', freq: 293.66, color: 'white', key: 's' },
+            { note: 'D#', freq: 311.13, color: 'black', key: 'e' },
+            { note: 'E', freq: 329.63, color: 'white', key: 'd' },
+            { note: 'F', freq: 349.23, color: 'white', key: 'f' },
+            { note: 'F#', freq: 369.99, color: 'black', key: 't' },
+            { note: 'G', freq: 392.00, color: 'white', key: 'g' },
+            { note: 'G#', freq: 415.30, color: 'black', key: 'y' },
+            { note: 'A', freq: 440.00, color: 'white', key: 'h' },
+            { note: 'A#', freq: 466.16, color: 'black', key: 'u' },
+            { note: 'B', freq: 493.88, color: 'white', key: 'j' },
+            { note: 'C5', freq: 523.25, color: 'white', key: 'k' }
+        ];
+
+        // Initialize Audio Context
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        analyser.connect(audioContext.destination);
+
+        // Canvas setup
+        const canvas = document.getElementById('spectrum-canvas');
+        const ctx = canvas.getContext('2d');
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        let animationId = null;
+        let activeKey = null;
+
+        // Draw spectrum
+        function drawSpectrum() {
+            animationId = requestAnimationFrame(drawSpectrum);
+            
+            analyser.getByteFrequencyData(dataArray);
+
+            ctx.fillStyle = 'rgb(15, 23, 42)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const barWidth = (canvas.width / bufferLength) * 2.5;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                const barHeight = (dataArray[i] / 255) * canvas.height * 0.8;
+                const hue = (i / bufferLength) * 360;
+                
+                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                
+                x += barWidth + 1;
+            }
+        }
+
+        // Play note
+        function playNote(frequency, noteName) {
+            // Resume context if suspended
+            if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+
+            // Create oscillator
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+
+            // ADSR envelope
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+            gainNode.gain.linearRampToValueAtTime(0.2, audioContext.currentTime + 0.1);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.5);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(analyser);
+
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.5);
+
+            // Visual feedback
+            setActiveKey(noteName);
+            document.getElementById('freq-display').textContent = frequency.toFixed(2);
+
+            setTimeout(() => {
+                setActiveKey(null);
+                document.getElementById('freq-display').textContent = '—';
+            }, 500);
+
+            // Start visualization if not running
+            if (!animationId) {
+                drawSpectrum();
+            }
+        }
+
+        function setActiveKey(noteName) {
+            // Remove previous active state
+            if (activeKey) {
+                const prevElement = document.querySelector(`[data-note="${activeKey}"]`);
+                if (prevElement) prevElement.classList.remove('active');
+            }
+            
+            activeKey = noteName;
+            
+            // Add new active state
+            if (noteName) {
+                const element = document.querySelector(`[data-note="${noteName}"]`);
+                if (element) element.classList.add('active');
+            }
+        }
+
+        // Build keyboard
+        const keyboard = document.getElementById('keyboard');
+        const whiteKeys = notes.filter(n => n.color === 'white');
+        const blackKeys = notes.filter(n => n.color === 'black');
+
+        // Create white keys
+        whiteKeys.forEach(note => {
+            const key = document.createElement('div');
+            key.className = 'white-key';
+            key.setAttribute('data-note', note.note);
+            key.innerHTML = `
+                <div class="key-label">
+                    <div class="note-name">${note.note}</div>
+                    <div class="key-hint">${note.key}</div>
+                </div>
+            `;
+            key.addEventListener('click', () => playNote(note.freq, note.note));
+            keyboard.appendChild(key);
+        });
+
+// Create black keys
+blackKeys.forEach((note) => {
+    // Count white keys that come before this black key in the array
+    const whiteKeysBefore = notes.slice(0, notes.indexOf(note)).filter(n => n.color === 'white').length;
+    
+    const key = document.createElement('div');
+    key.className = 'black-key';
+    key.setAttribute('data-note', note.note);
+    // Position: after (whiteKeysBefore - 1)th white key, centered in the gap
+    // Each white key is 60px + 4px gap = 64px spacing
+    // Black key (40px wide) should be centered at the right edge of the white key
+    key.style.left = `${(whiteKeysBefore - 1) * 64 + 42}px`;
+    key.innerHTML = `
+        <div class="key-label">
+            <div class="note-name">${note.note}</div>
+            <div class="key-hint">${note.key}</div>
+        </div>
+    `;
+    key.addEventListener('click', () => playNote(note.freq, note.note));
+    keyboard.appendChild(key);
+});
+
+        // Keyboard event handling
+        const pressedKeys = new Set();
+
+        window.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+            if (pressedKeys.has(key)) return;
+            
+            const note = notes.find(n => n.key === key);
+            if (note) {
+                pressedKeys.add(key);
+                playNote(note.freq, note.note);
+            }
+        });
+
+        window.addEventListener('keyup', (e) => {
+            pressedKeys.delete(e.key.toLowerCase());
+        });
+
+        // Start spectrum visualization
+        drawSpectrum();</script></body></html>
