@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "561cfa8a7d252814",
+      "url": "https://www.eurogamer.net/nexon-ceo-believes-its-important-to-assume-that-every-game-company-is-now-using-ai-following-arc-raiders-launch",
+      "title": "Nexon CEO believes &#34;it&#39;s important to assume that every game company is now using AI&#34; following Arc Raiders launch | Eurogamer.net",
+      "summary": "The Nexon CEO believes that it is important to assume that every game company is now using AI in their development processes, as the introduction of AI has greatly improved the efficiency of game production and live-service operations. He emphasizes that the real question is how companies can survive and remain competitive in this AI-driven landscape, suggesting that human creativity and unique strategies are crucial. However, the CEO's stance is contested, with some industry figures arguing that the normalization of AI in game development should not be assumed as a foregone conclusion.",
+      "tags": [
+        "ai",
+        "game-development",
+        "live-service",
+        "competition",
+        "creativity"
+      ],
+      "dateAdded": "2025-11-17T08:00:10.319Z"
+    },
+    {
       "id": "57600a16f0c93c6b",
       "url": "https://www.anthropic.com/engineering/code-execution-with-mcp",
       "title": "Code execution with MCP: building more efficient AI agents \\ Anthropic",
