@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "5c21afd9b5c7f97b",
+      "url": "https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking",
+      "title": "The Case That A.I. Is Thinking | The New Yorker",
+      "summary": "This article explores the debate around whether current AI systems, exemplified by ChatGPT, are truly intelligent and thinking or merely mimicking and regurgitating information. It highlights the views of proponents who believe these AI systems are demonstrating genuine understanding, as well as the arguments of critics who see them as sophisticated language models without true comprehension. The article delves into the history and technical details of how these AI systems work, while also considering the broader societal and ethical implications of their rapid development and deployment.",
+      "tags": [
+        "ai",
+        "intelligence",
+        "debate",
+        "ethics",
+        "language"
+      ],
+      "dateAdded": "2025-11-17T07:55:54.759Z"
+    },
+    {
       "id": "9c5e70bcf0b868f4",
       "url": "https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/",
       "title": "Living dangerously with Claude",
