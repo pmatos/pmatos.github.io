@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "57600a16f0c93c6b",
+      "url": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+      "title": "Code execution with MCP: building more efficient AI agents \\ Anthropic",
+      "summary": "This blog post discusses how Anthropic's Model Context Protocol (MCP) can enable more efficient interaction between AI agents and external tools and data sources. It highlights two key challenges with traditional MCP integration - tool definitions overloading the context window and intermediate tool results consuming additional tokens. The post then explores how code execution with MCP can address these issues by allowing agents to load only the tools they need and process data in the execution environment before passing results back to the model. This approach can result in significant reductions in token usage and latency, while also providing benefits around privacy and control flow.",
+      "tags": [
+        "code",
+        "execution",
+        "mcp",
+        "ai",
+        "efficiency"
+      ],
+      "dateAdded": "2025-11-17T07:58:24.596Z"
+    },
+    {
       "id": "5c21afd9b5c7f97b",
       "url": "https://www.newyorker.com/magazine/2025/11/10/the-case-that-ai-is-thinking",
       "title": "The Case That A.I. Is Thinking | The New Yorker",
