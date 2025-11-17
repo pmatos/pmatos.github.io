@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-17T08:06:59.926Z</updated>
+  <updated>2025-11-17T08:38:37.437Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -697,5 +697,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="bash" />
     <category term="cli" />
     <category term="puppeteer" />
+  </entry>
+  <entry>
+    <title>Writing a book with Quarto - by Stephen Turner</title>
+    <link href="https://blog.stephenturner.us/p/quarto-books" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-5f930f85788c9429" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-5f930f85788c9429</id>
+    <updated>2025-11-17T08:38:37.437Z</updated>
+    <summary type="text">This webpage describes the author&#39;s experience of converting his old course website, made up of RMarkdown documents, into a polished e-book using Quarto, the successor to RMarkdown. It highlights the ease of the process, as the RMarkdown documents &quot;just worked&quot; with Quarto, and the author was able to publish the book on GitHub Pages with minimal effort. The webpage also provides an overview of Quarto&#39;s capabilities, including its support for different output formats, interactive code blocks, and new features like Quarto Manuscripts and Quarto Dashboards.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage describes the author&#39;s experience of converting his old course website, made up of RMarkdown documents, into a polished e-book using Quarto, the successor to RMarkdown. It highlights the ease of the process, as the RMarkdown documents &quot;just worked&quot; with Quarto, and the author was able to publish the book on GitHub Pages with minimal effort. The webpage also provides an overview of Quarto&#39;s capabilities, including its support for different output formats, interactive code blocks, and new features like Quarto Manuscripts and Quarto Dashboards.</p>
+      <p><strong>Tags:</strong>
+          #quarto, 
+          #rmarkdown, 
+          #ebook, 
+          #github-pages, 
+          #publishing
+      </p>
+      <p><a href="https://blog.stephenturner.us/p/quarto-books" target="_blank" rel="noopener noreferrer">🔗 https://blog.stephenturner.us/p/quarto-books</a></p>
+    ]]></content>
+    <category term="quarto" />
+    <category term="rmarkdown" />
+    <category term="ebook" />
+    <category term="github-pages" />
+    <category term="publishing" />
   </entry>
 </feed>
