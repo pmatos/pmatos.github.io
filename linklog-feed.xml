@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-17T07:55:54.759Z</updated>
+  <updated>2025-11-17T07:58:24.596Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -601,5 +601,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="debate" />
     <category term="ethics" />
     <category term="language" />
+  </entry>
+  <entry>
+    <title>Code execution with MCP: building more efficient AI agents &#92; Anthropic</title>
+    <link href="https://www.anthropic.com/engineering/code-execution-with-mcp" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-57600a16f0c93c6b" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-57600a16f0c93c6b</id>
+    <updated>2025-11-17T07:58:24.596Z</updated>
+    <summary type="text">This blog post discusses how Anthropic&#39;s Model Context Protocol (MCP) can enable more efficient interaction between AI agents and external tools and data sources. It highlights two key challenges with traditional MCP integration - tool definitions overloading the context window and intermediate tool results consuming additional tokens. The post then explores how code execution with MCP can address these issues by allowing agents to load only the tools they need and process data in the execution environment before passing results back to the model. This approach can result in significant reductions in token usage and latency, while also providing benefits around privacy and control flow.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses how Anthropic&#39;s Model Context Protocol (MCP) can enable more efficient interaction between AI agents and external tools and data sources. It highlights two key challenges with traditional MCP integration - tool definitions overloading the context window and intermediate tool results consuming additional tokens. The post then explores how code execution with MCP can address these issues by allowing agents to load only the tools they need and process data in the execution environment before passing results back to the model. This approach can result in significant reductions in token usage and latency, while also providing benefits around privacy and control flow.</p>
+      <p><strong>Tags:</strong>
+          #code, 
+          #execution, 
+          #mcp, 
+          #ai, 
+          #efficiency
+      </p>
+      <p><a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener noreferrer">🔗 https://www.anthropic.com/engineering/code-execution-with-mcp</a></p>
+    ]]></content>
+    <category term="code" />
+    <category term="execution" />
+    <category term="mcp" />
+    <category term="ai" />
+    <category term="efficiency" />
   </entry>
 </feed>
