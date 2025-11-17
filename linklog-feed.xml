@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-17T08:03:59.197Z</updated>
+  <updated>2025-11-17T08:06:59.926Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -673,5 +673,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="health" />
     <category term="prevention" />
     <category term="testing" />
+  </entry>
+  <entry>
+    <title>What if you don&#39;t need MCP at all?</title>
+    <link href="https://mariozechner.at/posts/2025-11-02-what-if-you-dont-need-mcp/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-71a15cbba1874e7d" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-71a15cbba1874e7d</id>
+    <updated>2025-11-17T08:06:59.926Z</updated>
+    <summary type="text">This article discusses the author&#39;s experience with using Bash scripts and minimal CLI tools instead of a full-featured MCP (Multi-Command Protocol) server for common browser automation tasks. The author argues that for specific use cases like web frontend development and web scraping, a simple set of CLI tools can be more effective and composable than a feature-rich MCP server. The article provides examples of how the author has implemented a suite of browser automation tools using Puppeteer Core and Bash, demonstrating that this approach can be efficient and easily extensible for an agent.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the author&#39;s experience with using Bash scripts and minimal CLI tools instead of a full-featured MCP (Multi-Command Protocol) server for common browser automation tasks. The author argues that for specific use cases like web frontend development and web scraping, a simple set of CLI tools can be more effective and composable than a feature-rich MCP server. The article provides examples of how the author has implemented a suite of browser automation tools using Puppeteer Core and Bash, demonstrating that this approach can be efficient and easily extensible for an agent.</p>
+      <p><strong>Tags:</strong>
+          #browser, 
+          #automation, 
+          #bash, 
+          #cli, 
+          #puppeteer
+      </p>
+      <p><a href="https://mariozechner.at/posts/2025-11-02-what-if-you-dont-need-mcp/" target="_blank" rel="noopener noreferrer">🔗 https://mariozechner.at/posts/2025-11-02-what-if-you-dont-need-mcp/</a></p>
+    ]]></content>
+    <category term="browser" />
+    <category term="automation" />
+    <category term="bash" />
+    <category term="cli" />
+    <category term="puppeteer" />
   </entry>
 </feed>
