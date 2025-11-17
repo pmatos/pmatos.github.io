@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "5f930f85788c9429",
+      "url": "https://blog.stephenturner.us/p/quarto-books",
+      "title": "Writing a book with Quarto - by Stephen Turner",
+      "summary": "This webpage describes the author's experience of converting his old course website, made up of RMarkdown documents, into a polished e-book using Quarto, the successor to RMarkdown. It highlights the ease of the process, as the RMarkdown documents \"just worked\" with Quarto, and the author was able to publish the book on GitHub Pages with minimal effort. The webpage also provides an overview of Quarto's capabilities, including its support for different output formats, interactive code blocks, and new features like Quarto Manuscripts and Quarto Dashboards.",
+      "tags": [
+        "quarto",
+        "rmarkdown",
+        "ebook",
+        "github-pages",
+        "publishing"
+      ],
+      "dateAdded": "2025-11-17T08:38:37.437Z"
+    },
+    {
       "id": "71a15cbba1874e7d",
       "url": "https://mariozechner.at/posts/2025-11-02-what-if-you-dont-need-mcp/",
       "title": "What if you don't need MCP at all?",
