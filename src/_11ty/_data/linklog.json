@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "71a15cbba1874e7d",
+      "url": "https://mariozechner.at/posts/2025-11-02-what-if-you-dont-need-mcp/",
+      "title": "What if you don't need MCP at all?",
+      "summary": "This article discusses the author's experience with using Bash scripts and minimal CLI tools instead of a full-featured MCP (Multi-Command Protocol) server for common browser automation tasks. The author argues that for specific use cases like web frontend development and web scraping, a simple set of CLI tools can be more effective and composable than a feature-rich MCP server. The article provides examples of how the author has implemented a suite of browser automation tools using Puppeteer Core and Bash, demonstrating that this approach can be efficient and easily extensible for an agent.",
+      "tags": [
+        "browser",
+        "automation",
+        "bash",
+        "cli",
+        "puppeteer"
+      ],
+      "dateAdded": "2025-11-17T08:06:59.926Z"
+    },
+    {
       "id": "b98fa9d4fcf63628",
       "url": "https://myticker.com/",
       "title": "Ticker: Don’t Die of Heart Disease",
