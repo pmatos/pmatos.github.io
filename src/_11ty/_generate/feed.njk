@@ -27,6 +27,7 @@
     <email>{{ metadata.author.email }}</email>
   </author>
   {%- for post in collections.all | reverse %}
+  {%- if post.url and post.url.startsWith('/blog/') %}
   {%- set absolutePostUrl = post.url | url | absoluteUrl(metadata.url) %}
   <entry>
     <title>{{ post.data.title }}</title>
@@ -35,5 +36,6 @@
     <id>{{ absolutePostUrl }}</id>
     <content xml:lang="{{ metadata.language }}" type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
   </entry>
+  {%- endif %}
   {%- endfor %}
 </feed>
