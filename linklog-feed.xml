@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-17T07:58:24.596Z</updated>
+  <updated>2025-11-17T08:00:10.319Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -625,5 +625,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="mcp" />
     <category term="ai" />
     <category term="efficiency" />
+  </entry>
+  <entry>
+    <title>Nexon CEO believes &amp;#34;it&amp;#39;s important to assume that every game company is now using AI&amp;#34; following Arc Raiders launch | Eurogamer.net</title>
+    <link href="https://www.eurogamer.net/nexon-ceo-believes-its-important-to-assume-that-every-game-company-is-now-using-ai-following-arc-raiders-launch" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-561cfa8a7d252814" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-561cfa8a7d252814</id>
+    <updated>2025-11-17T08:00:10.319Z</updated>
+    <summary type="text">The Nexon CEO believes that it is important to assume that every game company is now using AI in their development processes, as the introduction of AI has greatly improved the efficiency of game production and live-service operations. He emphasizes that the real question is how companies can survive and remain competitive in this AI-driven landscape, suggesting that human creativity and unique strategies are crucial. However, the CEO&#39;s stance is contested, with some industry figures arguing that the normalization of AI in game development should not be assumed as a foregone conclusion.</summary>
+    <content type="html"><![CDATA[
+      <p>The Nexon CEO believes that it is important to assume that every game company is now using AI in their development processes, as the introduction of AI has greatly improved the efficiency of game production and live-service operations. He emphasizes that the real question is how companies can survive and remain competitive in this AI-driven landscape, suggesting that human creativity and unique strategies are crucial. However, the CEO&#39;s stance is contested, with some industry figures arguing that the normalization of AI in game development should not be assumed as a foregone conclusion.</p>
+      <p><strong>Tags:</strong>
+          #ai, 
+          #game-development, 
+          #live-service, 
+          #competition, 
+          #creativity
+      </p>
+      <p><a href="https://www.eurogamer.net/nexon-ceo-believes-its-important-to-assume-that-every-game-company-is-now-using-ai-following-arc-raiders-launch" target="_blank" rel="noopener noreferrer">🔗 https://www.eurogamer.net/nexon-ceo-believes-its-important-to-assume-that-every-game-company-is-now-using-ai-following-arc-raiders-launch</a></p>
+    ]]></content>
+    <category term="ai" />
+    <category term="game-development" />
+    <category term="live-service" />
+    <category term="competition" />
+    <category term="creativity" />
   </entry>
 </feed>
