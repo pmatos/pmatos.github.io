@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-17T08:38:37.437Z</updated>
+  <updated>2025-11-24T14:37:22.095Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -721,5 +721,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="ebook" />
     <category term="github-pages" />
     <category term="publishing" />
+  </entry>
+  <entry>
+    <title>GitHub - AnandChowdhary/continuous-claude: 🔂 Run Claude Code in a continuous loop, autonomously creating PRs, waiting for checks, and merging</title>
+    <link href="https://github.com/AnandChowdhary/continuous-claude" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-e9069e64906d62dc" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-e9069e64906d62dc</id>
+    <updated>2025-11-24T14:37:22.095Z</updated>
+    <summary type="text">This repository presents &quot;Continuous Claude&quot;, a tool that runs Claude AI code in a continuous loop to autonomously create pull requests, wait for checks, and merge changes, enabling multi-step projects to be completed without manual intervention. The tool persists context across iterations using a shared Markdown file, allowing the AI to build on previous progress and leave notes for future iterations. The goal is to provide a more robust and self-improving approach to AI-driven development compared to one-off AI code runs.</summary>
+    <content type="html"><![CDATA[
+      <p>This repository presents &quot;Continuous Claude&quot;, a tool that runs Claude AI code in a continuous loop to autonomously create pull requests, wait for checks, and merge changes, enabling multi-step projects to be completed without manual intervention. The tool persists context across iterations using a shared Markdown file, allowing the AI to build on previous progress and leave notes for future iterations. The goal is to provide a more robust and self-improving approach to AI-driven development compared to one-off AI code runs.</p>
+      <p><strong>Tags:</strong>
+          #continuous, 
+          #claude, 
+          #github, 
+          #ai, 
+          #automation
+      </p>
+      <p><a href="https://github.com/AnandChowdhary/continuous-claude" target="_blank" rel="noopener noreferrer">🔗 https://github.com/AnandChowdhary/continuous-claude</a></p>
+    ]]></content>
+    <category term="continuous" />
+    <category term="claude" />
+    <category term="github" />
+    <category term="ai" />
+    <category term="automation" />
   </entry>
 </feed>
