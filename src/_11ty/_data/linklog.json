@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "ffbd2bdde3c36b15",
+      "url": "https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably",
+      "title": "How to Make Claude Code Skills Activate Reliably - Scott Spence",
+      "summary": "This article details the author's efforts to improve the reliability of Claude's code skills activation. After finding that a simple approach only had a 50% success rate, the author built a testing framework to measure different hook configurations. The results show that a \"forced eval\" hook approach achieved an 84% success rate, while a cheaper \"LLM eval\" hook had more variable results. The author provides the specific hook scripts and recommendations on which approach to use based on the project's needs and priorities. The article highlights the author's systematic approach to solving this challenge with Claude and provides a useful testing framework for others to try.",
+      "tags": [
+        "coding",
+        "reliability",
+        "testing",
+        "llm",
+        "framework"
+      ],
+      "dateAdded": "2025-11-24T14:41:29.898Z"
+    },
+    {
       "id": "e9069e64906d62dc",
       "url": "https://github.com/AnandChowdhary/continuous-claude",
       "title": "GitHub - AnandChowdhary/continuous-claude: 🔂 Run Claude Code in a continuous loop, autonomously creating PRs, waiting for checks, and merging",
