@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "46a253bc46acec57",
+      "url": "https://arize.com/blog/claude-md-best-practices-learned-from-optimizing-claude-code-with-prompt-learning/",
+      "title": "Claude.md: Best Practices for Optimizing with Prompt Learning",
+      "summary": "No Summary",
+      "tags": [
+        "prompt-learning",
+        "optimization",
+        "best-practices",
+        "claude",
+        "ai"
+      ],
+      "dateAdded": "2025-11-24T14:46:24.464Z"
+    },
+    {
       "id": "ffbd2bdde3c36b15",
       "url": "https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably",
       "title": "How to Make Claude Code Skills Activate Reliably - Scott Spence",
