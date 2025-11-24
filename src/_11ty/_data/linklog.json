@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "e9069e64906d62dc",
+      "url": "https://github.com/AnandChowdhary/continuous-claude",
+      "title": "GitHub - AnandChowdhary/continuous-claude: 🔂 Run Claude Code in a continuous loop, autonomously creating PRs, waiting for checks, and merging",
+      "summary": "This repository presents \"Continuous Claude\", a tool that runs Claude AI code in a continuous loop to autonomously create pull requests, wait for checks, and merge changes, enabling multi-step projects to be completed without manual intervention. The tool persists context across iterations using a shared Markdown file, allowing the AI to build on previous progress and leave notes for future iterations. The goal is to provide a more robust and self-improving approach to AI-driven development compared to one-off AI code runs.",
+      "tags": [
+        "continuous",
+        "claude",
+        "github",
+        "ai",
+        "automation"
+      ],
+      "dateAdded": "2025-11-24T14:37:22.095Z"
+    },
+    {
       "id": "5f930f85788c9429",
       "url": "https://blog.stephenturner.us/p/quarto-books",
       "title": "Writing a book with Quarto - by Stephen Turner",
