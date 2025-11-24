@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-24T14:37:22.095Z</updated>
+  <updated>2025-11-24T14:41:29.898Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -745,5 +745,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="github" />
     <category term="ai" />
     <category term="automation" />
+  </entry>
+  <entry>
+    <title>How to Make Claude Code Skills Activate Reliably - Scott Spence</title>
+    <link href="https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-ffbd2bdde3c36b15" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-ffbd2bdde3c36b15</id>
+    <updated>2025-11-24T14:41:29.898Z</updated>
+    <summary type="text">This article details the author&#39;s efforts to improve the reliability of Claude&#39;s code skills activation. After finding that a simple approach only had a 50% success rate, the author built a testing framework to measure different hook configurations. The results show that a &quot;forced eval&quot; hook approach achieved an 84% success rate, while a cheaper &quot;LLM eval&quot; hook had more variable results. The author provides the specific hook scripts and recommendations on which approach to use based on the project&#39;s needs and priorities. The article highlights the author&#39;s systematic approach to solving this challenge with Claude and provides a useful testing framework for others to try.</summary>
+    <content type="html"><![CDATA[
+      <p>This article details the author&#39;s efforts to improve the reliability of Claude&#39;s code skills activation. After finding that a simple approach only had a 50% success rate, the author built a testing framework to measure different hook configurations. The results show that a &quot;forced eval&quot; hook approach achieved an 84% success rate, while a cheaper &quot;LLM eval&quot; hook had more variable results. The author provides the specific hook scripts and recommendations on which approach to use based on the project&#39;s needs and priorities. The article highlights the author&#39;s systematic approach to solving this challenge with Claude and provides a useful testing framework for others to try.</p>
+      <p><strong>Tags:</strong>
+          #coding, 
+          #reliability, 
+          #testing, 
+          #llm, 
+          #framework
+      </p>
+      <p><a href="https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably" target="_blank" rel="noopener noreferrer">🔗 https://scottspence.com/posts/how-to-make-claude-code-skills-activate-reliably</a></p>
+    ]]></content>
+    <category term="coding" />
+    <category term="reliability" />
+    <category term="testing" />
+    <category term="llm" />
+    <category term="framework" />
   </entry>
 </feed>
