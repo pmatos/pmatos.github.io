@@ -4,9 +4,9 @@ module.exports = {
   //  
   language: "en-US",
   lang: "EN",
-  siteName: "pmatos rambles",
-  shortName: "pmatos",
-  motto: "Programming, sports and music - oh wow - enjoy!",
+  siteName: "Notes & Code",
+  shortName: "Notes & Code",
+  motto: "Programming, music, and the occasional tangent",
   authorName: "Paulo Matos",
   siteDescription: "",
   sitekeyword: "",
