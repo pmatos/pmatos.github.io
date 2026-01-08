@@ -75,7 +75,13 @@ async def analyze_paragraph(
         response.raise_for_status()
         data = response.json()
 
-        content = data["content"][0]["text"]
+        content = data["content"][0]["text"].strip()
+        if content.startswith("```"):
+            lines = content.split("\n")
+            lines = lines[1:]  # Remove opening ```json or ```
+            if lines and lines[-1].strip() == "```":
+                lines = lines[:-1]  # Remove closing ```
+            content = "\n".join(lines)
         try:
             return json.loads(content)
         except json.JSONDecodeError:
