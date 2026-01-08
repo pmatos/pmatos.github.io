@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "fb2f2e3d9ef5d4ae",
+      "url": "https://petovita.com",
+      "title": "PetoVita - Your Life Story, One Question at a Time",
+      "summary": "PetoVita is a story journal that uses weekly email prompts to help users preserve their life stories. By simply replying to the prompts, the service's AI automatically weaves the responses into a cohesive, evolving narrative of the user's life. This allows people to effortlessly capture and preserve important memories and moments that might otherwise be forgotten over time.",
+      "tags": [
+        "saas",
+        "genai",
+        "life",
+        "biography",
+        "reflection"
+      ],
+      "dateAdded": "2026-01-08T14:08:34.461Z"
+    },
+    {
       "id": "46a253bc46acec57",
       "url": "https://arize.com/blog/claude-md-best-practices-learned-from-optimizing-claude-code-with-prompt-learning/",
       "title": "Claude.md: Best Practices for Optimizing with Prompt Learning",
