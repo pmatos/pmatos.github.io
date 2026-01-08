@@ -8,7 +8,7 @@ import httpx
 from ..config import get_api_key
 
 API_URL = "https://api.anthropic.com/v1/messages"
-MODEL = "claude-sonnet-4-5-20250514"
+MODEL = "claude-sonnet-4-5"
 
 
 def build_analysis_prompt(
