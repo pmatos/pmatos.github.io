@@ -1,0 +1,137 @@
+---
+title: Home
+description: Paulo Matos - Software engineer, compiler enthusiast, pianist
+keyword: programming, compilers, music, webassembly, javascript
+type: website
+---
+<!DOCTYPE html>
+<html lang="en">
+{% include "head-website.njk" %}
+<body class="home-page">
+    {% include "nav.njk" %}
+
+    <main class="home-main">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">whoami</span>
+                    <span class="cursor"></span>
+                </div>
+
+                <h1 class="hero-name">Paulo Matos</h1>
+
+                <p class="hero-tagline">
+                    Software engineer crafting <span class="highlight">compilers</span>,
+                    <span class="highlight">JavaScript engines</span>, and
+                    <span class="highlight">WebAssembly</span> by day.
+                    <br>
+                    <span class="music-note">♪</span> Pianist by night.
+                </p>
+
+                <div class="interest-chips">
+                    <span class="chip chip-tech" data-tooltip="LLVM, GCC, V8, JSC">Compiler Internals</span>
+                    <span class="chip chip-tech" data-tooltip="Spec implementations & tooling">WebAssembly</span>
+                    <span class="chip chip-tech" data-tooltip="JavaScriptCore deep-dives">JSC</span>
+                    <span class="chip chip-music" data-tooltip="Classical & contemporary">Piano</span>
+                </div>
+            </div>
+
+            <div class="hero-decoration">
+                <svg class="staff-lines" viewBox="0 0 100 60" preserveAspectRatio="none">
+                    <line x1="0" y1="10" x2="100" y2="10" />
+                    <line x1="0" y1="22" x2="100" y2="22" />
+                    <line x1="0" y1="34" x2="100" y2="34" />
+                    <line x1="0" y1="46" x2="100" y2="46" />
+                    <line x1="0" y1="58" x2="100" y2="58" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="section-marker">
+                <span class="line-number">01</span>
+            </div>
+            <div class="section-content">
+                <p class="about-text">
+                    This site is where I share technical notes, project updates, and occasional tangents about the things I'm learning. Think of it as a public notebook—part documentation, part exploration.
+                </p>
+            </div>
+        </section>
+
+        <section class="explore-section">
+            <div class="section-marker">
+                <span class="line-number">02</span>
+            </div>
+            <div class="explore-grid">
+                <a href="/blog.html" class="explore-card explore-card-blog">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                        </svg>
+                    </div>
+                    <h3>Blog</h3>
+                    <p>Technical deep-dives into compiler internals, WebAssembly, and low-level systems</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="/linklog.html" class="explore-card explore-card-links">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                        </svg>
+                    </div>
+                    <h3>Link Log</h3>
+                    <p>Interesting reads, tools, and resources I've collected along the way</p>
+                    <span class="card-arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-terminal">
+                <span class="prompt">$</span>
+                <span class="command">cat /dev/curiosity</span>
+            </div>
+            <p class="cta-text">
+                Want to know more? Check out the <a href="/about-me.html">About</a> page,
+                or find me on <a href="https://github.com/{{meta.githubUser}}" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+        </section>
+    </main>
+
+    {% include "footer.njk" %}
+
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <script>
+        const toggle = document.getElementById('darkToggle');
+        const html = document.documentElement;
+
+        if (localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
