@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blog Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/htmx.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍</text></svg>">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-brand">Blog Dashboard</a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/links" class="nav-link">Links</a>
+            <a href="/drafts" class="nav-link">Drafts</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <span style="font-family: 'JetBrains Mono', monospace; color: var(--color-syntax-green);">></span>
+        Local writing dashboard for <a href="https://p.ocmatos.com" target="_blank" style="text-decoration: none; color: var(--color-accent);">p.ocmatos.com</a>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="terminal-line">
+        <span class="prompt">~</span>
+        <span class="command">dashboard --status</span>
+        <span class="cursor"></span>
+    </div>
+    <h1>Blog Dashboard</h1>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-value">{{ pending_links }}</div>
+            <div class="stat-label">Pending Links</div>
+        </div>
+        <div class="stat-card {% if failed_links > 0 %}stat-warning{% endif %}">
+            <div class="stat-value">{{ failed_links }}</div>
+            <div class="stat-label">Failed Links</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ draft_count }}</div>
+            <div class="stat-label">Drafts</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Quick Add Link</h2>
+        <form hx-post="/api/links/" hx-target="#quick-result" hx-swap="innerHTML" class="quick-form">
+            <input type="url" name="url" placeholder="https://..." required class="input">
+            <input type="text" name="tags" placeholder="#tag1 #tag2" class="input">
+            <button type="submit" class="btn btn-primary">Add to Queue</button>
+        </form>
+        <div id="quick-result" class="result-message"></div>
+    </div>
+
+    <div class="grid-2">
+        <div class="section">
+            <h2>Recent Links</h2>
+            {% if recent_links %}
+            <ul class="item-list">
+                {% for link in recent_links %}
+                <li class="item">
+                    <span class="status-badge status-{{ link.status }}">{{ link.status }}</span>
+                    <a href="{{ link.url }}" target="_blank" class="item-link">{{ link.url | truncate(50) }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="/links" class="btn btn-secondary">View All Links</a>
+            {% else %}
+            <p class="empty-state">No links in queue</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Recent Drafts</h2>
+            {% if recent_drafts %}
+            <ul class="item-list">
+                {% for draft in recent_drafts %}
+                <li class="item">
+                    <span class="status-badge status-{{ draft.status }}">{{ draft.status }}</span>
+                    <a href="/drafts/{{ draft.id }}/edit" class="item-link">{{ draft.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="/drafts" class="btn btn-secondary">View All Drafts</a>
+            {% else %}
+            <p class="empty-state">No drafts yet</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

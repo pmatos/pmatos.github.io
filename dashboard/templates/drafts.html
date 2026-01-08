@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Drafts{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Drafts</h1>
+
+    <div class="section">
+        <h2>Create New Draft</h2>
+        <form hx-post="/api/drafts/" hx-target="#draft-list" hx-swap="afterbegin" hx-on::after-request="this.reset()" class="add-form">
+            <input type="text" name="title" placeholder="Draft title..." required class="input">
+            <button type="submit" class="btn btn-primary">Create Draft</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>All Drafts</h2>
+        <div id="draft-list">
+            {% if drafts %}
+            <div class="draft-grid">
+                {% for draft in drafts %}
+                <div class="draft-card" id="draft-{{ draft.id }}">
+                    <div class="draft-header">
+                        <span class="status-badge status-{{ draft.status }}">{{ draft.status }}</span>
+                        <span class="draft-date">{{ draft.updated_at }}</span>
+                    </div>
+                    <h3 class="draft-title">{{ draft.title }}</h3>
+                    {% if draft.description %}
+                    <p class="draft-description">{{ draft.description | truncate(100) }}</p>
+                    {% endif %}
+                    <div class="draft-actions">
+                        <a href="/drafts/{{ draft.id }}/edit" class="btn btn-primary">Edit</a>
+                        <button hx-delete="/api/drafts/{{ draft.id }}" hx-target="#draft-{{ draft.id }}" hx-swap="outerHTML" hx-confirm="Delete this draft?" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">No drafts yet. Create one above!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

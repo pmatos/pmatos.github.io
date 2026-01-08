@@ -15,3 +15,9 @@ src/_11ty/_social
 
 .llog.lock
 src/_11ty/_data/linklog.json.backup
+
+# Dashboard
+dashboard.db
+__pycache__/
+*.pyc
+.venv/

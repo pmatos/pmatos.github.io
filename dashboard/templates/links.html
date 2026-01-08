@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Link Queue{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Link Queue</h1>
+
+    <div class="section">
+        <h2>Add Link</h2>
+        <form hx-post="/api/links/" hx-target="#link-list" hx-swap="afterbegin" hx-on::after-request="this.reset()" class="add-form">
+            <input type="url" name="url" placeholder="https://..." required class="input">
+            <input type="text" name="tags" placeholder="#tag1 #tag2" class="input">
+            <button type="submit" class="btn btn-primary">Add to Queue</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2>Queue</h2>
+            <button hx-post="/api/links/process" hx-target="#process-result" hx-swap="innerHTML" hx-indicator="#processing-spinner" class="btn btn-primary">
+                <span id="processing-spinner" class="htmx-indicator">Processing...</span>
+                <span>Process Next Link</span>
+            </button>
+        </div>
+        <div id="process-result" class="result-message"></div>
+
+        <div id="link-list">
+            {% if links %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>Tags</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for link in links %}
+                    <tr id="link-{{ link.id }}">
+                        <td><a href="{{ link.url }}" target="_blank">{{ link.url | truncate(60) }}</a></td>
+                        <td>
+                            {% if link.tags %}
+                                {% for tag in link.tags | tojson | fromjson %}
+                                <span class="tag">#{{ tag }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                        <td><span class="status-badge status-{{ link.status }}">{{ link.status }}</span></td>
+                        <td>{{ link.created_at }}</td>
+                        <td class="actions">
+                            {% if link.status == 'failed' %}
+                            <button hx-post="/api/links/{{ link.id }}/retry" hx-target="#link-{{ link.id }}" hx-swap="outerHTML" class="btn btn-small">Retry</button>
+                            <button hx-get="/api/links/{{ link.id }}/error" hx-target="#error-modal-content" hx-swap="innerHTML" onclick="showErrorModal()" class="btn btn-small btn-warning">Error</button>
+                            {% endif %}
+                            <button hx-delete="/api/links/{{ link.id }}" hx-target="#link-{{ link.id }}" hx-swap="outerHTML" hx-confirm="Delete this link?" class="btn btn-small btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="empty-state">No links in queue. Add one above!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div id="error-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <button onclick="hideErrorModal()" class="modal-close">&times;</button>
+        <h3>Error Details</h3>
+        <div id="error-modal-content"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showErrorModal() {
+    document.getElementById('error-modal').style.display = 'flex';
+}
+function hideErrorModal() {
+    document.getElementById('error-modal').style.display = 'none';
+}
+</script>
+{% endblock %}

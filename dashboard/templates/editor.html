@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Edit: {{ draft.title }}{% endblock %}
+
+{% block content %}
+<div class="editor-container">
+    <div class="editor-header">
+        <div class="editor-meta">
+            <input type="text" id="title" value="{{ draft.title }}" placeholder="Title" class="input input-title" data-draft-id="{{ draft.id }}">
+            <input type="text" id="description" value="{{ draft.description or '' }}" placeholder="Description (for meta)" class="input">
+            <input type="text" id="tags" value="{{ draft.tags | tojson | fromjson | join(', ') if draft.tags else '' }}" placeholder="Tags (comma-separated)" class="input">
+        </div>
+        <div class="editor-actions">
+            <button id="save-btn" class="btn btn-secondary">Save</button>
+            <button id="analyze-btn" class="btn btn-primary">Analyze</button>
+            <button id="publish-btn" class="btn btn-success">Publish</button>
+        </div>
+    </div>
+
+    <div class="editor-body">
+        <div class="editor-left">
+            <div class="editor-section">
+                <label>Audience Notes (for AI context)</label>
+                <textarea id="audience-notes" placeholder="Describe your target audience, tone, and any specific guidelines..." class="input textarea-small">{{ draft.audience_notes or '' }}</textarea>
+            </div>
+
+            <div class="editor-section editor-main">
+                <label>Content (Markdown)</label>
+                <textarea id="content" placeholder="Write your blog post here..." class="editor-textarea">{{ draft.content or '' }}</textarea>
+            </div>
+        </div>
+
+        <div class="editor-right">
+            <div class="analysis-panel">
+                <h3>AI Analysis</h3>
+                <div id="analysis-content">
+                    {% if draft.ai_analysis %}
+                        {% set analysis = draft.ai_analysis | tojson | fromjson %}
+                        {% for item in analysis %}
+                        <div class="analysis-item">
+                            <div class="analysis-header">
+                                <span class="analysis-index">Paragraph {{ item.paragraph_index + 1 }}</span>
+                                <span class="rating-badge rating-{{ item.overall_rating | replace('_', '-') }}">{{ item.overall_rating }}</span>
+                            </div>
+                            <p class="analysis-paragraph">{{ item.paragraph_text | truncate(150) }}</p>
+                            <p class="analysis-summary"><strong>Summary:</strong> {{ item.summary }}</p>
+                            <p class="analysis-flow"><strong>Flow:</strong> {{ item.flow_with_context }}</p>
+                            {% if item.suggestions %}
+                            <div class="suggestions">
+                                <strong>Suggestions:</strong>
+                                {% for sugg in item.suggestions %}
+                                <div class="suggestion suggestion-{{ sugg.type }}">
+                                    <span class="suggestion-type">{{ sugg.type }}</span>
+                                    <p>{{ sugg.description }}</p>
+                                    {% if sugg.example %}
+                                    <pre class="suggestion-example">{{ sugg.example }}</pre>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                    <p class="empty-state">Click "Analyze" to get AI feedback on your writing.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="publish-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Publish Post</h3>
+        <p>Are you sure you want to publish "<strong id="publish-title"></strong>"?</p>
+        <p>This will:</p>
+        <ul>
+            <li>Create a markdown file in src/blog/</li>
+            <li>Build the site</li>
+            <li>Commit and push to git</li>
+        </ul>
+        <div class="modal-actions">
+            <button onclick="hidePublishModal()" class="btn btn-secondary">Cancel</button>
+            <button id="confirm-publish-btn" class="btn btn-success">Publish</button>
+        </div>
+        <div id="publish-status" class="result-message"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/editor.js"></script>
+{% endblock %}
