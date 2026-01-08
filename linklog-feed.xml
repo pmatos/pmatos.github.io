@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-08T14:08:34.461Z</updated>
+  <updated>2026-01-08T14:16:00.585Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -817,5 +817,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="life" />
     <category term="biography" />
     <category term="reflection" />
+  </entry>
+  <entry>
+    <title>Music Practice Tracker - Rightkey</title>
+    <link href="https://rightkey.app" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1219a739acf35b06" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1219a739acf35b06</id>
+    <updated>2026-01-08T14:16:00.585Z</updated>
+    <summary type="text">The webpage describes a &quot;Music Practice Tracker&quot; app called Rightkey, which is currently in early development. The app aims to help musicians track their practice sessions, organize their repertoire, and monitor their progress over time. Key features include a practice timer, a repertoire management system, and data visualization of practice statistics. The app is marketed as a tool to help musicians stay consistent and practice more effectively.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage describes a &quot;Music Practice Tracker&quot; app called Rightkey, which is currently in early development. The app aims to help musicians track their practice sessions, organize their repertoire, and monitor their progress over time. Key features include a practice timer, a repertoire management system, and data visualization of practice statistics. The app is marketed as a tool to help musicians stay consistent and practice more effectively.</p>
+      <p><strong>Tags:</strong>
+          #saas, 
+          #music, 
+          #practice, 
+          #productivity, 
+          #analytics
+      </p>
+      <p><a href="https://rightkey.app" target="_blank" rel="noopener noreferrer">🔗 https://rightkey.app</a></p>
+    ]]></content>
+    <category term="saas" />
+    <category term="music" />
+    <category term="practice" />
+    <category term="productivity" />
+    <category term="analytics" />
   </entry>
 </feed>
