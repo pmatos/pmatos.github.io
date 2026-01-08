@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2025-11-24T14:46:24.464Z</updated>
+  <updated>2026-01-08T14:08:34.461Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -793,5 +793,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="best-practices" />
     <category term="claude" />
     <category term="ai" />
+  </entry>
+  <entry>
+    <title>PetoVita - Your Life Story, One Question at a Time</title>
+    <link href="https://petovita.com" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-fb2f2e3d9ef5d4ae" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-fb2f2e3d9ef5d4ae</id>
+    <updated>2026-01-08T14:08:34.461Z</updated>
+    <summary type="text">PetoVita is a story journal that uses weekly email prompts to help users preserve their life stories. By simply replying to the prompts, the service&#39;s AI automatically weaves the responses into a cohesive, evolving narrative of the user&#39;s life. This allows people to effortlessly capture and preserve important memories and moments that might otherwise be forgotten over time.</summary>
+    <content type="html"><![CDATA[
+      <p>PetoVita is a story journal that uses weekly email prompts to help users preserve their life stories. By simply replying to the prompts, the service&#39;s AI automatically weaves the responses into a cohesive, evolving narrative of the user&#39;s life. This allows people to effortlessly capture and preserve important memories and moments that might otherwise be forgotten over time.</p>
+      <p><strong>Tags:</strong>
+          #saas, 
+          #genai, 
+          #life, 
+          #biography, 
+          #reflection
+      </p>
+      <p><a href="https://petovita.com" target="_blank" rel="noopener noreferrer">🔗 https://petovita.com</a></p>
+    ]]></content>
+    <category term="saas" />
+    <category term="genai" />
+    <category term="life" />
+    <category term="biography" />
+    <category term="reflection" />
   </entry>
 </feed>
