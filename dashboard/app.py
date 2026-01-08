@@ -1,5 +1,6 @@
 """FastAPI application for the blog dashboard."""
 
+import json
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -14,6 +15,15 @@ from .routers import links, drafts, ai
 DASHBOARD_DIR = Path(__file__).parent
 TEMPLATES_DIR = DASHBOARD_DIR / "templates"
 STATIC_DIR = DASHBOARD_DIR / "static"
+
+
+def parse_json_fields(items: list[dict], fields: list[str]) -> list[dict]:
+    """Parse JSON string fields into Python objects."""
+    for item in items:
+        for field in fields:
+            if item.get(field):
+                item[field] = json.loads(item[field])
+    return items
 
 
 @asynccontextmanager
@@ -36,8 +46,8 @@ app.include_router(ai.router, prefix="/api/ai", tags=["ai"])
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Dashboard home page."""
-    all_links = await db.get_links()
-    all_drafts = await db.get_drafts()
+    all_links = parse_json_fields(await db.get_links(), ["tags"])
+    all_drafts = parse_json_fields(await db.get_drafts(), ["tags", "ai_analysis"])
 
     pending_links = sum(1 for link in all_links if link["status"] == "pending")
     failed_links = sum(1 for link in all_links if link["status"] == "failed")
@@ -59,7 +69,7 @@ async def index(request: Request):
 @app.get("/links", response_class=HTMLResponse)
 async def links_page(request: Request):
     """Link queue management page."""
-    all_links = await db.get_links()
+    all_links = parse_json_fields(await db.get_links(), ["tags"])
     return templates.TemplateResponse(
         "links.html",
         {"request": request, "links": all_links},
@@ -69,7 +79,7 @@ async def links_page(request: Request):
 @app.get("/drafts", response_class=HTMLResponse)
 async def drafts_page(request: Request):
     """Drafts listing page."""
-    all_drafts = await db.get_drafts()
+    all_drafts = parse_json_fields(await db.get_drafts(), ["tags", "ai_analysis"])
     return templates.TemplateResponse(
         "drafts.html",
         {"request": request, "drafts": all_drafts},
@@ -82,6 +92,11 @@ async def editor_page(request: Request, draft_id: int):
     draft = await db.get_draft(draft_id)
     if not draft:
         return HTMLResponse("Draft not found", status_code=404)
+
+    if draft.get("tags"):
+        draft["tags"] = json.loads(draft["tags"])
+    if draft.get("ai_analysis"):
+        draft["ai_analysis"] = json.loads(draft["ai_analysis"])
 
     return templates.TemplateResponse(
         "editor.html",

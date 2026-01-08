@@ -1,14 +1,17 @@
 """API routes for link queue management."""
 
 import json
+from pathlib import Path
 
-from fastapi import APIRouter, Form, HTTPException
+from fastapi import APIRouter, Form, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 from .. import db
 from ..services.llog_runner import llog_runner
 
 router = APIRouter()
+templates = Jinja2Templates(directory=Path(__file__).parent.parent / "templates")
 
 
 @router.get("/")
@@ -21,15 +24,18 @@ async def list_links():
     return links
 
 
-@router.post("/")
-async def add_link(url: str = Form(...), tags: str = Form("")):
+@router.post("/", response_class=HTMLResponse)
+async def add_link(request: Request, url: str = Form(...), tags: str = Form("")):
     """Add a new link to the queue."""
     tag_list = [t.strip().lstrip("#") for t in tags.split() if t.strip()]
 
     try:
         link_id = await db.add_link(url, tag_list)
         link = await db.get_link(link_id)
-        return {"status": "success", "link": link}
+        link["tags"] = json.loads(link["tags"]) if link.get("tags") else []
+        return templates.TemplateResponse(
+            "_link_row.html", {"request": request, "link": link}
+        )
     except Exception as e:
         if "UNIQUE constraint failed" in str(e):
             raise HTTPException(status_code=400, detail="URL already in queue")
@@ -40,7 +46,7 @@ async def add_link(url: str = Form(...), tags: str = Form("")):
 async def delete_link(link_id: int):
     """Remove a link from the queue."""
     await db.delete_link(link_id)
-    return {"status": "deleted"}
+    return Response(status_code=200)
 
 
 @router.post("/{link_id}/retry")

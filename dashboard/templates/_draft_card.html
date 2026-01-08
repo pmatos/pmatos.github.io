@@ -1,0 +1,14 @@
+<div class="draft-card" id="draft-{{ draft.id }}">
+    <div class="draft-header">
+        <span class="status-badge status-{{ draft.status }}">{{ draft.status }}</span>
+        <span class="draft-date">{{ draft.updated_at }}</span>
+    </div>
+    <h3 class="draft-title">{{ draft.title }}</h3>
+    {% if draft.description %}
+    <p class="draft-description">{{ draft.description | truncate(100) }}</p>
+    {% endif %}
+    <div class="draft-actions">
+        <a href="/drafts/{{ draft.id }}/edit" class="btn btn-primary">Edit</a>
+        <button hx-delete="/api/drafts/{{ draft.id }}" hx-target="#draft-{{ draft.id }}" hx-swap="outerHTML" hx-confirm="Delete this draft?" class="btn btn-danger">Delete</button>
+    </div>
+</div>

@@ -8,7 +8,7 @@
         <div class="editor-meta">
             <input type="text" id="title" value="{{ draft.title }}" placeholder="Title" class="input input-title" data-draft-id="{{ draft.id }}">
             <input type="text" id="description" value="{{ draft.description or '' }}" placeholder="Description (for meta)" class="input">
-            <input type="text" id="tags" value="{{ draft.tags | tojson | fromjson | join(', ') if draft.tags else '' }}" placeholder="Tags (comma-separated)" class="input">
+            <input type="text" id="tags" value="{{ draft.tags | join(', ') if draft.tags else '' }}" placeholder="Tags (comma-separated)" class="input">
         </div>
         <div class="editor-actions">
             <button id="save-btn" class="btn btn-secondary">Save</button>
@@ -35,7 +35,7 @@
                 <h3>AI Analysis</h3>
                 <div id="analysis-content">
                     {% if draft.ai_analysis %}
-                        {% set analysis = draft.ai_analysis | tojson | fromjson %}
+                        {% set analysis = draft.ai_analysis %}
                         {% for item in analysis %}
                         <div class="analysis-item">
                             <div class="analysis-header">

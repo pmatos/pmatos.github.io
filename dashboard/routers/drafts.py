@@ -1,13 +1,17 @@
 """API routes for draft management."""
 
 import json
+from pathlib import Path
 
-from fastapi import APIRouter, Form, HTTPException
+from fastapi import APIRouter, Form, HTTPException, Request, Response
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 from .. import db
 from ..services.blog_publisher import blog_publisher
 
 router = APIRouter()
+templates = Jinja2Templates(directory=Path(__file__).parent.parent / "templates")
 
 
 @router.get("/")
@@ -22,12 +26,14 @@ async def list_drafts():
     return drafts
 
 
-@router.post("/")
-async def create_draft(title: str = Form(...)):
+@router.post("/", response_class=HTMLResponse)
+async def create_draft(request: Request, title: str = Form(...)):
     """Create a new draft."""
     draft_id = await db.create_draft(title)
     draft = await db.get_draft(draft_id)
-    return {"status": "created", "draft": draft}
+    return templates.TemplateResponse(
+        "_draft_card.html", {"request": request, "draft": draft}
+    )
 
 
 @router.get("/{draft_id}")
@@ -79,7 +85,7 @@ async def update_draft(
 async def delete_draft(draft_id: int):
     """Delete a draft."""
     await db.delete_draft(draft_id)
-    return {"status": "deleted"}
+    return Response(status_code=200)
 
 
 @router.post("/{draft_id}/publish")
