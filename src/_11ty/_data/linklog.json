@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1219a739acf35b06",
+      "url": "https://rightkey.app",
+      "title": "Music Practice Tracker - Rightkey",
+      "summary": "The webpage describes a \"Music Practice Tracker\" app called Rightkey, which is currently in early development. The app aims to help musicians track their practice sessions, organize their repertoire, and monitor their progress over time. Key features include a practice timer, a repertoire management system, and data visualization of practice statistics. The app is marketed as a tool to help musicians stay consistent and practice more effectively.",
+      "tags": [
+        "saas",
+        "music",
+        "practice",
+        "productivity",
+        "analytics"
+      ],
+      "dateAdded": "2026-01-08T14:16:00.585Z"
+    },
+    {
       "id": "fb2f2e3d9ef5d4ae",
       "url": "https://petovita.com",
       "title": "PetoVita - Your Life Story, One Question at a Time",

@@ -829,6 +829,89 @@ h3 {
     display: inline;
 }
 
+.htmx-request .htmx-hide-on-request {
+    display: none;
+}
+
+/* ========================================
+   PROGRESS DISPLAY
+   ======================================== */
+
+.progress-container {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.progress-url {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.progress-status {
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    background: var(--color-primary);
+    color: white;
+}
+
+.progress-status.success {
+    background: var(--color-success);
+}
+
+.progress-status.error {
+    background: var(--color-danger);
+}
+
+.progress-log {
+    font-family: monospace;
+    font-size: 0.8rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.75rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.progress-line {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    line-height: 1.4;
+}
+
+.progress-line:last-child {
+    border-bottom: none;
+}
+
+.success-message {
+    color: var(--color-success);
+    font-weight: 500;
+}
+
+.error-message {
+    color: var(--color-danger);
+    font-weight: 500;
+}
+
 /* ========================================
    EDITOR
    ======================================== */

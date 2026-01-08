@@ -18,10 +18,16 @@
     <div class="section">
         <div class="section-header">
             <h2>Queue</h2>
-            <button hx-post="/api/links/process" hx-target="#process-result" hx-swap="innerHTML" hx-indicator="#processing-spinner" class="btn btn-primary">
-                <span id="processing-spinner" class="htmx-indicator">Processing...</span>
-                <span>Process Next Link</span>
+            <button id="process-btn" onclick="processNextLink()" class="btn btn-primary">
+                Process Next Link
             </button>
+        </div>
+        <div id="progress-container" class="progress-container" style="display: none;">
+            <div class="progress-header">
+                <span id="progress-url" class="progress-url"></span>
+                <span id="progress-status" class="progress-status"></span>
+            </div>
+            <div class="progress-log" id="progress-log"></div>
         </div>
         <div id="process-result" class="result-message"></div>
 
@@ -65,6 +71,82 @@ function showErrorModal() {
 }
 function hideErrorModal() {
     document.getElementById('error-modal').style.display = 'none';
+}
+
+function processNextLink() {
+    const btn = document.getElementById('process-btn');
+    const progressContainer = document.getElementById('progress-container');
+    const progressLog = document.getElementById('progress-log');
+    const progressUrl = document.getElementById('progress-url');
+    const progressStatus = document.getElementById('progress-status');
+    const resultDiv = document.getElementById('process-result');
+
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+    progressContainer.style.display = 'block';
+    progressLog.innerHTML = '';
+    progressUrl.textContent = '';
+    progressStatus.textContent = 'Starting...';
+    resultDiv.innerHTML = '';
+
+    const eventSource = new EventSource('/api/links/process/stream');
+
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+
+        if (data.type === 'start') {
+            progressUrl.textContent = data.url;
+            progressStatus.textContent = 'Processing';
+        } else if (data.type === 'progress') {
+            const line = document.createElement('div');
+            line.className = 'progress-line';
+            line.textContent = data.message;
+            progressLog.appendChild(line);
+            progressLog.scrollTop = progressLog.scrollHeight;
+
+            const msg = data.message;
+            if (msg.includes('Fetching')) progressStatus.textContent = 'Fetching content...';
+            else if (msg.includes('Generating summary')) progressStatus.textContent = 'Generating summary...';
+            else if (msg.includes('Suggesting')) progressStatus.textContent = 'Suggesting tags...';
+            else if (msg.includes('Building')) progressStatus.textContent = 'Building site...';
+            else if (msg.includes('Committing')) progressStatus.textContent = 'Pushing to git...';
+            else if (msg.includes('Verifying')) progressStatus.textContent = 'Verifying deployment...';
+            else if (msg.includes('Checking deployment')) progressStatus.textContent = 'Waiting for deploy...';
+        } else if (data.type === 'complete') {
+            eventSource.close();
+            btn.disabled = false;
+            btn.textContent = 'Process Next Link';
+
+            if (data.success) {
+                progressStatus.textContent = 'Complete!';
+                progressStatus.className = 'progress-status success';
+                resultDiv.innerHTML = '<span class="success-message">Link processed successfully!</span>';
+                setTimeout(() => location.reload(), 2000);
+            } else {
+                progressStatus.textContent = 'Failed';
+                progressStatus.className = 'progress-status error';
+                resultDiv.innerHTML = '<span class="error-message">Processing failed: ' + (data.error || 'Unknown error') + '</span>';
+            }
+        } else if (data.type === 'error') {
+            eventSource.close();
+            btn.disabled = false;
+            btn.textContent = 'Process Next Link';
+            progressStatus.textContent = 'Error';
+            progressStatus.className = 'progress-status error';
+            resultDiv.innerHTML = '<span class="error-message">' + data.message + '</span>';
+            if (data.message === 'No pending links') {
+                progressContainer.style.display = 'none';
+            }
+        }
+    };
+
+    eventSource.onerror = function() {
+        eventSource.close();
+        btn.disabled = false;
+        btn.textContent = 'Process Next Link';
+        progressStatus.textContent = 'Connection lost';
+        progressStatus.className = 'progress-status error';
+    };
 }
 </script>
 {% endblock %}
