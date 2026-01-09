@@ -21,3 +21,4 @@ dashboard.db
 __pycache__/
 *.pyc
 .venv/
+.write.pid
