@@ -83,7 +83,9 @@ permalink: "blog/{{{{ title | slugify }}}}.html"
                 old_web_path = f"/img/drafts/{draft_id}/{filename}"
                 content = content.replace(old_web_path, new_web_path)
 
-        if draft_media_dir.exists() and not any(draft_media_dir.iterdir()):
+        if draft_media_dir.exists():
+            for leftover in draft_media_dir.iterdir():
+                leftover.unlink()
             draft_media_dir.rmdir()
 
         drafts_dir = MEDIA_DIR / "drafts"
