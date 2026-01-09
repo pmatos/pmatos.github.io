@@ -13,6 +13,7 @@ const analysisContent = document.getElementById('analysis-content');
 let saveTimeout = null;
 let isDirty = false;
 let easyMDE = null;
+let currentAnalysis = null;
 
 function initEditor() {
     try {
@@ -137,9 +138,11 @@ analyzeBtn.addEventListener('click', async () => {
 function renderAnalysis(analysis) {
     if (!analysis || analysis.length === 0) {
         analysisContent.innerHTML = '<p class="empty-state">No paragraphs to analyze.</p>';
+        currentAnalysis = null;
         return;
     }
 
+    currentAnalysis = analysis;
     let html = '';
     for (const item of analysis) {
         const ratingClass = item.overall_rating.replace(/_/g, '-');
@@ -152,21 +155,26 @@ function renderAnalysis(analysis) {
             <p class="analysis-paragraph">${escapeHtml(item.paragraph_text.substring(0, 150))}${item.paragraph_text.length > 150 ? '...' : ''}</p>
             <p class="analysis-summary"><strong>Summary:</strong> ${escapeHtml(item.summary)}</p>
             <p class="analysis-flow"><strong>Flow:</strong> ${escapeHtml(item.flow_with_context)}</p>
-            ${renderSuggestions(item.suggestions)}
+            ${renderSuggestions(item.suggestions, item.paragraph_index, item.paragraph_text)}
         </div>
         `;
     }
     analysisContent.innerHTML = html;
 }
 
-function renderSuggestions(suggestions) {
+function renderSuggestions(suggestions, paragraphIndex, originalText) {
     if (!suggestions || suggestions.length === 0) return '';
 
     let html = '<div class="suggestions"><strong>Suggestions:</strong>';
-    for (const sugg of suggestions) {
+    for (let i = 0; i < suggestions.length; i++) {
+        const sugg = suggestions[i];
+        const canApply = sugg.type === 'rewrite' && sugg.example;
         html += `
         <div class="suggestion suggestion-${sugg.type}">
-            <span class="suggestion-type">${sugg.type}</span>
+            <div class="suggestion-header">
+                <span class="suggestion-type">${sugg.type}</span>
+                ${canApply ? `<button type="button" class="btn-apply" onclick="applySuggestion(${paragraphIndex}, ${i})">Apply</button>` : ''}
+            </div>
             <p>${escapeHtml(sugg.description)}</p>
             ${sugg.example ? `<pre class="suggestion-example">${escapeHtml(sugg.example)}</pre>` : ''}
         </div>
@@ -181,6 +189,58 @@ function escapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
+
+function applySuggestion(paragraphIndex, suggestionIndex) {
+    if (!currentAnalysis) {
+        alert('No analysis data available. Please run analysis first.');
+        return;
+    }
+
+    const analysisItem = currentAnalysis.find(a => a.paragraph_index === paragraphIndex);
+    if (!analysisItem) {
+        alert('Could not find the paragraph in analysis data.');
+        return;
+    }
+
+    const suggestion = analysisItem.suggestions[suggestionIndex];
+    if (!suggestion || !suggestion.example) {
+        alert('This suggestion has no example text to apply.');
+        return;
+    }
+
+    const content = getEditorContent();
+    const paragraphs = content.split('\n\n');
+
+    if (paragraphIndex >= paragraphs.length) {
+        alert('Paragraph index out of range. The content may have changed since analysis.');
+        return;
+    }
+
+    const currentParagraph = paragraphs[paragraphIndex].trim();
+    const originalParagraph = analysisItem.paragraph_text.trim();
+
+    if (currentParagraph !== originalParagraph) {
+        const proceed = confirm(
+            'The paragraph has been modified since the analysis was run.\n\n' +
+            'Do you want to apply the suggestion anyway?\n\n' +
+            'Click OK to replace the current paragraph, or Cancel to abort.'
+        );
+        if (!proceed) return;
+    }
+
+    paragraphs[paragraphIndex] = suggestion.example;
+    const newContent = paragraphs.join('\n\n');
+
+    easyMDE.value(newContent);
+    autoSave();
+
+    const btn = event.target;
+    btn.textContent = 'Applied';
+    btn.disabled = true;
+    btn.classList.add('btn-applied');
+}
+
+window.applySuggestion = applySuggestion;
 
 const publishModal = document.getElementById('publish-modal');
 const publishTitle = document.getElementById('publish-title');
