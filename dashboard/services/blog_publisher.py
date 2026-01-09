@@ -1,11 +1,14 @@
 """Service for publishing blog posts."""
 
 import asyncio
+import re
+import shutil
 from datetime import date
+from pathlib import Path
 
 from slugify import slugify
 
-from ..config import PROJECT_ROOT, BLOG_DIR
+from ..config import PROJECT_ROOT, BLOG_DIR, MEDIA_DIR
 
 
 class BlogPublisher:
@@ -49,8 +52,48 @@ permalink: "blog/{{{{ title | slugify }}}}.html"
             )
         return stdout.decode(), stderr.decode()
 
+    def _process_draft_media(self, content: str, draft_id: int) -> str:
+        """Move draft media to dated folder and update paths in content."""
+        today = date.today()
+        year = str(today.year)
+        month = f"{today.month:02d}"
+
+        draft_media_dir = MEDIA_DIR / "drafts" / str(draft_id)
+        if not draft_media_dir.exists():
+            return content
+
+        dated_media_dir = MEDIA_DIR / year / month
+        dated_media_dir.mkdir(parents=True, exist_ok=True)
+
+        pattern = rf'/img/drafts/{draft_id}/([^"\'\s\)]+)'
+        matches = re.findall(pattern, content)
+
+        for filename in matches:
+            src_path = draft_media_dir / filename
+            if src_path.exists():
+                dst_path = dated_media_dir / filename
+                counter = 1
+                while dst_path.exists():
+                    stem = Path(filename).stem
+                    suffix = Path(filename).suffix
+                    dst_path = dated_media_dir / f"{stem}_{counter}{suffix}"
+                    counter += 1
+                shutil.move(str(src_path), str(dst_path))
+                new_web_path = f"/img/{year}/{month}/{dst_path.name}"
+                old_web_path = f"/img/drafts/{draft_id}/{filename}"
+                content = content.replace(old_web_path, new_web_path)
+
+        if draft_media_dir.exists() and not any(draft_media_dir.iterdir()):
+            draft_media_dir.rmdir()
+
+        drafts_dir = MEDIA_DIR / "drafts"
+        if drafts_dir.exists() and not any(drafts_dir.iterdir()):
+            drafts_dir.rmdir()
+
+        return content
+
     async def publish(
-        self, title: str, description: str, tags: list[str], content: str
+        self, title: str, description: str, tags: list[str], content: str, draft_id: int | None = None
     ) -> str:
         """Publish a blog post: create file, build, commit, push.
 
@@ -58,6 +101,9 @@ permalink: "blog/{{{{ title | slugify }}}}.html"
         """
         filename = self.generate_filename(title)
         filepath = BLOG_DIR / filename
+
+        if draft_id is not None:
+            content = self._process_draft_media(content, draft_id)
 
         full_content = self.generate_frontmatter(title, description, tags) + content
         filepath.write_text(full_content)

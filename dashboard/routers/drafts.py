@@ -1,14 +1,21 @@
 """API routes for draft management."""
 
 import json
+import uuid
 from pathlib import Path
 
-from fastapi import APIRouter, Form, HTTPException, Request, Response
+from fastapi import APIRouter, Form, HTTPException, Request, Response, UploadFile, File
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from .. import db
+from ..config import MEDIA_DIR
 from ..services.blog_publisher import blog_publisher
+
+ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif", "image/webp"}
+ALLOWED_VIDEO_TYPES = {"video/mp4", "video/webm"}
+MAX_IMAGE_SIZE = 10 * 1024 * 1024  # 10MB
+MAX_VIDEO_SIZE = 50 * 1024 * 1024  # 50MB
 
 router = APIRouter()
 templates = Jinja2Templates(directory=Path(__file__).parent.parent / "templates")
@@ -109,8 +116,49 @@ async def publish_draft(draft_id: int):
             description=description,
             tags=tags,
             content=draft["content"],
+            draft_id=draft_id,
         )
         await db.mark_draft_published(draft_id, published_path)
         return {"status": "published", "path": published_path}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/{draft_id}/media")
+async def upload_media(draft_id: int, file: UploadFile = File(...)):
+    """Upload a media file for a draft."""
+    draft = await db.get_draft(draft_id)
+    if not draft:
+        raise HTTPException(status_code=404, detail="Draft not found")
+
+    content_type = file.content_type or ""
+    is_image = content_type in ALLOWED_IMAGE_TYPES
+    is_video = content_type in ALLOWED_VIDEO_TYPES
+
+    if not is_image and not is_video:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid file type: {content_type}. Allowed: images (jpg, png, gif, webp) and videos (mp4, webm)"
+        )
+
+    content = await file.read()
+    file_size = len(content)
+
+    if is_image and file_size > MAX_IMAGE_SIZE:
+        raise HTTPException(status_code=400, detail="Image too large. Maximum size is 10MB.")
+    if is_video and file_size > MAX_VIDEO_SIZE:
+        raise HTTPException(status_code=400, detail="Video too large. Maximum size is 50MB.")
+
+    draft_media_dir = MEDIA_DIR / "drafts" / str(draft_id)
+    draft_media_dir.mkdir(parents=True, exist_ok=True)
+
+    original_name = Path(file.filename) if file.filename else Path("file")
+    extension = original_name.suffix.lower() or (".jpg" if is_image else ".mp4")
+    unique_name = f"{uuid.uuid4().hex[:8]}{extension}"
+    file_path = draft_media_dir / unique_name
+
+    with open(file_path, "wb") as f:
+        f.write(content)
+
+    web_path = f"/img/drafts/{draft_id}/{unique_name}"
+    return {"status": "uploaded", "path": web_path, "filename": unique_name}

@@ -7,6 +7,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 CONFIG_FILE = Path.home() / "llog.conf"
 DATABASE_PATH = PROJECT_ROOT / "dashboard.db"
 BLOG_DIR = PROJECT_ROOT / "src" / "blog"
+MEDIA_DIR = PROJECT_ROOT / "src" / "_11ty" / "_static" / "img"
 LLOG_SCRIPT = PROJECT_ROOT / "llog.js"
 
 HOST = "127.0.0.1"
