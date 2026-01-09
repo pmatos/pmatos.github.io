@@ -115,3 +115,88 @@ Static files are organized under `src/_11ty/_static/`:
 - RSS feed generation at `/feed/`
 - Automatic sitemap generation
 - Social media meta tag generation
+
+## Write Dashboard
+
+A local FastAPI-based dashboard for drafting and publishing blog posts with AI assistance.
+
+### Running the Dashboard
+```bash
+cd dashboard
+uv run uvicorn app:app --reload
+```
+Access at http://localhost:8000
+
+### Architecture
+
+**Stack**: FastAPI + Jinja2 templates + SQLite + EasyMDE editor
+
+**Directory Structure**:
+```
+dashboard/
+├── app.py                    # FastAPI app setup
+├── db.py                     # SQLite operations (drafts table)
+├── config.py                 # Configuration
+├── routers/
+│   ├── ai.py                # AI analysis endpoint
+│   ├── drafts.py            # Draft CRUD + publishing
+│   └── links.py             # Link management
+├── services/
+│   ├── claude_client.py     # Claude API integration
+│   └── blog_publisher.py    # Publishing workflow
+├── templates/
+│   ├── editor.html          # Main editor UI
+│   ├── drafts.html          # Draft listing
+│   └── base.html            # Base template
+└── static/
+    ├── js/editor.js         # Client-side editor logic
+    └── css/style.css        # Dashboard styling
+```
+
+### Key Features
+
+**Markdown Editor**: EasyMDE-based editor with:
+- Auto-save (2-second debounce)
+- Image upload/URL insertion
+- Video upload/YouTube embed support
+- Drag-and-drop media upload
+
+**AI Analysis**: Paragraph-by-paragraph writing feedback using Claude
+- Split content by `\n\n` into paragraphs
+- Each paragraph analyzed with context from previous paragraphs
+- Returns: summary, flow analysis, overall rating, suggestions
+- Suggestion types: addition, removal, rewrite (with auto-apply for rewrites)
+- Click on analysis comments to highlight corresponding paragraph in editor
+
+**Publishing Flow**:
+1. Create markdown file in `src/blog/` with proper frontmatter
+2. Run site build
+3. Commit and push to git
+
+### Database Schema (SQLite)
+
+```sql
+drafts:
+- id, title, description, tags
+- content (markdown)
+- audience_notes (for AI context)
+- ai_analysis (JSON array of analysis results)
+- status, created_at, updated_at, published_at, published_path
+```
+
+### AI Analysis Data Structure
+
+Each analysis item contains:
+- `paragraph_index`: Position in document (0-based)
+- `paragraph_text`: Original text being analyzed
+- `overall_rating`: "good" | "needs_work" | "significant_issues"
+- `summary`: What the paragraph accomplishes
+- `flow_with_context`: How it connects to previous content
+- `suggestions`: Array of {type, description, example}
+
+### Editor JavaScript API
+
+Key functions in `dashboard/static/js/editor.js`:
+- `highlightParagraph(index)`: Scroll to and highlight a paragraph with fading effect
+- `applySuggestion(paragraphIndex, suggestionIndex)`: Apply a rewrite suggestion
+- `insertAtCursor(text)`: Insert text at cursor position in editor

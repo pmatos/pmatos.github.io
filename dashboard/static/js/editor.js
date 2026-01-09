@@ -48,6 +48,59 @@ function insertAtCursor(text) {
     cm.focus();
 }
 
+function highlightParagraph(paragraphIndex) {
+    if (!easyMDE) return;
+
+    const cm = easyMDE.codemirror;
+    const content = cm.getValue();
+    const lines = content.split('\n');
+
+    let currentParagraph = 0;
+    let inParagraph = false;
+    let paragraphStartLine = 0;
+    let paragraphEndLine = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+        const isEmptyLine = lines[i].trim() === '';
+
+        if (!isEmptyLine && !inParagraph) {
+            if (currentParagraph === paragraphIndex) {
+                paragraphStartLine = i;
+            }
+            inParagraph = true;
+        } else if (isEmptyLine && inParagraph) {
+            if (currentParagraph === paragraphIndex) {
+                paragraphEndLine = i - 1;
+                break;
+            }
+            currentParagraph++;
+            inParagraph = false;
+        }
+    }
+
+    if (inParagraph && currentParagraph === paragraphIndex) {
+        paragraphEndLine = lines.length - 1;
+    }
+
+    if (paragraphStartLine > paragraphEndLine) return;
+
+    document.querySelectorAll('.cm-highlight-paragraph').forEach(el => {
+        el.classList.remove('cm-highlight-paragraph');
+    });
+
+    cm.scrollIntoView({ line: paragraphStartLine, ch: 0 }, 100);
+
+    for (let i = paragraphStartLine; i <= paragraphEndLine; i++) {
+        cm.addLineClass(i, 'background', 'cm-highlight-paragraph');
+    }
+
+    setTimeout(() => {
+        for (let i = paragraphStartLine; i <= paragraphEndLine; i++) {
+            cm.removeLineClass(i, 'background', 'cm-highlight-paragraph');
+        }
+    }, 2000);
+}
+
 function markDirty() {
     isDirty = true;
     saveBtn.textContent = 'Save *';
@@ -147,7 +200,7 @@ function renderAnalysis(analysis) {
     for (const item of analysis) {
         const ratingClass = item.overall_rating.replace(/_/g, '-');
         html += `
-        <div class="analysis-item">
+        <div class="analysis-item" data-paragraph-index="${item.paragraph_index}">
             <div class="analysis-header">
                 <span class="analysis-index">Paragraph ${item.paragraph_index + 1}</span>
                 <span class="rating-badge rating-${ratingClass}">${item.overall_rating.replace(/_/g, ' ')}</span>
@@ -160,6 +213,14 @@ function renderAnalysis(analysis) {
         `;
     }
     analysisContent.innerHTML = html;
+
+    document.querySelectorAll('.analysis-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-apply')) return;
+            const index = parseInt(item.dataset.paragraphIndex);
+            highlightParagraph(index);
+        });
+    });
 }
 
 function renderSuggestions(suggestions, paragraphIndex, originalText) {
@@ -241,6 +302,7 @@ function applySuggestion(paragraphIndex, suggestionIndex) {
 }
 
 window.applySuggestion = applySuggestion;
+window.highlightParagraph = highlightParagraph;
 
 const publishModal = document.getElementById('publish-modal');
 const publishTitle = document.getElementById('publish-title');
