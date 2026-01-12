@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T11:23:26.445Z</updated>
+  <updated>2026-01-12T11:26:30.082Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1033,5 +1033,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="verifiability" />
     <category term="quantum" />
     <category term="language-models" />
+  </entry>
+  <entry>
+    <title>ABRP</title>
+    <link href="https://abetterrouteplanner.com/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-ca71f00f3e8ddff1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-ca71f00f3e8ddff1</id>
+    <updated>2026-01-12T11:26:30.082Z</updated>
+    <summary type="text">ABRP is a web-based application that helps electric vehicle (EV) owners plan their routes and manage their battery life. The website requires JavaScript to be enabled in the user&#39;s browser in order to function properly. This tool could be useful for EV owners who need to plan their trips and ensure they have enough battery charge to reach their destination.</summary>
+    <content type="html"><![CDATA[
+      <p>ABRP is a web-based application that helps electric vehicle (EV) owners plan their routes and manage their battery life. The website requires JavaScript to be enabled in the user&#39;s browser in order to function properly. This tool could be useful for EV owners who need to plan their trips and ensure they have enough battery charge to reach their destination.</p>
+      <p><strong>Tags:</strong>
+          #ev, 
+          #gps, 
+          #route, 
+          #battery, 
+          #planning
+      </p>
+      <p><a href="https://abetterrouteplanner.com/" target="_blank" rel="noopener noreferrer">🔗 https://abetterrouteplanner.com/</a></p>
+    ]]></content>
+    <category term="ev" />
+    <category term="gps" />
+    <category term="route" />
+    <category term="battery" />
+    <category term="planning" />
   </entry>
 </feed>
