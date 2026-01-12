@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:37:04.297Z</updated>
+  <updated>2026-01-12T13:42:16.662Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1225,5 +1225,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="diversity" />
     <category term="creativity" />
     <category term="simulation" />
+  </entry>
+  <entry>
+    <title>Gemini As Indiana Jones: How Gemini 3.0 Deciphered The Mystery Of A Nuremberg Chronicle Leaf&amp;#8217;s 500-Year-Old Roundels &amp;#8211; The GDELT Project</title>
+    <link href="https://blog.gdeltproject.org/gemini-as-indiana-jones-how-gemini-3-0-deciphered-the-mystery-of-a-nuremberg-chronicle-leafs-500-year-old-roundels/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-e719b6b40151b760" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-e719b6b40151b760</id>
+    <updated>2026-01-12T13:42:16.662Z</updated>
+    <summary type="text">This webpage discusses how the GDELT Project&#39;s Gemini 3.0 AI model was able to decipher the meaning of four handwritten circular annotations (roundels) found in a 500-year-old copy of the Nuremberg Chronicle. The annotations appear to be an attempt by a previous owner to reconcile the conflicting chronologies of Abraham&#39;s birth based on the Greek Septuagint and Hebrew Bible texts contained in the chronicle. Gemini 3.0 was able to transcribe the Latin text, translate it, and provide a plausible explanation for the purpose of the annotations, demonstrating the advanced visual understanding capabilities of large language models.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage discusses how the GDELT Project&#39;s Gemini 3.0 AI model was able to decipher the meaning of four handwritten circular annotations (roundels) found in a 500-year-old copy of the Nuremberg Chronicle. The annotations appear to be an attempt by a previous owner to reconcile the conflicting chronologies of Abraham&#39;s birth based on the Greek Septuagint and Hebrew Bible texts contained in the chronicle. Gemini 3.0 was able to transcribe the Latin text, translate it, and provide a plausible explanation for the purpose of the annotations, demonstrating the advanced visual understanding capabilities of large language models.</p>
+      <p><strong>Tags:</strong>
+          #gemini, 
+          #mystery, 
+          #annotation, 
+          #chronology, 
+          #visual-understanding
+      </p>
+      <p><a href="https://blog.gdeltproject.org/gemini-as-indiana-jones-how-gemini-3-0-deciphered-the-mystery-of-a-nuremberg-chronicle-leafs-500-year-old-roundels/" target="_blank" rel="noopener noreferrer">🔗 https://blog.gdeltproject.org/gemini-as-indiana-jones-how-gemini-3-0-deciphered-the-mystery-of-a-nuremberg-chronicle-leafs-500-year-old-roundels/</a></p>
+    ]]></content>
+    <category term="gemini" />
+    <category term="mystery" />
+    <category term="annotation" />
+    <category term="chronology" />
+    <category term="visual-understanding" />
   </entry>
 </feed>
