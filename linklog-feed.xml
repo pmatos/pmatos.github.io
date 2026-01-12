@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T10:17:37.193Z</updated>
+  <updated>2026-01-12T10:19:53.401Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -889,5 +889,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="understanding" />
     <category term="github" />
     <category term="survey" />
+  </entry>
+  <entry>
+    <title>www.youtube.com</title>
+    <link href="https://www.youtube.com/watch?v=GJ5jTgcbRHA" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-84e56eafd2bad3b0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-84e56eafd2bad3b0</id>
+    <updated>2026-01-12T10:19:53.401Z</updated>
+    <summary type="text">The webpage at www.youtube.com appears to contain complex JavaScript code that configures various settings and features of the YouTube platform. The code sets various client-related parameters, enables or disables a wide range of experimental flags and features, and appears to be related to the technical implementation and optimization of the YouTube web application.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage at www.youtube.com appears to contain complex JavaScript code that configures various settings and features of the YouTube platform. The code sets various client-related parameters, enables or disables a wide range of experimental flags and features, and appears to be related to the technical implementation and optimization of the YouTube web application.</p>
+      <p><strong>Tags:</strong>
+          #youtube, 
+          #claude, 
+          #projects, 
+          #web, 
+          #optimization
+      </p>
+      <p><a href="https://www.youtube.com/watch?v=GJ5jTgcbRHA" target="_blank" rel="noopener noreferrer">🔗 https://www.youtube.com/watch?v=GJ5jTgcbRHA</a></p>
+    ]]></content>
+    <category term="youtube" />
+    <category term="claude" />
+    <category term="projects" />
+    <category term="web" />
+    <category term="optimization" />
   </entry>
 </feed>
