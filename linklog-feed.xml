@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:33:34.920Z</updated>
+  <updated>2026-01-12T13:37:04.297Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1201,5 +1201,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="productivity" />
     <category term="expertise" />
     <category term="quality" />
+  </entry>
+  <entry>
+    <title>[2510.01171] Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity</title>
+    <link href="https://arxiv.org/abs/2510.01171" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-199637c662610dde" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-199637c662610dde</id>
+    <updated>2026-01-12T13:37:04.297Z</updated>
+    <summary type="text">This paper introduces &quot;Verbalized Sampling&quot;, a prompting strategy to mitigate mode collapse and unlock diversity in Large Language Models (LLMs). The authors identify a fundamental data-level driver for mode collapse - typicality bias in preference data, where annotators favor familiar text. They show that Verbalized Sampling, which prompts the model to verbalize a probability distribution over responses, significantly improves performance across tasks like creative writing and dialogue simulation without sacrificing accuracy or safety.</summary>
+    <content type="html"><![CDATA[
+      <p>This paper introduces &quot;Verbalized Sampling&quot;, a prompting strategy to mitigate mode collapse and unlock diversity in Large Language Models (LLMs). The authors identify a fundamental data-level driver for mode collapse - typicality bias in preference data, where annotators favor familiar text. They show that Verbalized Sampling, which prompts the model to verbalize a probability distribution over responses, significantly improves performance across tasks like creative writing and dialogue simulation without sacrificing accuracy or safety.</p>
+      <p><strong>Tags:</strong>
+          #paper, 
+          #prompting, 
+          #diversity, 
+          #creativity, 
+          #simulation
+      </p>
+      <p><a href="https://arxiv.org/abs/2510.01171" target="_blank" rel="noopener noreferrer">🔗 https://arxiv.org/abs/2510.01171</a></p>
+    ]]></content>
+    <category term="paper" />
+    <category term="prompting" />
+    <category term="diversity" />
+    <category term="creativity" />
+    <category term="simulation" />
   </entry>
 </feed>
