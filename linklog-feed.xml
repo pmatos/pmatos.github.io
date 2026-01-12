@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T11:26:30.082Z</updated>
+  <updated>2026-01-12T11:40:10.298Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1057,5 +1057,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="route" />
     <category term="battery" />
     <category term="planning" />
+  </entry>
+  <entry>
+    <title>Conductor: Introducing context-driven development for Gemini CLI - Google Developers Blog</title>
+    <link href="https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c075dbf8b85fcce0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c075dbf8b85fcce0</id>
+    <updated>2026-01-12T11:40:10.298Z</updated>
+    <summary type="text">This blog post introduces Conductor, a new extension for the Gemini CLI that enables &quot;context-driven development.&quot; Conductor helps developers plan and document their projects upfront, creating formal specifications and plans that are stored alongside the codebase. This approach aims to keep the human developer in control, allowing them to review plans before writing code and maintain consistent context across the project. The post highlights how Conductor can be particularly useful for &quot;brownfield&quot; projects by helping to capture the nuanced understanding of an existing codebase and architecture.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post introduces Conductor, a new extension for the Gemini CLI that enables &quot;context-driven development.&quot; Conductor helps developers plan and document their projects upfront, creating formal specifications and plans that are stored alongside the codebase. This approach aims to keep the human developer in control, allowing them to review plans before writing code and maintain consistent context across the project. The post highlights how Conductor can be particularly useful for &quot;brownfield&quot; projects by helping to capture the nuanced understanding of an existing codebase and architecture.</p>
+      <p><strong>Tags:</strong>
+          #gemini, 
+          #conductor, 
+          #planning, 
+          #specification, 
+          #brownfield
+      </p>
+      <p><a href="https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/" target="_blank" rel="noopener noreferrer">🔗 https://developers.googleblog.com/conductor-introducing-context-driven-development-for-gemini-cli/</a></p>
+    ]]></content>
+    <category term="gemini" />
+    <category term="conductor" />
+    <category term="planning" />
+    <category term="specification" />
+    <category term="brownfield" />
   </entry>
 </feed>
