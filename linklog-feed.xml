@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:42:16.662Z</updated>
+  <updated>2026-01-12T13:51:06.582Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1249,5 +1249,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="annotation" />
     <category term="chronology" />
     <category term="visual-understanding" />
+  </entry>
+  <entry>
+    <title>GitHub - HKUDS/DeepTutor: &quot;DeepTutor: AI-Powered Personalized Learning Assistant&quot;</title>
+    <link href="https://github.com/HKUDS/DeepTutor" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-18a01970876eb324" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-18a01970876eb324</id>
+    <updated>2026-01-12T13:51:06.582Z</updated>
+    <summary type="text">This GitHub repository showcases &quot;DeepTutor&quot;, an AI-powered personalized learning assistant. It provides a comprehensive knowledge base, multi-agent problem-solving capabilities, interactive learning visualizations, customized practice exercises, and deep research and idea generation functionalities. The project aims to create an all-in-one knowledge system that can assist users in their learning and research endeavors through the integration of various AI-driven features.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository showcases &quot;DeepTutor&quot;, an AI-powered personalized learning assistant. It provides a comprehensive knowledge base, multi-agent problem-solving capabilities, interactive learning visualizations, customized practice exercises, and deep research and idea generation functionalities. The project aims to create an all-in-one knowledge system that can assist users in their learning and research endeavors through the integration of various AI-driven features.</p>
+      <p><strong>Tags:</strong>
+          #tutor, 
+          #education, 
+          #ai, 
+          #adaptive, 
+          #interactive
+      </p>
+      <p><a href="https://github.com/HKUDS/DeepTutor" target="_blank" rel="noopener noreferrer">🔗 https://github.com/HKUDS/DeepTutor</a></p>
+    ]]></content>
+    <category term="tutor" />
+    <category term="education" />
+    <category term="ai" />
+    <category term="adaptive" />
+    <category term="interactive" />
   </entry>
 </feed>
