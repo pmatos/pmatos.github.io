@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "ca71f00f3e8ddff1",
+      "url": "https://abetterrouteplanner.com/",
+      "title": "ABRP",
+      "summary": "ABRP is a web-based application that helps electric vehicle (EV) owners plan their routes and manage their battery life. The website requires JavaScript to be enabled in the user's browser in order to function properly. This tool could be useful for EV owners who need to plan their trips and ensure they have enough battery charge to reach their destination.",
+      "tags": [
+        "ev",
+        "gps",
+        "route",
+        "battery",
+        "planning"
+      ],
+      "dateAdded": "2026-01-12T11:26:30.082Z"
+    },
+    {
       "id": "754fc4a095ee1a64",
       "url": "https://www.oreilly.com/radar/software-2-0-means-verifiable-ai/",
       "title": "Software 2.0 Means Verifiable AI – O’Reilly",
