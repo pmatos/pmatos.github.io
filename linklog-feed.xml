@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T10:19:53.401Z</updated>
+  <updated>2026-01-12T10:21:47.417Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -913,5 +913,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="projects" />
     <category term="web" />
     <category term="optimization" />
+  </entry>
+  <entry>
+    <title>www.youtube.com</title>
+    <link href="https://www.youtube.com/watch?v=_AZ7ptRuzs8" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-12023e7256f0829a" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-12023e7256f0829a</id>
+    <updated>2026-01-12T10:21:47.417Z</updated>
+    <summary type="text">This webpage is the official YouTube website, providing access to a vast collection of user-generated videos, from educational content to entertainment and more. The webpage includes a JavaScript-based player that allows users to view and interact with the video content.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage is the official YouTube website, providing access to a vast collection of user-generated videos, from educational content to entertainment and more. The webpage includes a JavaScript-based player that allows users to view and interact with the video content.</p>
+      <p><strong>Tags:</strong>
+          #youtube, 
+          #scribe2, 
+          #elevenlabs, 
+          #video, 
+          #content
+      </p>
+      <p><a href="https://www.youtube.com/watch?v=_AZ7ptRuzs8" target="_blank" rel="noopener noreferrer">🔗 https://www.youtube.com/watch?v=_AZ7ptRuzs8</a></p>
+    ]]></content>
+    <category term="youtube" />
+    <category term="scribe2" />
+    <category term="elevenlabs" />
+    <category term="video" />
+    <category term="content" />
   </entry>
 </feed>
