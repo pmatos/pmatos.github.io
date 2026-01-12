@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:18:25.670Z</updated>
+  <updated>2026-01-12T13:26:08.244Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1153,5 +1153,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="mathematics" />
     <category term="scales" />
     <category term="intervals" />
+  </entry>
+  <entry>
+    <title>www.youtube.com</title>
+    <link href="https://www.youtube.com/watch?v=sWbsD-cP4rI" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2380d65f7181ab41" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2380d65f7181ab41</id>
+    <updated>2026-01-12T13:26:08.244Z</updated>
+    <summary type="text">This webpage is the official YouTube website, which allows users to watch and share videos online. The content shows various configuration settings and experiment flags for the YouTube platform, indicating that this is likely an internal or developer-focused webpage rather than the main user-facing site.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage is the official YouTube website, which allows users to watch and share videos online. The content shows various configuration settings and experiment flags for the YouTube platform, indicating that this is likely an internal or developer-focused webpage rather than the main user-facing site.</p>
+      <p><strong>Tags:</strong>
+          #youtube, 
+          #learning, 
+          #development, 
+          #internal, 
+          #configuration
+      </p>
+      <p><a href="https://www.youtube.com/watch?v=sWbsD-cP4rI" target="_blank" rel="noopener noreferrer">🔗 https://www.youtube.com/watch?v=sWbsD-cP4rI</a></p>
+    ]]></content>
+    <category term="youtube" />
+    <category term="learning" />
+    <category term="development" />
+    <category term="internal" />
+    <category term="configuration" />
   </entry>
 </feed>
