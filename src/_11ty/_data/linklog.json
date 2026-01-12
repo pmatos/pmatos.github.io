@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "e719b6b40151b760",
+      "url": "https://blog.gdeltproject.org/gemini-as-indiana-jones-how-gemini-3-0-deciphered-the-mystery-of-a-nuremberg-chronicle-leafs-500-year-old-roundels/",
+      "title": "Gemini As Indiana Jones: How Gemini 3.0 Deciphered The Mystery Of A Nuremberg Chronicle Leaf&#8217;s 500-Year-Old Roundels &#8211; The GDELT Project",
+      "summary": "This webpage discusses how the GDELT Project's Gemini 3.0 AI model was able to decipher the meaning of four handwritten circular annotations (roundels) found in a 500-year-old copy of the Nuremberg Chronicle. The annotations appear to be an attempt by a previous owner to reconcile the conflicting chronologies of Abraham's birth based on the Greek Septuagint and Hebrew Bible texts contained in the chronicle. Gemini 3.0 was able to transcribe the Latin text, translate it, and provide a plausible explanation for the purpose of the annotations, demonstrating the advanced visual understanding capabilities of large language models.",
+      "tags": [
+        "gemini",
+        "mystery",
+        "annotation",
+        "chronology",
+        "visual-understanding"
+      ],
+      "dateAdded": "2026-01-12T13:42:16.662Z"
+    },
+    {
       "id": "199637c662610dde",
       "url": "https://arxiv.org/abs/2510.01171",
       "title": "[2510.01171] Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity",
