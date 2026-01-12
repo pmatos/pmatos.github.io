@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "7964b332182cba32",
+      "url": "https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v",
+      "title": "www.youtube.com",
+      "summary": "The provided webpage appears to be the YouTube homepage, displaying a video with the URL https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v. The content of the webpage consists of a large amount of configuration data related to various YouTube features, experiments, and settings, suggesting that this is likely a developer-oriented page rather than a typical user-facing YouTube page.",
+      "tags": [
+        "youtube",
+        "claude",
+        "skills",
+        "developer",
+        "configuration"
+      ],
+      "dateAdded": "2026-01-12T10:02:08.121Z"
+    },
+    {
       "id": "1219a739acf35b06",
       "url": "https://rightkey.app",
       "title": "Music Practice Tracker - Rightkey",
