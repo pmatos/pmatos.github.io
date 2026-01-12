@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "ce6147585c905cb5",
+      "url": "https://johncarlosbaez.wordpress.com/2025/12/26/the-mathematics-of-tuning-systems/",
+      "title": "The Mathematics of Tuning Systems | Azimuth",
+      "summary": "This webpage provides an overview of the mathematics behind different musical tuning systems, with a focus on 12-tone equal temperament and Pythagorean tuning. It explains how the 12-tone equal temperament system divides the octave into 12 equally spaced notes, and how this compares to the more mathematically pure Pythagorean tuning system. The article also discusses the concept of the \"Pythagorean comma\" and the \"tritone\" interval, which were historically seen as problematic in Pythagorean tuning. Overall, the content provides a fascinating look at the intricate mathematics underlying musical tuning and scales.",
+      "tags": [
+        "tuning",
+        "piano",
+        "mathematics",
+        "scales",
+        "intervals"
+      ],
+      "dateAdded": "2026-01-12T13:18:25.670Z"
+    },
+    {
       "id": "6af4163c1d8ce5b0",
       "url": "https://simonwillison.net/2025/Dec/18/code-proven-to-work/",
       "title": "Your job is to deliver code you have proven to work",
