@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "199637c662610dde",
+      "url": "https://arxiv.org/abs/2510.01171",
+      "title": "[2510.01171] Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity",
+      "summary": "This paper introduces \"Verbalized Sampling\", a prompting strategy to mitigate mode collapse and unlock diversity in Large Language Models (LLMs). The authors identify a fundamental data-level driver for mode collapse - typicality bias in preference data, where annotators favor familiar text. They show that Verbalized Sampling, which prompts the model to verbalize a probability distribution over responses, significantly improves performance across tasks like creative writing and dialogue simulation without sacrificing accuracy or safety.",
+      "tags": [
+        "paper",
+        "prompting",
+        "diversity",
+        "creativity",
+        "simulation"
+      ],
+      "dateAdded": "2026-01-12T13:37:04.297Z"
+    },
+    {
       "id": "b34f225d5e293da1",
       "url": "https://arxiv.org/abs/2512.14012",
       "title": "[2512.14012] Professional Software Developers Don&#39;t Vibe, They Control: AI Agent Use for Coding in 2025",
