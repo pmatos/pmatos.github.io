@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:51:06.582Z</updated>
+  <updated>2026-01-12T17:41:07.580Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1273,5 +1273,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="ai" />
     <category term="adaptive" />
     <category term="interactive" />
+  </entry>
+  <entry>
+    <title>www.youtube.com</title>
+    <link href="https://www.youtube.com/watch?v=-4nUCaMNBR8" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-90c04821dddec7de" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-90c04821dddec7de</id>
+    <updated>2026-01-12T17:41:07.580Z</updated>
+    <summary type="text">This webpage appears to be the YouTube homepage, which is a popular video-sharing platform where users can watch, upload, and share a wide variety of video content. The webpage content includes various configuration settings and experimental flags, suggesting it may be a developer-focused page or section of the YouTube website.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage appears to be the YouTube homepage, which is a popular video-sharing platform where users can watch, upload, and share a wide variety of video content. The webpage content includes various configuration settings and experimental flags, suggesting it may be a developer-focused page or section of the YouTube website.</p>
+      <p><strong>Tags:</strong>
+          #youtube, 
+          #skills, 
+          #developer, 
+          #configuration, 
+          #experimental
+      </p>
+      <p><a href="https://www.youtube.com/watch?v=-4nUCaMNBR8" target="_blank" rel="noopener noreferrer">🔗 https://www.youtube.com/watch?v=-4nUCaMNBR8</a></p>
+    ]]></content>
+    <category term="youtube" />
+    <category term="skills" />
+    <category term="developer" />
+    <category term="configuration" />
+    <category term="experimental" />
   </entry>
 </feed>
