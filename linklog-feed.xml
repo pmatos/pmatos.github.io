@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T10:02:08.121Z</updated>
+  <updated>2026-01-12T10:17:37.193Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -865,5 +865,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="skills" />
     <category term="developer" />
     <category term="configuration" />
+  </entry>
+  <entry>
+    <title>GitHub - yunlong10/Awesome-LLMs-for-Video-Understanding: 🔥🔥🔥 [IEEE TCSVT] Latest Papers, Codes and Datasets on Vid-LLMs.</title>
+    <link href="https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-91321e3b3d2b1c87" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-91321e3b3d2b1c87</id>
+    <updated>2026-01-12T10:17:37.193Z</updated>
+    <summary type="text">This GitHub repository presents a comprehensive survey on the use of large language models (LLMs) for video understanding tasks, titled &quot;Video Understanding with Large Language Models: A Survey&quot;. The survey covers various LLM-based approaches, including video analyzers, video embedders, and hybrid methods, as well as the latest research papers, codes, and datasets on this topic. The repository also provides a detailed taxonomy for classifying these LLM-based video understanding models, and highlights key research challenges and future directions in this rapidly evolving field.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository presents a comprehensive survey on the use of large language models (LLMs) for video understanding tasks, titled &quot;Video Understanding with Large Language Models: A Survey&quot;. The survey covers various LLM-based approaches, including video analyzers, video embedders, and hybrid methods, as well as the latest research papers, codes, and datasets on this topic. The repository also provides a detailed taxonomy for classifying these LLM-based video understanding models, and highlights key research challenges and future directions in this rapidly evolving field.</p>
+      <p><strong>Tags:</strong>
+          #llms, 
+          #video, 
+          #understanding, 
+          #github, 
+          #survey
+      </p>
+      <p><a href="https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding" target="_blank" rel="noopener noreferrer">🔗 https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding</a></p>
+    ]]></content>
+    <category term="llms" />
+    <category term="video" />
+    <category term="understanding" />
+    <category term="github" />
+    <category term="survey" />
   </entry>
 </feed>
