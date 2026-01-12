@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:13:29.502Z</updated>
+  <updated>2026-01-12T13:18:25.670Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1129,5 +1129,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="testing" />
     <category term="accountability" />
     <category term="quality" />
+  </entry>
+  <entry>
+    <title>The Mathematics of Tuning Systems | Azimuth</title>
+    <link href="https://johncarlosbaez.wordpress.com/2025/12/26/the-mathematics-of-tuning-systems/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-ce6147585c905cb5" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-ce6147585c905cb5</id>
+    <updated>2026-01-12T13:18:25.670Z</updated>
+    <summary type="text">This webpage provides an overview of the mathematics behind different musical tuning systems, with a focus on 12-tone equal temperament and Pythagorean tuning. It explains how the 12-tone equal temperament system divides the octave into 12 equally spaced notes, and how this compares to the more mathematically pure Pythagorean tuning system. The article also discusses the concept of the &quot;Pythagorean comma&quot; and the &quot;tritone&quot; interval, which were historically seen as problematic in Pythagorean tuning. Overall, the content provides a fascinating look at the intricate mathematics underlying musical tuning and scales.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage provides an overview of the mathematics behind different musical tuning systems, with a focus on 12-tone equal temperament and Pythagorean tuning. It explains how the 12-tone equal temperament system divides the octave into 12 equally spaced notes, and how this compares to the more mathematically pure Pythagorean tuning system. The article also discusses the concept of the &quot;Pythagorean comma&quot; and the &quot;tritone&quot; interval, which were historically seen as problematic in Pythagorean tuning. Overall, the content provides a fascinating look at the intricate mathematics underlying musical tuning and scales.</p>
+      <p><strong>Tags:</strong>
+          #tuning, 
+          #piano, 
+          #mathematics, 
+          #scales, 
+          #intervals
+      </p>
+      <p><a href="https://johncarlosbaez.wordpress.com/2025/12/26/the-mathematics-of-tuning-systems/" target="_blank" rel="noopener noreferrer">🔗 https://johncarlosbaez.wordpress.com/2025/12/26/the-mathematics-of-tuning-systems/</a></p>
+    ]]></content>
+    <category term="tuning" />
+    <category term="piano" />
+    <category term="mathematics" />
+    <category term="scales" />
+    <category term="intervals" />
   </entry>
 </feed>
