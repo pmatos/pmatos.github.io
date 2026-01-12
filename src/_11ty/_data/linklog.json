@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "733e8423511ee5e9",
+      "url": "https://www.oreilly.com/radar/the-end-of-debugging/",
+      "title": "The End of Debugging – O’Reilly",
+      "summary": "This article discusses how software is evolving to write, run, and repair itself, reducing the need for traditional debugging and hands-on code management. It suggests that as AI-powered code generation becomes more prevalent, developers will shift from controlling every line of code to describing the desired functionality, relying on more powerful software primitives that they may not fully understand. The article argues that this shift will transform software development and operations, with systems automatically anticipating and fixing issues before they are noticed by humans.",
+      "tags": [
+        "debugging",
+        "ai",
+        "software-evolution",
+        "automation",
+        "code-generation"
+      ],
+      "dateAdded": "2026-01-12T11:19:24.657Z"
+    },
+    {
       "id": "2965a940d06f4601",
       "url": "https://dl.acm.org/doi/10.1145/3689723",
       "title": "dl.acm.org",
