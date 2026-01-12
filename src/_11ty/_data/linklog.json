@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "6af4163c1d8ce5b0",
+      "url": "https://simonwillison.net/2025/Dec/18/code-proven-to-work/",
+      "title": "Your job is to deliver code you have proven to work",
+      "summary": "The webpage discusses the importance of software engineers delivering code that has been thoroughly tested and proven to work, rather than relying on AI-assisted tools to quickly generate untested code. It emphasizes the value of manual testing, automated testing, and using coding agents (like Claude Code) to verify changes work as intended. The author argues that this level of diligence and accountability is crucial for software development, and that simply generating code is no longer sufficient.",
+      "tags": [
+        "software",
+        "engineering",
+        "testing",
+        "accountability",
+        "quality"
+      ],
+      "dateAdded": "2026-01-12T13:13:29.502Z"
+    },
+    {
       "id": "506282cbabae4cb0",
       "url": "https://terriblesoftware.org/2025/12/19/the-strange-case-of-engineers-who-dismiss-ai/",
       "title": "The Strange Case of Engineers Who Dismiss AI &#8211; Terrible Software",
