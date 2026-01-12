@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "2965a940d06f4601",
+      "url": "https://dl.acm.org/doi/10.1145/3689723",
+      "title": "dl.acm.org",
+      "summary": "The webpage with the title \"dl.acm.org\" and the URL \"https://dl.acm.org/doi/10.1145/3689723\" likely contains a research paper or article published in the ACM Digital Library. Based on the URL, the content is likely related to a specific article or publication within the ACM's digital repository, which could be of interest to researchers, academics, or professionals working in fields related to computer science, technology, or related disciplines.",
+      "tags": [
+        "paper",
+        "analysis",
+        "x86_64",
+        "architecture",
+        "performance"
+      ],
+      "dateAdded": "2026-01-12T11:17:31.848Z"
+    },
+    {
       "id": "2a4d60321dd940da",
       "url": "https://www.youtube.com/watch?v=kT3ucc7n90I",
       "title": "www.youtube.com",
