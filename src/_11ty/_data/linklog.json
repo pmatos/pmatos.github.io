@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "84e56eafd2bad3b0",
+      "url": "https://www.youtube.com/watch?v=GJ5jTgcbRHA",
+      "title": "www.youtube.com",
+      "summary": "The webpage at www.youtube.com appears to contain complex JavaScript code that configures various settings and features of the YouTube platform. The code sets various client-related parameters, enables or disables a wide range of experimental flags and features, and appears to be related to the technical implementation and optimization of the YouTube web application.",
+      "tags": [
+        "youtube",
+        "claude",
+        "projects",
+        "web",
+        "optimization"
+      ],
+      "dateAdded": "2026-01-12T10:19:53.401Z"
+    },
+    {
       "id": "91321e3b3d2b1c87",
       "url": "https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding",
       "title": "GitHub - yunlong10/Awesome-LLMs-for-Video-Understanding: 🔥🔥🔥 [IEEE TCSVT] Latest Papers, Codes and Datasets on Vid-LLMs.",
