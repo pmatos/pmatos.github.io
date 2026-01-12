@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T11:19:24.657Z</updated>
+  <updated>2026-01-12T11:23:26.445Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1009,5 +1009,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="software-evolution" />
     <category term="automation" />
     <category term="code-generation" />
+  </entry>
+  <entry>
+    <title>Software 2.0 Means Verifiable AI – O’Reilly</title>
+    <link href="https://www.oreilly.com/radar/software-2-0-means-verifiable-ai/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-754fc4a095ee1a64" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-754fc4a095ee1a64</id>
+    <updated>2026-01-12T11:23:26.445Z</updated>
+    <summary type="text">This article discusses the concept of &quot;Software 2.0&quot; or AI systems, and the importance of verifiability in their development and deployment. It highlights the similarities between the challenges of error correction in quantum computing and the need for verifiability in AI, especially for language models that can generate incorrect or subtly flawed results. The article emphasizes that while verifiability may be more difficult to achieve for AI than for quantum computing, it is a crucial step in ensuring the reliability and trustworthiness of AI systems as they become more prominent in various applications.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the concept of &quot;Software 2.0&quot; or AI systems, and the importance of verifiability in their development and deployment. It highlights the similarities between the challenges of error correction in quantum computing and the need for verifiability in AI, especially for language models that can generate incorrect or subtly flawed results. The article emphasizes that while verifiability may be more difficult to achieve for AI than for quantum computing, it is a crucial step in ensuring the reliability and trustworthiness of AI systems as they become more prominent in various applications.</p>
+      <p><strong>Tags:</strong>
+          #software, 
+          #ai, 
+          #verifiability, 
+          #quantum, 
+          #language-models
+      </p>
+      <p><a href="https://www.oreilly.com/radar/software-2-0-means-verifiable-ai/" target="_blank" rel="noopener noreferrer">🔗 https://www.oreilly.com/radar/software-2-0-means-verifiable-ai/</a></p>
+    ]]></content>
+    <category term="software" />
+    <category term="ai" />
+    <category term="verifiability" />
+    <category term="quantum" />
+    <category term="language-models" />
   </entry>
 </feed>
