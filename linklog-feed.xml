@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T13:26:08.244Z</updated>
+  <updated>2026-01-12T13:33:34.920Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1177,5 +1177,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="development" />
     <category term="internal" />
     <category term="configuration" />
+  </entry>
+  <entry>
+    <title>[2512.14012] Professional Software Developers Don&amp;#39;t Vibe, They Control: AI Agent Use for Coding in 2025</title>
+    <link href="https://arxiv.org/abs/2512.14012" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-b34f225d5e293da1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-b34f225d5e293da1</id>
+    <updated>2026-01-12T13:33:34.920Z</updated>
+    <summary type="text">This paper investigates how experienced software developers use AI agents for coding tasks in 2025. The key findings are that while developers value agents as productivity boosters, they retain control over software design and implementation to ensure quality, using strategies to manage agent behavior. Experienced developers feel overall positive about incorporating agents into software development, seeing them as complementary to their expertise.</summary>
+    <content type="html"><![CDATA[
+      <p>This paper investigates how experienced software developers use AI agents for coding tasks in 2025. The key findings are that while developers value agents as productivity boosters, they retain control over software design and implementation to ensure quality, using strategies to manage agent behavior. Experienced developers feel overall positive about incorporating agents into software development, seeing them as complementary to their expertise.</p>
+      <p><strong>Tags:</strong>
+          #paper, 
+          #development, 
+          #productivity, 
+          #expertise, 
+          #quality
+      </p>
+      <p><a href="https://arxiv.org/abs/2512.14012" target="_blank" rel="noopener noreferrer">🔗 https://arxiv.org/abs/2512.14012</a></p>
+    ]]></content>
+    <category term="paper" />
+    <category term="development" />
+    <category term="productivity" />
+    <category term="expertise" />
+    <category term="quality" />
   </entry>
 </feed>
