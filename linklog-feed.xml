@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T10:33:50.708Z</updated>
+  <updated>2026-01-12T11:17:31.848Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -960,6 +960,30 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="piano" />
     <category term="rhythm" />
     <category term="composition" />
+    <category term="performance" />
+  </entry>
+  <entry>
+    <title>dl.acm.org</title>
+    <link href="https://dl.acm.org/doi/10.1145/3689723" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2965a940d06f4601" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2965a940d06f4601</id>
+    <updated>2026-01-12T11:17:31.848Z</updated>
+    <summary type="text">The webpage with the title &quot;dl.acm.org&quot; and the URL &quot;https://dl.acm.org/doi/10.1145/3689723&quot; likely contains a research paper or article published in the ACM Digital Library. Based on the URL, the content is likely related to a specific article or publication within the ACM&#39;s digital repository, which could be of interest to researchers, academics, or professionals working in fields related to computer science, technology, or related disciplines.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage with the title &quot;dl.acm.org&quot; and the URL &quot;https://dl.acm.org/doi/10.1145/3689723&quot; likely contains a research paper or article published in the ACM Digital Library. Based on the URL, the content is likely related to a specific article or publication within the ACM&#39;s digital repository, which could be of interest to researchers, academics, or professionals working in fields related to computer science, technology, or related disciplines.</p>
+      <p><strong>Tags:</strong>
+          #paper, 
+          #analysis, 
+          #x86_64, 
+          #architecture, 
+          #performance
+      </p>
+      <p><a href="https://dl.acm.org/doi/10.1145/3689723" target="_blank" rel="noopener noreferrer">🔗 https://dl.acm.org/doi/10.1145/3689723</a></p>
+    ]]></content>
+    <category term="paper" />
+    <category term="analysis" />
+    <category term="x86_64" />
+    <category term="architecture" />
     <category term="performance" />
   </entry>
 </feed>
