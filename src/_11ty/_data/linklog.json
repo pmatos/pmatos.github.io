@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "5ac1d68d84ff2c09",
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+      "title": "Effective harnesses for long-running agents \\ Anthropic",
+      "summary": "This article discusses techniques Anthropic has developed to enable long-running AI agents to work effectively across multiple context windows. The key points are:\n\n1) Agents can struggle to maintain consistency and make progress when working in discrete sessions due to the lack of memory across sessions. \n\n2) Anthropic's solution involves using an \"initializer agent\" to set up the environment and a \"coding agent\" to make incremental progress while leaving a clean, well-documented state.\n\n3) Techniques include using a feature list, incremental progress, thorough testing, and getting agents up to speed quickly on the current state of the project.\n\nThis article provides useful insights into the challenges of long-running AI agents and Anthropic's practical solutions, which could be valuable for developers working on similar problems.",
+      "tags": [
+        "agents",
+        "consistency",
+        "initialization",
+        "incremental",
+        "documentation"
+      ],
+      "dateAdded": "2026-01-12T21:50:50.662Z"
+    },
+    {
       "id": "90c04821dddec7de",
       "url": "https://www.youtube.com/watch?v=-4nUCaMNBR8",
       "title": "www.youtube.com",
