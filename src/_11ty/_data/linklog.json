@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "91321e3b3d2b1c87",
+      "url": "https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding",
+      "title": "GitHub - yunlong10/Awesome-LLMs-for-Video-Understanding: 🔥🔥🔥 [IEEE TCSVT] Latest Papers, Codes and Datasets on Vid-LLMs.",
+      "summary": "This GitHub repository presents a comprehensive survey on the use of large language models (LLMs) for video understanding tasks, titled \"Video Understanding with Large Language Models: A Survey\". The survey covers various LLM-based approaches, including video analyzers, video embedders, and hybrid methods, as well as the latest research papers, codes, and datasets on this topic. The repository also provides a detailed taxonomy for classifying these LLM-based video understanding models, and highlights key research challenges and future directions in this rapidly evolving field.",
+      "tags": [
+        "llms",
+        "video",
+        "understanding",
+        "github",
+        "survey"
+      ],
+      "dateAdded": "2026-01-12T10:17:37.193Z"
+    },
+    {
       "id": "7964b332182cba32",
       "url": "https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v",
       "title": "www.youtube.com",
