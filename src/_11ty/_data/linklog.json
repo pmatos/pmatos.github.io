@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "b34f225d5e293da1",
+      "url": "https://arxiv.org/abs/2512.14012",
+      "title": "[2512.14012] Professional Software Developers Don&#39;t Vibe, They Control: AI Agent Use for Coding in 2025",
+      "summary": "This paper investigates how experienced software developers use AI agents for coding tasks in 2025. The key findings are that while developers value agents as productivity boosters, they retain control over software design and implementation to ensure quality, using strategies to manage agent behavior. Experienced developers feel overall positive about incorporating agents into software development, seeing them as complementary to their expertise.",
+      "tags": [
+        "paper",
+        "development",
+        "productivity",
+        "expertise",
+        "quality"
+      ],
+      "dateAdded": "2026-01-12T13:33:34.920Z"
+    },
+    {
       "id": "2380d65f7181ab41",
       "url": "https://www.youtube.com/watch?v=sWbsD-cP4rI",
       "title": "www.youtube.com",
