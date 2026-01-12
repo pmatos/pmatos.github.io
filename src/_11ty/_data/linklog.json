@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "18a01970876eb324",
+      "url": "https://github.com/HKUDS/DeepTutor",
+      "title": "GitHub - HKUDS/DeepTutor: \"DeepTutor: AI-Powered Personalized Learning Assistant\"",
+      "summary": "This GitHub repository showcases \"DeepTutor\", an AI-powered personalized learning assistant. It provides a comprehensive knowledge base, multi-agent problem-solving capabilities, interactive learning visualizations, customized practice exercises, and deep research and idea generation functionalities. The project aims to create an all-in-one knowledge system that can assist users in their learning and research endeavors through the integration of various AI-driven features.",
+      "tags": [
+        "tutor",
+        "education",
+        "ai",
+        "adaptive",
+        "interactive"
+      ],
+      "dateAdded": "2026-01-12T13:51:06.582Z"
+    },
+    {
       "id": "e719b6b40151b760",
       "url": "https://blog.gdeltproject.org/gemini-as-indiana-jones-how-gemini-3-0-deciphered-the-mystery-of-a-nuremberg-chronicle-leafs-500-year-old-roundels/",
       "title": "Gemini As Indiana Jones: How Gemini 3.0 Deciphered The Mystery Of A Nuremberg Chronicle Leaf&#8217;s 500-Year-Old Roundels &#8211; The GDELT Project",
