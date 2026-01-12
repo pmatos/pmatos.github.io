@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "754fc4a095ee1a64",
+      "url": "https://www.oreilly.com/radar/software-2-0-means-verifiable-ai/",
+      "title": "Software 2.0 Means Verifiable AI – O’Reilly",
+      "summary": "This article discusses the concept of \"Software 2.0\" or AI systems, and the importance of verifiability in their development and deployment. It highlights the similarities between the challenges of error correction in quantum computing and the need for verifiability in AI, especially for language models that can generate incorrect or subtly flawed results. The article emphasizes that while verifiability may be more difficult to achieve for AI than for quantum computing, it is a crucial step in ensuring the reliability and trustworthiness of AI systems as they become more prominent in various applications.",
+      "tags": [
+        "software",
+        "ai",
+        "verifiability",
+        "quantum",
+        "language-models"
+      ],
+      "dateAdded": "2026-01-12T11:23:26.445Z"
+    },
+    {
       "id": "733e8423511ee5e9",
       "url": "https://www.oreilly.com/radar/the-end-of-debugging/",
       "title": "The End of Debugging – O’Reilly",
