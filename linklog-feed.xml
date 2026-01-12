@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T11:40:10.298Z</updated>
+  <updated>2026-01-12T11:55:22.833Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1081,5 +1081,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="planning" />
     <category term="specification" />
     <category term="brownfield" />
+  </entry>
+  <entry>
+    <title>The Strange Case of Engineers Who Dismiss AI &amp;#8211; Terrible Software</title>
+    <link href="https://terriblesoftware.org/2025/12/19/the-strange-case-of-engineers-who-dismiss-ai/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-506282cbabae4cb0" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-506282cbabae4cb0</id>
+    <updated>2026-01-12T11:55:22.833Z</updated>
+    <summary type="text">This article discusses the strange dismissive attitude some engineers have towards AI coding tools, despite significant improvements in recent years. The author notes that while AI tools are not perfect, they have become much more capable and can significantly improve productivity, yet some engineers still refuse to even try them, often citing outdated experiences from years ago. The article encourages engineers to give modern AI coding tools an honest try, as the gap between those who use them and those who don&#39;t is growing wider.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the strange dismissive attitude some engineers have towards AI coding tools, despite significant improvements in recent years. The author notes that while AI tools are not perfect, they have become much more capable and can significantly improve productivity, yet some engineers still refuse to even try them, often citing outdated experiences from years ago. The article encourages engineers to give modern AI coding tools an honest try, as the gap between those who use them and those who don&#39;t is growing wider.</p>
+      <p><strong>Tags:</strong>
+          #engineers, 
+          #ai, 
+          #productivity, 
+          #coding, 
+          #tools
+      </p>
+      <p><a href="https://terriblesoftware.org/2025/12/19/the-strange-case-of-engineers-who-dismiss-ai/" target="_blank" rel="noopener noreferrer">🔗 https://terriblesoftware.org/2025/12/19/the-strange-case-of-engineers-who-dismiss-ai/</a></p>
+    ]]></content>
+    <category term="engineers" />
+    <category term="ai" />
+    <category term="productivity" />
+    <category term="coding" />
+    <category term="tools" />
   </entry>
 </feed>
