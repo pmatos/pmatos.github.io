@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-08T14:16:00.585Z</updated>
+  <updated>2026-01-12T10:02:08.121Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -841,5 +841,29 @@ The post provides practical insights into using LLMs for coding tasks and highli
     <category term="practice" />
     <category term="productivity" />
     <category term="analytics" />
+  </entry>
+  <entry>
+    <title>www.youtube.com</title>
+    <link href="https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-7964b332182cba32" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-7964b332182cba32</id>
+    <updated>2026-01-12T10:02:08.121Z</updated>
+    <summary type="text">The provided webpage appears to be the YouTube homepage, displaying a video with the URL https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v. The content of the webpage consists of a large amount of configuration data related to various YouTube features, experiments, and settings, suggesting that this is likely a developer-oriented page rather than a typical user-facing YouTube page.</summary>
+    <content type="html"><![CDATA[
+      <p>The provided webpage appears to be the YouTube homepage, displaying a video with the URL https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v. The content of the webpage consists of a large amount of configuration data related to various YouTube features, experiments, and settings, suggesting that this is likely a developer-oriented page rather than a typical user-facing YouTube page.</p>
+      <p><strong>Tags:</strong>
+          #youtube, 
+          #claude, 
+          #skills, 
+          #developer, 
+          #configuration
+      </p>
+      <p><a href="https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v" target="_blank" rel="noopener noreferrer">🔗 https://youtu.be/fOxC44g8vig?si=XfOrNFuE5muyhF1v</a></p>
+    ]]></content>
+    <category term="youtube" />
+    <category term="claude" />
+    <category term="skills" />
+    <category term="developer" />
+    <category term="configuration" />
   </entry>
 </feed>
