@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-14T10:08:58.029Z</updated>
+  <updated>2026-01-14T10:12:04.384Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1433,5 +1433,57 @@ This article provides useful insights into the challenges of long-running AI age
     <category term="development" />
     <category term="engineering" />
     <category term="configuration" />
+  </entry>
+  <entry>
+    <title>LLVM: The bad parts</title>
+    <link href="https://www.npopov.com/2026/01/11/LLVM-The-bad-parts.html" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1097cfc7af6d4c83" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1097cfc7af6d4c83</id>
+    <updated>2026-01-14T10:12:04.384Z</updated>
+    <summary type="text">This blog post discusses several issues and areas for improvement in the LLVM compiler infrastructure. The key points include:
+
+1. Insufficient review capacity, where there are more contributors than reviewers, leading to poor contributor experience and potentially bad changes being merged.
+
+2. Frequent churn in the LLVM C++ API and IR, which imposes costs on users, especially downstream integrators.
+
+3. Concerns around build times, CI stability, and lack of comprehensive end-to-end testing, which can impact the development experience and quality.
+
+4. Backend divergence, where optimizations are often implemented for specific targets rather than generically, leading to increased duplication.
+
+5. Compilation time issues, especially at the -O0 optimization level, where LLVM&#39;s architecture is more optimized for higher optimization levels.
+
+6. Lack of official, publicly accessible performance tracking infrastructure, making it difficult for contributors to evaluate the impact of their changes.
+
+Overall, the post provides a critical but constructive perspective on areas for improvement in the LLVM project, which is a widely used and influential compiler infrastructure.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses several issues and areas for improvement in the LLVM compiler infrastructure. The key points include:
+
+1. Insufficient review capacity, where there are more contributors than reviewers, leading to poor contributor experience and potentially bad changes being merged.
+
+2. Frequent churn in the LLVM C++ API and IR, which imposes costs on users, especially downstream integrators.
+
+3. Concerns around build times, CI stability, and lack of comprehensive end-to-end testing, which can impact the development experience and quality.
+
+4. Backend divergence, where optimizations are often implemented for specific targets rather than generically, leading to increased duplication.
+
+5. Compilation time issues, especially at the -O0 optimization level, where LLVM&#39;s architecture is more optimized for higher optimization levels.
+
+6. Lack of official, publicly accessible performance tracking infrastructure, making it difficult for contributors to evaluate the impact of their changes.
+
+Overall, the post provides a critical but constructive perspective on areas for improvement in the LLVM project, which is a widely used and influential compiler infrastructure.</p>
+      <p><strong>Tags:</strong>
+          #llvm, 
+          #badparts, 
+          #compiler, 
+          #optimization, 
+          #development
+      </p>
+      <p><a href="https://www.npopov.com/2026/01/11/LLVM-The-bad-parts.html" target="_blank" rel="noopener noreferrer">🔗 https://www.npopov.com/2026/01/11/LLVM-The-bad-parts.html</a></p>
+    ]]></content>
+    <category term="llvm" />
+    <category term="badparts" />
+    <category term="compiler" />
+    <category term="optimization" />
+    <category term="development" />
   </entry>
 </feed>
