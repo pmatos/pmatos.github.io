@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-12T21:50:50.662Z</updated>
+  <updated>2026-01-14T09:55:18.937Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1337,5 +1337,29 @@ This article provides useful insights into the challenges of long-running AI age
     <category term="initialization" />
     <category term="incremental" />
     <category term="documentation" />
+  </entry>
+  <entry>
+    <title>jpcaparas.medium.com</title>
+    <link href="https://jpcaparas.medium.com/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2b90c660e45db0e8" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2b90c660e45db0e8</id>
+    <updated>2026-01-14T09:55:18.937Z</updated>
+    <summary type="text">This webpage likely provides an in-depth analysis of the character Ralph Wiggum from the TV show The Simpsons. It appears to explore a programming concept called the &quot;Claude Code Loop&quot; and how it relates to the perpetual nature of Ralph Wiggum&#39;s character. The article could be interesting for fans of The Simpsons who want to dive deeper into the nuances of character development and the intersection of popular culture and programming concepts.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage likely provides an in-depth analysis of the character Ralph Wiggum from the TV show The Simpsons. It appears to explore a programming concept called the &quot;Claude Code Loop&quot; and how it relates to the perpetual nature of Ralph Wiggum&#39;s character. The article could be interesting for fans of The Simpsons who want to dive deeper into the nuances of character development and the intersection of popular culture and programming concepts.</p>
+      <p><strong>Tags:</strong>
+          #agents, 
+          #ralph, 
+          #analysis, 
+          #character, 
+          #programming
+      </p>
+      <p><a href="https://jpcaparas.medium.com/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809" target="_blank" rel="noopener noreferrer">🔗 https://jpcaparas.medium.com/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809</a></p>
+    ]]></content>
+    <category term="agents" />
+    <category term="ralph" />
+    <category term="analysis" />
+    <category term="character" />
+    <category term="programming" />
   </entry>
 </feed>
