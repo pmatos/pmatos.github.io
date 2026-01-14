@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-14T09:55:18.937Z</updated>
+  <updated>2026-01-14T09:56:56.510Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1361,5 +1361,29 @@ This article provides useful insights into the challenges of long-running AI age
     <category term="analysis" />
     <category term="character" />
     <category term="programming" />
+  </entry>
+  <entry>
+    <title>GitHub - Yeachan-Heo/oh-my-claude-sisyphus: Sisyphus from OmO (Oh My Opencode), ported to the Claude Code SDK. Written with Claude Code — ironically. Anthropic, what are you gonna do next?</title>
+    <link href="https://github.com/Yeachan-Heo/oh-my-claude-sisyphus" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1c4f22720bfd3135" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1c4f22720bfd3135</id>
+    <updated>2026-01-14T09:56:56.510Z</updated>
+    <summary type="text">This GitHub repository contains the &quot;oh-my-claude-sisyphus&quot; project, which is a multi-agent orchestration system ported to the Claude Code SDK. The project includes a suite of specialized agents, slash commands, and skills that enhance Claude Code&#39;s capabilities, such as intelligent model routing, task delegation, and self-referential development loops. The repository provides detailed installation instructions and usage examples, highlighting the project&#39;s goal of enabling powerful and adaptive Claude Code workflows.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository contains the &quot;oh-my-claude-sisyphus&quot; project, which is a multi-agent orchestration system ported to the Claude Code SDK. The project includes a suite of specialized agents, slash commands, and skills that enhance Claude Code&#39;s capabilities, such as intelligent model routing, task delegation, and self-referential development loops. The repository provides detailed installation instructions and usage examples, highlighting the project&#39;s goal of enabling powerful and adaptive Claude Code workflows.</p>
+      <p><strong>Tags:</strong>
+          #github, 
+          #sisyphus, 
+          #orchestration, 
+          #adaptive, 
+          #workflow
+      </p>
+      <p><a href="https://github.com/Yeachan-Heo/oh-my-claude-sisyphus" target="_blank" rel="noopener noreferrer">🔗 https://github.com/Yeachan-Heo/oh-my-claude-sisyphus</a></p>
+    ]]></content>
+    <category term="github" />
+    <category term="sisyphus" />
+    <category term="orchestration" />
+    <category term="adaptive" />
+    <category term="workflow" />
   </entry>
 </feed>
