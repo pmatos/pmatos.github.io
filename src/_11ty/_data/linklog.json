@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1097cfc7af6d4c83",
+      "url": "https://www.npopov.com/2026/01/11/LLVM-The-bad-parts.html",
+      "title": "LLVM: The bad parts",
+      "summary": "This blog post discusses several issues and areas for improvement in the LLVM compiler infrastructure. The key points include:\n\n1. Insufficient review capacity, where there are more contributors than reviewers, leading to poor contributor experience and potentially bad changes being merged.\n\n2. Frequent churn in the LLVM C++ API and IR, which imposes costs on users, especially downstream integrators.\n\n3. Concerns around build times, CI stability, and lack of comprehensive end-to-end testing, which can impact the development experience and quality.\n\n4. Backend divergence, where optimizations are often implemented for specific targets rather than generically, leading to increased duplication.\n\n5. Compilation time issues, especially at the -O0 optimization level, where LLVM's architecture is more optimized for higher optimization levels.\n\n6. Lack of official, publicly accessible performance tracking infrastructure, making it difficult for contributors to evaluate the impact of their changes.\n\nOverall, the post provides a critical but constructive perspective on areas for improvement in the LLVM project, which is a widely used and influential compiler infrastructure.",
+      "tags": [
+        "llvm",
+        "badparts",
+        "compiler",
+        "optimization",
+        "development"
+      ],
+      "dateAdded": "2026-01-14T10:12:04.384Z"
+    },
+    {
       "id": "52da73809d0c0309",
       "url": "https://www.youtube.com/watch?v=oEA1WgjcL7w",
       "title": "www.youtube.com",
