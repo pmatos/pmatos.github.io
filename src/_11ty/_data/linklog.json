@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "2b90c660e45db0e8",
+      "url": "https://jpcaparas.medium.com/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809",
+      "title": "jpcaparas.medium.com",
+      "summary": "This webpage likely provides an in-depth analysis of the character Ralph Wiggum from the TV show The Simpsons. It appears to explore a programming concept called the \"Claude Code Loop\" and how it relates to the perpetual nature of Ralph Wiggum's character. The article could be interesting for fans of The Simpsons who want to dive deeper into the nuances of character development and the intersection of popular culture and programming concepts.",
+      "tags": [
+        "agents",
+        "ralph",
+        "analysis",
+        "character",
+        "programming"
+      ],
+      "dateAdded": "2026-01-14T09:55:18.937Z"
+    },
+    {
       "id": "5ac1d68d84ff2c09",
       "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
       "title": "Effective harnesses for long-running agents \\ Anthropic",
