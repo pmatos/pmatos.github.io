@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-14T09:56:56.510Z</updated>
+  <updated>2026-01-14T10:06:47.582Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1385,5 +1385,29 @@ This article provides useful insights into the challenges of long-running AI age
     <category term="orchestration" />
     <category term="adaptive" />
     <category term="workflow" />
+  </entry>
+  <entry>
+    <title>GitHub - 0xSojalSec/airllm: AirLLM 70B inference with single 4GB GPU</title>
+    <link href="https://github.com/0xSojalSec/airllm" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-8932be8a5c050a6a" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-8932be8a5c050a6a</id>
+    <updated>2026-01-14T10:06:47.582Z</updated>
+    <summary type="text">This GitHub repository presents AirLLM, a tool that enables running large language models with 70B parameters on a single 4GB GPU without requiring quantization, distillation, or pruning. The tool optimizes memory usage, allowing users to run models like Llama3.1 with 405B parameters on 8GB of VRAM. The repository includes detailed instructions for installation, configuration, and example notebooks showcasing the usage of AirLLM with various language models, such as ChatGLM, QWen, Baichuan, and Mistral.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository presents AirLLM, a tool that enables running large language models with 70B parameters on a single 4GB GPU without requiring quantization, distillation, or pruning. The tool optimizes memory usage, allowing users to run models like Llama3.1 with 405B parameters on 8GB of VRAM. The repository includes detailed instructions for installation, configuration, and example notebooks showcasing the usage of AirLLM with various language models, such as ChatGLM, QWen, Baichuan, and Mistral.</p>
+      <p><strong>Tags:</strong>
+          #github, 
+          #inference, 
+          #optimization, 
+          #language-models, 
+          #tutorials
+      </p>
+      <p><a href="https://github.com/0xSojalSec/airllm" target="_blank" rel="noopener noreferrer">🔗 https://github.com/0xSojalSec/airllm</a></p>
+    ]]></content>
+    <category term="github" />
+    <category term="inference" />
+    <category term="optimization" />
+    <category term="language-models" />
+    <category term="tutorials" />
   </entry>
 </feed>
