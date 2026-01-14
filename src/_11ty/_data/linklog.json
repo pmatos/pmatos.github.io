@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "8932be8a5c050a6a",
+      "url": "https://github.com/0xSojalSec/airllm",
+      "title": "GitHub - 0xSojalSec/airllm: AirLLM 70B inference with single 4GB GPU",
+      "summary": "This GitHub repository presents AirLLM, a tool that enables running large language models with 70B parameters on a single 4GB GPU without requiring quantization, distillation, or pruning. The tool optimizes memory usage, allowing users to run models like Llama3.1 with 405B parameters on 8GB of VRAM. The repository includes detailed instructions for installation, configuration, and example notebooks showcasing the usage of AirLLM with various language models, such as ChatGLM, QWen, Baichuan, and Mistral.",
+      "tags": [
+        "github",
+        "inference",
+        "optimization",
+        "language-models",
+        "tutorials"
+      ],
+      "dateAdded": "2026-01-14T10:06:47.582Z"
+    },
+    {
       "id": "1c4f22720bfd3135",
       "url": "https://github.com/Yeachan-Heo/oh-my-claude-sisyphus",
       "title": "GitHub - Yeachan-Heo/oh-my-claude-sisyphus: Sisyphus from OmO (Oh My Opencode), ported to the Claude Code SDK. Written with Claude Code — ironically. Anthropic, what are you gonna do next?",
