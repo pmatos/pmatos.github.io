@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1c4f22720bfd3135",
+      "url": "https://github.com/Yeachan-Heo/oh-my-claude-sisyphus",
+      "title": "GitHub - Yeachan-Heo/oh-my-claude-sisyphus: Sisyphus from OmO (Oh My Opencode), ported to the Claude Code SDK. Written with Claude Code — ironically. Anthropic, what are you gonna do next?",
+      "summary": "This GitHub repository contains the \"oh-my-claude-sisyphus\" project, which is a multi-agent orchestration system ported to the Claude Code SDK. The project includes a suite of specialized agents, slash commands, and skills that enhance Claude Code's capabilities, such as intelligent model routing, task delegation, and self-referential development loops. The repository provides detailed installation instructions and usage examples, highlighting the project's goal of enabling powerful and adaptive Claude Code workflows.",
+      "tags": [
+        "github",
+        "sisyphus",
+        "orchestration",
+        "adaptive",
+        "workflow"
+      ],
+      "dateAdded": "2026-01-14T09:56:56.510Z"
+    },
+    {
       "id": "2b90c660e45db0e8",
       "url": "https://jpcaparas.medium.com/ralph-wiggum-explained-the-claude-code-loop-that-keeps-going-3250dcc30809",
       "title": "jpcaparas.medium.com",
