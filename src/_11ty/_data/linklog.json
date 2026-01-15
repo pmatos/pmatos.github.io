@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "c4369a25de150159",
+      "url": "https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/",
+      "title": "Defeating Nondeterminism in LLM Inference - Thinking Machines Lab",
+      "summary": "This article explores the issue of nondeterminism in large language model (LLM) inference, where the same inputs can produce different outputs. It explains that the root cause is not just concurrency and floating-point non-associativity, as commonly hypothesized. Instead, the true culprit is the way kernels are implemented, particularly the ordering of floating-point operations, which can lead to different results even without concurrency. The article delves into the nuances of floating-point arithmetic and how it can introduce numerical differences, and it offers insights on how to achieve truly reproducible results in LLM inference.",
+      "tags": [
+        "nondeterminism",
+        "llm",
+        "floating-point",
+        "reproducibility",
+        "inference"
+      ],
+      "dateAdded": "2026-01-15T14:06:37.849Z"
+    },
+    {
       "id": "45d1c52827c4b59d",
       "url": "https://www.youtube.com/watch?v=JMDZCYHTkm0",
       "title": "www.youtube.com",
