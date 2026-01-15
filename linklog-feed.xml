@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-14T10:12:04.384Z</updated>
+  <updated>2026-01-15T09:21:49.205Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1485,5 +1485,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="compiler" />
     <category term="optimization" />
     <category term="development" />
+  </entry>
+  <entry>
+    <title>Building a Code Review System That Uses Prod Data to Predict Bugs | Sentry</title>
+    <link href="https://blog.sentry.io/building-a-code-review-system-that-uses-prod-data-to-predict-bugs/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1b42ac5123cf1221" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1b42ac5123cf1221</id>
+    <updated>2026-01-15T09:21:49.205Z</updated>
+    <summary type="text">This article discusses how Sentry&#39;s AI-powered Code Review system uses a combination of code analysis and production data from Sentry to predict potential bugs before code is merged. The system employs a multi-step pipeline to filter, predict, and verify bug hypotheses, leveraging contextual information such as code changes, commit messages, and historical Sentry data. The article provides a detailed overview of how the system works, including examples of its application to a real pull request in the Sentry codebase.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses how Sentry&#39;s AI-powered Code Review system uses a combination of code analysis and production data from Sentry to predict potential bugs before code is merged. The system employs a multi-step pipeline to filter, predict, and verify bug hypotheses, leveraging contextual information such as code changes, commit messages, and historical Sentry data. The article provides a detailed overview of how the system works, including examples of its application to a real pull request in the Sentry codebase.</p>
+      <p><strong>Tags:</strong>
+          #sentry, 
+          #codereview, 
+          #ai, 
+          #predictive, 
+          #pipeline
+      </p>
+      <p><a href="https://blog.sentry.io/building-a-code-review-system-that-uses-prod-data-to-predict-bugs/" target="_blank" rel="noopener noreferrer">🔗 https://blog.sentry.io/building-a-code-review-system-that-uses-prod-data-to-predict-bugs/</a></p>
+    ]]></content>
+    <category term="sentry" />
+    <category term="codereview" />
+    <category term="ai" />
+    <category term="predictive" />
+    <category term="pipeline" />
   </entry>
 </feed>
