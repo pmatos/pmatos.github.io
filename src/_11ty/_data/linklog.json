@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1b42ac5123cf1221",
+      "url": "https://blog.sentry.io/building-a-code-review-system-that-uses-prod-data-to-predict-bugs/",
+      "title": "Building a Code Review System That Uses Prod Data to Predict Bugs | Sentry",
+      "summary": "This article discusses how Sentry's AI-powered Code Review system uses a combination of code analysis and production data from Sentry to predict potential bugs before code is merged. The system employs a multi-step pipeline to filter, predict, and verify bug hypotheses, leveraging contextual information such as code changes, commit messages, and historical Sentry data. The article provides a detailed overview of how the system works, including examples of its application to a real pull request in the Sentry codebase.",
+      "tags": [
+        "sentry",
+        "codereview",
+        "ai",
+        "predictive",
+        "pipeline"
+      ],
+      "dateAdded": "2026-01-15T09:21:49.205Z"
+    },
+    {
       "id": "1097cfc7af6d4c83",
       "url": "https://www.npopov.com/2026/01/11/LLVM-The-bad-parts.html",
       "title": "LLVM: The bad parts",
