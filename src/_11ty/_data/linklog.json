@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "7a2d60ae62f59cae",
+      "url": "https://github.com/ClavixDev/Clavix",
+      "title": "GitHub - ClavixDev/Clavix: Transform vague ideas into production-ready prompts. Analyze gaps, generate PRDs, and supercharge your AI coding workflow with the CLEAR framework.",
+      "summary": "Clavix is an open-source project that aims to transform vague ideas into production-ready prompts for AI coding tools. It provides a framework called CLEAR (Clarify, Learn, Explore, Analyze, Refine) to help users analyze gaps, generate product requirement documents (PRDs), and supercharge their AI coding workflow. Clavix supports various AI tools, including IDEs, extensions, and CLI agents, and offers a set of slash commands to streamline the development process.",
+      "tags": [
+        "claude",
+        "prompt",
+        "engineering",
+        "workflow",
+        "requirements"
+      ],
+      "dateAdded": "2026-01-18T16:16:04.832Z"
+    },
+    {
       "id": "177991961b9010be",
       "url": "https://causalinf.substack.com/p/how-claude-code-has-changed-my-work",
       "title": "How Claude Code Has Changed My Work (Part 4-ish): More about Claude Code, its Creator, and Latent Knowledge",
