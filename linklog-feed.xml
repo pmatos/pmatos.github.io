@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:16:04.832Z</updated>
+  <updated>2026-01-18T16:28:01.950Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1701,5 +1701,45 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="engineering" />
     <category term="workflow" />
     <category term="requirements" />
+  </entry>
+  <entry>
+    <title>AddyOsmani.com - The Next Two Years of Software Engineering</title>
+    <link href="https://addyosmani.com/blog/next-two-years/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-f2320789da5653fe" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-f2320789da5653fe</id>
+    <updated>2026-01-18T16:28:01.950Z</updated>
+    <summary type="text">The article discusses the potential impact of AI on the software engineering field over the next two years. It outlines two contrasting scenarios for the future of junior developer hiring, core programming skills, and the role of developers. The key points are:
+
+1) Junior developer hiring could collapse as AI automates entry-level tasks, or rebound as software spreads to more industries. Developers need to become proficient with AI tools and focus on skills AI can&#39;t easily replicate.
+
+2) Core programming skills could atrophy as AI writes most code, or become more critical as developers focus on oversight and high-level architecture. Developers must balance AI-assisted speed with deep technical expertise.
+
+3) The developer role could shrink into limited auditing of AI-generated code, or expand into a pivotal orchestrator position designing and governing AI-driven systems. Developers may need to take on more strategic and ethical responsibilities.
+
+Overall, the article explores how the software engineering field may evolve in response to the growing use of AI, providing insight for developers on potential challenges and adaptations required.</summary>
+    <content type="html"><![CDATA[
+      <p>The article discusses the potential impact of AI on the software engineering field over the next two years. It outlines two contrasting scenarios for the future of junior developer hiring, core programming skills, and the role of developers. The key points are:
+
+1) Junior developer hiring could collapse as AI automates entry-level tasks, or rebound as software spreads to more industries. Developers need to become proficient with AI tools and focus on skills AI can&#39;t easily replicate.
+
+2) Core programming skills could atrophy as AI writes most code, or become more critical as developers focus on oversight and high-level architecture. Developers must balance AI-assisted speed with deep technical expertise.
+
+3) The developer role could shrink into limited auditing of AI-generated code, or expand into a pivotal orchestrator position designing and governing AI-driven systems. Developers may need to take on more strategic and ethical responsibilities.
+
+Overall, the article explores how the software engineering field may evolve in response to the growing use of AI, providing insight for developers on potential challenges and adaptations required.</p>
+      <p><strong>Tags:</strong>
+          #softeng, 
+          #ai, 
+          #automation, 
+          #architecture, 
+          #ethics
+      </p>
+      <p><a href="https://addyosmani.com/blog/next-two-years/" target="_blank" rel="noopener noreferrer">🔗 https://addyosmani.com/blog/next-two-years/</a></p>
+    ]]></content>
+    <category term="softeng" />
+    <category term="ai" />
+    <category term="automation" />
+    <category term="architecture" />
+    <category term="ethics" />
   </entry>
 </feed>
