@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:02:21.261Z</updated>
+  <updated>2026-01-18T16:04:26.195Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1629,5 +1629,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="automation" />
     <category term="productivity" />
     <category term="software" />
+  </entry>
+  <entry>
+    <title>Claude Code Hits Different - by Nathan Lambert</title>
+    <link href="https://www.interconnects.ai/p/claude-code-hits-different" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c1f4d2c4304a3f2a" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c1f4d2c4304a3f2a</id>
+    <updated>2026-01-18T16:04:26.195Z</updated>
+    <summary type="text">This article discusses the significant performance improvements made to the AI coding agent Claude with the release of Opus 4.5. The author enthusiastically describes how Claude Code has reached a &quot;watershed moment,&quot; moving software creation from an artisanal process to an industrial one. The article suggests that Claude&#39;s capabilities, combined with its elegant interface, are making coding accessible to a broader audience and shifting the power dynamics in the software industry towards smaller organizations and startups. The author expects the commodification of software to accelerate in 2026 as more people discover the potential of Claude Code.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the significant performance improvements made to the AI coding agent Claude with the release of Opus 4.5. The author enthusiastically describes how Claude Code has reached a &quot;watershed moment,&quot; moving software creation from an artisanal process to an industrial one. The article suggests that Claude&#39;s capabilities, combined with its elegant interface, are making coding accessible to a broader audience and shifting the power dynamics in the software industry towards smaller organizations and startups. The author expects the commodification of software to accelerate in 2026 as more people discover the potential of Claude Code.</p>
+      <p><strong>Tags:</strong>
+          #claude, 
+          #performance, 
+          #accessibility, 
+          #commodification, 
+          #startups
+      </p>
+      <p><a href="https://www.interconnects.ai/p/claude-code-hits-different" target="_blank" rel="noopener noreferrer">🔗 https://www.interconnects.ai/p/claude-code-hits-different</a></p>
+    ]]></content>
+    <category term="claude" />
+    <category term="performance" />
+    <category term="accessibility" />
+    <category term="commodification" />
+    <category term="startups" />
   </entry>
 </feed>
