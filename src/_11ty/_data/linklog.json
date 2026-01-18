@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "ac54be98f3f726b5",
+      "url": "https://www.quantamagazine.org/distinct-ai-models-seem-to-converge-on-how-they-encode-reality-20260107/",
+      "title": "Distinct AI Models Seem To Converge On How They Encode Reality | Quanta Magazine",
+      "summary": "This article discusses the convergence of representations in distinct AI models, even when trained on different data types. Researchers propose the \"Platonic representation hypothesis,\" suggesting that as AI models grow more powerful, they may be converging toward a shared \"Platonic\" way of representing the world, similar to Plato's allegory of the cave. The article explores how researchers compare representations across models by measuring the similarity of the vectors representing concepts, and notes that more powerful models seem to have more similarities in their representations. This suggests that as AI models scale, they may be developing a more unified understanding of the underlying reality behind the training data.",
+      "tags": [
+        "ai",
+        "representations",
+        "convergence",
+        "models",
+        "platonic"
+      ],
+      "dateAdded": "2026-01-18T17:41:07.267Z"
+    },
+    {
       "id": "9de0336f1d6eaf4e",
       "url": "https://rue-lang.dev/blog/the-story-of-rue-so-far/",
       "title": "The Story of Rue So Far | Blog | Rue",
