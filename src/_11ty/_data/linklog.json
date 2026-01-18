@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "242613cb4edf8d6d",
+      "url": "https://antirez.com/news/158",
+      "title": "Don&#39;t fall into the anti-AI hype - <antirez>",
+      "summary": "This article discusses the author's perspective on the impact of AI on programming and software development. The author acknowledges the significant advancements in large language models (LLMs) that can now complete various coding tasks with minimal human intervention. While concerned about the potential job losses, the author sees the democratization of AI as an opportunity to improve open-source software and enable smaller teams to compete with larger companies. The author encourages programmers to embrace these new AI tools, explore their capabilities, and find ways to leverage them effectively in their work.",
+      "tags": [
+        "anti-ai",
+        "hype",
+        "open-source",
+        "democratization",
+        "leverage"
+      ],
+      "dateAdded": "2026-01-18T14:11:48.955Z"
+    },
+    {
       "id": "c4369a25de150159",
       "url": "https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/",
       "title": "Defeating Nondeterminism in LLM Inference - Thinking Machines Lab",
