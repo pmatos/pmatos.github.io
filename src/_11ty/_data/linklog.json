@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "177991961b9010be",
+      "url": "https://causalinf.substack.com/p/how-claude-code-has-changed-my-work",
+      "title": "How Claude Code Has Changed My Work (Part 4-ish): More about Claude Code, its Creator, and Latent Knowledge",
+      "summary": "This article provides an update on the author's ongoing exploration of Claude Code, a revolutionary programming tool. It delves into more details about Claude Code, its creator, and the concept of latent knowledge that the tool aims to leverage. The author suggests that recent news coverage of Claude Code has been written more by software developers than empirical researchers, hinting at the tool's transformative potential for the programming community.",
+      "tags": [
+        "claude",
+        "work",
+        "programming",
+        "innovation",
+        "transformation"
+      ],
+      "dateAdded": "2026-01-18T16:10:09.048Z"
+    },
+    {
       "id": "c1f4d2c4304a3f2a",
       "url": "https://www.interconnects.ai/p/claude-code-hits-different",
       "title": "Claude Code Hits Different - by Nathan Lambert",
