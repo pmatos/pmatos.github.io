@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "e6a407720530a9f1",
+      "url": "https://cursor.com/blog/scaling-agents",
+      "title": "Scaling long-running autonomous coding · Cursor",
+      "summary": "This blog post discusses Cursor's experiments with running autonomous coding agents in parallel to tackle complex software projects that typically take human teams months to complete. The key takeaways are:\n\n1) Cursor has been able to run hundreds of concurrent agents on a single project, coordinating their work and generating over a million lines of code and trillions of tokens.\n\n2) They found that a hierarchical structure with distinct \"planner\" and \"worker\" roles was more effective than a flat, self-coordinating system, allowing the agents to scale to very large projects without individual agents getting stuck or losing focus.\n\n3) Cursor has used this system to successfully complete tasks like building a web browser from scratch, migrating Solid to React, and improving the performance and features of their own product, showcasing the potential for autonomous coding at scale.",
+      "tags": [
+        "scaling",
+        "agents",
+        "autonomous",
+        "coordination",
+        "performance"
+      ],
+      "dateAdded": "2026-01-18T16:43:30.460Z"
+    },
+    {
       "id": "f2320789da5653fe",
       "url": "https://addyosmani.com/blog/next-two-years/",
       "title": "AddyOsmani.com - The Next Two Years of Software Engineering",
