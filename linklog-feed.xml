@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:28:01.950Z</updated>
+  <updated>2026-01-18T16:43:30.460Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1741,5 +1741,41 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="automation" />
     <category term="architecture" />
     <category term="ethics" />
+  </entry>
+  <entry>
+    <title>Scaling long-running autonomous coding · Cursor</title>
+    <link href="https://cursor.com/blog/scaling-agents" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-e6a407720530a9f1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-e6a407720530a9f1</id>
+    <updated>2026-01-18T16:43:30.460Z</updated>
+    <summary type="text">This blog post discusses Cursor&#39;s experiments with running autonomous coding agents in parallel to tackle complex software projects that typically take human teams months to complete. The key takeaways are:
+
+1) Cursor has been able to run hundreds of concurrent agents on a single project, coordinating their work and generating over a million lines of code and trillions of tokens.
+
+2) They found that a hierarchical structure with distinct &quot;planner&quot; and &quot;worker&quot; roles was more effective than a flat, self-coordinating system, allowing the agents to scale to very large projects without individual agents getting stuck or losing focus.
+
+3) Cursor has used this system to successfully complete tasks like building a web browser from scratch, migrating Solid to React, and improving the performance and features of their own product, showcasing the potential for autonomous coding at scale.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses Cursor&#39;s experiments with running autonomous coding agents in parallel to tackle complex software projects that typically take human teams months to complete. The key takeaways are:
+
+1) Cursor has been able to run hundreds of concurrent agents on a single project, coordinating their work and generating over a million lines of code and trillions of tokens.
+
+2) They found that a hierarchical structure with distinct &quot;planner&quot; and &quot;worker&quot; roles was more effective than a flat, self-coordinating system, allowing the agents to scale to very large projects without individual agents getting stuck or losing focus.
+
+3) Cursor has used this system to successfully complete tasks like building a web browser from scratch, migrating Solid to React, and improving the performance and features of their own product, showcasing the potential for autonomous coding at scale.</p>
+      <p><strong>Tags:</strong>
+          #scaling, 
+          #agents, 
+          #autonomous, 
+          #coordination, 
+          #performance
+      </p>
+      <p><a href="https://cursor.com/blog/scaling-agents" target="_blank" rel="noopener noreferrer">🔗 https://cursor.com/blog/scaling-agents</a></p>
+    ]]></content>
+    <category term="scaling" />
+    <category term="agents" />
+    <category term="autonomous" />
+    <category term="coordination" />
+    <category term="performance" />
   </entry>
 </feed>
