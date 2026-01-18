@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1fdd02a12cfd4f54",
+      "url": "https://blog.mozilla.org/en/mozilla/mozilla-open-source-ai-strategy/",
+      "title": "blog.mozilla.org",
+      "summary": "The webpage titled \"Mozilla Open Source AI Strategy\" on the blog.mozilla.org domain likely discusses Mozilla's approach to and plans for incorporating open-source principles into their artificial intelligence research and development efforts. This could be of interest to those following the ongoing efforts of major technology companies to advance AI capabilities in an ethical and transparent manner.",
+      "tags": [
+        "opensource",
+        "ai",
+        "mozilla",
+        "strategy",
+        "ethics"
+      ],
+      "dateAdded": "2026-01-18T17:56:14.349Z"
+    },
+    {
       "id": "ac54be98f3f726b5",
       "url": "https://www.quantamagazine.org/distinct-ai-models-seem-to-converge-on-how-they-encode-reality-20260107/",
       "title": "Distinct AI Models Seem To Converge On How They Encode Reality | Quanta Magazine",
