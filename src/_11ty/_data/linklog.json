@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "b3b9e554274bc39d",
+      "url": "https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/",
+      "title": "Under the Hood: Universal Commerce Protocol (UCP) - Google Developers Blog",
+      "summary": "This blog post introduces the Universal Commerce Protocol (UCP), an open-source standard developed by Google in collaboration with industry partners to enable seamless and secure commerce experiences across different platforms and surfaces. UCP aims to simplify integration and provide a common language for businesses, AI platforms, developers, and payment providers to facilitate the future of agentic commerce. The article outlines the key features and benefits of UCP, including unified integration, shared language, extensible architecture, and security-first approach, and provides a step-by-step guide on how businesses and agents can set up and interact using the protocol.",
+      "tags": [
+        "ucp",
+        "commerce",
+        "agents",
+        "automation",
+        "interoperability"
+      ],
+      "dateAdded": "2026-01-18T14:13:46.819Z"
+    },
+    {
       "id": "242613cb4edf8d6d",
       "url": "https://antirez.com/news/158",
       "title": "Don&#39;t fall into the anti-AI hype - <antirez>",
