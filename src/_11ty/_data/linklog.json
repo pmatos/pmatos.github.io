@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "9de0336f1d6eaf4e",
+      "url": "https://rue-lang.dev/blog/the-story-of-rue-so-far/",
+      "title": "The Story of Rue So Far | Blog | Rue",
+      "summary": "The blog post discusses the author's journey in creating a programming language called Rue, using the AI language model Claude to assist with the compiler implementation. It describes the initial struggles and learnings, the author's changing perceptions of AI, and the progress made in a recent week-long effort, with plans to share more technical details in the future. The post provides an insightful look into the challenges and successes of building a programming language as a personal project, leveraging emerging AI technologies.",
+      "tags": [
+        "rue",
+        "genai",
+        "compiler",
+        "ai-assisted",
+        "programming-language"
+      ],
+      "dateAdded": "2026-01-18T16:55:41.919Z"
+    },
+    {
       "id": "e6a407720530a9f1",
       "url": "https://cursor.com/blog/scaling-agents",
       "title": "Scaling long-running autonomous coding · Cursor",
