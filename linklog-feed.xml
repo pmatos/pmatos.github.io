@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-15T14:06:37.849Z</updated>
+  <updated>2026-01-18T14:11:48.955Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1557,5 +1557,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="floating-point" />
     <category term="reproducibility" />
     <category term="inference" />
+  </entry>
+  <entry>
+    <title>Don&amp;#39;t fall into the anti-AI hype - &lt;antirez&gt;</title>
+    <link href="https://antirez.com/news/158" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-242613cb4edf8d6d" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-242613cb4edf8d6d</id>
+    <updated>2026-01-18T14:11:48.955Z</updated>
+    <summary type="text">This article discusses the author&#39;s perspective on the impact of AI on programming and software development. The author acknowledges the significant advancements in large language models (LLMs) that can now complete various coding tasks with minimal human intervention. While concerned about the potential job losses, the author sees the democratization of AI as an opportunity to improve open-source software and enable smaller teams to compete with larger companies. The author encourages programmers to embrace these new AI tools, explore their capabilities, and find ways to leverage them effectively in their work.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the author&#39;s perspective on the impact of AI on programming and software development. The author acknowledges the significant advancements in large language models (LLMs) that can now complete various coding tasks with minimal human intervention. While concerned about the potential job losses, the author sees the democratization of AI as an opportunity to improve open-source software and enable smaller teams to compete with larger companies. The author encourages programmers to embrace these new AI tools, explore their capabilities, and find ways to leverage them effectively in their work.</p>
+      <p><strong>Tags:</strong>
+          #anti-ai, 
+          #hype, 
+          #open-source, 
+          #democratization, 
+          #leverage
+      </p>
+      <p><a href="https://antirez.com/news/158" target="_blank" rel="noopener noreferrer">🔗 https://antirez.com/news/158</a></p>
+    ]]></content>
+    <category term="anti-ai" />
+    <category term="hype" />
+    <category term="open-source" />
+    <category term="democratization" />
+    <category term="leverage" />
   </entry>
 </feed>
