@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:04:26.195Z</updated>
+  <updated>2026-01-18T16:10:09.048Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1653,5 +1653,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="accessibility" />
     <category term="commodification" />
     <category term="startups" />
+  </entry>
+  <entry>
+    <title>How Claude Code Has Changed My Work (Part 4-ish): More about Claude Code, its Creator, and Latent Knowledge</title>
+    <link href="https://causalinf.substack.com/p/how-claude-code-has-changed-my-work" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-177991961b9010be" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-177991961b9010be</id>
+    <updated>2026-01-18T16:10:09.048Z</updated>
+    <summary type="text">This article provides an update on the author&#39;s ongoing exploration of Claude Code, a revolutionary programming tool. It delves into more details about Claude Code, its creator, and the concept of latent knowledge that the tool aims to leverage. The author suggests that recent news coverage of Claude Code has been written more by software developers than empirical researchers, hinting at the tool&#39;s transformative potential for the programming community.</summary>
+    <content type="html"><![CDATA[
+      <p>This article provides an update on the author&#39;s ongoing exploration of Claude Code, a revolutionary programming tool. It delves into more details about Claude Code, its creator, and the concept of latent knowledge that the tool aims to leverage. The author suggests that recent news coverage of Claude Code has been written more by software developers than empirical researchers, hinting at the tool&#39;s transformative potential for the programming community.</p>
+      <p><strong>Tags:</strong>
+          #claude, 
+          #work, 
+          #programming, 
+          #innovation, 
+          #transformation
+      </p>
+      <p><a href="https://causalinf.substack.com/p/how-claude-code-has-changed-my-work" target="_blank" rel="noopener noreferrer">🔗 https://causalinf.substack.com/p/how-claude-code-has-changed-my-work</a></p>
+    ]]></content>
+    <category term="claude" />
+    <category term="work" />
+    <category term="programming" />
+    <category term="innovation" />
+    <category term="transformation" />
   </entry>
 </feed>
