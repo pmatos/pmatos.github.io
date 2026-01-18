@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T17:41:07.267Z</updated>
+  <updated>2026-01-18T17:56:14.349Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1825,5 +1825,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="convergence" />
     <category term="models" />
     <category term="platonic" />
+  </entry>
+  <entry>
+    <title>blog.mozilla.org</title>
+    <link href="https://blog.mozilla.org/en/mozilla/mozilla-open-source-ai-strategy/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1fdd02a12cfd4f54" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1fdd02a12cfd4f54</id>
+    <updated>2026-01-18T17:56:14.349Z</updated>
+    <summary type="text">The webpage titled &quot;Mozilla Open Source AI Strategy&quot; on the blog.mozilla.org domain likely discusses Mozilla&#39;s approach to and plans for incorporating open-source principles into their artificial intelligence research and development efforts. This could be of interest to those following the ongoing efforts of major technology companies to advance AI capabilities in an ethical and transparent manner.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage titled &quot;Mozilla Open Source AI Strategy&quot; on the blog.mozilla.org domain likely discusses Mozilla&#39;s approach to and plans for incorporating open-source principles into their artificial intelligence research and development efforts. This could be of interest to those following the ongoing efforts of major technology companies to advance AI capabilities in an ethical and transparent manner.</p>
+      <p><strong>Tags:</strong>
+          #opensource, 
+          #ai, 
+          #mozilla, 
+          #strategy, 
+          #ethics
+      </p>
+      <p><a href="https://blog.mozilla.org/en/mozilla/mozilla-open-source-ai-strategy/" target="_blank" rel="noopener noreferrer">🔗 https://blog.mozilla.org/en/mozilla/mozilla-open-source-ai-strategy/</a></p>
+    ]]></content>
+    <category term="opensource" />
+    <category term="ai" />
+    <category term="mozilla" />
+    <category term="strategy" />
+    <category term="ethics" />
   </entry>
 </feed>
