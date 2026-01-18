@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "f2320789da5653fe",
+      "url": "https://addyosmani.com/blog/next-two-years/",
+      "title": "AddyOsmani.com - The Next Two Years of Software Engineering",
+      "summary": "The article discusses the potential impact of AI on the software engineering field over the next two years. It outlines two contrasting scenarios for the future of junior developer hiring, core programming skills, and the role of developers. The key points are:\n\n1) Junior developer hiring could collapse as AI automates entry-level tasks, or rebound as software spreads to more industries. Developers need to become proficient with AI tools and focus on skills AI can't easily replicate.\n\n2) Core programming skills could atrophy as AI writes most code, or become more critical as developers focus on oversight and high-level architecture. Developers must balance AI-assisted speed with deep technical expertise.\n\n3) The developer role could shrink into limited auditing of AI-generated code, or expand into a pivotal orchestrator position designing and governing AI-driven systems. Developers may need to take on more strategic and ethical responsibilities.\n\nOverall, the article explores how the software engineering field may evolve in response to the growing use of AI, providing insight for developers on potential challenges and adaptations required.",
+      "tags": [
+        "softeng",
+        "ai",
+        "automation",
+        "architecture",
+        "ethics"
+      ],
+      "dateAdded": "2026-01-18T16:28:01.950Z"
+    },
+    {
       "id": "7a2d60ae62f59cae",
       "url": "https://github.com/ClavixDev/Clavix",
       "title": "GitHub - ClavixDev/Clavix: Transform vague ideas into production-ready prompts. Analyze gaps, generate PRDs, and supercharge your AI coding workflow with the CLEAR framework.",
