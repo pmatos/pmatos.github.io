@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T14:13:46.819Z</updated>
+  <updated>2026-01-18T16:02:21.261Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1605,5 +1605,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="agents" />
     <category term="automation" />
     <category term="interoperability" />
+  </entry>
+  <entry>
+    <title>Opus 4.5 is going to change everything &amp;middot; Burke Holland</title>
+    <link href="https://burkeholland.github.io/posts/opus-4-5-change-everything/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-f344a39e9851eeeb" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-f344a39e9851eeeb</id>
+    <updated>2026-01-18T16:02:21.261Z</updated>
+    <summary type="text">This article discusses the author&#39;s experience using the AI coding agent Opus 4.5 to rapidly build several applications, including a Windows image conversion utility, a screen recording and editing tool, and an AI-powered social media posting utility for a small business. The author is impressed by Opus 4.5&#39;s ability to write working code with minimal human intervention, even for complex projects involving authentication, databases, and APIs. The article suggests that AI coding agents like Opus 4.5 may be capable of replacing human developers in many cases.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the author&#39;s experience using the AI coding agent Opus 4.5 to rapidly build several applications, including a Windows image conversion utility, a screen recording and editing tool, and an AI-powered social media posting utility for a small business. The author is impressed by Opus 4.5&#39;s ability to write working code with minimal human intervention, even for complex projects involving authentication, databases, and APIs. The article suggests that AI coding agents like Opus 4.5 may be capable of replacing human developers in many cases.</p>
+      <p><strong>Tags:</strong>
+          #claude, 
+          #ai, 
+          #automation, 
+          #productivity, 
+          #software
+      </p>
+      <p><a href="https://burkeholland.github.io/posts/opus-4-5-change-everything/" target="_blank" rel="noopener noreferrer">🔗 https://burkeholland.github.io/posts/opus-4-5-change-everything/</a></p>
+    ]]></content>
+    <category term="claude" />
+    <category term="ai" />
+    <category term="automation" />
+    <category term="productivity" />
+    <category term="software" />
   </entry>
 </feed>
