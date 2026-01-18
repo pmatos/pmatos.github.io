@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:55:41.919Z</updated>
+  <updated>2026-01-18T17:41:07.267Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1801,5 +1801,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="compiler" />
     <category term="ai-assisted" />
     <category term="programming-language" />
+  </entry>
+  <entry>
+    <title>Distinct AI Models Seem To Converge On How They Encode Reality | Quanta Magazine</title>
+    <link href="https://www.quantamagazine.org/distinct-ai-models-seem-to-converge-on-how-they-encode-reality-20260107/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-ac54be98f3f726b5" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-ac54be98f3f726b5</id>
+    <updated>2026-01-18T17:41:07.267Z</updated>
+    <summary type="text">This article discusses the convergence of representations in distinct AI models, even when trained on different data types. Researchers propose the &quot;Platonic representation hypothesis,&quot; suggesting that as AI models grow more powerful, they may be converging toward a shared &quot;Platonic&quot; way of representing the world, similar to Plato&#39;s allegory of the cave. The article explores how researchers compare representations across models by measuring the similarity of the vectors representing concepts, and notes that more powerful models seem to have more similarities in their representations. This suggests that as AI models scale, they may be developing a more unified understanding of the underlying reality behind the training data.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses the convergence of representations in distinct AI models, even when trained on different data types. Researchers propose the &quot;Platonic representation hypothesis,&quot; suggesting that as AI models grow more powerful, they may be converging toward a shared &quot;Platonic&quot; way of representing the world, similar to Plato&#39;s allegory of the cave. The article explores how researchers compare representations across models by measuring the similarity of the vectors representing concepts, and notes that more powerful models seem to have more similarities in their representations. This suggests that as AI models scale, they may be developing a more unified understanding of the underlying reality behind the training data.</p>
+      <p><strong>Tags:</strong>
+          #ai, 
+          #representations, 
+          #convergence, 
+          #models, 
+          #platonic
+      </p>
+      <p><a href="https://www.quantamagazine.org/distinct-ai-models-seem-to-converge-on-how-they-encode-reality-20260107/" target="_blank" rel="noopener noreferrer">🔗 https://www.quantamagazine.org/distinct-ai-models-seem-to-converge-on-how-they-encode-reality-20260107/</a></p>
+    ]]></content>
+    <category term="ai" />
+    <category term="representations" />
+    <category term="convergence" />
+    <category term="models" />
+    <category term="platonic" />
   </entry>
 </feed>
