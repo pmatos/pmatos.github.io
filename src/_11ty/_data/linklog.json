@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "c1f4d2c4304a3f2a",
+      "url": "https://www.interconnects.ai/p/claude-code-hits-different",
+      "title": "Claude Code Hits Different - by Nathan Lambert",
+      "summary": "This article discusses the significant performance improvements made to the AI coding agent Claude with the release of Opus 4.5. The author enthusiastically describes how Claude Code has reached a \"watershed moment,\" moving software creation from an artisanal process to an industrial one. The article suggests that Claude's capabilities, combined with its elegant interface, are making coding accessible to a broader audience and shifting the power dynamics in the software industry towards smaller organizations and startups. The author expects the commodification of software to accelerate in 2026 as more people discover the potential of Claude Code.",
+      "tags": [
+        "claude",
+        "performance",
+        "accessibility",
+        "commodification",
+        "startups"
+      ],
+      "dateAdded": "2026-01-18T16:04:26.195Z"
+    },
+    {
       "id": "f344a39e9851eeeb",
       "url": "https://burkeholland.github.io/posts/opus-4-5-change-everything/",
       "title": "Opus 4.5 is going to change everything &middot; Burke Holland",
