@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:10:09.048Z</updated>
+  <updated>2026-01-18T16:16:04.832Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1677,5 +1677,29 @@ Overall, the post provides a critical but constructive perspective on areas for 
     <category term="programming" />
     <category term="innovation" />
     <category term="transformation" />
+  </entry>
+  <entry>
+    <title>GitHub - ClavixDev/Clavix: Transform vague ideas into production-ready prompts. Analyze gaps, generate PRDs, and supercharge your AI coding workflow with the CLEAR framework.</title>
+    <link href="https://github.com/ClavixDev/Clavix" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-7a2d60ae62f59cae" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-7a2d60ae62f59cae</id>
+    <updated>2026-01-18T16:16:04.832Z</updated>
+    <summary type="text">Clavix is an open-source project that aims to transform vague ideas into production-ready prompts for AI coding tools. It provides a framework called CLEAR (Clarify, Learn, Explore, Analyze, Refine) to help users analyze gaps, generate product requirement documents (PRDs), and supercharge their AI coding workflow. Clavix supports various AI tools, including IDEs, extensions, and CLI agents, and offers a set of slash commands to streamline the development process.</summary>
+    <content type="html"><![CDATA[
+      <p>Clavix is an open-source project that aims to transform vague ideas into production-ready prompts for AI coding tools. It provides a framework called CLEAR (Clarify, Learn, Explore, Analyze, Refine) to help users analyze gaps, generate product requirement documents (PRDs), and supercharge their AI coding workflow. Clavix supports various AI tools, including IDEs, extensions, and CLI agents, and offers a set of slash commands to streamline the development process.</p>
+      <p><strong>Tags:</strong>
+          #claude, 
+          #prompt, 
+          #engineering, 
+          #workflow, 
+          #requirements
+      </p>
+      <p><a href="https://github.com/ClavixDev/Clavix" target="_blank" rel="noopener noreferrer">🔗 https://github.com/ClavixDev/Clavix</a></p>
+    ]]></content>
+    <category term="claude" />
+    <category term="prompt" />
+    <category term="engineering" />
+    <category term="workflow" />
+    <category term="requirements" />
   </entry>
 </feed>
