@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T16:43:30.460Z</updated>
+  <updated>2026-01-18T16:55:41.919Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1777,5 +1777,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="autonomous" />
     <category term="coordination" />
     <category term="performance" />
+  </entry>
+  <entry>
+    <title>The Story of Rue So Far | Blog | Rue</title>
+    <link href="https://rue-lang.dev/blog/the-story-of-rue-so-far/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-9de0336f1d6eaf4e" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-9de0336f1d6eaf4e</id>
+    <updated>2026-01-18T16:55:41.919Z</updated>
+    <summary type="text">The blog post discusses the author&#39;s journey in creating a programming language called Rue, using the AI language model Claude to assist with the compiler implementation. It describes the initial struggles and learnings, the author&#39;s changing perceptions of AI, and the progress made in a recent week-long effort, with plans to share more technical details in the future. The post provides an insightful look into the challenges and successes of building a programming language as a personal project, leveraging emerging AI technologies.</summary>
+    <content type="html"><![CDATA[
+      <p>The blog post discusses the author&#39;s journey in creating a programming language called Rue, using the AI language model Claude to assist with the compiler implementation. It describes the initial struggles and learnings, the author&#39;s changing perceptions of AI, and the progress made in a recent week-long effort, with plans to share more technical details in the future. The post provides an insightful look into the challenges and successes of building a programming language as a personal project, leveraging emerging AI technologies.</p>
+      <p><strong>Tags:</strong>
+          #rue, 
+          #genai, 
+          #compiler, 
+          #ai-assisted, 
+          #programming-language
+      </p>
+      <p><a href="https://rue-lang.dev/blog/the-story-of-rue-so-far/" target="_blank" rel="noopener noreferrer">🔗 https://rue-lang.dev/blog/the-story-of-rue-so-far/</a></p>
+    ]]></content>
+    <category term="rue" />
+    <category term="genai" />
+    <category term="compiler" />
+    <category term="ai-assisted" />
+    <category term="programming-language" />
   </entry>
 </feed>
