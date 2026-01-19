@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-18T17:56:14.349Z</updated>
+  <updated>2026-01-19T07:31:36.696Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1849,5 +1849,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="mozilla" />
     <category term="strategy" />
     <category term="ethics" />
+  </entry>
+  <entry>
+    <title>On the Coming Industrialisation of Exploit Generation with LLMs &amp;#8211; Sean Heelan&#39;s Blog</title>
+    <link href="https://sean.heelan.io/2026/01/18/on-the-coming-industrialisation-of-exploit-generation-with-llms/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-dc5131c51e59aae4" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-dc5131c51e59aae4</id>
+    <updated>2026-01-19T07:31:36.696Z</updated>
+    <summary type="text">This blog post discusses the author&#39;s experiments with using large language models (LLMs) like Opus 4.5 and GPT-5.2 to generate exploits for a zero-day vulnerability in the QuickJS JavaScript interpreter. The author found that the LLMs were able to successfully generate over 40 distinct exploits across various scenarios, including one that bypassed multiple modern exploit mitigations. The main conclusion drawn is that we should prepare for the industrialization of many aspects of offensive cybersecurity, where the limiting factor will be an organization&#39;s &quot;token throughput&quot; rather than the number of human hackers they employ. The post provides technical details on the experiment and the author&#39;s perspective on when and how certain cybersecurity tasks may become amenable to automation using LLMs.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses the author&#39;s experiments with using large language models (LLMs) like Opus 4.5 and GPT-5.2 to generate exploits for a zero-day vulnerability in the QuickJS JavaScript interpreter. The author found that the LLMs were able to successfully generate over 40 distinct exploits across various scenarios, including one that bypassed multiple modern exploit mitigations. The main conclusion drawn is that we should prepare for the industrialization of many aspects of offensive cybersecurity, where the limiting factor will be an organization&#39;s &quot;token throughput&quot; rather than the number of human hackers they employ. The post provides technical details on the experiment and the author&#39;s perspective on when and how certain cybersecurity tasks may become amenable to automation using LLMs.</p>
+      <p><strong>Tags:</strong>
+          #exploit, 
+          #automation, 
+          #cybersecurity, 
+          #language-models, 
+          #vulnerability
+      </p>
+      <p><a href="https://sean.heelan.io/2026/01/18/on-the-coming-industrialisation-of-exploit-generation-with-llms/" target="_blank" rel="noopener noreferrer">🔗 https://sean.heelan.io/2026/01/18/on-the-coming-industrialisation-of-exploit-generation-with-llms/</a></p>
+    ]]></content>
+    <category term="exploit" />
+    <category term="automation" />
+    <category term="cybersecurity" />
+    <category term="language-models" />
+    <category term="vulnerability" />
   </entry>
 </feed>
