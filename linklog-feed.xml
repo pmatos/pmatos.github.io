@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-20T10:47:28.230Z</updated>
+  <updated>2026-01-20T13:03:45.478Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1897,5 +1897,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="piano" />
     <category term="composition" />
     <category term="tutorial" />
+  </entry>
+  <entry>
+    <title>The Ultimate Guide to Transform Your Piano Playing in 2026 | Pianist</title>
+    <link href="https://www.pianistmagazine.com/blogs/the-ultimate-guide-to-transform-your-piano-playing-in-2026/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-3249a9441387a00c" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-3249a9441387a00c</id>
+    <updated>2026-01-20T13:03:45.478Z</updated>
+    <summary type="text">This article provides a guide to improving piano playing, focusing on five key areas: 1) Memorizing music to develop security and mastery, 2) Improving sight-reading to explore new repertoire, 3) Playing with other musicians to enhance musicality and sight-reading skills, 4) Improvising and exploring new musical styles, and 5) Practicing mentally to strengthen memory and musical understanding. The author, Robert Estrin, presents these as crucial elements for transforming one&#39;s piano playing and becoming a well-rounded musician.</summary>
+    <content type="html"><![CDATA[
+      <p>This article provides a guide to improving piano playing, focusing on five key areas: 1) Memorizing music to develop security and mastery, 2) Improving sight-reading to explore new repertoire, 3) Playing with other musicians to enhance musicality and sight-reading skills, 4) Improvising and exploring new musical styles, and 5) Practicing mentally to strengthen memory and musical understanding. The author, Robert Estrin, presents these as crucial elements for transforming one&#39;s piano playing and becoming a well-rounded musician.</p>
+      <p><strong>Tags:</strong>
+          #piano, 
+          #memorization, 
+          #sight-reading, 
+          #improvisation, 
+          #practice
+      </p>
+      <p><a href="https://www.pianistmagazine.com/blogs/the-ultimate-guide-to-transform-your-piano-playing-in-2026/" target="_blank" rel="noopener noreferrer">🔗 https://www.pianistmagazine.com/blogs/the-ultimate-guide-to-transform-your-piano-playing-in-2026/</a></p>
+    ]]></content>
+    <category term="piano" />
+    <category term="memorization" />
+    <category term="sight-reading" />
+    <category term="improvisation" />
+    <category term="practice" />
   </entry>
 </feed>
