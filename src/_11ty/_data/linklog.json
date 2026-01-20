@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "16c7e976f417a5bd",
+      "url": "https://www.wsj.com/tech/ai/anthropic-claude-code-ai-7a46460e",
+      "title": "www.wsj.com",
+      "summary": "The webpage appears to be about Anthropic's AI language model called \"Claude\". Based on the URL, the content is likely to discuss the technical details and capabilities of the Claude AI system, which could be of interest to those following advancements in natural language processing and artificial intelligence technologies.",
+      "tags": [
+        "ai",
+        "language-model",
+        "natural-language-processing",
+        "anthropic",
+        "claude"
+      ],
+      "dateAdded": "2026-01-20T14:19:04.365Z"
+    },
+    {
       "id": "2a7b63c590e9c59f",
       "url": "https://rijnard.com/blog/the-code-only-agent",
       "title": "The Code-Only Agent • Rijnard van Tonder",
