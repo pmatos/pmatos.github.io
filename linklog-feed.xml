@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-20T14:19:04.365Z</updated>
+  <updated>2026-01-20T15:00:45.641Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1993,5 +1993,45 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="natural-language-processing" />
     <category term="anthropic" />
     <category term="claude" />
+  </entry>
+  <entry>
+    <title>Accelerating open source development with AI</title>
+    <link href="https://www.redhat.com/en/blog/accelerating-open-source-development-ai" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-7852fe808d354655" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-7852fe808d354655</id>
+    <updated>2026-01-20T15:00:45.641Z</updated>
+    <summary type="text">This article discusses how Red Hat is approaching the use of AI tools to accelerate open source development, while adhering to open source principles. The key points are:
+
+1. Red Hat has developed guidelines for its engineers on the responsible use of AI-based tools for open source contributions, based on principles of innovation, transparency, and respecting the community.
+
+2. The goal is to use AI as a powerful assistant to automate tedious tasks and free up developers to focus on complex problem-solving, not to replace developers entirely.
+
+3. Red Hat emphasizes the importance of human accountability, transparency about AI-assisted contributions, and respecting each project&#39;s established contribution policies and norms when adopting new technologies like AI.
+
+The article provides insight into how a major open source company is navigating the use of emerging AI tools in a way that aligns with open source values and practices.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses how Red Hat is approaching the use of AI tools to accelerate open source development, while adhering to open source principles. The key points are:
+
+1. Red Hat has developed guidelines for its engineers on the responsible use of AI-based tools for open source contributions, based on principles of innovation, transparency, and respecting the community.
+
+2. The goal is to use AI as a powerful assistant to automate tedious tasks and free up developers to focus on complex problem-solving, not to replace developers entirely.
+
+3. Red Hat emphasizes the importance of human accountability, transparency about AI-assisted contributions, and respecting each project&#39;s established contribution policies and norms when adopting new technologies like AI.
+
+The article provides insight into how a major open source company is navigating the use of emerging AI tools in a way that aligns with open source values and practices.</p>
+      <p><strong>Tags:</strong>
+          #open-source, 
+          #ai, 
+          #development, 
+          #red-hat, 
+          #guidelines
+      </p>
+      <p><a href="https://www.redhat.com/en/blog/accelerating-open-source-development-ai" target="_blank" rel="noopener noreferrer">🔗 https://www.redhat.com/en/blog/accelerating-open-source-development-ai</a></p>
+    ]]></content>
+    <category term="open-source" />
+    <category term="ai" />
+    <category term="development" />
+    <category term="red-hat" />
+    <category term="guidelines" />
   </entry>
 </feed>
