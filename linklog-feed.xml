@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-19T07:31:36.696Z</updated>
+  <updated>2026-01-20T10:47:28.230Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1873,5 +1873,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="cybersecurity" />
     <category term="language-models" />
     <category term="vulnerability" />
+  </entry>
+  <entry>
+    <title>How to play Contemporary Classical piano | Pianist</title>
+    <link href="https://www.pianistmagazine.com/blogs/how-to-play-contemporary-classical-piano/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-0be56583f28f39fc" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-0be56583f28f39fc</id>
+    <updated>2026-01-20T10:47:28.230Z</updated>
+    <summary type="text">This article provides a step-by-step guide on how to play contemporary classical piano in the style of Ludovico Einaudi. It covers choosing a key, selecting chords, incorporating arpeggios and broken chords, and creating a bass line to compose an Einaudi-inspired piano piece. The article aims to help pianists broaden their musical knowledge and repertoire across various genres, starting with contemporary classical music.</summary>
+    <content type="html"><![CDATA[
+      <p>This article provides a step-by-step guide on how to play contemporary classical piano in the style of Ludovico Einaudi. It covers choosing a key, selecting chords, incorporating arpeggios and broken chords, and creating a bass line to compose an Einaudi-inspired piano piece. The article aims to help pianists broaden their musical knowledge and repertoire across various genres, starting with contemporary classical music.</p>
+      <p><strong>Tags:</strong>
+          #contemporary, 
+          #classical, 
+          #piano, 
+          #composition, 
+          #tutorial
+      </p>
+      <p><a href="https://www.pianistmagazine.com/blogs/how-to-play-contemporary-classical-piano/" target="_blank" rel="noopener noreferrer">🔗 https://www.pianistmagazine.com/blogs/how-to-play-contemporary-classical-piano/</a></p>
+    ]]></content>
+    <category term="contemporary" />
+    <category term="classical" />
+    <category term="piano" />
+    <category term="composition" />
+    <category term="tutorial" />
   </entry>
 </feed>
