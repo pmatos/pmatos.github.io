@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-20T13:14:02.732Z</updated>
+  <updated>2026-01-20T14:16:18.903Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1945,5 +1945,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="workflow" />
     <category term="problem-solving" />
     <category term="coding" />
+  </entry>
+  <entry>
+    <title>The Code-Only Agent • Rijnard van Tonder</title>
+    <link href="https://rijnard.com/blog/the-code-only-agent" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2a7b63c590e9c59f" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2a7b63c590e9c59f</id>
+    <updated>2026-01-20T14:16:18.903Z</updated>
+    <summary type="text">The article discusses the concept of a &quot;Code-Only Agent&quot; - an AI agent that can only execute code, with no access to traditional tools or commands. The author argues that this simplified approach, where the agent must generate and run code to accomplish tasks, can lead to more precise, transparent, and trustworthy behavior compared to traditional agents that use a mix of tools and natural language responses. The article explores the design choices, benefits, and potential future developments of this &quot;Code-Only&quot; paradigm, positioning it as a promising direction for AI agents that need to perform computationally intensive or long-running tasks.</summary>
+    <content type="html"><![CDATA[
+      <p>The article discusses the concept of a &quot;Code-Only Agent&quot; - an AI agent that can only execute code, with no access to traditional tools or commands. The author argues that this simplified approach, where the agent must generate and run code to accomplish tasks, can lead to more precise, transparent, and trustworthy behavior compared to traditional agents that use a mix of tools and natural language responses. The article explores the design choices, benefits, and potential future developments of this &quot;Code-Only&quot; paradigm, positioning it as a promising direction for AI agents that need to perform computationally intensive or long-running tasks.</p>
+      <p><strong>Tags:</strong>
+          #coding, 
+          #agent, 
+          #programming, 
+          #transparency, 
+          #computation
+      </p>
+      <p><a href="https://rijnard.com/blog/the-code-only-agent" target="_blank" rel="noopener noreferrer">🔗 https://rijnard.com/blog/the-code-only-agent</a></p>
+    ]]></content>
+    <category term="coding" />
+    <category term="agent" />
+    <category term="programming" />
+    <category term="transparency" />
+    <category term="computation" />
   </entry>
 </feed>
