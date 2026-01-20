@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "7852fe808d354655",
+      "url": "https://www.redhat.com/en/blog/accelerating-open-source-development-ai",
+      "title": "Accelerating open source development with AI",
+      "summary": "This article discusses how Red Hat is approaching the use of AI tools to accelerate open source development, while adhering to open source principles. The key points are:\n\n1. Red Hat has developed guidelines for its engineers on the responsible use of AI-based tools for open source contributions, based on principles of innovation, transparency, and respecting the community.\n\n2. The goal is to use AI as a powerful assistant to automate tedious tasks and free up developers to focus on complex problem-solving, not to replace developers entirely.\n\n3. Red Hat emphasizes the importance of human accountability, transparency about AI-assisted contributions, and respecting each project's established contribution policies and norms when adopting new technologies like AI.\n\nThe article provides insight into how a major open source company is navigating the use of emerging AI tools in a way that aligns with open source values and practices.",
+      "tags": [
+        "open-source",
+        "ai",
+        "development",
+        "red-hat",
+        "guidelines"
+      ],
+      "dateAdded": "2026-01-20T15:00:45.641Z"
+    },
+    {
       "id": "16c7e976f417a5bd",
       "url": "https://www.wsj.com/tech/ai/anthropic-claude-code-ai-7a46460e",
       "title": "www.wsj.com",
