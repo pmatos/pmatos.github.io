@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-20T13:03:45.478Z</updated>
+  <updated>2026-01-20T13:14:02.732Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -1921,5 +1921,29 @@ Overall, the article explores how the software engineering field may evolve in r
     <category term="sight-reading" />
     <category term="improvisation" />
     <category term="practice" />
+  </entry>
+  <entry>
+    <title>choosing learning over autopilot</title>
+    <link href="https://anniecherkaev.com/choosing-learning-over-autopilot" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c1fac10aee955db8" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c1fac10aee955db8</id>
+    <updated>2026-01-20T13:14:02.732Z</updated>
+    <summary type="text">This blog post discusses the author&#39;s approach to using AI coding tools, and how to avoid the pitfall of becoming overly reliant on them at the expense of true understanding and learning. The author outlines a workflow that involves iterative cycles of problem research, prototyping, and carefully designing the final solution before implementing it with the assistance of AI tools. The key is to use the AI tools to enhance learning and experimentation, rather than as a shortcut to avoid the important steps of truly understanding the problem and solution. The author cautions against the &quot;curse of AI slop&quot; - building systems without proper comprehension - and advocates maintaining a balance between leveraging AI&#39;s capabilities and retaining ownership of the learning process.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post discusses the author&#39;s approach to using AI coding tools, and how to avoid the pitfall of becoming overly reliant on them at the expense of true understanding and learning. The author outlines a workflow that involves iterative cycles of problem research, prototyping, and carefully designing the final solution before implementing it with the assistance of AI tools. The key is to use the AI tools to enhance learning and experimentation, rather than as a shortcut to avoid the important steps of truly understanding the problem and solution. The author cautions against the &quot;curse of AI slop&quot; - building systems without proper comprehension - and advocates maintaining a balance between leveraging AI&#39;s capabilities and retaining ownership of the learning process.</p>
+      <p><strong>Tags:</strong>
+          #learning, 
+          #ai, 
+          #workflow, 
+          #problem-solving, 
+          #coding
+      </p>
+      <p><a href="https://anniecherkaev.com/choosing-learning-over-autopilot" target="_blank" rel="noopener noreferrer">🔗 https://anniecherkaev.com/choosing-learning-over-autopilot</a></p>
+    ]]></content>
+    <category term="learning" />
+    <category term="ai" />
+    <category term="workflow" />
+    <category term="problem-solving" />
+    <category term="coding" />
   </entry>
 </feed>
