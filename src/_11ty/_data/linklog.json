@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "2a7b63c590e9c59f",
+      "url": "https://rijnard.com/blog/the-code-only-agent",
+      "title": "The Code-Only Agent • Rijnard van Tonder",
+      "summary": "The article discusses the concept of a \"Code-Only Agent\" - an AI agent that can only execute code, with no access to traditional tools or commands. The author argues that this simplified approach, where the agent must generate and run code to accomplish tasks, can lead to more precise, transparent, and trustworthy behavior compared to traditional agents that use a mix of tools and natural language responses. The article explores the design choices, benefits, and potential future developments of this \"Code-Only\" paradigm, positioning it as a promising direction for AI agents that need to perform computationally intensive or long-running tasks.",
+      "tags": [
+        "coding",
+        "agent",
+        "programming",
+        "transparency",
+        "computation"
+      ],
+      "dateAdded": "2026-01-20T14:16:18.903Z"
+    },
+    {
       "id": "c1fac10aee955db8",
       "url": "https://anniecherkaev.com/choosing-learning-over-autopilot",
       "title": "choosing learning over autopilot",
