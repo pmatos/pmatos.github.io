@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-01-20T15:00:45.641Z</updated>
+  <updated>2026-02-05T12:49:23.585Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2033,5 +2033,29 @@ The article provides insight into how a major open source company is navigating 
     <category term="development" />
     <category term="red-hat" />
     <category term="guidelines" />
+  </entry>
+  <entry>
+    <title>Pi: The Minimal Agent Within OpenClaw | Armin Ronacher&#39;s Thoughts and Writings</title>
+    <link href="https://lucumr.pocoo.org/2026/1/31/pi/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c83b0f2649954408" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c83b0f2649954408</id>
+    <updated>2026-02-05T12:49:23.585Z</updated>
+    <summary type="text">No Summary</summary>
+    <content type="html"><![CDATA[
+      <p>No Summary</p>
+      <p><strong>Tags:</strong>
+          #openclaw, 
+          #pi, 
+          #agent, 
+          #minimal, 
+          #thoughts
+      </p>
+      <p><a href="https://lucumr.pocoo.org/2026/1/31/pi/" target="_blank" rel="noopener noreferrer">🔗 https://lucumr.pocoo.org/2026/1/31/pi/</a></p>
+    ]]></content>
+    <category term="openclaw" />
+    <category term="pi" />
+    <category term="agent" />
+    <category term="minimal" />
+    <category term="thoughts" />
   </entry>
 </feed>
