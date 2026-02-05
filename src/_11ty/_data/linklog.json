@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "2fe893c3dfa7960c",
+      "url": "https://supabase.com/blog/postgres-best-practices-for-ai-agents",
+      "title": "Introducing: Postgres Best Practices",
+      "summary": "This webpage from Supabase likely provides guidance and best practices for using the Postgres database with AI agents and applications. It may cover topics such as database design, query optimization, and integration strategies to ensure Postgres is effectively leveraged in AI-powered systems. This content could be useful for developers, data engineers, and AI researchers looking to build robust and efficient data-driven applications.",
+      "tags": [
+        "postgres",
+        "best-practices",
+        "database",
+        "ai",
+        "optimization"
+      ],
+      "dateAdded": "2026-02-05T12:57:04.574Z"
+    },
+    {
       "id": "c83b0f2649954408",
       "url": "https://lucumr.pocoo.org/2026/1/31/pi/",
       "title": "Pi: The Minimal Agent Within OpenClaw | Armin Ronacher's Thoughts and Writings",
