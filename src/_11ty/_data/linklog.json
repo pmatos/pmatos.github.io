@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "c83b0f2649954408",
+      "url": "https://lucumr.pocoo.org/2026/1/31/pi/",
+      "title": "Pi: The Minimal Agent Within OpenClaw | Armin Ronacher's Thoughts and Writings",
+      "summary": "No Summary",
+      "tags": [
+        "openclaw",
+        "pi",
+        "agent",
+        "minimal",
+        "thoughts"
+      ],
+      "dateAdded": "2026-02-05T12:49:23.585Z"
+    },
+    {
       "id": "7852fe808d354655",
       "url": "https://www.redhat.com/en/blog/accelerating-open-source-development-ai",
       "title": "Accelerating open source development with AI",
