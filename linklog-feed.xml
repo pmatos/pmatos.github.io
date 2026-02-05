@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-05T12:49:23.585Z</updated>
+  <updated>2026-02-05T12:57:04.574Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2057,5 +2057,29 @@ The article provides insight into how a major open source company is navigating 
     <category term="agent" />
     <category term="minimal" />
     <category term="thoughts" />
+  </entry>
+  <entry>
+    <title>Introducing: Postgres Best Practices</title>
+    <link href="https://supabase.com/blog/postgres-best-practices-for-ai-agents" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2fe893c3dfa7960c" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2fe893c3dfa7960c</id>
+    <updated>2026-02-05T12:57:04.574Z</updated>
+    <summary type="text">This webpage from Supabase likely provides guidance and best practices for using the Postgres database with AI agents and applications. It may cover topics such as database design, query optimization, and integration strategies to ensure Postgres is effectively leveraged in AI-powered systems. This content could be useful for developers, data engineers, and AI researchers looking to build robust and efficient data-driven applications.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage from Supabase likely provides guidance and best practices for using the Postgres database with AI agents and applications. It may cover topics such as database design, query optimization, and integration strategies to ensure Postgres is effectively leveraged in AI-powered systems. This content could be useful for developers, data engineers, and AI researchers looking to build robust and efficient data-driven applications.</p>
+      <p><strong>Tags:</strong>
+          #postgres, 
+          #best-practices, 
+          #database, 
+          #ai, 
+          #optimization
+      </p>
+      <p><a href="https://supabase.com/blog/postgres-best-practices-for-ai-agents" target="_blank" rel="noopener noreferrer">🔗 https://supabase.com/blog/postgres-best-practices-for-ai-agents</a></p>
+    ]]></content>
+    <category term="postgres" />
+    <category term="best-practices" />
+    <category term="database" />
+    <category term="ai" />
+    <category term="optimization" />
   </entry>
 </feed>
