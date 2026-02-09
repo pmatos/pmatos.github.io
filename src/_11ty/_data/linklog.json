@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "id": "298fcd28042935e7",
-      "url": "https://fosdem.org/2026/schedule/event/HT9HAG-wastrel-webassembly-without-the-runtime/",
-      "title": "FOSDEM 2026 - Wastrel: WebAssembly Without the Runtime",
-      "summary": "This webpage summarizes a FOSDEM 2026 talk on \"Wastrel: WebAssembly Without the Runtime\", a new ahead-of-time compiler that can run WebAssembly code as native binaries without the need for a runtime. The talk will cover Wastrel's features, including support for tail calls, garbage collection, and exception handling, and how it can run both C programs compiled with WASI and Scheme programs compiled using Hoot with high performance.",
-      "tags": [
-        "wastrel",
-        "wasm",
-        "aot",
-        "compiler",
-        "native"
-      ],
-      "dateAdded": "2026-02-09T16:35:24.599Z"
-    },
-    {
       "id": "fca1bad2df448c67",
       "url": "https://www.anthropic.com/engineering/building-c-compiler",
       "title": "Building a C compiler with a team of parallel Claudes \\ Anthropic",
