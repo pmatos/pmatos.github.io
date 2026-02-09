@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T15:37:44.020Z</updated>
+  <updated>2026-02-09T15:40:04.114Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2185,5 +2185,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="performance" />
     <category term="abi" />
     <category term="generators" />
+  </entry>
+  <entry>
+    <title>How I make annotated presentations</title>
+    <link href="https://simonwillison.net/2023/Aug/6/annotated-presentations/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-cfc3ae639965f2ab" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-cfc3ae639965f2ab</id>
+    <updated>2026-02-09T15:40:04.114Z</updated>
+    <summary type="text">This webpage describes how Simon Willison creates &quot;annotated presentations&quot; - documents that combine key slides from his talks with custom written text and additional resources. He has developed a custom tool to streamline this process, leveraging OCR and Markdown to make it efficient. The goal is to provide value for both those who watched the talk and those who didn&#39;t, by offering an engaging text and image version that can be more easily consumed. Willison also shares examples of his annotated presentations on various topics, demonstrating the format.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage describes how Simon Willison creates &quot;annotated presentations&quot; - documents that combine key slides from his talks with custom written text and additional resources. He has developed a custom tool to streamline this process, leveraging OCR and Markdown to make it efficient. The goal is to provide value for both those who watched the talk and those who didn&#39;t, by offering an engaging text and image version that can be more easily consumed. Willison also shares examples of his annotated presentations on various topics, demonstrating the format.</p>
+      <p><strong>Tags:</strong>
+          #presentations, 
+          #annotation, 
+          #markdown, 
+          #ocr, 
+          #slides
+      </p>
+      <p><a href="https://simonwillison.net/2023/Aug/6/annotated-presentations/" target="_blank" rel="noopener noreferrer">🔗 https://simonwillison.net/2023/Aug/6/annotated-presentations/</a></p>
+    ]]></content>
+    <category term="presentations" />
+    <category term="annotation" />
+    <category term="markdown" />
+    <category term="ocr" />
+    <category term="slides" />
   </entry>
 </feed>
