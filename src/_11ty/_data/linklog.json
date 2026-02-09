@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "7d6a7ebceb2d3c49",
+      "url": "https://xcancel.com/dguido/status/2017303494290469265#m",
+      "title": "xcancel.com",
+      "summary": "The webpage at https://xcancel.com/dguido/status/2017303494290469265#m appears to be a social media post or update related to the topic of \"xcancel.com\". Based on the title and URL, the content is likely discussing or providing information about the \"xcancel.com\" platform or service, which could be of interest to users interested in online tools, applications, or web-based technologies.",
+      "tags": [
+        "claude-code",
+        "containers",
+        "api",
+        "web-services",
+        "online-tools"
+      ],
+      "dateAdded": "2026-02-09T19:45:33.036Z"
+    },
+    {
       "id": "7581e4714c333f0b",
       "url": "https://github.com/othmanadi/planning-with-files",
       "title": "GitHub - OthmanAdi/planning-with-files: Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.",
