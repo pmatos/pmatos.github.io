@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T15:46:00.900Z</updated>
+  <updated>2026-02-09T16:14:25.908Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2233,5 +2233,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="software" />
     <category term="automation" />
     <category term="future" />
+  </entry>
+  <entry>
+    <title>Why I joined OpenAI</title>
+    <link href="https://www.brendangregg.com/blog//2026-02-07/why-i-joined-openai.html" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-71537af37ff60572" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-71537af37ff60572</id>
+    <updated>2026-02-09T16:14:25.908Z</updated>
+    <summary type="text">Brendan Gregg, a renowned performance engineer, has joined OpenAI to work on the challenge of improving the performance and reducing the costs of AI datacenters, which he sees as a significant opportunity for performance engineering. He was convinced to join after realizing the widespread everyday use of ChatGPT and the potential to make a significant impact on this rapidly growing technology.</summary>
+    <content type="html"><![CDATA[
+      <p>Brendan Gregg, a renowned performance engineer, has joined OpenAI to work on the challenge of improving the performance and reducing the costs of AI datacenters, which he sees as a significant opportunity for performance engineering. He was convinced to join after realizing the widespread everyday use of ChatGPT and the potential to make a significant impact on this rapidly growing technology.</p>
+      <p><strong>Tags:</strong>
+          #openai, 
+          #performance, 
+          #engineering, 
+          #datacenters, 
+          #chatgpt
+      </p>
+      <p><a href="https://www.brendangregg.com/blog//2026-02-07/why-i-joined-openai.html" target="_blank" rel="noopener noreferrer">🔗 https://www.brendangregg.com/blog//2026-02-07/why-i-joined-openai.html</a></p>
+    ]]></content>
+    <category term="openai" />
+    <category term="performance" />
+    <category term="engineering" />
+    <category term="datacenters" />
+    <category term="chatgpt" />
   </entry>
 </feed>
