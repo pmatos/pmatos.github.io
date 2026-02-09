@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "a16d014ebe544ecb",
+      "url": "https://daax.dev/blogs/the-sandbox-explosion",
+      "title": "The Sandbox Explosion | daax.dev",
+      "summary": "This article discusses the rise of \"microVM\" sandboxes as a solution for running AI-generated code securely. It highlights how major cloud providers like AWS, Azure, and Google have adopted dedicated isolation primitives like Firecracker, Hyper-V, and gVisor to run AI workloads, rather than relying on traditional containers. The article also covers several purpose-built AI sandbox platforms and infrastructure providers that are incorporating these sandbox technologies to enable secure execution of AI-generated code. The key takeaway is that the industry has recognized the security limitations of containers for AI use cases, leading to the emergence of a new category of specialized sandbox solutions.",
+      "tags": [
+        "sandbox",
+        "microvm",
+        "ai",
+        "isolation",
+        "security"
+      ],
+      "dateAdded": "2026-02-09T20:41:12.403Z"
+    },
+    {
       "id": "e9bd70519777fc84",
       "url": "https://emsh.cat/one-human-one-agent-one-browser/",
       "title": "One Human + One Agent = One Browser From Scratch",
