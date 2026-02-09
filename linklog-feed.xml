@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T15:40:04.114Z</updated>
+  <updated>2026-02-09T15:46:00.900Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2209,5 +2209,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="markdown" />
     <category term="ocr" />
     <category term="slides" />
+  </entry>
+  <entry>
+    <title>We mourn our craft | Read the Tea Leaves</title>
+    <link href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-e8efabc8c520a9e1" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-e8efabc8c520a9e1</id>
+    <updated>2026-02-09T15:46:00.900Z</updated>
+    <summary type="text">This blog post reflects on the rise of AI-generated code and the impact it will have on the software engineering profession. The author acknowledges that AI tools can write code better than humans in many cases, and laments the impending obsolescence of traditional manual coding. However, the author also recognizes the inevitability of this technological shift and suggests that the current generation of software engineers should take time to mourn the passing of their craft, while preparing for the future. The post offers a thoughtful, bittersweet perspective on the profound changes underway in the software industry.</summary>
+    <content type="html"><![CDATA[
+      <p>This blog post reflects on the rise of AI-generated code and the impact it will have on the software engineering profession. The author acknowledges that AI tools can write code better than humans in many cases, and laments the impending obsolescence of traditional manual coding. However, the author also recognizes the inevitability of this technological shift and suggests that the current generation of software engineers should take time to mourn the passing of their craft, while preparing for the future. The post offers a thoughtful, bittersweet perspective on the profound changes underway in the software industry.</p>
+      <p><strong>Tags:</strong>
+          #craft, 
+          #genai, 
+          #software, 
+          #automation, 
+          #future
+      </p>
+      <p><a href="https://nolanlawson.com/2026/02/07/we-mourn-our-craft/" target="_blank" rel="noopener noreferrer">🔗 https://nolanlawson.com/2026/02/07/we-mourn-our-craft/</a></p>
+    ]]></content>
+    <category term="craft" />
+    <category term="genai" />
+    <category term="software" />
+    <category term="automation" />
+    <category term="future" />
   </entry>
 </feed>
