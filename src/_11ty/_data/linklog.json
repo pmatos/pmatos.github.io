@@ -1,6 +1,19 @@
 {
   "entries": [
     {
+      "id": "fca1bad2df448c67",
+      "url": "https://www.anthropic.com/engineering/building-c-compiler",
+      "title": "Building a C compiler with a team of parallel Claudes \\ Anthropic",
+      "summary": "This article discusses Anthropic's experiment of tasking a team of parallel \"Claude\" language models to build a C compiler from scratch, capable of compiling the Linux kernel. The authors share insights gained from designing a framework that allows the Claudes to work autonomously on the project, including the importance of high-quality tests, designing the environment and feedback from the Claudes' perspective, and enabling parallelism and specialization among the agents. The article highlights the potential of autonomous software development using language model teams, and the lessons learned in pushing the limits of what current language models can achieve.",
+      "tags": [
+        "anthropic",
+        "compilers",
+        "autonomous-systems",
+        "language-models"
+      ],
+      "dateAdded": "2026-02-09T16:29:34.454Z"
+    },
+    {
       "id": "f7622b7515f99e0c",
       "url": "https://mitchellh.com/writing/my-ai-adoption-journey",
       "title": "My AI Adoption Journey – Mitchell Hashimoto",
