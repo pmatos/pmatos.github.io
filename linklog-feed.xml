@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T16:35:24.599Z</updated>
+  <updated>2026-02-09T18:11:48.568Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2329,27 +2329,27 @@ The article provides practical advice for developers working on compilers or cod
     <category term="language-models" />
   </entry>
   <entry>
-    <title>FOSDEM 2026 - Wastrel: WebAssembly Without the Runtime</title>
-    <link href="https://fosdem.org/2026/schedule/event/HT9HAG-wastrel-webassembly-without-the-runtime/" rel="alternate" type="text/html"/>
-    <link href="https://p.ocmatos.com/linklog.html#entry-298fcd28042935e7" rel="alternate" type="text/html" title="Linklog Entry"/>
-    <id>https://p.ocmatos.com/linklog.html#entry-298fcd28042935e7</id>
-    <updated>2026-02-09T16:35:24.599Z</updated>
-    <summary type="text">This webpage summarizes a FOSDEM 2026 talk on &quot;Wastrel: WebAssembly Without the Runtime&quot;, a new ahead-of-time compiler that can run WebAssembly code as native binaries without the need for a runtime. The talk will cover Wastrel&#39;s features, including support for tail calls, garbage collection, and exception handling, and how it can run both C programs compiled with WASI and Scheme programs compiled using Hoot with high performance.</summary>
+    <title>Tencent HY Research</title>
+    <link href="https://hy.tencent.com/research/100025?langVersion=en" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-ef4841f1d8546c56" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-ef4841f1d8546c56</id>
+    <updated>2026-02-09T18:11:48.568Z</updated>
+    <summary type="text">This webpage appears to be a research publication from Tencent, a major technology company in China. Based on the title, the content is likely focused on providing research insights and analysis related to Tencent&#39;s business and the broader technology industry. This information could be useful for investors, industry analysts, or anyone interested in understanding Tencent&#39;s strategic direction and the trends shaping the technology sector in China.</summary>
     <content type="html"><![CDATA[
-      <p>This webpage summarizes a FOSDEM 2026 talk on &quot;Wastrel: WebAssembly Without the Runtime&quot;, a new ahead-of-time compiler that can run WebAssembly code as native binaries without the need for a runtime. The talk will cover Wastrel&#39;s features, including support for tail calls, garbage collection, and exception handling, and how it can run both C programs compiled with WASI and Scheme programs compiled using Hoot with high performance.</p>
+      <p>This webpage appears to be a research publication from Tencent, a major technology company in China. Based on the title, the content is likely focused on providing research insights and analysis related to Tencent&#39;s business and the broader technology industry. This information could be useful for investors, industry analysts, or anyone interested in understanding Tencent&#39;s strategic direction and the trends shaping the technology sector in China.</p>
       <p><strong>Tags:</strong>
-          #wastrel, 
-          #wasm, 
-          #aot, 
-          #compiler, 
-          #native
+          #genai, 
+          #context, 
+          #tencent, 
+          #research, 
+          #technology
       </p>
-      <p><a href="https://fosdem.org/2026/schedule/event/HT9HAG-wastrel-webassembly-without-the-runtime/" target="_blank" rel="noopener noreferrer">🔗 https://fosdem.org/2026/schedule/event/HT9HAG-wastrel-webassembly-without-the-runtime/</a></p>
+      <p><a href="https://hy.tencent.com/research/100025?langVersion=en" target="_blank" rel="noopener noreferrer">🔗 https://hy.tencent.com/research/100025?langVersion=en</a></p>
     ]]></content>
-    <category term="wastrel" />
-    <category term="wasm" />
-    <category term="aot" />
-    <category term="compiler" />
-    <category term="native" />
+    <category term="genai" />
+    <category term="context" />
+    <category term="tencent" />
+    <category term="research" />
+    <category term="technology" />
   </entry>
 </feed>
