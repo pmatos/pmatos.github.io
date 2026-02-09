@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T15:17:39.030Z</updated>
+  <updated>2026-02-09T15:19:59.715Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2105,5 +2105,43 @@ The article provides insight into how a major open source company is navigating 
     <category term="privacy" />
     <category term="troubleshoot" />
     <category term="javascript" />
+  </entry>
+  <entry>
+    <title>Orchestrate teams of Claude Code sessions - Claude Code Docs</title>
+    <link href="https://code.claude.com/docs/en/agent-teams" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-4d8cc4e715d7eadf" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-4d8cc4e715d7eadf</id>
+    <updated>2026-02-09T15:19:59.715Z</updated>
+    <summary type="text">This webpage provides documentation on how to use &quot;agent teams&quot; in Claude Code, which allow you to coordinate multiple Claude Code instances working together on a task. Key points include:
+
+- When to use agent teams vs. subagents, including best use cases like research, new feature development, and debugging with competing hypotheses.
+- How to enable and start an agent team, assign tasks to teammates, and control the team. 
+- Best practices for parallel work, such as providing enough context, sizing tasks appropriately, and monitoring the team.
+- Technical details on how agent teams work, including the architecture, permissions, and token usage.
+
+This information would be useful for developers looking to leverage the power of parallelism and collaboration in their Claude Code projects.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage provides documentation on how to use &quot;agent teams&quot; in Claude Code, which allow you to coordinate multiple Claude Code instances working together on a task. Key points include:
+
+- When to use agent teams vs. subagents, including best use cases like research, new feature development, and debugging with competing hypotheses.
+- How to enable and start an agent team, assign tasks to teammates, and control the team. 
+- Best practices for parallel work, such as providing enough context, sizing tasks appropriately, and monitoring the team.
+- Technical details on how agent teams work, including the architecture, permissions, and token usage.
+
+This information would be useful for developers looking to leverage the power of parallelism and collaboration in their Claude Code projects.</p>
+      <p><strong>Tags:</strong>
+          #swarm, 
+          #claude-code, 
+          #collaboration, 
+          #parallelism, 
+          #architecture
+      </p>
+      <p><a href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener noreferrer">🔗 https://code.claude.com/docs/en/agent-teams</a></p>
+    ]]></content>
+    <category term="swarm" />
+    <category term="claude-code" />
+    <category term="collaboration" />
+    <category term="parallelism" />
+    <category term="architecture" />
   </entry>
 </feed>
