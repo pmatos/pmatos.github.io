@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T16:14:25.908Z</updated>
+  <updated>2026-02-09T16:23:13.675Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2257,5 +2257,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="engineering" />
     <category term="datacenters" />
     <category term="chatgpt" />
+  </entry>
+  <entry>
+    <title>GitHub - anthropics/claudes-c-compiler: Claude Opus 4.6 wrote a dependency-free C compiler in Rust, with backends targeting x86 (64- and 32-bit), ARM, and RISC-V, capable of compiling a booting Linux kernel.</title>
+    <link href="https://github.com/anthropics/claudes-c-compiler" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-2bdb0fc9092a25fa" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-2bdb0fc9092a25fa</id>
+    <updated>2026-02-09T16:23:13.675Z</updated>
+    <summary type="text">This repository contains a C compiler called &quot;Claude&#39;s C Compiler&quot; (CCC) written entirely in Rust. It is a dependency-free compiler that supports multiple architectures including x86 (64-bit and 32-bit), ARM, and RISC-V, and is capable of compiling a booting Linux kernel. The compiler is a stand-alone tool that includes its own assembler and linker, and it can serve as a drop-in replacement for GCC in build systems.</summary>
+    <content type="html"><![CDATA[
+      <p>This repository contains a C compiler called &quot;Claude&#39;s C Compiler&quot; (CCC) written entirely in Rust. It is a dependency-free compiler that supports multiple architectures including x86 (64-bit and 32-bit), ARM, and RISC-V, and is capable of compiling a booting Linux kernel. The compiler is a stand-alone tool that includes its own assembler and linker, and it can serve as a drop-in replacement for GCC in build systems.</p>
+      <p><strong>Tags:</strong>
+          #ccc, 
+          #rust, 
+          #compiler, 
+          #linux, 
+          #dependency-free
+      </p>
+      <p><a href="https://github.com/anthropics/claudes-c-compiler" target="_blank" rel="noopener noreferrer">🔗 https://github.com/anthropics/claudes-c-compiler</a></p>
+    ]]></content>
+    <category term="ccc" />
+    <category term="rust" />
+    <category term="compiler" />
+    <category term="linux" />
+    <category term="dependency-free" />
   </entry>
 </feed>
