@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "cfc3ae639965f2ab",
+      "url": "https://simonwillison.net/2023/Aug/6/annotated-presentations/",
+      "title": "How I make annotated presentations",
+      "summary": "This webpage describes how Simon Willison creates \"annotated presentations\" - documents that combine key slides from his talks with custom written text and additional resources. He has developed a custom tool to streamline this process, leveraging OCR and Markdown to make it efficient. The goal is to provide value for both those who watched the talk and those who didn't, by offering an engaging text and image version that can be more easily consumed. Willison also shares examples of his annotated presentations on various topics, demonstrating the format.",
+      "tags": [
+        "presentations",
+        "annotation",
+        "markdown",
+        "ocr",
+        "slides"
+      ],
+      "dateAdded": "2026-02-09T15:40:04.114Z"
+    },
+    {
       "id": "1ebcefc6976630c7",
       "url": "https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c",
       "title": "six thoughts on generating c — wingolog",
