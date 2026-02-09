@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T18:11:48.568Z</updated>
+  <updated>2026-02-09T18:27:26.850Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2351,5 +2351,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="tencent" />
     <category term="research" />
     <category term="technology" />
+  </entry>
+  <entry>
+    <title>GitHub - OthmanAdi/planning-with-files: Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.</title>
+    <link href="https://github.com/othmanadi/planning-with-files" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-7581e4714c333f0b" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-7581e4714c333f0b</id>
+    <updated>2026-02-09T18:27:26.850Z</updated>
+    <summary type="text">This GitHub repository provides a Claude Code skill that implements a persistent Markdown-based planning workflow, inspired by the success of the Manus AI company which was acquired for $2 billion. The skill helps address common issues in AI agents like volatile memory, goal drift, and hidden errors by introducing a 3-file pattern for task planning, findings, and progress tracking. It supports various IDEs and platforms, and includes features like session recovery and multi-agent collaboration. The content appears to be a detailed guide on how to use this workflow-enhancing skill within the Claude Code ecosystem.</summary>
+    <content type="html"><![CDATA[
+      <p>This GitHub repository provides a Claude Code skill that implements a persistent Markdown-based planning workflow, inspired by the success of the Manus AI company which was acquired for $2 billion. The skill helps address common issues in AI agents like volatile memory, goal drift, and hidden errors by introducing a 3-file pattern for task planning, findings, and progress tracking. It supports various IDEs and platforms, and includes features like session recovery and multi-agent collaboration. The content appears to be a detailed guide on how to use this workflow-enhancing skill within the Claude Code ecosystem.</p>
+      <p><strong>Tags:</strong>
+          #genai, 
+          #planning, 
+          #markdown, 
+          #workflow, 
+          #collaboration
+      </p>
+      <p><a href="https://github.com/othmanadi/planning-with-files" target="_blank" rel="noopener noreferrer">🔗 https://github.com/othmanadi/planning-with-files</a></p>
+    ]]></content>
+    <category term="genai" />
+    <category term="planning" />
+    <category term="markdown" />
+    <category term="workflow" />
+    <category term="collaboration" />
   </entry>
 </feed>
