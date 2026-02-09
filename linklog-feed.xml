@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-05T12:57:04.574Z</updated>
+  <updated>2026-02-09T15:17:39.030Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2081,5 +2081,29 @@ The article provides insight into how a major open source company is navigating 
     <category term="database" />
     <category term="ai" />
     <category term="optimization" />
+  </entry>
+  <entry>
+    <title>x.com</title>
+    <link href="https://x.com/simonw/status/2019477817231290687" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-4c822d64b766e6d4" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-4c822d64b766e6d4</id>
+    <updated>2026-02-09T15:17:39.030Z</updated>
+    <summary type="text">This webpage is a notice informing users that JavaScript is required to access x.com, and that certain privacy-related browser extensions may cause issues with the site. It provides instructions on how to enable JavaScript or switch to a supported browser, as well as links to the site&#39;s Help Center, terms, and other policies. The content is likely intended to troubleshoot common access issues and ensure a smooth user experience on the x.com platform.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage is a notice informing users that JavaScript is required to access x.com, and that certain privacy-related browser extensions may cause issues with the site. It provides instructions on how to enable JavaScript or switch to a supported browser, as well as links to the site&#39;s Help Center, terms, and other policies. The content is likely intended to troubleshoot common access issues and ensure a smooth user experience on the x.com platform.</p>
+      <p><strong>Tags:</strong>
+          #codex, 
+          #opus, 
+          #privacy, 
+          #troubleshoot, 
+          #javascript
+      </p>
+      <p><a href="https://x.com/simonw/status/2019477817231290687" target="_blank" rel="noopener noreferrer">🔗 https://x.com/simonw/status/2019477817231290687</a></p>
+    ]]></content>
+    <category term="codex" />
+    <category term="opus" />
+    <category term="privacy" />
+    <category term="troubleshoot" />
+    <category term="javascript" />
   </entry>
 </feed>
