@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "1ebcefc6976630c7",
+      "url": "https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c",
+      "title": "six thoughts on generating c — wingolog",
+      "summary": "This article discusses several best practices for efficiently generating C code from higher-level programs. Key points include:\n\n- Using static inline functions to enable data abstraction without performance penalties\n- Avoiding implicit integer conversions by using explicit conversion functions\n- Wrapping raw pointers and integers with intent-revealing structs to avoid mistakes\n- Leveraging memcpy for unaligned memory accesses\n- Performing manual register allocation for ABI compliance and tail calls\n- Acknowledging the limitations of generating C, such as lack of control over the stack and debugging challenges.\n\nThe article provides practical advice for developers working on compilers or code generators that target C as the output language.",
+      "tags": [
+        "compilers",
+        "abstraction",
+        "performance",
+        "abi",
+        "generators"
+      ],
+      "dateAdded": "2026-02-09T15:37:44.020Z"
+    },
+    {
       "id": "4d8cc4e715d7eadf",
       "url": "https://code.claude.com/docs/en/agent-teams",
       "title": "Orchestrate teams of Claude Code sessions - Claude Code Docs",
