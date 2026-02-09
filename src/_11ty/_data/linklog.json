@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "4d8cc4e715d7eadf",
+      "url": "https://code.claude.com/docs/en/agent-teams",
+      "title": "Orchestrate teams of Claude Code sessions - Claude Code Docs",
+      "summary": "This webpage provides documentation on how to use \"agent teams\" in Claude Code, which allow you to coordinate multiple Claude Code instances working together on a task. Key points include:\n\n- When to use agent teams vs. subagents, including best use cases like research, new feature development, and debugging with competing hypotheses.\n- How to enable and start an agent team, assign tasks to teammates, and control the team. \n- Best practices for parallel work, such as providing enough context, sizing tasks appropriately, and monitoring the team.\n- Technical details on how agent teams work, including the architecture, permissions, and token usage.\n\nThis information would be useful for developers looking to leverage the power of parallelism and collaboration in their Claude Code projects.",
+      "tags": [
+        "swarm",
+        "claude-code",
+        "collaboration",
+        "parallelism",
+        "architecture"
+      ],
+      "dateAdded": "2026-02-09T15:19:59.715Z"
+    },
+    {
       "id": "4c822d64b766e6d4",
       "url": "https://x.com/simonw/status/2019477817231290687",
       "title": "x.com",
