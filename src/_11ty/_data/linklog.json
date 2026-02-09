@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "71537af37ff60572",
+      "url": "https://www.brendangregg.com/blog//2026-02-07/why-i-joined-openai.html",
+      "title": "Why I joined OpenAI",
+      "summary": "Brendan Gregg, a renowned performance engineer, has joined OpenAI to work on the challenge of improving the performance and reducing the costs of AI datacenters, which he sees as a significant opportunity for performance engineering. He was convinced to join after realizing the widespread everyday use of ChatGPT and the potential to make a significant impact on this rapidly growing technology.",
+      "tags": [
+        "openai",
+        "performance",
+        "engineering",
+        "datacenters",
+        "chatgpt"
+      ],
+      "dateAdded": "2026-02-09T16:14:25.908Z"
+    },
+    {
       "id": "e8efabc8c520a9e1",
       "url": "https://nolanlawson.com/2026/02/07/we-mourn-our-craft/",
       "title": "We mourn our craft | Read the Tea Leaves",
