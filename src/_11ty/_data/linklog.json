@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "7581e4714c333f0b",
+      "url": "https://github.com/othmanadi/planning-with-files",
+      "title": "GitHub - OthmanAdi/planning-with-files: Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.",
+      "summary": "This GitHub repository provides a Claude Code skill that implements a persistent Markdown-based planning workflow, inspired by the success of the Manus AI company which was acquired for $2 billion. The skill helps address common issues in AI agents like volatile memory, goal drift, and hidden errors by introducing a 3-file pattern for task planning, findings, and progress tracking. It supports various IDEs and platforms, and includes features like session recovery and multi-agent collaboration. The content appears to be a detailed guide on how to use this workflow-enhancing skill within the Claude Code ecosystem.",
+      "tags": [
+        "genai",
+        "planning",
+        "markdown",
+        "workflow",
+        "collaboration"
+      ],
+      "dateAdded": "2026-02-09T18:27:26.850Z"
+    },
+    {
       "id": "ef4841f1d8546c56",
       "url": "https://hy.tencent.com/research/100025?langVersion=en",
       "title": "Tencent HY Research",
