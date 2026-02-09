@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "ef4841f1d8546c56",
+      "url": "https://hy.tencent.com/research/100025?langVersion=en",
+      "title": "Tencent HY Research",
+      "summary": "This webpage appears to be a research publication from Tencent, a major technology company in China. Based on the title, the content is likely focused on providing research insights and analysis related to Tencent's business and the broader technology industry. This information could be useful for investors, industry analysts, or anyone interested in understanding Tencent's strategic direction and the trends shaping the technology sector in China.",
+      "tags": [
+        "genai",
+        "context",
+        "tencent",
+        "research",
+        "technology"
+      ],
+      "dateAdded": "2026-02-09T18:11:48.568Z"
+    },
+    {
       "id": "fca1bad2df448c67",
       "url": "https://www.anthropic.com/engineering/building-c-compiler",
       "title": "Building a C compiler with a team of parallel Claudes \\ Anthropic",
