@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T18:27:26.850Z</updated>
+  <updated>2026-02-09T19:45:33.036Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2375,5 +2375,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="markdown" />
     <category term="workflow" />
     <category term="collaboration" />
+  </entry>
+  <entry>
+    <title>xcancel.com</title>
+    <link href="https://xcancel.com/dguido/status/2017303494290469265#m" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-7d6a7ebceb2d3c49" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-7d6a7ebceb2d3c49</id>
+    <updated>2026-02-09T19:45:33.036Z</updated>
+    <summary type="text">The webpage at https://xcancel.com/dguido/status/2017303494290469265#m appears to be a social media post or update related to the topic of &quot;xcancel.com&quot;. Based on the title and URL, the content is likely discussing or providing information about the &quot;xcancel.com&quot; platform or service, which could be of interest to users interested in online tools, applications, or web-based technologies.</summary>
+    <content type="html"><![CDATA[
+      <p>The webpage at https://xcancel.com/dguido/status/2017303494290469265#m appears to be a social media post or update related to the topic of &quot;xcancel.com&quot;. Based on the title and URL, the content is likely discussing or providing information about the &quot;xcancel.com&quot; platform or service, which could be of interest to users interested in online tools, applications, or web-based technologies.</p>
+      <p><strong>Tags:</strong>
+          #claude-code, 
+          #containers, 
+          #api, 
+          #web-services, 
+          #online-tools
+      </p>
+      <p><a href="https://xcancel.com/dguido/status/2017303494290469265#m" target="_blank" rel="noopener noreferrer">🔗 https://xcancel.com/dguido/status/2017303494290469265#m</a></p>
+    ]]></content>
+    <category term="claude-code" />
+    <category term="containers" />
+    <category term="api" />
+    <category term="web-services" />
+    <category term="online-tools" />
   </entry>
 </feed>
