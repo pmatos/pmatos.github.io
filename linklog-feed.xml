@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T16:23:13.675Z</updated>
+  <updated>2026-02-09T16:27:57.942Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2281,5 +2281,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="compiler" />
     <category term="linux" />
     <category term="dependency-free" />
+  </entry>
+  <entry>
+    <title>My AI Adoption Journey – Mitchell Hashimoto</title>
+    <link href="https://mitchellh.com/writing/my-ai-adoption-journey" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-f7622b7515f99e0c" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-f7622b7515f99e0c</id>
+    <updated>2026-02-09T16:27:57.942Z</updated>
+    <summary type="text">This article documents the author&#39;s personal journey in adopting AI tools, starting from inefficient chatbot experiences to eventually outsourcing &quot;slam dunk&quot; tasks to AI agents while focusing on more complex work. The key steps include: moving beyond chatbots to using more capable AI agents, reproducing their own work manually to understand the agents&#39; strengths and weaknesses, dedicating time at the end of each day for agents to do research and triage, and engineering &quot;harnesses&quot; to improve the agents&#39; performance. The author shares a nuanced, measured approach to using AI, aiming to find practical value while understanding the tool&#39;s limitations.</summary>
+    <content type="html"><![CDATA[
+      <p>This article documents the author&#39;s personal journey in adopting AI tools, starting from inefficient chatbot experiences to eventually outsourcing &quot;slam dunk&quot; tasks to AI agents while focusing on more complex work. The key steps include: moving beyond chatbots to using more capable AI agents, reproducing their own work manually to understand the agents&#39; strengths and weaknesses, dedicating time at the end of each day for agents to do research and triage, and engineering &quot;harnesses&quot; to improve the agents&#39; performance. The author shares a nuanced, measured approach to using AI, aiming to find practical value while understanding the tool&#39;s limitations.</p>
+      <p><strong>Tags:</strong>
+          #genai, 
+          #adoption, 
+          #efficiency, 
+          #research, 
+          #limitations
+      </p>
+      <p><a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener noreferrer">🔗 https://mitchellh.com/writing/my-ai-adoption-journey</a></p>
+    ]]></content>
+    <category term="genai" />
+    <category term="adoption" />
+    <category term="efficiency" />
+    <category term="research" />
+    <category term="limitations" />
   </entry>
 </feed>
