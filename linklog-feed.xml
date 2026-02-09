@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T16:27:57.942Z</updated>
+  <updated>2026-02-09T16:29:34.454Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2305,5 +2305,27 @@ The article provides practical advice for developers working on compilers or cod
     <category term="efficiency" />
     <category term="research" />
     <category term="limitations" />
+  </entry>
+  <entry>
+    <title>Building a C compiler with a team of parallel Claudes &#92; Anthropic</title>
+    <link href="https://www.anthropic.com/engineering/building-c-compiler" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-fca1bad2df448c67" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-fca1bad2df448c67</id>
+    <updated>2026-02-09T16:29:34.454Z</updated>
+    <summary type="text">This article discusses Anthropic&#39;s experiment of tasking a team of parallel &quot;Claude&quot; language models to build a C compiler from scratch, capable of compiling the Linux kernel. The authors share insights gained from designing a framework that allows the Claudes to work autonomously on the project, including the importance of high-quality tests, designing the environment and feedback from the Claudes&#39; perspective, and enabling parallelism and specialization among the agents. The article highlights the potential of autonomous software development using language model teams, and the lessons learned in pushing the limits of what current language models can achieve.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses Anthropic&#39;s experiment of tasking a team of parallel &quot;Claude&quot; language models to build a C compiler from scratch, capable of compiling the Linux kernel. The authors share insights gained from designing a framework that allows the Claudes to work autonomously on the project, including the importance of high-quality tests, designing the environment and feedback from the Claudes&#39; perspective, and enabling parallelism and specialization among the agents. The article highlights the potential of autonomous software development using language model teams, and the lessons learned in pushing the limits of what current language models can achieve.</p>
+      <p><strong>Tags:</strong>
+          #anthropic, 
+          #compilers, 
+          #autonomous-systems, 
+          #language-models
+      </p>
+      <p><a href="https://www.anthropic.com/engineering/building-c-compiler" target="_blank" rel="noopener noreferrer">🔗 https://www.anthropic.com/engineering/building-c-compiler</a></p>
+    ]]></content>
+    <category term="anthropic" />
+    <category term="compilers" />
+    <category term="autonomous-systems" />
+    <category term="language-models" />
   </entry>
 </feed>
