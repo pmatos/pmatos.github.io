@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "4c822d64b766e6d4",
+      "url": "https://x.com/simonw/status/2019477817231290687",
+      "title": "x.com",
+      "summary": "This webpage is a notice informing users that JavaScript is required to access x.com, and that certain privacy-related browser extensions may cause issues with the site. It provides instructions on how to enable JavaScript or switch to a supported browser, as well as links to the site's Help Center, terms, and other policies. The content is likely intended to troubleshoot common access issues and ensure a smooth user experience on the x.com platform.",
+      "tags": [
+        "codex",
+        "opus",
+        "privacy",
+        "troubleshoot",
+        "javascript"
+      ],
+      "dateAdded": "2026-02-09T15:17:39.030Z"
+    },
+    {
       "id": "2fe893c3dfa7960c",
       "url": "https://supabase.com/blog/postgres-best-practices-for-ai-agents",
       "title": "Introducing: Postgres Best Practices",
