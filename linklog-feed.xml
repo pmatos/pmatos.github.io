@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T20:01:25.034Z</updated>
+  <updated>2026-02-09T20:03:43.790Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2423,5 +2423,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="cryptography" />
     <category term="cybersecurity" />
     <category term="discovery" />
+  </entry>
+  <entry>
+    <title>One Human + One Agent = One Browser From Scratch</title>
+    <link href="https://emsh.cat/one-human-one-agent-one-browser/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-e9bd70519777fc84" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-e9bd70519777fc84</id>
+    <updated>2026-02-09T20:03:43.790Z</updated>
+    <summary type="text">This article documents a fun experiment where the author, with the help of an AI agent (Codex), built a basic web browser from scratch in around 3 days. The browser can render HTML and CSS, and the author shares the process, challenges, and takeaways from this project, demonstrating that a single human working with a single AI agent can be highly effective in developing ambitious software projects.</summary>
+    <content type="html"><![CDATA[
+      <p>This article documents a fun experiment where the author, with the help of an AI agent (Codex), built a basic web browser from scratch in around 3 days. The browser can render HTML and CSS, and the author shares the process, challenges, and takeaways from this project, demonstrating that a single human working with a single AI agent can be highly effective in developing ambitious software projects.</p>
+      <p><strong>Tags:</strong>
+          #browsers, 
+          #genai, 
+          #html, 
+          #css, 
+          #coding
+      </p>
+      <p><a href="https://emsh.cat/one-human-one-agent-one-browser/" target="_blank" rel="noopener noreferrer">🔗 https://emsh.cat/one-human-one-agent-one-browser/</a></p>
+    ]]></content>
+    <category term="browsers" />
+    <category term="genai" />
+    <category term="html" />
+    <category term="css" />
+    <category term="coding" />
   </entry>
 </feed>
