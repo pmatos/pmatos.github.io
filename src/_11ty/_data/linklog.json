@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "2bdb0fc9092a25fa",
+      "url": "https://github.com/anthropics/claudes-c-compiler",
+      "title": "GitHub - anthropics/claudes-c-compiler: Claude Opus 4.6 wrote a dependency-free C compiler in Rust, with backends targeting x86 (64- and 32-bit), ARM, and RISC-V, capable of compiling a booting Linux kernel.",
+      "summary": "This repository contains a C compiler called \"Claude's C Compiler\" (CCC) written entirely in Rust. It is a dependency-free compiler that supports multiple architectures including x86 (64-bit and 32-bit), ARM, and RISC-V, and is capable of compiling a booting Linux kernel. The compiler is a stand-alone tool that includes its own assembler and linker, and it can serve as a drop-in replacement for GCC in build systems.",
+      "tags": [
+        "ccc",
+        "rust",
+        "compiler",
+        "linux",
+        "dependency-free"
+      ],
+      "dateAdded": "2026-02-09T16:23:13.675Z"
+    },
+    {
       "id": "71537af37ff60572",
       "url": "https://www.brendangregg.com/blog//2026-02-07/why-i-joined-openai.html",
       "title": "Why I joined OpenAI",
