@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "e8efabc8c520a9e1",
+      "url": "https://nolanlawson.com/2026/02/07/we-mourn-our-craft/",
+      "title": "We mourn our craft | Read the Tea Leaves",
+      "summary": "This blog post reflects on the rise of AI-generated code and the impact it will have on the software engineering profession. The author acknowledges that AI tools can write code better than humans in many cases, and laments the impending obsolescence of traditional manual coding. However, the author also recognizes the inevitability of this technological shift and suggests that the current generation of software engineers should take time to mourn the passing of their craft, while preparing for the future. The post offers a thoughtful, bittersweet perspective on the profound changes underway in the software industry.",
+      "tags": [
+        "craft",
+        "genai",
+        "software",
+        "automation",
+        "future"
+      ],
+      "dateAdded": "2026-02-09T15:46:00.900Z"
+    },
+    {
       "id": "cfc3ae639965f2ab",
       "url": "https://simonwillison.net/2023/Aug/6/annotated-presentations/",
       "title": "How I make annotated presentations",
