@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T15:19:59.715Z</updated>
+  <updated>2026-02-09T15:37:44.020Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2143,5 +2143,47 @@ This information would be useful for developers looking to leverage the power of
     <category term="collaboration" />
     <category term="parallelism" />
     <category term="architecture" />
+  </entry>
+  <entry>
+    <title>six thoughts on generating c — wingolog</title>
+    <link href="https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-1ebcefc6976630c7" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-1ebcefc6976630c7</id>
+    <updated>2026-02-09T15:37:44.020Z</updated>
+    <summary type="text">This article discusses several best practices for efficiently generating C code from higher-level programs. Key points include:
+
+- Using static inline functions to enable data abstraction without performance penalties
+- Avoiding implicit integer conversions by using explicit conversion functions
+- Wrapping raw pointers and integers with intent-revealing structs to avoid mistakes
+- Leveraging memcpy for unaligned memory accesses
+- Performing manual register allocation for ABI compliance and tail calls
+- Acknowledging the limitations of generating C, such as lack of control over the stack and debugging challenges.
+
+The article provides practical advice for developers working on compilers or code generators that target C as the output language.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses several best practices for efficiently generating C code from higher-level programs. Key points include:
+
+- Using static inline functions to enable data abstraction without performance penalties
+- Avoiding implicit integer conversions by using explicit conversion functions
+- Wrapping raw pointers and integers with intent-revealing structs to avoid mistakes
+- Leveraging memcpy for unaligned memory accesses
+- Performing manual register allocation for ABI compliance and tail calls
+- Acknowledging the limitations of generating C, such as lack of control over the stack and debugging challenges.
+
+The article provides practical advice for developers working on compilers or code generators that target C as the output language.</p>
+      <p><strong>Tags:</strong>
+          #compilers, 
+          #abstraction, 
+          #performance, 
+          #abi, 
+          #generators
+      </p>
+      <p><a href="https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c" target="_blank" rel="noopener noreferrer">🔗 https://wingolog.org/archives/2026/02/09/six-thoughts-on-generating-c</a></p>
+    ]]></content>
+    <category term="compilers" />
+    <category term="abstraction" />
+    <category term="performance" />
+    <category term="abi" />
+    <category term="generators" />
   </entry>
 </feed>
