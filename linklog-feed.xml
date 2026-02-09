@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T19:45:33.036Z</updated>
+  <updated>2026-02-09T20:01:25.034Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2399,5 +2399,29 @@ The article provides practical advice for developers working on compilers or cod
     <category term="api" />
     <category term="web-services" />
     <category term="online-tools" />
+  </entry>
+  <entry>
+    <title>AI found 12 of 12 OpenSSL zero-days (while curl cancelled its bug bounty) — LessWrong</title>
+    <link href="https://www.lesswrong.com/posts/7aJwgbMEiKq5egQbd/ai-found-12-of-12-openssl-zero-days-while-curl-cancelled-its" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-c42df761a701d4ed" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-c42df761a701d4ed</id>
+    <updated>2026-02-09T20:01:25.034Z</updated>
+    <summary type="text">This article discusses how an AI system developed by the company AISLE was able to discover 12 out of 12 new zero-day vulnerabilities in the widely-used OpenSSL cryptographic library. This represents a significant achievement, as OpenSSL is one of the most heavily scrutinized pieces of internet infrastructure. The article provides details on the severity of the discovered vulnerabilities, some dating back over 25 years, and how AISLE&#39;s AI system was able to outperform human security researchers in finding these flaws. The article suggests that AI-driven vulnerability discovery is a breakthrough capability that could help secure critical software before advanced AI systems become ubiquitous.</summary>
+    <content type="html"><![CDATA[
+      <p>This article discusses how an AI system developed by the company AISLE was able to discover 12 out of 12 new zero-day vulnerabilities in the widely-used OpenSSL cryptographic library. This represents a significant achievement, as OpenSSL is one of the most heavily scrutinized pieces of internet infrastructure. The article provides details on the severity of the discovered vulnerabilities, some dating back over 25 years, and how AISLE&#39;s AI system was able to outperform human security researchers in finding these flaws. The article suggests that AI-driven vulnerability discovery is a breakthrough capability that could help secure critical software before advanced AI systems become ubiquitous.</p>
+      <p><strong>Tags:</strong>
+          #genai, 
+          #vulnerabilities, 
+          #cryptography, 
+          #cybersecurity, 
+          #discovery
+      </p>
+      <p><a href="https://www.lesswrong.com/posts/7aJwgbMEiKq5egQbd/ai-found-12-of-12-openssl-zero-days-while-curl-cancelled-its" target="_blank" rel="noopener noreferrer">🔗 https://www.lesswrong.com/posts/7aJwgbMEiKq5egQbd/ai-found-12-of-12-openssl-zero-days-while-curl-cancelled-its</a></p>
+    ]]></content>
+    <category term="genai" />
+    <category term="vulnerabilities" />
+    <category term="cryptography" />
+    <category term="cybersecurity" />
+    <category term="discovery" />
   </entry>
 </feed>
