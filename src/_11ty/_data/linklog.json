@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "e9bd70519777fc84",
+      "url": "https://emsh.cat/one-human-one-agent-one-browser/",
+      "title": "One Human + One Agent = One Browser From Scratch",
+      "summary": "This article documents a fun experiment where the author, with the help of an AI agent (Codex), built a basic web browser from scratch in around 3 days. The browser can render HTML and CSS, and the author shares the process, challenges, and takeaways from this project, demonstrating that a single human working with a single AI agent can be highly effective in developing ambitious software projects.",
+      "tags": [
+        "browsers",
+        "genai",
+        "html",
+        "css",
+        "coding"
+      ],
+      "dateAdded": "2026-02-09T20:03:43.790Z"
+    },
+    {
       "id": "c42df761a701d4ed",
       "url": "https://www.lesswrong.com/posts/7aJwgbMEiKq5egQbd/ai-found-12-of-12-openssl-zero-days-while-curl-cancelled-its",
       "title": "AI found 12 of 12 OpenSSL zero-days (while curl cancelled its bug bounty) — LessWrong",
