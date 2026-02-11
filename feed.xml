@@ -4,12 +4,59 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2026-02-09T20:42:16Z</updated>
+  <updated>2026-02-11T09:27:08Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
     <email>p@ocmatos.com</email>
   </author>
+  <entry>
+    <title>Claude Code Usage in Waybar</title>
+    <link href="https://p.ocmatos.com/blog/claude-code-usage-in-waybar.html"/>
+    <updated>2026-02-11T00:00:00Z</updated>
+    <id>https://p.ocmatos.com/blog/claude-code-usage-in-waybar.html</id>
+    <content xml:lang="en" type="html">&lt;p&gt;If you&#39;re a heavy Claude Code user, you&#39;ve probably been caught off guard by hitting your session or weekly usage cap mid-flow. I wrote a small script that shows your current Claude Code API usage right in &lt;a href=&quot;https://github.com/Alexays/Waybar&quot;&gt;Waybar&lt;/a&gt;, so you can always see where you stand at a glance.&lt;/p&gt;
+&lt;p&gt;Here&#39;s what it looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://p.ocmatos.com/img/2026/02/waybar-claude-usage.png&quot; alt=&quot;Waybar with Claude Code usage module&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The module on the left shows session and weekly utilization percentages. It color-codes based on usage level — neutral brown under 50%, orange at 50-79%, and red at 80%+. Hovering shows the reset times.&lt;/p&gt;
+&lt;h2&gt;The Script&lt;/h2&gt;
+&lt;p&gt;The full script is available as a &lt;a href=&quot;https://gist.github.com/pmatos/70f18d396f8e21804f8a437184de1292&quot;&gt;gist&lt;/a&gt;. It reads your Claude Code OAuth credentials, hits the Anthropic usage API, and outputs JSON that Waybar can consume directly.&lt;/p&gt;
+&lt;p&gt;It requires &lt;code&gt;jq&lt;/code&gt; and &lt;code&gt;curl&lt;/code&gt; — both likely already on your system.&lt;/p&gt;
+&lt;h2&gt;Waybar Configuration&lt;/h2&gt;
+&lt;p&gt;Add a custom module to your Waybar config:&lt;/p&gt;
+&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token property&quot;&gt;&quot;custom/claude&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;exec&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;~/.config/waybar/claude-usage.sh&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;return-type&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;interval&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;120&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;format&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;🤖 {}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;tooltip&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then include &lt;code&gt;&amp;quot;custom/claude&amp;quot;&lt;/code&gt; in whichever module section you prefer (I have it in &lt;code&gt;modules-right&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;For styling, add something like this to your &lt;code&gt;style.css&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token selector&quot;&gt;#custom-claude&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #d4a574&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #000000&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; bold&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;#custom-claude.claude-mid&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #f39c12&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #000000&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;#custom-claude.claude-high&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #e74c3c&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #ffffff&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token selector&quot;&gt;#custom-claude.claude-error&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #7f8c8d&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; #ffffff&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The CSS classes are set by the script based on the session utilization percentage, so the module changes color as you approach your limits.&lt;/p&gt;
+&lt;p&gt;That&#39;s it — a simple way to keep an eye on your Claude Code budget without leaving your workflow.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Daring to imagine...</title>
     <link href="https://p.ocmatos.com/blog/daring-to-imagine.html"/>
@@ -478,13 +525,13 @@ tspan { white-space: pre; }
 &lt;g transform=&quot;translate(8.5358, 1.7790)&quot;&gt;
 &lt;line stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot; stroke-width=&quot;0.1000&quot; stroke=&quot;currentColor&quot; x1=&quot;0.0500&quot; y1=&quot;0&quot; x2=&quot;39.8983&quot; y2=&quot;0&quot;&gt;&lt;/line&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -492,24 +539,24 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(38.0758, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -517,12 +564,12 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(32.4255, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -531,7 +578,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(36.4249, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -539,7 +586,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(44.7250, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -548,13 +595,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(43.0741, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -562,7 +609,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(20.1260, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -590,12 +637,12 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;g transform=&quot;translate(8.4758, 8.2790)&quot;&gt;
 &lt;rect x=&quot;0.0000&quot; y=&quot;-6.5500&quot; width=&quot;0.1600&quot; height=&quot;13.1000&quot; ry=&quot;0.0500&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -604,7 +651,7 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M359 27c-49 0 -75 42 -75 75c0 38 27 77 72 77c4 0 9 0 14 -1c-28 37 -72 59 -120 59c-106 0 -113 -73 -113 -186v-51v-51c0 -113 7 -187 113 -187c80 0 139 70 158 151c2 7 7 10 12 10c6 0 13 -4 13 -12c0 -94 -105 -174 -183 -174c-68 0 -137 21 -184 70
 c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c1 -5 1 -10 1 -14c0 -40 -30 -72 -67 -72z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -621,12 +668,12 @@ c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c
 &lt;g transform=&quot;translate(18.4750, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -635,13 +682,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(30.7746, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:12:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:12:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-202619-4096-xba3hg.ymbul.ly:13:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026111-4100-1y8kswz.r3t8.ly:13:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
