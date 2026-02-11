@@ -13,7 +13,7 @@ Here's what it looks like:
 
 ![Waybar with Claude Code usage module](/img/2026/02/waybar-claude-usage.png)
 
-The module on the left shows session and weekly utilization percentages. It color-codes based on usage level — neutral brown under 50%, orange at 50-79%, and red at 80%+. Hovering shows the reset times.
+The module on the left shows session and weekly utilization percentages. It color-codes based on session utilization — neutral brown under 50%, orange at 50-79%, and red at 80%+. Hovering shows the reset times.
 
 ## The Script
 
@@ -62,6 +62,6 @@ For styling, add something like this to your `style.css`:
 }
 ```
 
-The CSS classes are set by the script based on the session utilization percentage, so the module changes color as you approach your limits.
+The CSS classes are set by the script based on the session utilization percentage, so the module changes color as you approach your session limit.
 
 That's it — a simple way to keep an eye on your Claude Code budget without leaving your workflow.
