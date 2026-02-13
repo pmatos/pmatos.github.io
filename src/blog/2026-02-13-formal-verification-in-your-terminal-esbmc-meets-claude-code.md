@@ -15,11 +15,12 @@ A new [Claude Code plugin for ESBMC](https://github.com/esbmc/esbmc/commit/4b79b
 
 ## Setup
 
-You need ESBMC installed and available somewhere on your system (the plugin will find it). Then install the plugin:
+You need ESBMC installed and available somewhere on your system (the plugin will find it). Then add the ESBMC marketplace and install the plugin:
 
 ```
 $ claude
-> /install-plugin esbmc/esbmc//claude-plugin
+> /plugin marketplace add esbmc/esbmc
+> /plugin install esbmc-plugin@esbmc-marketplace
 ```
 
 Restart Claude Code and you're ready to go.
