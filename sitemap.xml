@@ -117,9 +117,17 @@
   </url>
   
   <url>
+    <loc>https://p.ocmatos.com/blog/formal-verification-in-your-terminal-esbmc-meets-claude-code.html</loc>
+    
+    <lastmod>2026-02-13T00:00:00Z</lastmod>
+    
+    <priority>0.80</priority>
+  </url>
+  
+  <url>
     <loc>https://p.ocmatos.com/manifest.webmanifest</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -127,7 +135,7 @@
   <url>
     <loc>https://p.ocmatos.com/robots.txt</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -135,7 +143,7 @@
   <url>
     <loc>https://p.ocmatos.com/sitemap.xml</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -143,7 +151,7 @@
   <url>
     <loc>https://p.ocmatos.com/_11ty/_static/examples/keyboard/</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -151,7 +159,7 @@
   <url>
     <loc>https://p.ocmatos.com/about-me.html</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -159,7 +167,7 @@
   <url>
     <loc>https://p.ocmatos.com/blog.html</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -167,7 +175,7 @@
   <url>
     <loc>https://p.ocmatos.com/</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.00</priority>
     
@@ -177,7 +185,7 @@
   <url>
     <loc>https://p.ocmatos.com/linklog.html</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
@@ -185,7 +193,7 @@
   <url>
     <loc>https://p.ocmatos.com/racket-money.html</loc>
     
-    <lastmod>2026-02-11T09:30:11Z</lastmod>
+    <lastmod>2026-02-13T16:11:09Z</lastmod>
     
     <priority>0.80</priority>
   </url>
