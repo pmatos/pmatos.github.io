@@ -43,7 +43,7 @@
     "temp": "^0.9.4"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/cli": "^4.2.0",
     "commander": "^14.0.3",
     "svg2roughjs": "^3.0.1"
   },
