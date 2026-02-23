@@ -7,6 +7,8 @@ layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
 ---
 
+*Edit (2026-02-23): Updated plugin installation instructions to use the new repository names.*
+
 [ESBMC](https://esbmc.org/) is an open-source bounded model checker for C, C++, Python, Solidity, and CUDA. Unlike traditional testing, which only explores the paths you think to test, bounded model checking exhaustively explores all execution paths up to a given bound and produces mathematically verified counterexamples when it finds a bug. It's a powerful technique that catches bugs no amount of unit testing would find.
 
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) is Anthropic's agentic coding assistant that lives in your terminal. It supports a plugin system that lets third-party tools integrate deeply into the AI workflow through custom slash commands and skills.
@@ -19,7 +21,7 @@ You need ESBMC installed and available somewhere on your system (the plugin will
 
 ```
 $ claude
-> /plugin marketplace add esbmc/esbmc
+> /plugin marketplace add esbmc/agent-marketplace
 > /plugin install esbmc-plugin@esbmc-marketplace
 ```
 
