@@ -1,6 +1,6 @@
 ---
 title: "ESBMC Plugin Update: Python Support, a New Home, and Where This Is Going"
-description: ""
+description: "Python verification support, a new agent-marketplace repo, and thoughts on co-temporal verification."
 tags: ["esbmc", "claude", "formal-verification", "genai"]
 date: 2026-02-23
 layout: article.njk
