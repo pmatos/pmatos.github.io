@@ -7,10 +7,6 @@ layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
 ---
 
-# ESBMC Plugin Update: Python Support, a New Home, and Where This Is Going
-
-*24 Feb 2026*
-
 A couple of weeks ago I [wrote about](https://p.ocmatos.com/blog/formal-verification-in-your-terminal-esbmc-meets-claude-code.html) the ESBMC plugin for Claude Code — a way to bring bounded model checking into your terminal through an AI coding assistant. The response was encouraging, and things have moved quickly since then. This is a short update on what changed, and a first sketch of where I think this is heading.
 
 ## What's New
