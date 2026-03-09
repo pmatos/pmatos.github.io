@@ -612,7 +612,7 @@ IMPORTANT:
     async buildSite() {
         console.log('🔨 Building site...');
         try {
-            execSync('npm run go!', { stdio: 'inherit' });
+            execSync('npm run build:ci', { stdio: 'inherit' });
             console.log('✅ Site built successfully');
         } catch (error) {
             throw new Error(`Build failed: ${error.message}`);
