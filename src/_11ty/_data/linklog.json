@@ -1,6 +1,20 @@
 {
   "entries": [
     {
+      "id": "3f1703b0c03ebfb6",
+      "url": "https://karpathy.github.io/2026/02/12/microgpt/",
+      "title": "microgpt",
+      "summary": "This webpage provides a brief guide to the author's new \"microgpt\" project, which is a single-file Python script that implements a minimal GPT-like language model. The key points are:\n\n1) The script contains the essential components of a language model, including a dataset of documents, a tokenizer, a neural network architecture, an optimizer, and training/inference loops, all in around 200 lines of pure Python.\n\n2) The script is the culmination of the author's efforts to simplify large language models to their core algorithmic components, and it can be used to generate plausible-sounding new text (e.g., names).\n\n3) The guide also includes an explanation of the custom autograd engine implemented in the script, which allows for automatic differentiation and backpropagation, a crucial component of training neural networks.",
+      "tags": [
+        "python",
+        "gpt",
+        "language-model",
+        "machine-learning",
+        "neural-network"
+      ],
+      "dateAdded": "2026-03-09T08:07:44.058Z"
+    },
+    {
       "id": "a16d014ebe544ecb",
       "url": "https://daax.dev/blogs/the-sandbox-explosion",
       "title": "The Sandbox Explosion | daax.dev",
