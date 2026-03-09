@@ -4,7 +4,7 @@
   <subtitle>Interesting links from around the web, summarized and tagged</subtitle>
   <link href="https://p.ocmatos.com/linklog-feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/linklog.html"/>
-  <updated>2026-02-09T20:41:12.403Z</updated>
+  <updated>2026-03-09T08:07:44.058Z</updated>
   <id>https://p.ocmatos.com/linklog-feed.xml</id>
   <author>
     <name>Paulo Matos</name>
@@ -2471,5 +2471,41 @@ The article provides practical advice for developers working on compilers or cod
     <category term="ai" />
     <category term="isolation" />
     <category term="security" />
+  </entry>
+  <entry>
+    <title>microgpt</title>
+    <link href="https://karpathy.github.io/2026/02/12/microgpt/" rel="alternate" type="text/html"/>
+    <link href="https://p.ocmatos.com/linklog.html#entry-3f1703b0c03ebfb6" rel="alternate" type="text/html" title="Linklog Entry"/>
+    <id>https://p.ocmatos.com/linklog.html#entry-3f1703b0c03ebfb6</id>
+    <updated>2026-03-09T08:07:44.058Z</updated>
+    <summary type="text">This webpage provides a brief guide to the author&#39;s new &quot;microgpt&quot; project, which is a single-file Python script that implements a minimal GPT-like language model. The key points are:
+
+1) The script contains the essential components of a language model, including a dataset of documents, a tokenizer, a neural network architecture, an optimizer, and training/inference loops, all in around 200 lines of pure Python.
+
+2) The script is the culmination of the author&#39;s efforts to simplify large language models to their core algorithmic components, and it can be used to generate plausible-sounding new text (e.g., names).
+
+3) The guide also includes an explanation of the custom autograd engine implemented in the script, which allows for automatic differentiation and backpropagation, a crucial component of training neural networks.</summary>
+    <content type="html"><![CDATA[
+      <p>This webpage provides a brief guide to the author&#39;s new &quot;microgpt&quot; project, which is a single-file Python script that implements a minimal GPT-like language model. The key points are:
+
+1) The script contains the essential components of a language model, including a dataset of documents, a tokenizer, a neural network architecture, an optimizer, and training/inference loops, all in around 200 lines of pure Python.
+
+2) The script is the culmination of the author&#39;s efforts to simplify large language models to their core algorithmic components, and it can be used to generate plausible-sounding new text (e.g., names).
+
+3) The guide also includes an explanation of the custom autograd engine implemented in the script, which allows for automatic differentiation and backpropagation, a crucial component of training neural networks.</p>
+      <p><strong>Tags:</strong>
+          #python, 
+          #gpt, 
+          #language-model, 
+          #machine-learning, 
+          #neural-network
+      </p>
+      <p><a href="https://karpathy.github.io/2026/02/12/microgpt/" target="_blank" rel="noopener noreferrer">🔗 https://karpathy.github.io/2026/02/12/microgpt/</a></p>
+    ]]></content>
+    <category term="python" />
+    <category term="gpt" />
+    <category term="language-model" />
+    <category term="machine-learning" />
+    <category term="neural-network" />
   </entry>
 </feed>
