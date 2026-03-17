@@ -1,7 +1,7 @@
 ---
 title: "JSSE: A JavaScript Engine Built by an Agent"
 description: "JSSE is the first JavaScript engine to pass 100% of test262 non-staging tests. 170,000 lines of Rust. Zero lines written by me."
-tags: ["javascript", "claude", "agents", "rust", "genai"]
+tags: ["javascript", "claude", "rust", "agentic-coding"]
 date: 2026-03-17
 layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
