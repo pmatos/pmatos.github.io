@@ -109,6 +109,8 @@ Comparing against Boa is more fair since both are interpreters in Rust. JSSE is 
 
 ![Slowdown relative to Node.js](/img/2026/03/benchmark_slowdown.png)
 
+The test262 suite itself reveals where the pain is. All 30 of the slowest tests are RegExp Unicode property escape tests (`\p{...}`), each taking 64–84 seconds. The slowest — `Script_Extensions_-_Sharada.js` — hits 84 seconds. These tests compile and run regexes that enumerate thousands of Unicode codepoints, and the bottleneck is byte-level WTF-8 regex matching for Unicode property classes. Out of 198,258 total test scenarios, 900 take over 10 seconds and 1,062 take over 1 second. Everything else finishes fast — the long tail is almost entirely regex.
+
 This is fine. Correctness was the only goal. Performance is the obvious next step.
 
 ## The Cost
