@@ -16,6 +16,21 @@ Six weeks later, [JSSE](https://github.com/pmatos/jsse) (JavaScript Simple Engin
 
 I didn't write a single line of Rust. Not one. The repository is a write-only data store from my perspective. I didn't even create the GitHub repo by hand; the agent did that too.
 
+## How It Started
+
+It started with a conversation in a chat room about agentic coding and browsers. At 14:42 on January 27, I floated the idea: "OK, shall we embark on a JS engine from scratch to plug into that browser?" Seventeen minutes later I found the [single-page spec](https://tc39.es/ecma262/) and the key insight: "the great thing is we have test262, so we can create a feedback loop to create a JS engine that passes all the tests."
+
+By 15:05 the repo was live. I set up the initial scaffolding (`CLAUDE.md`, `PLAN.md`, skills) and at 15:59 launched a [Ralph Loop](https://github.com/anthropics/claude-code-ralph-plugin) with a massive prompt to autonomously implement the engine task by task, run test262, review code, and commit.
+
+At 16:02 the first commit landed. I went into a meeting. An hour later at 17:09 it was already executing JavaScript:
+
+```
+target/release/jsse -e 'function Foo(x) { this.x = x; } var f = new Foo(42); console.log(f.x);'
+42
+```
+
+By 19:10 that evening it had reached 17.63% test262 pass rate. I signed off for the night. From zero to a functioning JS engine in Rust in about four hours.
+
 ## The Numbers
 
 | Metric | Value |
@@ -35,10 +50,10 @@ That last number is the one that surprises people. Four hours spread across six 
 The setup was deliberately vanilla. Claude Code running in YOLO mode (auto-accept all tool use). No fancy orchestration. The plugins I used were:
 
 - **`/simplify`**, used maybe once or twice when files got too large and needed refactoring
-- **`ralph-wiggum-loop`**, the built-in autonomous loop plugin. I started with this but found it would get lost after a while, possibly due to context not clearing properly between iterations
+- **[`ralph-wiggum-loop`](https://github.com/anthropics/claude-code-ralph-plugin)**, the built-in autonomous loop plugin. I started with this but found it would get lost after a while (more on this below)
 - **[chiefloop.com](https://chiefloop.com)**, an external tool for running Claude Code overnight. Useful for long unattended runs, though it was missing some things from my usual workflow
 
-The workflow that worked best was simple: I'd prompt Claude to plan the next feature, auto-accept the plan, let it implement, and let it run the tests. `CLAUDE.md` had all the rules: no regressions allowed, always attempt to pass more tests than before. Then I'd come back, check the test262 numbers, and kick off the next feature.
+The core of the project was `PLAN.md`, a task list that Claude generated itself from the ECMAScript spec and test262 submodules. My typical prompt was: "Read the first unfinished item in PLAN.md, plan and implement it, mark it as complete, commit and push." That was it. I never reviewed the code, never reviewed the plan, never read a diff. `CLAUDE.md` had the rules: no regressions allowed, always attempt to pass more tests than before. Sometimes I'd push back when Claude tried to skip a task it deemed too hard: "Why are you skipping this? We have to implement everything, so might as well tackle it now." But that was the extent of my guidance.
 
 The longest successful unattended loop was 16 hours for the Temporal API implementation. I kicked it off before bed and came back to a full implementation of `Instant`, `ZonedDateTime`, `PlainDateTime`, `PlainDate`, `PlainTime`, `Duration`, `Temporal.Now`, IANA timezone support via ICU4X, and 12 calendar systems, with 4,482 test262 tests passing. Temporal is one of the largest and most complex proposals in recent ECMAScript history, and the agent handled it in a single overnight session.
 
@@ -130,11 +145,11 @@ To put it in perspective: $4,619 in API-equivalent cost for a 170,000-line Rust 
 
 ## What I Learned
 
-**Understanding the plan matters more than writing the code.** The single most important thing I did was ensure Claude had a high-level plan that covered the full path from start to finish. What are the major features? What order should they be implemented in? What are the architectural decisions that will be hard to change later? Agents will develop in a generic way unless told otherwise, and imbuing the development with domain knowledge is critical. I'm fairly confident this project would have taken half the time if I had invested more upfront in researching the architecture: things like how to handle generators (state machines vs. coroutines), how to structure the GC, or how to deal with WTF-8 strings.
+**The plan matters more than the code.** Claude generated the entire `PLAN.md` itself from the spec and test262 submodules. I didn't write it, didn't review it, just accepted it. And it worked. But looking back, the plan's quality was the single biggest lever on the project's speed. Claude picked a reasonable feature order, but it made some architectural decisions early on (like how to handle generators, how to structure the GC, how to deal with WTF-8 strings) that caused expensive rework later. If I had invested time upfront researching the right architecture and feeding that into the plan, I'm fairly confident this project would have taken half the time. The lesson isn't "you must write the plan yourself," it's "make sure the plan is good, however it gets made."
 
 **test262 is an incredible feedback signal.** Having a comprehensive, well-structured test suite that the agent can run autonomously is what makes this kind of project possible. The agent doesn't need to understand JavaScript semantics deeply; it needs to make the number go up while not making it go down. test262 provides exactly that signal.
 
-**Agents get lost in long contexts.** The `ralph-wiggum-loop` plugin didn't work as well as I hoped, possibly because the context wasn't being cleared properly between iterations. Starting fresh Claude sessions with a new prompt for each feature worked much better than letting it run indefinitely. The sweet spot seemed to be: plan a feature, implement it, run tests, stop. Repeat.
+**Agents get lost in long contexts.** This needs some explanation. Claude Code automatically compacts the conversation when it approaches the context limit (which was 200k tokens at the time of this project). Compaction summarizes older messages to free up space, but it inevitably loses detail: which specific tests were failing, what approach was being tried, what the error messages said. After several rounds of compaction in a long-running task, Claude would visibly degrade. It would go in circles, attempting the same fix repeatedly. It would pass some tests but regress others, then try to fix the regressions and break something else. My fix was to stop the session, split the task into smaller pieces, and start fresh. A new session with a focused prompt ("implement SharedArrayBuffer") worked far better than a long-running loop that had been through multiple compactions. The sweet spot was: one feature per session, plan it, implement it, run tests, stop.
 
 **Re-architecture is expensive but not catastrophic.** There was a point where Claude realized the architecture wasn't right for async functions and had to go back and restructure things. It took longer than it should have, but it worked. A human architect who understood the problem space would have avoided this, which circles back to the first point.
 
@@ -146,7 +161,9 @@ Performance. The engine is a pure tree-walker, and the lowest-hanging fruit is b
 
 But honestly, the point of JSSE was never to build a production JavaScript engine. It was to explore what's possible with current agentic coding tools, and to learn about agent workflows in the process. On both counts, I'm satisfied with the result.
 
-The code is at [github.com/pmatos/jsse](https://github.com/pmatos/jsse). MIT licensed. If you want to run test262 yourself, the README has full reproduction instructions.
+The tools are amazing and the models are incredible, but this is just the beginning. Agentic coding is already changing the way people work, and I believe it will revolutionize software production (I've written about [some of my ideas on this](https://p.ocmatos.com/blog/formal-verification-in-your-terminal-esbmc-meets-claude-code.html)). In the near future, writing a JS engine from scratch and optimizing it to be faster than anything else will be a walk in the park, literally the duration of a walk in the park. I've learned a lot from this experiment and I'll keep having fun with it.
+
+The code is at [github.com/pmatos/jsse](https://github.com/pmatos/jsse). MIT licensed. If you want to run test262 yourself, the README has full reproduction instructions. Contributions to JSSE are welcome, but please keep them agentic.
 
 ---
 
