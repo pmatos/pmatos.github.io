@@ -16,6 +16,15 @@ type: article
             <time datetime="{{page.date}}">{{page.date | readableDate}}</time>
         </small>
         <h1>{{ title }}</h1>
+        {% if tags | length %}
+        <div class="article-tags">
+            {%- for tag in tags -%}
+                {%- if tag != "post" -%}
+                <span class="tag">{{ tag }}</span>
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+        {% endif %}
         {{content | safe}}
     </article>
     {% include "footer.njk" %}

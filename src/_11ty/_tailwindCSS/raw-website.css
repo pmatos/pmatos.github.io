@@ -398,6 +398,10 @@
     color: var(--color-link-hover);
   }
 
+  .article-tags {
+    @apply flex flex-wrap justify-center gap-2 mb-6;
+  }
+
   .tag {
     @apply inline-block px-2 py-1 text-xs rounded-full font-medium transition-colors;
     background: var(--color-bg);
