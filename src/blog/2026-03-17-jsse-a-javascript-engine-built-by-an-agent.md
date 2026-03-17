@@ -1,6 +1,6 @@
 ---
 title: "JSSE: A JavaScript Engine Built by an Agent"
-description: "JSSE is the first JavaScript engine to pass 100% of test262 non-staging tests. 136,000 lines of Rust. Zero lines written by me."
+description: "JSSE is the first JavaScript engine to pass 100% of test262 non-staging tests. 170,000 lines of Rust. Zero lines written by me."
 tags: ["javascript", "claude", "agents", "rust", "genai"]
 date: 2026-03-17
 layout: article.njk
@@ -23,8 +23,7 @@ I didn't write a single line of Rust. Not one. The repository is a write-only da
 | Start date | January 27, 2026 |
 | 100% non-staging test262 | March 9, 2026 (42 days) |
 | Total commits | 592 |
-| Hand-written Rust | ~136,000 lines |
-| Total Rust (incl. generated Unicode tables) | ~170,000 lines |
+| Total Rust | ~170,000 lines |
 | Lines added (all time) | 929,475 |
 | Lines removed (all time) | 448,317 |
 | My hands-on-keyboard time | ~4 hours total |
@@ -127,7 +126,7 @@ I used a Claude Code Max 20x subscription for this project, so I didn't pay per-
 
 Opus 4.6 did the vast majority of the heavy lifting. Haiku was used for background tasks like subagent searches. The total token count was about 8.9 billion, but aggressive prompt caching kept costs manageable; cache read tokens alone were 8.8 billion.
 
-To put it in perspective: $4,619 in API-equivalent cost for a 136,000-line Rust codebase that passes 100% of test262. That's roughly $0.03 per line of code, or about $47 per percentage point of test262 compliance.
+To put it in perspective: $4,619 in API-equivalent cost for a 170,000-line Rust codebase that passes 100% of test262. That's roughly $0.03 per line of code, or about $47 per percentage point of test262 compliance.
 
 ## What I Learned
 
