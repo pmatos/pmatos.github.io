@@ -8,6 +8,8 @@ permalink: "blog/{{ title | slugify }}.html"
 eleventyExcludeFromCollections: true
 ---
 
+![An agent dreaming in JavaScript](/img/2026/03/jsse-agent-dreaming.png)
+
 In January, I came across a blog post by the author of [one-agent-one-browser](https://emsh.cat/one-human-one-agent-one-browser/) — a from-scratch browser built in Rust by a single person directing a single coding agent over a few days. No JavaScript support, though. I read it and thought: "How hard can it be to build a JavaScript engine the same way?"
 
 Six weeks later, [JSSE](https://github.com/pmatos/jsse) (JavaScript Simple Engine) became the first JavaScript engine I know of to pass 100% of [test262](https://github.com/tc39/test262) non-staging tests — all 98,426 scenarios across `language/`, `built-ins/`, `annexB/`, and `intl402/`. Not V8. Not SpiderMonkey. Not JavaScriptCore. A from-scratch engine in Rust, built entirely by [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) running in YOLO mode.
