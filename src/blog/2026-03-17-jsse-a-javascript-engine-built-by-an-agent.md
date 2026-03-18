@@ -57,6 +57,50 @@ The core of the project was `PLAN.md`, a task list that Claude generated itself 
 
 The longest successful unattended loop was 16 hours for the Temporal API implementation. I kicked it off before bed and came back to a full implementation of `Instant`, `ZonedDateTime`, `PlainDateTime`, `PlainDate`, `PlainTime`, `Duration`, `Temporal.Now`, IANA timezone support via ICU4X, and 12 calendar systems, with 4,482 test262 tests passing. Temporal is one of the largest and most complex proposals in recent ECMAScript history, and the agent handled it in a single overnight session.
 
+## What the Prompts Actually Looked Like
+
+The previous section describes the workflow in the abstract: plan, implement, test, commit. But what did that actually look like day-to-day? Here are real prompts from the project, and they tell a story of their own.
+
+The single most repeated prompt — the heartbeat of the entire project, appearing 20+ times — was this:
+
+> Take a look at PLAN.md and related plan/ files and file the next feature that has most impact on test262 pass rate. Come up with 3 possible features to work on and their respective impact and once we know that we can choose one.
+
+That was the core loop. I didn't pick what to work on; I asked the agent to analyze test262 coverage gaps, propose options ranked by impact, and then I'd pick one (or just say "go"). Most of my interaction was at this level: strategic, not tactical.
+
+When things went sideways, the prompts shifted to debugging:
+
+> What happened? What were you trying to do? Why is this bash running for 40 minutes?
+
+Long-running sessions would sometimes stall on a single test or get stuck in a compilation loop. The fix was usually to kill the session and restart with a narrower scope.
+
+As the project matured, I got more ambitious with parallelism:
+
+> How about we delegate each of these tasks to a team of agents to plan and implement where each agent is working in its own worktree and then you merge it all together once it's complete? That would likely give us ~300 new passes?
+
+> Let's create 3 plans, then I will start 3 agents to work on each in separate worktrees.
+
+Claude Code supports [worktrees](https://docs.anthropic.com/en/docs/claude-code/sub-agents#worktree-isolation) — isolated git branches that multiple agents can work on simultaneously. This is how the hardest features got done: split the work into independent tracks, run them in parallel, merge. The Temporal API implementation used this pattern heavily.
+
+Some prompts were just green lights for marathon sessions:
+
+> Yes. Start and complete all phases, committing in between.
+
+> We should probably tackle option A straight ahead and not shy away. Create a plan to deal with array holes, then implement.
+
+That last one is about [array holes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#sparse_arrays) — one of JavaScript's gnarliest semantic corners. `[1, , 3]` has a hole at index 1 that behaves differently from `undefined` in subtle, spec-mandated ways. The agent handled it, but it took a dedicated session.
+
+The endgame prompts (98%+) were the most interesting, because the nature of the work changed completely. Instead of implementing features, we were hunting individual test failures:
+
+> We are so close to full compliance. What's missing? Let's just find the first category not passing 100% and deal with that.
+
+> Which of these will close up 100% compliance on a specific category?
+
+And the final push to 100%:
+
+> We have a @PLAN.md and a bunch of @plan/ files. Our ultimate goal is 100% test262 compliance. We are close but need to close a few gaps. Your task is to create a plan to take us to 100% compliance — forward progress, no regressions.
+
+The pattern across all of these is that I was never telling the agent *how* to implement anything. I was setting goals, choosing priorities, and occasionally unblocking. The agent did the engineering.
+
 ## The Pass Rate Curve
 
 ![JSSE Test262 Pass Rate](/img/2026/03/jsse_passrate.png)
