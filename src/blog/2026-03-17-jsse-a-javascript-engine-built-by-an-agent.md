@@ -5,7 +5,6 @@ tags: ["javascript", "claude", "rust", "agentic-coding"]
 date: 2026-03-17
 layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
-eleventyExcludeFromCollections: true
 ---
 
 ![An agent dreaming in JavaScript](/img/2026/03/jsse-agent-dreaming.png)
