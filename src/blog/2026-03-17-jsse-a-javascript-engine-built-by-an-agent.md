@@ -209,7 +209,3 @@ But honestly, the point of JSSE was never to build a production JavaScript engin
 The tools are amazing and the models are incredible, but this is just the beginning. Agentic coding is already changing the way people work, and I believe it will revolutionize software production (I've written about [some of my ideas on this](https://p.ocmatos.com/blog/formal-verification-in-your-terminal-esbmc-meets-claude-code.html)). In the near future, writing a JS engine from scratch and optimizing it to be faster than anything else will be a walk in the park, literally the duration of a walk in the park. I've learned a lot from this experiment and I'll keep having fun with it.
 
 The code is at [github.com/pmatos/jsse](https://github.com/pmatos/jsse). MIT licensed. If you want to run test262 yourself, the README has full reproduction instructions. Contributions to JSSE are welcome, but please keep them agentic.
-
----
-
-*Disclaimer: This is a personal project, unrelated to my work at [Igalia](https://igalia.com).*
