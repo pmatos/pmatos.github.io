@@ -19,7 +19,7 @@ I didn't write a single line of Rust. Not one. The repository is a write-only da
 
 It started with a conversation in a chat room about agentic coding and browsers. At 14:42 on January 27, I floated the idea: "OK, shall we embark on a JS engine from scratch to plug into that browser?" Seventeen minutes later I found the [single-page spec](https://tc39.es/ecma262/) and the key insight: "the great thing is we have test262, so we can create a feedback loop to create a JS engine that passes all the tests."
 
-By 15:05 the repo was live. I set up the initial scaffolding (`CLAUDE.md`, `PLAN.md`, skills) and at 15:59 launched a [Ralph Loop](https://github.com/anthropics/claude-code-ralph-plugin) with a massive prompt to autonomously implement the engine task by task, run test262, review code, and commit.
+By 15:05 the repo was live. I set up the initial scaffolding (`CLAUDE.md`, `PLAN.md`, skills) and at 15:59 launched a [Ralph Loop](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum) with a massive prompt to autonomously implement the engine task by task, run test262, review code, and commit.
 
 At 16:02 the first commit landed. I went into a meeting. An hour later at 17:09 it was already executing JavaScript:
 
