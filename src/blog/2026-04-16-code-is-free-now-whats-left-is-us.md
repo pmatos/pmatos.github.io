@@ -3,6 +3,7 @@ title: "Code Is Free Now. What's Left Is Us."
 description: "Reflections on 14 months of agentic coding and why the developer's job is becoming more human, not less."
 tags: ["agentic-coding", "future", "llms", "software-engineering"]
 date: 2026-04-16
+image: /img/2026/04/code-is-free-now.png
 layout: article.njk
 permalink: "blog/{{ title | slugify }}.html"
 ---

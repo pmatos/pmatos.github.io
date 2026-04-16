@@ -1,9 +1,9 @@
 <!-- Titolo Automatizzato -->
-{%- set pageTitle %}{% if title %}{{title}} {% endif %} - {{meta.siteName}} {% endset -%}
+{%- set pageTitle %}{% if title %}{{title | safe}} {% endif %} - {{meta.siteName | safe}} {% endset -%}
 <!-- Descrizione Automatizzata -->
-{%- set pageDescription %}{% if description %}{{description}} {% else %}{{meta.siteDescription}} {% endif %}{% endset -%}
+{%- set pageDescription %}{% if description %}{{description | safe}} {% else %}{{meta.siteDescription | safe}} {% endif %}{% endset -%}
 <!-- Social Immagine -->
-{%- set pageSocialImg %}{{meta.url}} /img/social/{% if title %}{{title | slug}} {% else %}home{% endif %}.png{% endset -%}
+{%- set pageSocialImg %}{% if image %}{{meta.url}}{{image}}{% else %}{{meta.url}} /img/social/{% if title %}{{title | slug}} {% else %}home{% endif %}.png{% endif %}{% endset -%}
 <!-- Url della pagina -->
 {%- set pageUrls %}{{meta.url}} {{page.url}} {% endset -%}
 <!-- Start Head -->
