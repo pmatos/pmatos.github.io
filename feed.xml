@@ -4,12 +4,64 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2026-03-27T08:09:18Z</updated>
+  <updated>2026-04-16T14:00:18Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
     <email>p@ocmatos.com</email>
   </author>
+  <entry>
+    <title>Code Is Free Now. What&#39;s Left Is Us.</title>
+    <link href="https://p.ocmatos.com/blog/code-is-free-now-whats-left-is-us.html"/>
+    <updated>2026-04-16T00:00:00Z</updated>
+    <id>https://p.ocmatos.com/blog/code-is-free-now-whats-left-is-us.html</id>
+    <content xml:lang="en" type="html">&lt;p&gt;&lt;img src=&quot;https://p.ocmatos.com/img/2026/04/code-is-free-now.png&quot; alt=&quot;Humans in warm conversation while code dissolves into light around them&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;In the first months of agentic coding, I grieved.&lt;/p&gt;
+&lt;p&gt;The joy of hunting a bug for weeks, the satisfaction of finally tracing it to a single misplaced condition, the meditative rhythm of writing code line by line. Gone. I had spent decades building a relationship with programming and suddenly the thing I loved doing was being done by something else. It felt like losing a craft I had spent my whole career perfecting.&lt;/p&gt;
+&lt;p&gt;I wasn&#39;t alone. Nolan Lawson captured this feeling perfectly in &lt;a href=&quot;https://nolanlawson.com/2026/02/07/we-mourn-our-craft/&quot;&gt;We Mourn Our Craft&lt;/a&gt;. He gave words to what many of us felt but struggled to articulate. The mourning is real, and it&#39;s understandable.&lt;/p&gt;
+&lt;p&gt;But that&#39;s not where the story ends.&lt;/p&gt;
+&lt;h2&gt;Then: July 2025&lt;/h2&gt;
+&lt;p&gt;In July 2025, a few months into using Claude Code daily, I recorded some voice notes trying to make sense of what was happening. The tools were already good but rough around the edges. Orchestrating multiple agents across worktrees was manual and painful. Getting notified when an agent finished a task meant checking your terminal every few minutes. Choosing the right model for the right job (planning vs. implementation vs. review) was guesswork.&lt;/p&gt;
+&lt;p&gt;I knew things would improve. What I didn&#39;t know was how fast.&lt;/p&gt;
+&lt;p&gt;At the time I was wrestling with basic questions: Can I trust an agent to implement a feature unsupervised? How do I review code I didn&#39;t write? What does my job even look like if the machine writes the code? I had more questions than answers, and the tooling wasn&#39;t helping me find them faster.&lt;/p&gt;
+&lt;h2&gt;Now: April 2026&lt;/h2&gt;
+&lt;p&gt;Fourteen months in, the landscape looks different.&lt;/p&gt;
+&lt;p&gt;Last week I returned from AI Engineer and the shift was palpable. What was once a niche topic on a side track is now the default assumption. Every company represented there was using agents, developing agents, or deploying agents. The conversations didn&#39;t start with &amp;quot;are you using AI for coding?&amp;quot; but with &amp;quot;how are you orchestrating your agents?&amp;quot; The question is no longer whether. It&#39;s how.&lt;/p&gt;
+&lt;p&gt;The tooling caught up too. We have Claude Code with Opus 4.6, skills, hooks, MCPs, and multi-agent orchestration. We have OpenClaw. We have GPT 5.4 and the lightning-fast 5.3-codex-spark. The harnesses are better, the workflows are more mature, and the rough edges I struggled with in July 2025 have been sanded down significantly.&lt;/p&gt;
+&lt;p&gt;In January, I &lt;a href=&quot;https://p.ocmatos.com/blog/jsse-a-javascript-engine-built-by-an-agent.html&quot;&gt;built a JavaScript engine in Rust&lt;/a&gt; entirely through agentic coding. 170,000 lines of Rust. 100% of test262 non-staging tests passing. Zero lines written by me. My total hands-on-keyboard time was about four hours spread across six weeks. When I tell people this, they focus on the &amp;quot;zero lines&amp;quot; part. But the interesting part is what I was actually doing with my time: planning, reviewing architectural decisions, choosing what to work on next, and occasionally telling the agent to stop avoiding the hard problems. The work was strategic, not mechanical.&lt;/p&gt;
+&lt;p&gt;That project changed how I think about my role.&lt;/p&gt;
+&lt;h2&gt;The Role Shift&lt;/h2&gt;
+&lt;p&gt;Here is what I&#39;ve come to believe after 14 months of practice: the developer&#39;s job is no longer to write code. It&#39;s to specify intent, verify behavior, and architect systems.&lt;/p&gt;
+&lt;p&gt;This isn&#39;t a prediction about the future. It&#39;s a description of my present. I spend my days thinking about what should be built, how the pieces fit together, and whether the output meets the requirements. The act of translating intent into syntax, the thing we used to call &amp;quot;programming,&amp;quot; is increasingly handled by the machine.&lt;/p&gt;
+&lt;p&gt;What remains is the hard part. The part that was always the hard part, honestly, but that we used to spend less time on because we were so busy typing.&lt;/p&gt;
+&lt;h2&gt;More Human, Not Less&lt;/h2&gt;
+&lt;p&gt;Here&#39;s the thing nobody seems to be saying: agentic coding makes software engineering more human, not less.&lt;/p&gt;
+&lt;p&gt;Think about it. Machines can code. They&#39;re getting better at it every month. But it&#39;s the human who needs to tell the machine what to code, and in many instances, how to code it. Humans will do what humans do best: meet, discuss, and reach a consensus on what&#39;s needed.&lt;/p&gt;
+&lt;p&gt;In a world where code is developed at near-zero cost and near-instant speed, what&#39;s left is the human side of software engineering. The discussion of what should be built. The negotiation of trade-offs. The alignment of a team around a shared vision. Our jobs will be more human.&lt;/p&gt;
+&lt;p&gt;There&#39;s a paradox here too. Before, we didn&#39;t implement all the features because there was no time. Now there&#39;s time. So the difficult part shifts. It&#39;s no longer &amp;quot;can we build this?&amp;quot; but &amp;quot;should we build this?&amp;quot; Just because you can, it doesn&#39;t mean you should. The constraint is no longer engineering capacity. It&#39;s human judgment.&lt;/p&gt;
+&lt;h2&gt;What Happens to Code Review?&lt;/h2&gt;
+&lt;p&gt;Code review is one of the clearest examples of how practices are evolving in real time.&lt;/p&gt;
+&lt;p&gt;When an agent generates thousands of lines in a single session, the traditional model of reading every diff line by line breaks down. It&#39;s not possible to do code review in the same way. If you&#39;re working alone, you can push code without a thorough review and fix things later. But when you&#39;re collaborating with others, review matters because human time is on the line, and human time is the scarce resource now.&lt;/p&gt;
+&lt;p&gt;The strategy I&#39;ve found most effective: small, focused changes. Many of them, if needed. But each one small enough to review meaningfully, and small enough to revert cleanly without the rest of the system falling apart. This isn&#39;t new advice, but it takes on new urgency when an agent can generate a 2,000-line PR in twenty minutes if you let it.&lt;/p&gt;
+&lt;p&gt;In the future, better models and better harnesses will integrate more tightly with verification and testing tools, which may make traditional review less essential. I&#39;ll have more to say about this in a future post on integrating formal verification into the agentic coding feedback loop. But for now, the practical answer is: keep changes small, keep them focused, and accept that the review process is evolving.&lt;/p&gt;
+&lt;h2&gt;What Should You Study?&lt;/h2&gt;
+&lt;p&gt;If you&#39;re at university studying software engineering right now, prepare yourself for agentic coding. The curriculum you&#39;re following was designed for a world where humans write all the code. That world is ending. The fundamentals still matter (architecture, systems thinking, design, verification) but the emphasis on syntax mastery and manual implementation will age poorly.&lt;/p&gt;
+&lt;p&gt;If you&#39;re a teenager wondering whether software engineering is the right path: it&#39;s hard to know exactly what will be here in 10 years. The field is going to look radically different. What I&#39;d suggest instead is to be a generalist. Have a wide reach. Build connections across different areas. Be interested in many things. Extremely specific knowledge won&#39;t stay relevant when the tools are changing this fast.&lt;/p&gt;
+&lt;p&gt;What will be essential: hard-working, smart people with great relationships and the ability to bridge between different areas when needed. People who can communicate, who can see the big picture, who can bring others along. And above all, people who are good human beings. The more our tools handle the mechanical work, the more the human qualities matter.&lt;/p&gt;
+&lt;h2&gt;Where the Trend Points&lt;/h2&gt;
+&lt;p&gt;Someone once said: predictions are hard, especially about the future. I won&#39;t try to pin dates on what&#39;s coming. But trends are easier to read than futures.&lt;/p&gt;
+&lt;p&gt;The trend is clear: stronger models, better harnesses, smarter workflows, more targeted tools for agentic coding. If you follow that trend line, it&#39;s easy to see a world where everyone is doing agentic coding and humans are directing rather than implementing. We&#39;ll see more software, not less. Hyper-personalized software, because people can. It&#39;s possible we&#39;ll then see consolidation as a few solutions emerge as more successful than others. But right now we&#39;re in the experimentation phase, and it&#39;s exciting to see all sorts of ideas being tested.&lt;/p&gt;
+&lt;p&gt;A few directions I&#39;m particularly interested in, and will write about separately:&lt;/p&gt;
+&lt;p&gt;The first is integrating verification into the agentic coding feedback loop. If agents write the code, we need automated ways to ensure correctness that go beyond testing. I&#39;ve been working on the &lt;a href=&quot;https://p.ocmatos.com/blog/formal-verification-in-your-terminal-esbmc-meets-claude-code.html&quot;&gt;integration of ESBMC and Claude Code&lt;/a&gt; and there&#39;s a much larger story to tell there.&lt;/p&gt;
+&lt;p&gt;The second is the emergence of programming languages designed for agents. Languages that are easier for machines to generate and that can produce proof certificates for humans to verify correctness. I&#39;m developing one such language (more on that in a later post), and projects like &lt;a href=&quot;https://moonbitlang.com/&quot;&gt;MoonBit&lt;/a&gt; are already exploring this space.&lt;/p&gt;
+&lt;h2&gt;After the Mourning&lt;/h2&gt;
+&lt;p&gt;I won&#39;t pretend the transition was smooth. For months the work felt like it had boiled down to reviewing broken agent output and fixing things the model got wrong. It was frustrating. It felt like the joy had been extracted from the work and replaced with a tedious supervisory role.&lt;/p&gt;
+&lt;p&gt;But things improved. I understood the flow, the tools, the rhythm of working with agents. And something unexpected happened: I found a different passion. Not the old satisfaction of crafting code by hand, but a new kind of thrill. The thrill of seeing an idea materialize in hours instead of months. Of building things I never could have built alone. Of spending my time on the interesting problems, the design, the architecture, the &amp;quot;what should we build?&amp;quot; rather than the &amp;quot;how do I implement this loop?&amp;quot;&lt;/p&gt;
+&lt;p&gt;If you identify yourself as someone who can only code and that&#39;s it, then this is going to be a painful ride. But if you can let go and look at what&#39;s on the other side, there&#39;s a world that is more exciting than the one we had before. A world where the work is more creative, more collaborative, and more fundamentally human.&lt;/p&gt;
+&lt;p&gt;The code is free now. What&#39;s left is us.&lt;/p&gt;
+&lt;p&gt;That&#39;s not a loss. That&#39;s a beginning.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>JSSE: A JavaScript Engine Built by an Agent</title>
     <link href="https://p.ocmatos.com/blog/jsse-a-javascript-engine-built-by-an-agent.html"/>
@@ -995,13 +1047,13 @@ tspan { white-space: pre; }
 &lt;g transform=&quot;translate(8.5358, 1.7790)&quot;&gt;
 &lt;line stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot; stroke-width=&quot;0.1000&quot; stroke=&quot;currentColor&quot; x1=&quot;0.0500&quot; y1=&quot;0&quot; x2=&quot;39.8983&quot; y2=&quot;0&quot;&gt;&lt;/line&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1009,24 +1061,24 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(38.0758, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1034,12 +1086,12 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(32.4255, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1048,7 +1100,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(36.4249, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1056,7 +1108,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(44.7250, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1065,13 +1117,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(43.0741, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1079,7 +1131,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(20.1260, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1107,12 +1159,12 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;g transform=&quot;translate(8.4758, 8.2790)&quot;&gt;
 &lt;rect x=&quot;0.0000&quot; y=&quot;-6.5500&quot; width=&quot;0.1600&quot; height=&quot;13.1000&quot; ry=&quot;0.0500&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1121,7 +1173,7 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M359 27c-49 0 -75 42 -75 75c0 38 27 77 72 77c4 0 9 0 14 -1c-28 37 -72 59 -120 59c-106 0 -113 -73 -113 -186v-51v-51c0 -113 7 -187 113 -187c80 0 139 70 158 151c2 7 7 10 12 10c6 0 13 -4 13 -12c0 -94 -105 -174 -183 -174c-68 0 -137 21 -184 70
 c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c1 -5 1 -10 1 -14c0 -40 -30 -72 -67 -72z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1138,12 +1190,12 @@ c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c
 &lt;g transform=&quot;translate(18.4750, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1152,13 +1204,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(30.7746, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:12:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:12:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026227-4311-ist37z.12syc.ly:13:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026316-4113-379qla.tguup.ly:13:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
