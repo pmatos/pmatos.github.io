@@ -27,6 +27,30 @@ type: article
         {% endif %}
         {{content | safe}}
     </article>
+    {% if comments %}
+    <section id="comments" class="mt-12">
+        <h2>Comments</h2>
+        <div id="remark42"></div>
+        <script>
+        var remark_config = {
+            host: "https://p-comments.ocmatos.com",
+            site_id: "p-ocmatos",
+            url: "{{ meta.url }}{{ page.url }}",
+            components: ["embed"],
+            theme: "light",
+            locale: "en"
+        };
+        (function(c) {
+            for (var i = 0; i < c.length; i++) {
+                var d = document, s = d.createElement('script');
+                s.src = remark_config.host + '/web/' + c[i] + '.js';
+                s.defer = true;
+                (d.head || d.body).appendChild(s);
+            }
+        })(remark_config.components);
+        </script>
+    </section>
+    {% endif %}
     {% include "footer.njk" %}
 </body>
 <!-- End Body -->
