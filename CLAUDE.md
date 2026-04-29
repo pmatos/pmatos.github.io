@@ -116,6 +116,26 @@ Static files are organized under `src/_11ty/_static/`:
 - Automatic sitemap generation
 - Social media meta tag generation
 
+## Comments
+
+Comments are powered by a self-hosted [Remark42](https://remark42.com) backend (operational details live outside this repo).
+
+### Per-post opt-in
+
+Comments are **off by default**. To enable on a specific post, add to its frontmatter:
+
+```yaml
+comments: true
+```
+
+The widget then renders below the article body. The check lives in `src/_11ty/_layouts/article.njk` (wrapped in `{% if comments %}`).
+
+To flip the default to "on for all posts, opt-out per post", add `comments: true` to the layout's own frontmatter at the top of `article.njk`; individual posts can override with `comments: false`.
+
+### URL keying gotcha
+
+Comment threads are keyed by the canonical URL (`{{ meta.url }}{{ page.url }}` in `article.njk`), not by file path. Renaming a post URL detaches its existing comments — change URLs deliberately.
+
 ## Write Dashboard
 
 A local FastAPI-based dashboard for drafting and publishing blog posts with AI assistance.

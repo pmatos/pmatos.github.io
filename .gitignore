@@ -10,6 +10,9 @@ src/_11ty/_social
 .env
 .log
 
+# Local-only Claude context (ops details, not for the public repo)
+CLAUDE.local.md
+
 # Idee
 .idea
 
