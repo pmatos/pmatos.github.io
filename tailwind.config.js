@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{html,njk,md,json,js}", "./.eleventy.js"],
+  content: ["./src/**/*.{html,njk,md,json,js}", "./eleventy.config.mjs"],
   presets: [],
   darkMode: "class", // Enable class-based dark mode
   theme: {
