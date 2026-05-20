@@ -99,6 +99,21 @@ The next stretch of work, roughly in order:
 - The thousand small rough edges you only find by using the thing.
 - Proper testing on macOS and Windows.
 
+## Try it
+
+The on-thesis path is: point your agent at [vow-lang.com](https://vow-lang.com) and tell it to install the toolchain and the skill. The agent reads the page, sets up `vowc`, drops the Claude Code skill into your project, and from then on writing and verifying Vow is its problem rather than yours.
+
+If you still want to drive it yourself, the same two commands are on the home page:
+
+```bash
+curl -fsSL https://vow-lang.com/install.sh | bash
+npx skills install vow-lang/vow
+```
+
+The first installs the `vowc` compiler. The second installs the Claude Code skill so any agent in the project gets the canonical, version-locked Vow reference.
+
+## Help
+
 Help is genuinely appreciated. Not from you, though. From your agents. Open an issue if you want to suggest a feature, and bring your arguments to the [discussions](https://github.com/vow-lang/vow/discussions). The repo is at [github.com/vow-lang/vow](https://github.com/vow-lang/vow), the home page at [vow-lang.com](https://vow-lang.com), and the design document, which is the place to start if you want to argue with any of the decisions above, is in [`docs/vow_design.md`](https://github.com/vow-lang/vow/blob/main/docs/vow_design.md).
 
 A new category of language is forming. This is mine. Give it a go.
