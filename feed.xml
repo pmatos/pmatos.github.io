@@ -4,12 +4,87 @@
   <subtitle>Programming, sports and music - oh wow - enjoy!</subtitle>
   <link href="https://p.ocmatos.com/feed.xml" rel="self"/>
   <link href="https://p.ocmatos.com/"/>
-  <updated>2026-05-20T13:25:21Z</updated>
+  <updated>2026-05-20T17:32:54Z</updated>
   <id>https://p.ocmatos.com/</id>
   <author>
     <name>Paulo Matos</name>
     <email>p@ocmatos.com</email>
   </author>
+  <entry>
+    <title>What&#39;s in a vow? A language for the future of agentic coding</title>
+    <link href="https://p.ocmatos.com/blog/whats-in-a-vow-a-language-for-the-future-of-agentic-coding.html"/>
+    <updated>2026-05-20T00:00:00Z</updated>
+    <id>https://p.ocmatos.com/blog/whats-in-a-vow-a-language-for-the-future-of-agentic-coding.html</id>
+    <content xml:lang="en" type="html">&lt;p&gt;&lt;img src=&quot;https://p.ocmatos.com/img/2026/05/vow-pact.png&quot; alt=&quot;A human and a machine exchanging an illuminated parchment of proofs across a table&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Something has been forming in the last few months. A small but distinct category of programming languages is appearing, aimed not at the humans writing the code but at the agents writing most of it. They agree on the diagnosis: agents are good at producing code and are increasingly bad to trust with it as the surface area grows, and the language itself should help. They diverge on the cure.&lt;/p&gt;
+&lt;p&gt;This is one of them. &lt;a href=&quot;https://vow-lang.com/&quot;&gt;Vow&lt;/a&gt; is a small, statically typed systems language whose programs carry machine-checked &lt;em&gt;vows&lt;/em&gt;: preconditions, postconditions, and invariants verified by &lt;a href=&quot;https://esbmc.org/&quot;&gt;ESBMC&lt;/a&gt; bounded model checking before the code ships. The compiler is written in Vow. The verification side, which is the whole point, still needs hardening, and that&#39;s the work of the coming months. I&#39;m announcing it now because the moment is here and there is more value in planting a flag than in waiting until everything is polished. The repo is at &lt;a href=&quot;https://github.com/vow-lang/vow&quot;&gt;github.com/vow-lang/vow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here&#39;s a SAT solver written in Vow, compiled by Vow, solving a few DIMACS formulas:&lt;/p&gt;
+&lt;script src=&quot;https://asciinema.org/a/61u98LEGmBKxPepi.js&quot; id=&quot;asciicast-61u98LEGmBKxPepi&quot; async=&quot;true&quot;&gt;&lt;/script&gt;
+&lt;p&gt;That binary is the language doing its job. You did not need to look at any Vow source to understand what just happened. That is on purpose.&lt;/p&gt;
+&lt;h2&gt;How we got here&lt;/h2&gt;
+&lt;p&gt;Since about mid-2025 I had been thinking about languages for agents. Why should it be the case that a language designed for humans is the right one when agents are doing most of the coding? And how do we get to the point where agents are not only writing code but reviewing their own, without the human having to read every diff? The human really just wants the product, plus an assurance that the product fits within some expected operating rules.&lt;/p&gt;
+&lt;p&gt;A colleague pointed me at &lt;a href=&quot;https://www.moonbitlang.com/&quot;&gt;MoonBit&lt;/a&gt;. I experimented with it by building a small R5RS Scheme interpreter in it, &lt;a href=&quot;https://github.com/pmatos/moonscheme&quot;&gt;&lt;em&gt;moonscheme&lt;/em&gt;&lt;/a&gt;. It was an interesting experience but it lacked something I felt was essential: built-in automatic verification. Nine months ago, I started a project I called VAL (Verified Agent Language), initially designed to piggy-back on Lean 4.&lt;/p&gt;
+&lt;p&gt;The design changed considerably over the next half year. Three months ago I read Armin Ronacher&#39;s &lt;a href=&quot;https://lucumr.pocoo.org/2026/2/9/a-language-for-agents/&quot;&gt;&lt;em&gt;A language for agents&lt;/em&gt;&lt;/a&gt; and decided to drop the Lean 4 dependency, go the Rust route for the first version with &lt;a href=&quot;https://cranelift.dev/&quot;&gt;Cranelift&lt;/a&gt; as the codegen backend, and ship a prototype. The design sketch became the &lt;a href=&quot;https://github.com/vow-lang/vow/blob/main/docs/vow_design.md&quot;&gt;design document&lt;/a&gt;, the project was renamed, and the first commit landed on February 25, almost three months ago.&lt;/p&gt;
+&lt;p&gt;The renaming was deliberate. I wrote this around the time of the rename:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The name reflects the idea: every module makes vows (verifiable guarantees) about its behaviour. The language is deliberately small, designed so an agent can generate it reliably and a human never needs to read the implementation, only the vows.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That sentence is the thesis of the project.&lt;/p&gt;
+&lt;h2&gt;What Vow is for&lt;/h2&gt;
+&lt;p&gt;The home page says it more directly than I can:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The syntax is not for you.&lt;br /&gt;
+The semantics is not for you.&lt;br /&gt;
+The language is not for you.&lt;br /&gt;
+Yours is only the product.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That is not modesty. It is the design constraint. If the language is for agents, then nothing about it should optimise for human terseness, human ergonomics, or human taste. What humans get, and &lt;em&gt;all&lt;/em&gt; humans get, is the product, plus the vow that the product behaves a certain way. Everything else is mechanical.&lt;/p&gt;
+&lt;p&gt;That puts verification in a load-bearing position. Tests sample behaviour. Reviews sample attention. Neither scales to an agent producing thousands of lines a day across hundreds of repos. A verifier is what scales, because it answers a different question: not &lt;em&gt;did this case work&lt;/em&gt;, but &lt;em&gt;does this property hold for all inputs in the contract&lt;/em&gt;. Vow is built around that idea from the ground up.&lt;/p&gt;
+&lt;p&gt;The vow itself, the thing the human or the agent on the other side of an API reads, looks like this:&lt;/p&gt;
+&lt;pre class=&quot;language-vow&quot;&gt;&lt;code class=&quot;language-vow&quot;&gt;fn divide(x: i64, y: i64) -&gt; i64 vow {
+    requires: y != 0,
+    ensures:  result == x / y
+} { x / y }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That is the user-facing surface. The &lt;code&gt;requires&lt;/code&gt; clause is a precondition: the caller must satisfy it, and the verifier blames them if they don&#39;t. The &lt;code&gt;ensures&lt;/code&gt; clause is a postcondition: the callee must satisfy it, and the verifier blames the implementation if it doesn&#39;t. Loop invariants get the same treatment. At build time, these are lowered into obligations for ESBMC. In debug builds, they are also compiled into runtime checks. The contract is the interface; the implementation is the agent&#39;s job. A complete runnable version of this example lives at &lt;a href=&quot;https://github.com/vow-lang/vow/blob/main/examples/divide.vow&quot;&gt;&lt;code&gt;examples/divide.vow&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The language behind the contract is intentionally narrow. No user-defined generics. No traits or interfaces. No closures or higher-order functions. A small closed set of intrinsic built-ins (&lt;code&gt;Option&lt;/code&gt;, &lt;code&gt;Result&lt;/code&gt;, &lt;code&gt;Vec&lt;/code&gt;, &lt;code&gt;HashMap&lt;/code&gt;, &lt;code&gt;String&lt;/code&gt;), and that&#39;s it. Effects are explicit and tracked: &lt;code&gt;[io]&lt;/code&gt;, &lt;code&gt;[read]&lt;/code&gt;, &lt;code&gt;[write]&lt;/code&gt;, &lt;code&gt;[panic]&lt;/code&gt;, &lt;code&gt;[unsafe]&lt;/code&gt;. If a function has no effect annotation it is pure. The compiler canonicalises source form so there is one preferred way to write everything, which is doing the agent a favour and incidentally doing humans one too. Most of the choices that make modern languages comfortable for humans are absent because they make the verifier harder to scale or the behaviour harder for an agent to predict locally. The &lt;a href=&quot;https://github.com/vow-lang/vow/blob/main/docs/vow_design.md&quot;&gt;design document&lt;/a&gt; explains each cut.&lt;/p&gt;
+&lt;h2&gt;What&#39;s actually built&lt;/h2&gt;
+&lt;p&gt;The numbers and artefacts that exist today:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Self-host.&lt;/strong&gt; The Vow compiler is written in Vow. Thirteen modules, building itself. The Rust compiler in the repo (&lt;code&gt;./target/release/vow&lt;/code&gt;) is the stage-0 bootstrap; day-to-day development uses &lt;code&gt;build/vowc&lt;/code&gt;, which is Vow compiling Vow.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A SAT solver.&lt;/strong&gt; A deterministic CDCL solver with watched literals, first-UIP learning, non-chronological backtracking, phase saving, Luby restarts, and learned-clause cleanup. The whole thing is in Vow, reads DIMACS from a file or stdin, and is the demo you saw above.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A chess engine.&lt;/strong&gt; A working UCI engine in Vow, sitting alongside the SAT solver in &lt;a href=&quot;https://github.com/vow-lang/vow/tree/main/examples&quot;&gt;&lt;code&gt;examples/&lt;/code&gt;&lt;/a&gt;. It is not demoed here, but it is there to poke at.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A Lean 4 proof checker.&lt;/strong&gt; &lt;a href=&quot;https://github.com/pmatos/vow-lean-kernel&quot;&gt;vow-lean-kernel&lt;/a&gt; is a Lean 4 kernel written in Vow, targeting the &lt;a href=&quot;https://arena.lean-lang.org/&quot;&gt;Lean Kernel Arena&lt;/a&gt;. It is the first large project written in Vow that lives outside the compiler tree, and it is also a small piece of personal arc: the original plan was to build Vow &lt;em&gt;on top of&lt;/em&gt; Lean. Now there is a Lean kernel built &lt;em&gt;in&lt;/em&gt; Vow.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A Claude Code skill that ships in the compiler binary.&lt;/strong&gt; When you run &lt;code&gt;vowc build&lt;/code&gt; inside a project that has a &lt;code&gt;.claude/&lt;/code&gt; directory, the compiler writes a skill into &lt;code&gt;.claude/skills/vow/&lt;/code&gt;. The skill is the canonical reference an agent needs to work with Vow (grammar, error catalogue, diagnostic JSON schemas, the verify-and-fix workflow), and because it is generated from the compiler version you are running, it cannot drift. For non-Claude harnesses, &lt;code&gt;vowc skill print --bundle&lt;/code&gt; emits the same content as a single document you can paste into a system prompt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Structured diagnostics.&lt;/strong&gt; Every diagnostic the compiler produces is structured JSON. Verification failures carry concrete counterexamples and blame metadata so the agent reading them knows what input violates the contract and which side (caller or callee) to blame.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of that is the language being &lt;em&gt;good&lt;/em&gt;. It is the language being &lt;em&gt;real&lt;/em&gt; enough that you can pick it up and try it.&lt;/p&gt;
+&lt;h2&gt;Where it is today&lt;/h2&gt;
+&lt;p&gt;Honest accounting, because there are real holes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Self-host: yes.&lt;/strong&gt; Vow compiles Vow today.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backend: Cranelift via a small FFI shim.&lt;/strong&gt; Host-target only. There is no WASM backend and no cross-compilation story yet. The C emitter exists, but only because the ESBMC verification pipeline needs it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verification of the compiler itself: not done.&lt;/strong&gt; This is the obvious gap. The compiler is written in Vow but its own vows are not all verified end-to-end. Closing that loop is the single most important piece of work ahead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard library: partial, with partial contracts.&lt;/strong&gt; The pieces that exist (&lt;code&gt;math&lt;/code&gt;, &lt;code&gt;heap&lt;/code&gt;) carry vows where they are stable; everything else is still moving.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verification coverage of user code: not yet trustworthy enough to bet on.&lt;/strong&gt; ESBMC integration is in place and discharges contracts for the example programs, but the corners are still being found. Treat green verification today as &amp;quot;promising,&amp;quot; not &amp;quot;settled.&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation: the design document is the authoritative source.&lt;/strong&gt; There is no full language specification yet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platforms: Linux is the primary target.&lt;/strong&gt; macOS and Windows are not currently exercised.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you read all of that and thought &amp;quot;this is early,&amp;quot; you read it right. That is exactly why this post exists today rather than in six months.&lt;/p&gt;
+&lt;h2&gt;Where it&#39;s going&lt;/h2&gt;
+&lt;p&gt;The next stretch of work, roughly in order:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tighter ESBMC integration so more contracts discharge cleanly without manual hints.&lt;/li&gt;
+&lt;li&gt;A stronger verify → counterexample → fix loop, including better counterexample shapes for the agent on the other end.&lt;/li&gt;
+&lt;li&gt;Real benchmarking, both for the verifier and for the generated code.&lt;/li&gt;
+&lt;li&gt;More agent-facing tooling around debugging and performance analysis.&lt;/li&gt;
+&lt;li&gt;A bigger, more contract-rich standard library.&lt;/li&gt;
+&lt;li&gt;The thousand small rough edges you only find by using the thing.&lt;/li&gt;
+&lt;li&gt;Proper testing on macOS and Windows.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Help is genuinely appreciated. Not from you, though. From your agents. Open an issue if you want to suggest a feature, and bring your arguments to the &lt;a href=&quot;https://github.com/vow-lang/vow/discussions&quot;&gt;discussions&lt;/a&gt;. The repo is at &lt;a href=&quot;https://github.com/vow-lang/vow&quot;&gt;github.com/vow-lang/vow&lt;/a&gt;, the home page at &lt;a href=&quot;https://vow-lang.com/&quot;&gt;vow-lang.com&lt;/a&gt;, and the design document, which is the place to start if you want to argue with any of the decisions above, is in &lt;a href=&quot;https://github.com/vow-lang/vow/blob/main/docs/vow_design.md&quot;&gt;&lt;code&gt;docs/vow_design.md&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A new category of language is forming. This is mine. Give it a go.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Pewpew: the terminals are down!</title>
     <link href="https://p.ocmatos.com/blog/pewpew-the-terminals-are-down.html"/>
@@ -1381,13 +1456,13 @@ tspan { white-space: pre; }
 &lt;g transform=&quot;translate(8.5358, 1.7790)&quot;&gt;
 &lt;line stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot; stroke-width=&quot;0.1000&quot; stroke=&quot;currentColor&quot; x1=&quot;0.0500&quot; y1=&quot;0&quot; x2=&quot;39.8983&quot; y2=&quot;0&quot;&gt;&lt;/line&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:73:74&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:73:74&quot;&gt;
 &lt;g transform=&quot;translate(38.0108, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1395,24 +1470,24 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(38.0758, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:75:76&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:75:76&quot;&gt;
 &lt;g transform=&quot;translate(41.8349, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:69:70&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:69:70&quot;&gt;
 &lt;g transform=&quot;translate(32.3605, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1420,12 +1495,12 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(32.4255, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:71:72&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:71:72&quot;&gt;
 &lt;g transform=&quot;translate(35.1856, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1434,7 +1509,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(36.4249, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1442,7 +1517,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(44.7250, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:77:78&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:77:78&quot;&gt;
 &lt;g transform=&quot;translate(44.6600, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1451,13 +1526,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(43.0741, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:61:62&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:61:62&quot;&gt;
 &lt;g transform=&quot;translate(20.0610, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1465,7 +1540,7 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(20.1260, 12.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-2.8139&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1493,12 +1568,12 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;g transform=&quot;translate(8.4758, 8.2790)&quot;&gt;
 &lt;rect x=&quot;0.0000&quot; y=&quot;-6.5500&quot; width=&quot;0.1600&quot; height=&quot;13.1000&quot; ry=&quot;0.0500&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:63:64&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:63:64&quot;&gt;
 &lt;g transform=&quot;translate(22.8861, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
@@ -1507,7 +1582,7 @@ c129 -135 174 -312 174 -498c0 -261 -102 -516 -102 -765c0 -135 30 -261 129 -360c1
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M359 27c-49 0 -75 42 -75 75c0 38 27 77 72 77c4 0 9 0 14 -1c-28 37 -72 59 -120 59c-106 0 -113 -73 -113 -186v-51v-51c0 -113 7 -187 113 -187c80 0 139 70 158 151c2 7 7 10 12 10c6 0 13 -4 13 -12c0 -94 -105 -174 -183 -174c-68 0 -137 21 -184 70
 c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c1 -5 1 -10 1 -14c0 -40 -30 -72 -67 -72z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:59:60&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:59:60&quot;&gt;
 &lt;g transform=&quot;translate(17.2358, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1524,12 +1599,12 @@ c-49 51 -66 122 -66 193s17 142 66 193c47 49 116 69 184 69c87 0 160 -63 175 -149c
 &lt;g transform=&quot;translate(18.4750, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 6.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:67:68&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:67:68&quot;&gt;
 &lt;g transform=&quot;translate(29.5353, 12.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
@@ -1538,13 +1613,13 @@ c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -
 &lt;g transform=&quot;translate(30.7746, 3.7790)&quot;&gt;
 &lt;rect x=&quot;-0.0650&quot; y=&quot;-0.5000&quot; width=&quot;0.1300&quot; height=&quot;3.3139&quot; ry=&quot;0.0400&quot; fill=&quot;currentColor&quot;&gt;&lt;/rect&gt;
 &lt;/g&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:12:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:12:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 3.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M-23 -116c0 28 11 42 40 42c33 0 78 -13 119 -31l-132 158c-7 9 -10 17 -10 25c0 34 50 66 87 99c25 22 37 52 37 83c0 24 -8 49 -25 69l-35 42c-3 3 -4 7 -4 10c0 9 9 15 17 15c4 0 8 -1 11 -5l151 -180c7 -9 10 -17 10 -25c0 -34 -50 -66 -87 -99
 c-25 -22 -37 -52 -37 -83c0 -24 7 -49 24 -69l84 -99c3 -3 4 -7 4 -10c0 -9 -8 -16 -16 -16c-4 0 -9 2 -12 6c-18 21 -63 38 -97 38c-41 0 -53 -26 -53 -67c0 -35 11 -74 28 -94c7 -8 -5 -19 -12 -11c-45 54 -92 148 -92 202z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
 &lt;/a&gt;
-&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4176-u327f6.kj1e.ly:13:65:66&quot;&gt;
+&lt;a style=&quot;color:inherit;&quot; xlink:href=&quot;textedit:///tmp/lyInsert-2026420-4029-oxt992.strnc.ly:13:65:66&quot;&gt;
 &lt;g transform=&quot;translate(25.7113, 9.7790)&quot;&gt;
 &lt;path transform=&quot;scale(0.0040, -0.0040)&quot; d=&quot;M218 136c55 0 108 -28 108 -89c0 -71 -55 -121 -102 -149c-35 -21 -75 -34 -116 -34c-55 0 -108 28 -108 89c0 71 55 121 102 149c35 21 75 34 116 34z&quot; fill=&quot;currentColor&quot;&gt;&lt;/path&gt;
 &lt;/g&gt;
