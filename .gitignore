@@ -25,3 +25,5 @@ __pycache__/
 *.pyc
 .venv/
 .write.pid
+
+.claude/settings.local.json
