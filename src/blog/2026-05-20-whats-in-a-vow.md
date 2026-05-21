@@ -16,7 +16,7 @@ This is one of them. [Vow](https://vow-lang.com) is a small, statically typed sy
 
 Here's a SAT solver written in Vow, compiled by Vow, solving a few DIMACS formulas:
 
-<script src="https://asciinema.org/a/61u98LEGmBKxPepi.js" id="asciicast-61u98LEGmBKxPepi" async="true"></script>
+<script src="https://asciinema.org/a/pIpGirOXijgVAB7K.js" id="asciicast-pIpGirOXijgVAB7K" async="true"></script>
 
 That binary is the language doing its job. You did not need to look at any Vow source to understand what just happened. That is on purpose.
 
