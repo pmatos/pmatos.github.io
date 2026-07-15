@@ -35,7 +35,7 @@ async def add_link(request: Request, url: str = Form(...), tags: str = Form(""))
         link = await db.get_link(link_id)
         link["tags"] = json.loads(link["tags"]) if link.get("tags") else []
         return templates.TemplateResponse(
-            "_link_row.html", {"request": request, "link": link}
+            request, "_link_row.html", {"request": request, "link": link}
         )
     except Exception as e:
         if "UNIQUE constraint failed" in str(e):

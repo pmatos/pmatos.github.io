@@ -54,6 +54,7 @@ async def index(request: Request):
     draft_count = sum(1 for draft in all_drafts if draft["status"] == "draft")
 
     return templates.TemplateResponse(
+        request,
         "index.html",
         {
             "request": request,
@@ -71,6 +72,7 @@ async def links_page(request: Request):
     """Link queue management page."""
     all_links = parse_json_fields(await db.get_links(), ["tags"])
     return templates.TemplateResponse(
+        request,
         "links.html",
         {"request": request, "links": all_links},
     )
@@ -81,6 +83,7 @@ async def drafts_page(request: Request):
     """Drafts listing page."""
     all_drafts = parse_json_fields(await db.get_drafts(), ["tags", "ai_analysis"])
     return templates.TemplateResponse(
+        request,
         "drafts.html",
         {"request": request, "drafts": all_drafts},
     )
@@ -99,6 +102,7 @@ async def editor_page(request: Request, draft_id: int):
         draft["ai_analysis"] = json.loads(draft["ai_analysis"])
 
     return templates.TemplateResponse(
+        request,
         "editor.html",
         {"request": request, "draft": draft},
     )

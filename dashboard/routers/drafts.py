@@ -39,7 +39,7 @@ async def create_draft(request: Request, title: str = Form(...)):
     draft_id = await db.create_draft(title)
     draft = await db.get_draft(draft_id)
     return templates.TemplateResponse(
-        "_draft_card.html", {"request": request, "draft": draft}
+        request, "_draft_card.html", {"request": request, "draft": draft}
     )
 
 
