@@ -31,7 +31,7 @@
     "@11ty/eleventy-navigation": "^1.0.5",
     "@11ty/eleventy-plugin-rss": "^3.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "html-minifier-terser": "^7.2.0",
     "luxon": "^3.7.2",
     "markdown-it": "^14.3.0",
