@@ -11,17 +11,17 @@ comments: true
 
 ![A small robot sprinting down a track lined with glowing checkmark guardrails](/img/2026/09/jsse-guardrails.png)
 
-In March, [JSSE](https://github.com/pmatos/jsse) was a JavaScript engine an agent had built from scratch in Rust: [correct and slow](/blog/jsse-a-javascript-engine-built-by-an-agent.html). In May, I wrote about [making it faster](/blog/how-fast-do-you-want-it.html) without touching its architecture, and said that post was not about bytecode.
+Back in March, I wrote about [JSSE](https://github.com/pmatos/jsse), a JavaScript engine an agent built from scratch in Rust. It was [correct, but slow](/blog/jsse-a-javascript-engine-built-by-an-agent.html). In May, I wrote about [making it faster](/blog/how-fast-do-you-want-it.html) without touching its architecture, and promised that post was not about bytecode. JSSE v0.9.0 was tagged on September 23, so it is time to take stock.
 
-Six months after the first release, JSSE v0.9.0 runs **47 of the 48** JetStream workloads, up from 22 in March. On the 22 that both versions run, it is **2.92x faster** (geometric mean). And it still passes every one of the 99,911 test262 scenarios we run.
+In this post, I will go through where JSSE stands six months after its first release, how it compares with other engines, and the guardrails that allowed an agent to make it faster without breaking it. The short version: v0.9.0 runs **47 of the 48** JetStream workloads, up from 22 in March. On the 22 that both versions run, it is **2.92x faster** (geometric mean). And it still passes every one of the 99,911 test262 scenarios we run.
 
-I still haven't written a line of it. What I did build is the guardrails, and I think the guardrails are the actual story. Agent-driven performance work is possible. It is only trustworthy if the agent cannot quietly trade correctness for speed.
+I still haven't written a single line of JSSE. What I did build is the guardrails and, as it turns out, I think the guardrails are the actual story. Agent-driven performance work is possible, however it is only trustworthy if the agent cannot quietly trade correctness for speed.
 
 ## Still 100%
 
-test262 keeps growing. The March build passed the suite as it stood then[^runner]. Run against today's checkout, it fails 1,039 of 99,911 scenarios, mostly tests for features that landed since: iterator helpers, `Promise.allKeyed`, immutable `ArrayBuffer`s, `Atomics.waitAsync`. v0.9.0 passes all of them, both on the default tree-walker and with the experimental bytecode VM.
+test262 is not a fixed target: it keeps growing. The March build passed the suite as it stood then[^runner] but, if we run it against today's checkout, it fails 1,039 of 99,911 scenarios. Most of those are tests for features that landed in the meantime, namely iterator helpers, `Promise.allKeyed`, immutable `ArrayBuffer`s and `Atomics.waitAsync`. v0.9.0 passes all of them, both on the default tree-walker and with the experimental bytecode VM.
 
-Same checkout, same runner, same 120-second timeout for every engine. Tick the boxes to add or remove engines.
+Let's put this in context. Every engine below ran the same test262 checkout, through the same runner, with the same 120-second timeout. Tick the boxes to add or remove engines from the comparison.
 
 {% raw %}
 <figure class="jsse-chart" id="chart-t262"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:260px"><canvas role="img" aria-label="test262 failing scenarios per engine; table below"></canvas></div><figcaption>Failing test262 scenarios out of 99,911 (lower is better). engine262 is estimated from a 10% sample.</figcaption></figure>
@@ -41,25 +41,25 @@ Same checkout, same runner, same 120-second timeout for every engine. Tick the b
 
 </details>
 
-I'm not claiming JSSE is more conformant than V8. Node goes through a test adapter with a basic `$262.agent` and skips 830 module scenarios, so some of its failures belong to the harness, not to V8. The claim is narrower: an engine built and optimized by an agent sits at the top of this table, and it didn't slip while getting faster.
+Does this mean JSSE is more conformant than V8? No! Node goes through a test adapter with a basic `$262.agent` implementation and skips 830 module scenarios, so some of its failures belong to the harness and not to V8. The claim here is much narrower: an engine built and optimized by an agent sits at the top of this table, and it didn't slip while getting faster.
 
 ## The Guardrails
 
-Performance work is where an agent is most dangerous. A fast path that skips a spec step passes the benchmark and breaks something three clauses away. So nothing merges without getting past three kinds of guardrail.
+Performance work is where an agent is at its most dangerous. A fast path that skips a step of the spec will happily pass the benchmark and break something three clauses away. Therefore, nothing merges without getting past three kinds of guardrail.
 
-**Correctness.** Every PR runs the full test262 suite locally and compares against a pass-list baseline read from `main`. A single regression blocks the merge. The agent cannot move the baseline, cannot touch the test262 or spec submodules, and is told to implement the spec, not the test: special-casing a test file is not a fix. CI re-runs a seeded sample of test262, plus `test262-extra`, a first-party suite for spec behaviour test262 doesn't reach, in both execution modes.
+**Correctness.** Every PR runs the full test262 suite locally and compares the result against a pass-list baseline read from `main`. A single regression blocks the merge. The agent cannot move the baseline, it cannot touch the test262 or spec submodules, and it is told to implement the spec, not the test (special-casing a test file is not a fix). In addition, CI re-runs a seeded sample of test262 and `test262-extra`, a first-party suite for spec behaviour that test262 doesn't reach, in both execution modes.
 
-**Measurement.** Performance claims need receipts. Benchmarks run under a fixed protocol: the same machine, five process runs, the median, a load gate, a pinned JetStream commit, and benchmark scripts that don't change between versions. Results land in the repository's `docs/perf/` as data, null results included. When the bytecode VM failed to speed up tweetnacl, that got written up too.
+**Measurement.** Performance claims need receipts. Benchmarks run under a fixed protocol: the same machine, five process runs, the median, a load gate, a pinned JetStream commit, and benchmark scripts that don't change between versions. The results land in the repository under `docs/perf/` as data, and that includes the null results. When the bytecode VM failed to speed up tweetnacl, that got written up too.
 
-**Scope.** The work runs through [Symphonika](https://github.com/pmatos/symphonika), an orchestrator I've been building that turns GitHub issues into agent runs. More on it in a post soon. Each issue goes through a fixed pipeline: plan, implement, code review, simplify, then wait for CI and review threads, autofix, merge. Each step has a gate. The plan must cite the spec clauses it relies on. An implementation that doesn't push a commit never gets to open a PR. One issue, one branch, one PR. Between May and September that came to about 700 commits across some 270 PRs.
+**Scope.** The work runs through [Symphonika](https://github.com/pmatos/symphonika), an orchestrator I have been building that turns GitHub issues into agent runs (more on it in a future post, soon). Each issue goes through a fixed pipeline: plan, implement, code review, simplify, wait for CI and review threads, autofix and, finally, merge. Each step has a gate. The plan must cite the spec clauses it relies on, and an implementation that doesn't push a commit never gets to open a PR. In essence: one issue, one branch, one PR. Between May and September that came to about 700 commits across some 270 PRs.
 
-Here is a guardrail catching something. In late August, a correctness fix made `JSON.stringify` honour Proxy property descriptors. It was spec-correct and test262 was happy. It also sent every key of every *ordinary* object through the Proxy path, allocating a descriptor object per property. JetStream's `json-stringify-inspector` got almost three times slower. The next benchmark snapshot flagged it as slower than March, an issue got filed, and the fix (read `[[GetOwnProperty]]` directly for non-proxy objects) was released two days later.
+What does a guardrail catching something look like? On August 24, a correctness fix made `JSON.stringify` honour Proxy property descriptors. It was spec-correct and test262 was happy. However, it also sent every key of every *ordinary* object through the Proxy path, allocating a descriptor object per property, and JetStream's `json-stringify-inspector` got almost three times slower. The benchmark snapshot of September 18 flagged it as slower than March, an issue got filed, and the fix (read `[[GetOwnProperty]]` directly for non-proxy objects) was released two days later.
 
-The guardrail didn't prevent the regression. It made the regression visible, three weeks after it landed. Measurement is periodic, not per-PR, and that gap is the next thing to close.
+Note that the guardrail didn't prevent the regression. It made it visible, more than three weeks after it landed. Measurement is periodic, not per-PR, and closing that gap is next on my list.
 
 ## Where the Speed Came From
 
-Unlike in May, most of this round's gains came from architecture:
+Unlike in May, most of the gains this time around came from architectural changes:
 
 - **NaN-boxed values.** A `JsValue` went from a roughly 32-byte enum to one 64-bit word.
 - **Generational GC.** A non-moving nursery with a remembered set and a write barrier, so short-lived objects die cheap.
@@ -67,11 +67,11 @@ Unlike in May, most of this round's gains came from architecture:
 - **Polymorphic inline caches** for property reads and call sites. They are not hidden classes yet: an entry matches one object, not a shape shared across objects.
 - **A bytecode VM**, behind `--bytecode`.
 
-The VM is the one that hasn't paid off yet. Entering a compiled function costs about 350 ns, and each bytecode op saves about 22 ns over the tree-walker, so break-even is around 16 ops. On mandreel the average compiled function is 15.9 ops long: 96.5% of calls run compiled, but only 13% of the work does. That is why it's off by default: 3.8% better on JetStream (geometric mean), up to 1.7x on navier-stokes, and slower on a few workloads.
+The bytecode VM is the one that hasn't paid off yet, and some back-of-the-envelope numbers explain why. Entering a compiled function costs about 350 ns, and each bytecode op saves about 22 ns over the tree-walker, so the break-even point is around 16 ops. On mandreel, the average compiled function is 15.9 ops long, right at the break-even point, and while 96.5% of calls run compiled, only 13% of the work does. That is why it is off by default: it is 3.8% better on JetStream (geometric mean), up to 1.7x on navier-stokes, and slower on a few workloads.
 
 ## The Numbers
 
-Nine small scripts, each timed as a whole process (startup included), median of five runs. The comparison that matters is with [Boa](https://github.com/boa-dev/boa), another engine written in Rust without a JIT. Node is available in the chart, but it lives in a different universe: its ~0.1 s times are mostly process startup.
+Let's look at the numbers, starting with nine small scripts. Each one is timed as a whole process (so startup is included), and we take the median of five runs. The comparison that matters here is with [Boa](https://github.com/boa-dev/boa), another engine written in Rust that doesn't JIT. Node is available in the chart but it lives in a different universe, and its ~0.1 s times are mostly process startup anyway.
 
 {% raw %}
 <figure class="jsse-chart" id="chart-micro"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better). Hatched bars hit the 120 s timeout.</figcaption></figure>
@@ -94,9 +94,9 @@ Nine small scripts, each timed as a whole process (startup included), median of 
 
 </details>
 
-Against March, v0.9.0 is 1.4x faster on `loop`, 7.9x on `fib` and 57x on `regex`, and `array` went from a timeout to 27.5 s. Against Boa, it roughly ties on loops and object access, wins on regex and JSON, trails by 2–4x on calls, closures, strings and `opmix`, and then there's `array`.
+Against March, v0.9.0 is 1.4x faster on `loop`, 7.9x on `fib` and a whopping 57x on `regex`, while `array` went from a timeout to 27.5 s. Against Boa, it roughly ties on loops and object access, wins on regex and JSON, and trails by 2x to 4x on calls, closures, strings and `opmix`. And then there's `array`, but more on that below.
 
-JetStream is the more realistic workload. v0.9.0 passes 47 of 48 (mandreel still times out). March passed 22. Here is each of those 22, v0.9.0 against March:
+JetStream is a more realistic set of workloads. v0.9.0 passes 47 of 48 (mandreel still times out), whereas March passed 22. Here is each of those 22, comparing v0.9.0 against March:
 
 {% raw %}
 <figure class="jsse-chart" id="chart-js"><div class="jsse-filters" role="group" aria-label="Builds shown"></div><div class="jsse-canvas" style="height:600px"><canvas role="img" aria-label="JetStream per-workload speedup over the March build, log scale; table below"></canvas></div><figcaption>JetStream speedup over the March build per workload, log scale (right of 1x is faster). Median of 3 runs.</figcaption></figure>
@@ -132,25 +132,29 @@ JetStream is the more realistic workload. v0.9.0 passes 47 of 48 (mandreel still
 
 </details>
 
-From 14.8x on FlightPlanner down to 0.96x on `json-stringify-inspector`, which is back from the regression above but still 4% short of March. Geometric mean 2.92x, median 2.58x. Twenty-five workloads run now that didn't in March[^runner-js].
+The speedups go from 14.8x on FlightPlanner down to 0.96x on `json-stringify-inspector` which, if you remember the regression above, has recovered but is still 4% short of March. The geometric mean is 2.92x and the median 2.58x. On top of that, twenty-five workloads that didn't run in March run now[^runner-js].
 
 ## What's Still Bad
 
-**Arrays.** `bench_array` pushes 100,000 numbers, maps them and reduces them. It takes 27.5 s in JSSE and 0.33 s in Boa. While writing this post I found out why: building a result array in `map`, `filter` or `slice` is quadratic. Each element is written into the dense storage and then *also* defined as a named property, and that path does a linear scan over the object's property list. `push` is linear; `map` is not. It is the kind of bug that survives because test262 checks what the answer is, not how long it takes to get there.
+**Arrays.** `bench_array` pushes 100,000 numbers, maps them and reduces them. It takes 27.5 s in JSSE and 0.33 s in Boa. While writing this post, the agent and I found out why: building a result array in `map`, `filter` or `slice` is quadratic. Each element is written into the dense storage and then *also* defined as a named property, and that path does a linear scan over the object's property list. `push` is linear, `map` is not. It's the kind of bug that survives because test262 checks what the answer is, not how long it takes to get there.
 
-**Bytecode** barely helps. Entry cost and coverage gaps (whole functions fall back to the tree-walker over a single labelled statement) eat the gains.
+**Bytecode** barely helps. Entry cost and coverage gaps eat the gains (a single labelled statement is enough for a whole function to fall back to the tree-walker).
 
 **No hidden classes.** Property access is cached per object, not per shape.
 
 **mandreel** still times out.
 
-None of this is surprising. What the guardrails buy me is being able to say so with a straight face: every number here is in the repository, including the embarrassing ones.
+None of this is surprising, and the guardrails are what allow me to say so with a straight face: every number here is in the repository, including the embarrassing ones. The result is far from perfect, but I am proud of it.
 
 ## What's Next
 
-Fix arrays. Make bytecode pay for itself by cutting the entry cost and closing the coverage gaps, so it can be on by default. Real shapes. And the Symphonika post, because the orchestrator is now doing more of the work than I am.
+The list is not short. First, fix arrays. Then, make bytecode pay for itself by cutting the entry cost and closing the coverage gaps, so that it can be on by default. After that, real shapes. And, of course, the Symphonika post, since the orchestrator is now doing more of the work than I am.
 
 All numbers come from [`docs/perf/2026-09-25/engine-comparison.json`](https://github.com/pmatos/jsse/blob/main/docs/perf/2026-09-25/engine-comparison.json)[^method].
+
+## Corrections or Comments?
+
+Comments are open below. As usual, I am happy to receive corrections, and if you spot something odd in the numbers, [open an issue](https://github.com/pmatos/jsse/issues/new) on JSSE.
 
 [^runner]: Almost. In May, [@ivankra found](https://github.com/pmatos/jsse/issues/58) that JSSE's test runner was classifying some failures as passes, so March's "100%" was really a little less. Fixing the runner was a guardrail too.
 
