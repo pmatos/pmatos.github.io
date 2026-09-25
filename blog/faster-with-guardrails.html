@@ -1,0 +1,318 @@
+<!doctype html><html lang="it"><head><script>(function(){if(localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();</script><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Faster, With Guardrails - Notes &amp; Code</title><meta name="description" content="Six months after JSSE&#39;s first release: 47 of 48 JetStream workloads run, up from 22, and 2.92x faster on the ones March could run. test262 is still at 100%. Agents can make an engine faster, as long as the guardrails hold. "><meta name="keywords" content=""><meta name="creation_Date" content="06/07/2022"><meta name="robots" content="index, follow"><meta name="author" content="Paulo Matos"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript><link rel="preload" href="/css/style.css" as="style"><link rel="stylesheet" href="/css/style.css" media="all"><link rel="sitemap" type="application/rss+xml" title="RSS Feed for Notes &amp; Code " href="/feed.xml"><link rel="alternate" type="application/rss+xml" title="Notes &amp; Code - Blog Feed" href="/feed.xml"><link rel="alternate" type="application/rss+xml" title="Notes &amp; Code - Link Log Feed" href="/linklog-feed.xml"><link rel="shortcut icon" href="/favicon/favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="/favicon/safari-pinned-tab.svg"><meta property="og:type" content="article"><meta property="og:locale" content="en-US"><meta property="og:image" content="https://p.ocmatos.com/img/2026/09/jsse-guardrails.png "><meta property="og:image:width" content="1280"><meta property="og:image:height" content="720"><meta property="og:title" content="Faster, With Guardrails  - Notes & Code "><meta property="og:description" content="Six months after JSSE's first release: 47 of 48 JetStream workloads run, up from 22, and 2.92x faster on the ones March could run. test262 is still at 100%. Agents can make an engine faster, as long as the guardrails hold. "><meta property="og:url" content="https://p.ocmatos.com"><meta property="og:image:alt" content="Immagine per la condivisione sui social"><meta property="fb:admins" content=""><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@"><meta name="twitter:creator" content="@"><meta name="twitter:url" content=""><meta name="twitter:title" content="Faster, With Guardrails  - Notes & Code "><meta name="twitter:description" content="Six months after JSSE's first release: 47 of 48 JetStream workloads run, up from 22, and 2.92x faster on the ones March could run. test262 is still at 100%. Agents can make an engine faster, as long as the guardrails hold. "><meta name="twitter:image:src" content="https://p.ocmatos.com/img/2026/09/jsse-guardrails.png"><meta name="twitter:image:alt" content="Notes &amp; Code  logo"><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="Notes &amp; Code"><meta name="application-name" content="Notes &amp; Code"><meta name="msapplication-TileColor" content="#000000"><meta name="theme-color" content="#000000"><link rel="shortcut icon" href="/favicon/favicon.ico"><link rel="icon" type="image/svg+xml" href="/favicon/safari-pinned-tab.svg"><link rel="icon" type="image/png" sizes="196x196" href="/favicon/favicon-196.png"><link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000"><meta name="msapplication-square70x70logo" content="/favicon/mstile-icon-128.png"><meta name="msapplication-square150x150logo" content="/favicon/mstile-icon-270.png"><meta name="msapplication-square310x310logo" content="/favicon/mstile-icon-558.png"><meta name="msapplication-wide310x150logo" content="/favicon/mstile-icon-558-270.png"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="apple-touch-icon" href="/favicon/apple-icon-180.png"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2732-2048.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2388-1668.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2048-1536.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1668-2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2224-1668.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1620-2160.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2160-1620.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1284-2778.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2778-1284.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1170-2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2532-1170.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2436-1125.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2688-1242.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-828-1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1792-828.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1242-2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-2208-1242.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-750-1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1334-750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-640-1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/favicon/apple-splash-1136-640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet"><script src="/js/dark-mode.js" defer="defer"></script><script>if ("serviceWorker" in navigator)
+            navigator.serviceWorker.register("/sw.js");</script><script data-goatcounter="https://pmatos.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><script type="application/ld+json">{
+            "@context": "http://schema.org",
+            "@type": "NewsArticle",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://p.ocmatos.com/blog/faster-with-guardrails.html"
+            },
+            "headline": "Faster, With Guardrails - Notes &amp;amp; Code",
+            "image": [
+                "https://p.ocmatos.com/img/social/faster-with-guardrails.png"
+            ],
+            "datePublished": "Fri Sep 25 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+            "dateModified": "Fri Sep 25 2026 00:00:00 GMT+0000 (Coordinated Universal Time)",
+            "author": {
+                "@type": "Person",
+                "name": "Paulo Matos"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Notes &amp; Code",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://p.ocmatos.comimg/avatar.webpg"
+                }
+            },
+            "description": "Six months after JSSE&amp;#39;s first release: 47 of 48 JetStream workloads run, up from 22, and 2.92x faster on the ones March could run. test262 is still at 100%. Agents can make an engine faster, as long as the guardrails hold."
+        }</script></head><body><header><hgroup><a href="/" title="Home"><p class="title">Notes &amp; Code</p></a><p class="motto">Programming, music, and the occasional tangent</p></hgroup><nav><ul><li><a href="/">Home</a></li><li><a href="/about-me.html">About me</a></li><li><a href="/feed.xml" title="Blog RSS Feed" class="rss-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon"><path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/></svg> </a><a href="/blog.html">Blog</a></li><li><a href="/linklog-feed.xml" title="Link Log RSS Feed" class="rss-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon"><path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/></svg> </a><a href="/linklog.html">Link Log</a></li></ul></nav></header><article><small class="info"><time datetime="Fri Sep 25 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">25 Sep 2026</time></small><h1>Faster, With Guardrails</h1><div class="article-tags"><span class="tag">javascript</span><span class="tag">claude</span><span class="tag">rust</span><span class="tag">agentic-coding</span><span class="tag">performance</span></div><p><img src="/img/2026/09/jsse-guardrails.png" alt="A small robot sprinting down a track lined with glowing checkmark guardrails"></p><p>In March, <a href="https://github.com/pmatos/jsse">JSSE</a> was a JavaScript engine an agent had built from scratch in Rust: <a href="/blog/jsse-a-javascript-engine-built-by-an-agent.html">correct and slow</a>. In May, I wrote about <a href="/blog/how-fast-do-you-want-it.html">making it faster</a> without touching its architecture, and said that post was not about bytecode.</p><p>Six months after the first release, JSSE v0.9.0 runs <strong>47 of the 48</strong> JetStream workloads, up from 22 in March. On the 22 that both versions run, it is <strong>2.92x faster</strong> (geometric mean). And it still passes every one of the 99,911 test262 scenarios we run.</p><p>I still haven't written a line of it. What I did build is the guardrails, and I think the guardrails are the actual story. Agent-driven performance work is possible. It is only trustworthy if the agent cannot quietly trade correctness for speed.</p><h2>Still 100%</h2><p>test262 keeps growing. The March build passed the suite as it stood then<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Run against today's checkout, it fails 1,039 of 99,911 scenarios, mostly tests for features that landed since: iterator helpers, <code>Promise.allKeyed</code>, immutable <code>ArrayBuffer</code>s, <code>Atomics.waitAsync</code>. v0.9.0 passes all of them, both on the default tree-walker and with the experimental bytecode VM.</p><p>Same checkout, same runner, same 120-second timeout for every engine. Tick the boxes to add or remove engines.</p><figure class="jsse-chart" id="chart-t262"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:260px"><canvas role="img" aria-label="test262 failing scenarios per engine; table below"></canvas></div><figcaption>Failing test262 scenarios out of 99,911 (lower is better). engine262 is estimated from a 10% sample.</figcaption></figure><details><summary>test262 table</summary><table><thead><tr><th>Engine</th><th style="text-align:right">Pass</th><th style="text-align:right">Run</th><th style="text-align:right">Pass rate</th></tr></thead><tbody><tr><td>JSSE v0.9.0</td><td style="text-align:right">99,911</td><td style="text-align:right">99,911</td><td style="text-align:right">100%</td></tr><tr><td>JSSE v0.9.0 <code>--bytecode</code></td><td style="text-align:right">99,911</td><td style="text-align:right">99,911</td><td style="text-align:right">100%</td></tr><tr><td>JSSE March (v0.1.0)</td><td style="text-align:right">98,872</td><td style="text-align:right">99,911</td><td style="text-align:right">98.96%</td></tr><tr><td>Node v26.9.0 (V8)</td><td style="text-align:right">95,353</td><td style="text-align:right">99,081</td><td style="text-align:right">96.24%</td></tr><tr><td>engine262</td><td style="text-align:right">10,342</td><td style="text-align:right">11,752 (10% sample)</td><td style="text-align:right">≈88.0%</td></tr><tr><td>Boa v0.22</td><td style="text-align:right">84,767</td><td style="text-align:right">99,911</td><td style="text-align:right">84.84%</td></tr></tbody></table></details><p>I'm not claiming JSSE is more conformant than V8. Node goes through a test adapter with a basic <code>$262.agent</code> and skips 830 module scenarios, so some of its failures belong to the harness, not to V8. The claim is narrower: an engine built and optimized by an agent sits at the top of this table, and it didn't slip while getting faster.</p><h2>The Guardrails</h2><p>Performance work is where an agent is most dangerous. A fast path that skips a spec step passes the benchmark and breaks something three clauses away. So nothing merges without getting past three kinds of guardrail.</p><p><strong>Correctness.</strong> Every PR runs the full test262 suite locally and compares against a pass-list baseline read from <code>main</code>. A single regression blocks the merge. The agent cannot move the baseline, cannot touch the test262 or spec submodules, and is told to implement the spec, not the test: special-casing a test file is not a fix. CI re-runs a seeded sample of test262, plus <code>test262-extra</code>, a first-party suite for spec behaviour test262 doesn't reach, in both execution modes.</p><p><strong>Measurement.</strong> Performance claims need receipts. Benchmarks run under a fixed protocol: the same machine, five process runs, the median, a load gate, a pinned JetStream commit, and benchmark scripts that don't change between versions. Results land in the repository's <code>docs/perf/</code> as data, null results included. When the bytecode VM failed to speed up tweetnacl, that got written up too.</p><p><strong>Scope.</strong> The work runs through <a href="https://github.com/pmatos/symphonika">Symphonika</a>, an orchestrator I've been building that turns GitHub issues into agent runs. More on it in a post soon. Each issue goes through a fixed pipeline: plan, implement, code review, simplify, then wait for CI and review threads, autofix, merge. Each step has a gate. The plan must cite the spec clauses it relies on. An implementation that doesn't push a commit never gets to open a PR. One issue, one branch, one PR. Between May and September that came to about 700 commits across some 270 PRs.</p><p>Here is a guardrail catching something. In late August, a correctness fix made <code>JSON.stringify</code> honour Proxy property descriptors. It was spec-correct and test262 was happy. It also sent every key of every <em>ordinary</em> object through the Proxy path, allocating a descriptor object per property. JetStream's <code>json-stringify-inspector</code> got almost three times slower. The next benchmark snapshot flagged it as slower than March, an issue got filed, and the fix (read <code>[[GetOwnProperty]]</code> directly for non-proxy objects) was released two days later.</p><p>The guardrail didn't prevent the regression. It made the regression visible, three weeks after it landed. Measurement is periodic, not per-PR, and that gap is the next thing to close.</p><h2>Where the Speed Came From</h2><p>Unlike in May, most of this round's gains came from architecture:</p><ul><li><strong>NaN-boxed values.</strong> A <code>JsValue</code> went from a roughly 32-byte enum to one 64-bit word.</li><li><strong>Generational GC.</strong> A non-moving nursery with a remembered set and a write barrier, so short-lived objects die cheap.</li><li><strong>Arena allocation</strong> for objects.</li><li><strong>Polymorphic inline caches</strong> for property reads and call sites. They are not hidden classes yet: an entry matches one object, not a shape shared across objects.</li><li><strong>A bytecode VM</strong>, behind <code>--bytecode</code>.</li></ul><p>The VM is the one that hasn't paid off yet. Entering a compiled function costs about 350 ns, and each bytecode op saves about 22 ns over the tree-walker, so break-even is around 16 ops. On mandreel the average compiled function is 15.9 ops long: 96.5% of calls run compiled, but only 13% of the work does. That is why it's off by default: 3.8% better on JetStream (geometric mean), up to 1.7x on navier-stokes, and slower on a few workloads.</p><h2>The Numbers</h2><p>Nine small scripts, each timed as a whole process (startup included), median of five runs. The comparison that matters is with <a href="https://github.com/boa-dev/boa">Boa</a>, another engine written in Rust without a JIT. Node is available in the chart, but it lives in a different universe: its ~0.1 s times are mostly process startup.</p><figure class="jsse-chart" id="chart-micro"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better). Hatched bars hit the 120 s timeout.</figcaption></figure><details><summary>Micro-benchmark table (seconds)</summary><table><thead><tr><th>Benchmark</th><th style="text-align:right">JSSE March</th><th style="text-align:right">JSSE v0.9.0</th><th style="text-align:right">v0.9.0 <code>--bytecode</code></th><th style="text-align:right">Boa v0.22</th><th style="text-align:right">Node v26.9.0</th><th style="text-align:right">engine262</th></tr></thead><tbody><tr><td>loop</td><td style="text-align:right">3.18</td><td style="text-align:right">2.09</td><td style="text-align:right">2.10</td><td style="text-align:right">2.07</td><td style="text-align:right">0.12</td><td style="text-align:right">timeout</td></tr><tr><td>fib</td><td style="text-align:right">31.72</td><td style="text-align:right">4.01</td><td style="text-align:right">3.58</td><td style="text-align:right">1.34</td><td style="text-align:right">0.13</td><td style="text-align:right">timeout</td></tr><tr><td>string</td><td style="text-align:right">5.47</td><td style="text-align:right">1.04</td><td style="text-align:right">1.06</td><td style="text-align:right">0.53</td><td style="text-align:right">0.13</td><td style="text-align:right">14.20</td></tr><tr><td>array</td><td style="text-align:right">timeout</td><td style="text-align:right">27.54</td><td style="text-align:right">27.72</td><td style="text-align:right">0.33</td><td style="text-align:right">0.12</td><td style="text-align:right">102.78</td></tr><tr><td>object</td><td style="text-align:right">0.92</td><td style="text-align:right">0.67</td><td style="text-align:right">0.66</td><td style="text-align:right">0.61</td><td style="text-align:right">0.25</td><td style="text-align:right">58.30</td></tr><tr><td>regex</td><td style="text-align:right">5.97</td><td style="text-align:right">0.10</td><td style="text-align:right">0.10</td><td style="text-align:right">0.15</td><td style="text-align:right">0.10</td><td style="text-align:right">8.49</td></tr><tr><td>closures</td><td style="text-align:right">15.70</td><td style="text-align:right">5.28</td><td style="text-align:right">5.72</td><td style="text-align:right">2.37</td><td style="text-align:right">0.20</td><td style="text-align:right">timeout</td></tr><tr><td>json</td><td style="text-align:right">0.27</td><td style="text-align:right">0.18</td><td style="text-align:right">0.18</td><td style="text-align:right">0.31</td><td style="text-align:right">0.12</td><td style="text-align:right">8.44</td></tr><tr><td>opmix</td><td style="text-align:right">70.69</td><td style="text-align:right">25.76</td><td style="text-align:right">20.19</td><td style="text-align:right">5.69</td><td style="text-align:right">0.12</td><td style="text-align:right">timeout</td></tr></tbody></table></details><p>Against March, v0.9.0 is 1.4x faster on <code>loop</code>, 7.9x on <code>fib</code> and 57x on <code>regex</code>, and <code>array</code> went from a timeout to 27.5 s. Against Boa, it roughly ties on loops and object access, wins on regex and JSON, trails by 2–4x on calls, closures, strings and <code>opmix</code>, and then there's <code>array</code>.</p><p>JetStream is the more realistic workload. v0.9.0 passes 47 of 48 (mandreel still times out). March passed 22. Here is each of those 22, v0.9.0 against March:</p><figure class="jsse-chart" id="chart-js"><div class="jsse-filters" role="group" aria-label="Builds shown"></div><div class="jsse-canvas" style="height:600px"><canvas role="img" aria-label="JetStream per-workload speedup over the March build, log scale; table below"></canvas></div><figcaption>JetStream speedup over the March build per workload, log scale (right of 1x is faster). Median of 3 runs.</figcaption></figure><details><summary>JetStream table (ms, median of 3)</summary><table><thead><tr><th>Workload</th><th style="text-align:right">March</th><th style="text-align:right">v0.9.0</th><th style="text-align:right">Speedup</th><th style="text-align:right"><code>--bytecode</code></th><th style="text-align:right">Speedup</th></tr></thead><tbody><tr><td>FlightPlanner</td><td style="text-align:right">16,993</td><td style="text-align:right">1,149</td><td style="text-align:right">14.79x</td><td style="text-align:right">1,096</td><td style="text-align:right">15.51x</td></tr><tr><td>ai-astar</td><td style="text-align:right">54,206</td><td style="text-align:right">5,026</td><td style="text-align:right">10.79x</td><td style="text-align:right">4,849</td><td style="text-align:right">11.18x</td></tr><tr><td>hash-map</td><td style="text-align:right">114,009</td><td style="text-align:right">14,314</td><td style="text-align:right">7.97x</td><td style="text-align:right">13,905</td><td style="text-align:right">8.20x</td></tr><tr><td>earley-boyer</td><td style="text-align:right">31,348</td><td style="text-align:right">5,484</td><td style="text-align:right">5.72x</td><td style="text-align:right">5,230</td><td style="text-align:right">5.99x</td></tr><tr><td>UniPoker</td><td style="text-align:right">20,899</td><td style="text-align:right">4,723</td><td style="text-align:right">4.42x</td><td style="text-align:right">4,588</td><td style="text-align:right">4.56x</td></tr><tr><td>bigint-bigdenary</td><td style="text-align:right">17,858</td><td style="text-align:right">4,241</td><td style="text-align:right">4.21x</td><td style="text-align:right">4,169</td><td style="text-align:right">4.28x</td></tr><tr><td>delta-blue</td><td style="text-align:right">22,067</td><td style="text-align:right">6,151</td><td style="text-align:right">3.59x</td><td style="text-align:right">5,579</td><td style="text-align:right">3.96x</td></tr><tr><td>raytrace-private-class-fields</td><td style="text-align:right">51,397</td><td style="text-align:right">14,537</td><td style="text-align:right">3.54x</td><td style="text-align:right">14,619</td><td style="text-align:right">3.52x</td></tr><tr><td>octane-code-load</td><td style="text-align:right">138</td><td style="text-align:right">40</td><td style="text-align:right">3.45x</td><td style="text-align:right">60</td><td style="text-align:right">2.30x</td></tr><tr><td>richards</td><td style="text-align:right">30,200</td><td style="text-align:right">10,655</td><td style="text-align:right">2.83x</td><td style="text-align:right">10,159</td><td style="text-align:right">2.97x</td></tr><tr><td>raytrace</td><td style="text-align:right">36,919</td><td style="text-align:right">13,323</td><td style="text-align:right">2.77x</td><td style="text-align:right">11,624</td><td style="text-align:right">3.18x</td></tr><tr><td>Box2D</td><td style="text-align:right">16,661</td><td style="text-align:right">6,992</td><td style="text-align:right">2.38x</td><td style="text-align:right">6,502</td><td style="text-align:right">2.56x</td></tr><tr><td>gbemu</td><td style="text-align:right">57,875</td><td style="text-align:right">27,039</td><td style="text-align:right">2.14x</td><td style="text-align:right">25,453</td><td style="text-align:right">2.27x</td></tr><tr><td>crypto</td><td style="text-align:right">11,694</td><td style="text-align:right">5,491</td><td style="text-align:right">2.13x</td><td style="text-align:right">4,482</td><td style="text-align:right">2.61x</td></tr><tr><td>pdfjs</td><td style="text-align:right">23,051</td><td style="text-align:right">11,524</td><td style="text-align:right">2.00x</td><td style="text-align:right">11,474</td><td style="text-align:right">2.01x</td></tr><tr><td>navier-stokes</td><td style="text-align:right">8,882</td><td style="text-align:right">4,822</td><td style="text-align:right">1.84x</td><td style="text-align:right">2,811</td><td style="text-align:right">3.16x</td></tr><tr><td>stanford-crypto-aes</td><td style="text-align:right">13,812</td><td style="text-align:right">7,831</td><td style="text-align:right">1.76x</td><td style="text-align:right">7,817</td><td style="text-align:right">1.77x</td></tr><tr><td>stanford-crypto-sha256</td><td style="text-align:right">8,839</td><td style="text-align:right">5,197</td><td style="text-align:right">1.70x</td><td style="text-align:right">4,428</td><td style="text-align:right">2.00x</td></tr><tr><td>stanford-crypto-pbkdf2</td><td style="text-align:right">8,187</td><td style="text-align:right">4,817</td><td style="text-align:right">1.70x</td><td style="text-align:right">4,075</td><td style="text-align:right">2.01x</td></tr><tr><td>gaussian-blur</td><td style="text-align:right">53,281</td><td style="text-align:right">31,433</td><td style="text-align:right">1.70x</td><td style="text-align:right">22,870</td><td style="text-align:right">2.33x</td></tr><tr><td>json-parse-inspector</td><td style="text-align:right">1,326</td><td style="text-align:right">1,176</td><td style="text-align:right">1.13x</td><td style="text-align:right">1,201</td><td style="text-align:right">1.10x</td></tr><tr><td>json-stringify-inspector</td><td style="text-align:right">537</td><td style="text-align:right">561</td><td style="text-align:right">0.96x</td><td style="text-align:right">563</td><td style="text-align:right">0.95x</td></tr></tbody></table></details><p>From 14.8x on FlightPlanner down to 0.96x on <code>json-stringify-inspector</code>, which is back from the regression above but still 4% short of March. Geometric mean 2.92x, median 2.58x. Twenty-five workloads run now that didn't in March<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p><h2>What's Still Bad</h2><p><strong>Arrays.</strong> <code>bench_array</code> pushes 100,000 numbers, maps them and reduces them. It takes 27.5 s in JSSE and 0.33 s in Boa. While writing this post I found out why: building a result array in <code>map</code>, <code>filter</code> or <code>slice</code> is quadratic. Each element is written into the dense storage and then <em>also</em> defined as a named property, and that path does a linear scan over the object's property list. <code>push</code> is linear; <code>map</code> is not. It is the kind of bug that survives because test262 checks what the answer is, not how long it takes to get there.</p><p><strong>Bytecode</strong> barely helps. Entry cost and coverage gaps (whole functions fall back to the tree-walker over a single labelled statement) eat the gains.</p><p><strong>No hidden classes.</strong> Property access is cached per object, not per shape.</p><p><strong>mandreel</strong> still times out.</p><p>None of this is surprising. What the guardrails buy me is being able to say so with a straight face: every number here is in the repository, including the embarrassing ones.</p><h2>What's Next</h2><p>Fix arrays. Make bytecode pay for itself by cutting the entry cost and closing the coverage gaps, so it can be on by default. Real shapes. And the Symphonika post, because the orchestrator is now doing more of the work than I am.</p><p>All numbers come from <a href="https://github.com/pmatos/jsse/blob/main/docs/perf/2026-09-25/engine-comparison.json"><code>docs/perf/2026-09-25/engine-comparison.json</code></a><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</p><style>.jsse-chart{margin:2rem 0}
+.jsse-chart figcaption{font-size:.85rem;color:var(--color-text-muted);margin-top:.5rem}
+.jsse-filters{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-bottom:.6rem;font-size:.85rem}
+.jsse-filters label{display:inline-flex;align-items:center;gap:.35rem;cursor:pointer;color:var(--color-text);user-select:none}
+.jsse-filters input{accent-color:var(--color-accent);margin:0}
+.jsse-swatch{display:inline-block;width:.8rem;height:.8rem;border-radius:3px}
+.jsse-canvas{position:relative;width:100%}</style><script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script><script>(function () {
+  if (!window.Chart) return;
+  var ENGINES = [
+    { k: "v09", name: "JSSE v0.9.0", light: "#2a78d6", dark: "#3987e5" },
+    { k: "mar", name: "JSSE March", light: "#eb6834", dark: "#d95926" },
+    { k: "boa", name: "Boa v0.22", light: "#1baf7a", dark: "#199e70" },
+    { k: "bc", name: "JSSE v0.9.0 --bytecode", light: "#eda100", dark: "#c98500" },
+    { k: "node", name: "Node v26.9.0", light: "#e87ba4", dark: "#d55181" },
+    { k: "e262", name: "engine262", light: "#008300", dark: "#008300" }
+  ];
+  var byKey = {};
+  ENGINES.forEach(function (e) { byKey[e.k] = e; });
+
+  var T262 = {
+    v09: { fail: 0, note: "100% of 99,911" },
+    mar: { fail: 1039, note: "98.96% of 99,911" },
+    boa: { fail: 15144, note: "84.84% of 99,911" },
+    bc: { fail: 0, note: "100% of 99,911" },
+    node: { fail: 3728, note: "96.24% of 99,081 run (830 skipped)" },
+    e262: { fail: 11990, note: "≈88.0%, estimated from a 10% sample" }
+  };
+  var BENCHES = ["loop", "fib", "string", "array", "object", "regex", "closures", "json", "opmix"];
+  var MICRO = {
+    v09: [2.093, 4.011, 1.043, 27.54, 0.668, 0.104, 5.284, 0.176, 25.764],
+    mar: [3.185, 31.72, 5.465, null, 0.92, 5.974, 15.704, 0.275, 70.691],
+    boa: [2.073, 1.339, 0.531, 0.329, 0.615, 0.15, 2.374, 0.31, 5.693],
+    bc: [2.104, 3.577, 1.063, 27.717, 0.664, 0.102, 5.717, 0.178, 20.189],
+    node: [0.116, 0.127, 0.13, 0.118, 0.249, 0.097, 0.202, 0.125, 0.119],
+    e262: [null, null, 14.198, 102.783, 58.3, 8.489, null, 8.438, null]
+  };
+  var JS = [
+    ["FlightPlanner", 14.789, 15.505], ["ai-astar", 10.785, 11.179], ["hash-map", 7.965, 8.199],
+    ["earley-boyer", 5.716, 5.994], ["UniPoker", 4.425, 4.555], ["bigint-bigdenary", 4.211, 4.284],
+    ["delta-blue", 3.588, 3.955], ["raytrace-private-class-fields", 3.536, 3.516],
+    ["octane-code-load", 3.45, 2.3], ["richards", 2.834, 2.973], ["raytrace", 2.771, 3.176],
+    ["Box2D", 2.383, 2.562], ["gbemu", 2.14, 2.274], ["crypto", 2.13, 2.609], ["pdfjs", 2.0, 2.009],
+    ["navier-stokes", 1.842, 3.16], ["stanford-crypto-aes", 1.764, 1.767],
+    ["stanford-crypto-sha256", 1.701, 1.996], ["stanford-crypto-pbkdf2", 1.7, 2.009],
+    ["gaussian-blur", 1.695, 2.33], ["json-parse-inspector", 1.128, 1.104],
+    ["json-stringify-inspector", 0.957, 0.954]
+  ];
+  var TIMEOUT = 120;
+
+  function isDark() { return document.documentElement.classList.contains("dark"); }
+  function col(k) { return isDark() ? byKey[k].dark : byKey[k].light; }
+  function ink() {
+    return isDark()
+      ? { text: "#E8E6E3", muted: "#9A9590", grid: "#2c2c2a", axis: "#4A4744", surface: "#1A1918" }
+      : { text: "#2D2A24", muted: "#6B6860", grid: "#E8E4DC", axis: "#D4CFC4", surface: "#FAF7F2" };
+  }
+  function hatch(color) {
+    var c = document.createElement("canvas");
+    c.width = c.height = 8;
+    var g = c.getContext("2d");
+    g.strokeStyle = color;
+    g.lineWidth = 2;
+    g.beginPath();
+    g.moveTo(0, 8); g.lineTo(8, 0);
+    g.moveTo(-2, 2); g.lineTo(2, -2);
+    g.moveTo(6, 10); g.lineTo(10, 6);
+    g.stroke();
+    return g.createPattern(c, "repeat");
+  }
+  function fmt(n) { return n.toLocaleString("en-US"); }
+
+  function baseOptions(horizontal) {
+    var i = ink();
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: false,
+      indexAxis: horizontal ? "y" : "x",
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: i.surface, titleColor: i.text, bodyColor: i.text,
+          borderColor: i.axis, borderWidth: 1
+        }
+      },
+      scales: {}
+    };
+  }
+  function styleScales(chart, gridFns) {
+    var i = ink();
+    Object.keys(chart.options.scales).forEach(function (id) {
+      var s = chart.options.scales[id];
+      s.ticks = Object.assign(s.ticks || {}, { color: i.muted });
+      s.grid = Object.assign(s.grid || {}, { color: (gridFns && gridFns[id]) || i.grid });
+      s.border = { color: i.axis };
+      if (s.title) s.title.color = i.muted;
+    });
+    var t = chart.options.plugins.tooltip;
+    t.backgroundColor = i.surface; t.titleColor = i.text; t.bodyColor = i.text; t.borderColor = i.axis;
+  }
+
+  function buildFilters(fig, keys, defaults, onChange) {
+    var box = fig.querySelector(".jsse-filters");
+    var state = {};
+    keys.forEach(function (k) {
+      state[k] = defaults.indexOf(k) >= 0;
+      var label = document.createElement("label");
+      var input = document.createElement("input");
+      input.type = "checkbox";
+      input.checked = state[k];
+      input.addEventListener("change", function () { state[k] = input.checked; onChange(state); });
+      var sw = document.createElement("span");
+      sw.className = "jsse-swatch";
+      sw.dataset.k = k;
+      sw.style.background = col(k);
+      label.appendChild(input);
+      label.appendChild(sw);
+      label.appendChild(document.createTextNode(byKey[k].name));
+      box.appendChild(label);
+    });
+    return state;
+  }
+
+  var charts = [];
+
+  // test262: one bar per visible engine.
+  (function () {
+    var fig = document.getElementById("chart-t262");
+    if (!fig) return;
+    var order = ["v09", "bc", "mar", "node", "e262", "boa"];
+    var state;
+    var valueLabels = {
+      id: "valueLabels",
+      afterDatasetsDraw: function (chart) {
+        var ctx = chart.ctx, meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.fillStyle = ink().text;
+        ctx.font = "12px system-ui, sans-serif";
+        ctx.textBaseline = "middle";
+        meta.data.forEach(function (bar, idx) {
+          var k = chart.data._keys[idx];
+          var txt = (k === "e262" ? "≈" : "") + fmt(T262[k].fail);
+          ctx.fillText(txt, bar.x + 6, bar.y);
+        });
+        ctx.restore();
+      }
+    };
+    var opts = baseOptions(true);
+    opts.scales = {
+      x: { beginAtZero: true, suggestedMax: 17500, title: { display: true, text: "failing scenarios" } },
+      y: { grid: { display: false } }
+    };
+    opts.plugins.tooltip.callbacks = {
+      label: function (c) {
+        var k = c.chart.data._keys[c.dataIndex];
+        return fmt(T262[k].fail) + " failing · " + T262[k].note;
+      }
+    };
+    var chart = new Chart(fig.querySelector("canvas"), {
+      type: "bar",
+      data: { labels: [], datasets: [{ data: [], backgroundColor: [], borderRadius: 4, barPercentage: 0.7 }] },
+      options: opts,
+      plugins: [valueLabels]
+    });
+    function refresh() {
+      var keys = order.filter(function (k) { return state[k]; });
+      chart.data._keys = keys;
+      chart.data.labels = keys.map(function (k) { return byKey[k].name; });
+      chart.data.datasets[0].data = keys.map(function (k) { return T262[k].fail; });
+      chart.data.datasets[0].backgroundColor = keys.map(col);
+      styleScales(chart);
+      chart.update();
+    }
+    state = buildFilters(fig, ["v09", "mar", "boa", "bc", "node", "e262"], ["v09", "mar", "boa"], refresh);
+    chart._refresh = refresh;
+    refresh();
+    charts.push(chart);
+  })();
+
+  // Micro-benchmarks: grouped bars, log scale, hatched bars for timeouts.
+  (function () {
+    var fig = document.getElementById("chart-micro");
+    if (!fig) return;
+    var order = ["v09", "mar", "boa", "bc", "node", "e262"];
+    var opts = baseOptions(false);
+    opts.scales = {
+      x: { grid: { display: false } },
+      y: { type: "logarithmic", min: 0.05, max: 200, title: { display: true, text: "seconds (log)" },
+           ticks: { callback: function (v) { return [0.1, 1, 10, 100].indexOf(v) >= 0 ? v + " s" : ""; } } }
+    };
+    opts.plugins.tooltip.callbacks = {
+      label: function (c) {
+        var k = order[c.datasetIndex];
+        var raw = MICRO[k][c.dataIndex];
+        return byKey[k].name + ": " + (raw === null ? "timeout (>120 s)" : raw.toFixed(2) + " s");
+      }
+    };
+    var chart = new Chart(fig.querySelector("canvas"), {
+      type: "bar",
+      data: {
+        labels: BENCHES,
+        datasets: order.map(function (k) {
+          return {
+            label: byKey[k].name,
+            data: MICRO[k].map(function (v) { return v === null ? TIMEOUT : v; }),
+            borderRadius: 3, borderSkipped: "start", barPercentage: 0.9, categoryPercentage: 0.8
+          };
+        })
+      },
+      options: opts
+    });
+    function refresh(st) {
+      order.forEach(function (k, idx) {
+        var ds = chart.data.datasets[idx];
+        ds.backgroundColor = MICRO[k].map(function (v) { return v === null ? hatch(col(k)) : col(k); });
+        chart.setDatasetVisibility(idx, !!st[k]);
+      });
+      styleScales(chart);
+      chart.update();
+    }
+    var state = buildFilters(fig, order, ["v09", "mar", "boa"], refresh);
+    chart._refresh = function () { refresh(state); };
+    refresh(state);
+    charts.push(chart);
+  })();
+
+  // JetStream: floating bars from 1x to the speedup, log scale.
+  (function () {
+    var fig = document.getElementById("chart-js");
+    if (!fig) return;
+    var order = ["v09", "bc"];
+    var opts = baseOptions(true);
+    opts.scales = {
+      x: { type: "logarithmic", min: 0.5, max: 20, title: { display: true, text: "speedup over March (log)" },
+           ticks: { callback: function (v) { return [0.5, 1, 2, 5, 10, 20].indexOf(v) >= 0 ? v + "x" : ""; } } },
+      y: { grid: { display: false }, ticks: { autoSkip: false, font: { size: 11 } } }
+    };
+    opts.plugins.tooltip.callbacks = {
+      label: function (c) {
+        var k = order[c.datasetIndex];
+        return byKey[k].name + ": " + JS[c.dataIndex][c.datasetIndex + 1].toFixed(2) + "x";
+      }
+    };
+    var chart = new Chart(fig.querySelector("canvas"), {
+      type: "bar",
+      data: {
+        labels: JS.map(function (r) { return r[0]; }),
+        datasets: order.map(function (k, idx) {
+          return {
+            label: byKey[k].name,
+            data: JS.map(function (r) { return [1, r[idx + 1]]; }),
+            borderRadius: 3, borderSkipped: false, barPercentage: 0.85, categoryPercentage: 0.85
+          };
+        })
+      },
+      options: opts
+    });
+    function refresh(st) {
+      order.forEach(function (k, idx) {
+        chart.data.datasets[idx].backgroundColor = col(k);
+        chart.setDatasetVisibility(idx, !!st[k]);
+      });
+      styleScales(chart, { x: function (c) { return c.tick && c.tick.value === 1 ? ink().muted : ink().grid; } });
+      chart.update();
+    }
+    var state = buildFilters(fig, order, ["v09"], refresh);
+    chart._refresh = function () { refresh(state); };
+    refresh(state);
+    charts.push(chart);
+  })();
+
+  new MutationObserver(function () {
+    document.querySelectorAll(".jsse-swatch").forEach(function (sw) { sw.style.background = col(sw.dataset.k); });
+    charts.forEach(function (c) { c._refresh(); });
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+})();</script><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p>Almost. In May, <a href="https://github.com/pmatos/jsse/issues/58">@ivankra found</a> that JSSE's test runner was classifying some failures as passes, so March's &quot;100%&quot; was really a little less. Fixing the runner was a guardrail too. <a href="#fnref1" class="footnote-backref">↩︎</a></p></li><li id="fn2" class="footnote-item"><p>The script that drives JetStream was fixed along the way as well. A control run of an earlier engine build under the new runner suggests about a third of those 25 pass because of runner fixes rather than engine changes. Speedups only compare workloads that pass in both builds. <a href="#fnref2" class="footnote-backref">↩︎</a></p></li><li id="fn3" class="footnote-item"><p>test262 ran on my laptop; load affects timings there, not pass/fail. Performance ran on a shared build machine with someone else's jobs running, so expect a few percent of noise. Only v0.9.0 was measured on September 25; the other engines were measured a week earlier on the same machine with the same protocol. <a href="#fnref3" class="footnote-backref">↩︎</a></p></li></ol></section></article><section id="comments" class="mt-12"><h2>Comments</h2><div id="remark42"></div><script>var remark_config = {
+            host: "https://p-comments.ocmatos.com",
+            site_id: "p-ocmatos",
+            url: "https://p.ocmatos.com/blog/faster-with-guardrails.html",
+            components: ["embed"],
+            theme: "light",
+            locale: "en"
+        };
+        (function(c) {
+            for (var i = 0; i < c.length; i++) {
+                var d = document, s = d.createElement('script');
+                s.src = remark_config.host + '/web/' + c[i] + '.js';
+                s.defer = true;
+                (d.head || d.body).appendChild(s);
+            }
+        })(remark_config.components);</script></section><footer><div class="credit">&copy; 2026&nbsp;Paulo Matos</div><ul class="social"><li class="icon"><a target="_blank" rel="noopener noreferrer" title="Twitter account" href="https://twitter.com/pocmatos"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path></svg></a></li><li class="icon"><a target="_blank" rel="noopener noreferrer" title="Linkedin account" href="https://www.linkedin.com/in/pmatos/"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path>}}<rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="8" y1="11" x2="8" y2="16"></line><line x1="8" y1="8" x2="8" y2="8.01"></line><line x1="12" y1="16" x2="12" y2="11"></line><path d="M16 16v-3a2 2 0 0 0 -4 0"></path></svg></a></li><li class="icon"><a target="_blank" rel="noopener noreferrer" title="Github account" href="https://github.com/pmatos"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg></a></li></ul></footer></body></html>
