@@ -664,6 +664,7 @@
 
   /* Section Styling */
   .about-section,
+  .projects-section,
   .explore-section,
   .cta-section {
     @apply py-8 md:py-10;
@@ -756,6 +757,122 @@
 
   .explore-card:hover .card-arrow {
     transform: translateX(4px);
+  }
+
+  /* Project Cards */
+  .projects-label {
+    @apply mb-4;
+    animation: none;
+  }
+
+  .projects-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .project-card {
+    --brand: #392C61;
+    @apply relative flex items-start gap-4 p-6 md:p-8 rounded-xl transition-all duration-300 no-underline;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .project-card-petovita {
+    --brand: #B8513D;
+  }
+
+  .dark .project-card {
+    --brand: #9C8BDB;
+  }
+
+  .dark .project-card-petovita {
+    --brand: #E0806A;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--brand);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.12);
+    border-color: var(--brand);
+  }
+
+  .dark .project-card:hover {
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  .project-logo {
+    @apply shrink-0 w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden;
+    background: #FAF7F2;
+    border: 1px solid var(--color-border);
+  }
+
+  .home-page .home-main .project-logo img {
+    @apply w-full h-full object-contain;
+    margin: 0;
+  }
+
+  .project-body {
+    @apply flex flex-col gap-2 min-w-0;
+  }
+
+  .project-meta {
+    @apply flex items-center gap-3;
+  }
+
+  .project-card h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    @apply text-xl font-semibold;
+    color: var(--color-text);
+  }
+
+  .project-badge {
+    @apply inline-flex items-center gap-1.5 text-xs tracking-wide uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--color-syntax-green);
+  }
+
+  .project-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: currentColor;
+  }
+
+  .project-tagline {
+    @apply text-base font-medium;
+    font-family: 'Fraunces', Georgia, serif;
+    color: var(--color-text);
+  }
+
+  .project-desc {
+    @apply text-sm leading-relaxed;
+    color: var(--color-text-muted);
+  }
+
+  .project-link {
+    @apply text-sm mt-1;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand);
+  }
+
+  .project-link .card-arrow {
+    @apply inline-block text-base;
+    color: inherit;
+  }
+
+  .project-card:hover .project-link .card-arrow {
+    transform: translate(2px, -2px);
   }
 
   /* CTA Section */
