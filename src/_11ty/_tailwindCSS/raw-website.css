@@ -499,11 +499,17 @@
   :root {
     --color-syntax-green: #4EC9B0;
     --color-syntax-cyan: #9CDCFE;
+    --color-live: #1A7360;
+    --color-brand-rightkey: #392C61;
+    --color-brand-petovita: #B8513D;
   }
 
   .dark {
     --color-syntax-green: #4EC9B0;
     --color-syntax-cyan: #9CDCFE;
+    --color-live: var(--color-syntax-green);
+    --color-brand-rightkey: #9C8BDB;
+    --color-brand-petovita: #E0806A;
   }
 
   .home-page .home-main {
@@ -771,23 +777,18 @@
   }
 
   .project-card {
-    --brand: #392C61;
-    @apply relative flex items-start gap-4 p-6 md:p-8 rounded-xl transition-all duration-300 no-underline;
+    @apply relative flex items-start gap-4 p-6 md:p-8 rounded-xl transition-[transform,box-shadow,border-color] duration-300 no-underline;
     background: var(--color-bg-subtle);
     border: 1px solid var(--color-border);
     overflow: hidden;
   }
 
+  .project-card-rightkey {
+    --brand: var(--color-brand-rightkey);
+  }
+
   .project-card-petovita {
-    --brand: #B8513D;
-  }
-
-  .dark .project-card {
-    --brand: #9C8BDB;
-  }
-
-  .dark .project-card-petovita {
-    --brand: #E0806A;
+    --brand: var(--color-brand-petovita);
   }
 
   .project-card::before {
@@ -811,13 +812,12 @@
   }
 
   .project-card:focus-visible {
-    border-color: var(--brand);
     outline: 2px solid var(--brand);
     outline-offset: -2px;
   }
 
   .project-logo {
-    @apply shrink-0 w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden;
+    @apply shrink-0 w-14 h-14 rounded-xl overflow-hidden;
     background: #FAF7F2;
     border: 1px solid var(--color-border);
   }
@@ -835,20 +835,10 @@
     @apply flex items-center gap-3;
   }
 
-  .project-card h3 {
-    font-family: 'Fraunces', Georgia, serif;
-    @apply text-xl font-semibold;
-    color: var(--color-text);
-  }
-
   .project-badge {
     @apply inline-flex items-center gap-1.5 text-xs tracking-wide uppercase;
     font-family: 'JetBrains Mono', monospace;
-    color: #1A7360;
-  }
-
-  .dark .project-badge {
-    color: var(--color-syntax-green);
+    color: var(--color-live);
   }
 
   .project-badge::before {
