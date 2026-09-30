@@ -767,7 +767,7 @@
 
   .projects-grid {
     @apply grid gap-6;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   }
 
   .project-card {
@@ -810,6 +810,12 @@
     box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
   }
 
+  .project-card:focus-visible {
+    border-color: var(--brand);
+    outline: 2px solid var(--brand);
+    outline-offset: -2px;
+  }
+
   .project-logo {
     @apply shrink-0 w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden;
     background: #FAF7F2;
@@ -838,6 +844,10 @@
   .project-badge {
     @apply inline-flex items-center gap-1.5 text-xs tracking-wide uppercase;
     font-family: 'JetBrains Mono', monospace;
+    color: #1A7360;
+  }
+
+  .dark .project-badge {
     color: var(--color-syntax-green);
   }
 
