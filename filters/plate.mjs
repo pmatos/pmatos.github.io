@@ -112,6 +112,9 @@ const stripTags = (html, re = /<[^>]*>/g, sub = "") => {
 const cellText = (cell) => stripTags(cell).replace(/&nbsp;/g, " ").trim();
 const strictNumber = (cell) =>
   /^[~≈$+−-]?\s*\$?[\d.,]+\s*(%|×|x|ms|s|k|K|M|KB|MB|GB|min|h)?$/.test(cellText(cell));
+// Cells that stand in for a missing figure; they neither make nor break a
+// column of figures.
+const placeholder = (cell) => /^(timeout|timed out|n\/?a|none|tbd|[-–—?…]|\.\.\.)?$/i.test(cellText(cell));
 const setTables = (html) =>
   html.replace(/<table\b[\s\S]*?<\/table>/g, (table) => {
     const rows = table.match(/<tr\b[\s\S]*?<\/tr>/g) || [];
@@ -124,18 +127,19 @@ const setTables = (html) =>
       width = Math.max(...body.map((r) => cells(r).length));
       const flush = [];
       for (let c = 0; c < width; c++) {
-        const vals = body.map((r) => cells(r)[c]).filter(Boolean);
-        if (vals.filter((v) => strictNumber(inner(v))).length * 5 >= vals.length * 4) flush.push(c);
+        const vals = body.map((r) => inner(cells(r)[c] || "")).filter((v) => !placeholder(v));
+        const nums = vals.filter(strictNumber).length;
+        if (nums && nums * 5 >= vals.length * 4) flush.push(c);
       }
-      // A column of figures is set flush right; a column that mixes figures
-      // with dates or words stays flush left, with tabular figures.
+      // A column of figures is set flush right, placeholders and annotated
+      // figures with it; a column that mixes figures with dates or words
+      // stays flush left, with tabular figures.
       if (flush.length)
         out = table.replace(/<tr\b[\s\S]*?<\/tr>/g, (row) => {
           let c = -1;
           return row.replace(/<(t[dh])\b([^>]*)>([\s\S]*?)(?=<\/\1>)/g, (all, name, attrs, content) => {
             c++;
             if (!flush.includes(c)) return all;
-            if (name === "td" && !strictNumber(content)) return all;
             const tag = /class="/.test(attrs) ? `<${name}${attrs.replace(/class="/, 'class="num ')}>` : `<${name}${attrs} class="num">`;
             return tag + content;
           });
