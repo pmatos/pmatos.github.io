@@ -90,7 +90,18 @@ const LANGS = {
 };
 const LETTERS = "ABCDEFGHJKLMNPQRSTUVWXYZ";
 
-const cellText = (cell) => cell.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim();
+// Remove tags repeatedly until none remain, so a removal can never join
+// fragments into a new tag (inputs are the site's own build-time HTML).
+const stripTags = (html, re = /<[^>]*>/g, sub = "") => {
+  let prev;
+  do {
+    prev = html;
+    html = html.replace(re, sub);
+  } while (html !== prev);
+  return html;
+};
+
+const cellText = (cell) => stripTags(cell).replace(/&nbsp;/g, " ").trim();
 const strictNumber = (cell) =>
   /^[~≈$+−-]?\s*\$?[\d.,]+\s*(%|×|x|ms|s|k|K|M|KB|MB|GB|min|h)?$/.test(cellText(cell));
 const setTables = (html) =>
@@ -129,7 +140,7 @@ const setTables = (html) =>
 // declared language is identified from its text where that is unambiguous.
 const dedent = (code) => {
   let lines = code.split("\n").map((l) => l.replace(/^[ \u00a0\t]+/, (m) => m.replace(/\u00a0/g, " ")));
-  const live = () => lines.filter((l) => l.replace(/<[^>]+>/g, "").trim());
+  const live = () => lines.filter((l) => stripTags(l).trim());
   for (let guard = 0; guard < 40; guard++) {
     const l = live();
     if (!l.length) break;
@@ -170,8 +181,8 @@ export const sectionsOf = (html) => {
     const L = LETTER(out.length);
     // Where the section starts, in minutes of reading.
     const before = s.slice(0, m.index);
-    const words = before.replace(/<(script|style|svg)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
+    const words = stripTags(stripTags(before, /<(script|style|svg)[\s\S]*?<\/\1>/gi, " "), /<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
+    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), title: finishHtml(stripTags(m[1], /<(?!\/?(code|em|i)\b)[^>]*>/g).replace(/\s*:\s*$/, "")) });
   }
   return out;
 };
@@ -189,7 +200,7 @@ export const engrave = (html, opts = {}) => {
     const m = inner.match(/^(<code\b[^>]*>)([\s\S]*?)(<\/code>)?$/);
     const body = m ? m[1] + dedent(m[2].replace(/\n+$/, "")) + (m[3] || "") : dedent(inner);
     const lang = (attrs.match(/language-([\w+-]+)/) || [])[1] || "";
-    const text = body.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+    const text = stripTags(body).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
     const name = LANGS[lang.toLowerCase()] || lang || guessLang(text);
     const lettered = !lang && name === "x86 assembly" && !/<span\b/.test(body) ? body.replace(/^(<code\b[^>]*>)?([\s\S]*?)(<\/code>)?$/, (a, o, t, c) => (o || "") + asmTokens(t) + (c || "")) : body;
     const lines = text.replace(/\n+$/, "").split("\n").length;
