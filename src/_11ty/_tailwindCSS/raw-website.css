@@ -2,6 +2,25 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* EB Garamond is self-hosted from the upstream release (OFL, see
+   /fonts/eb-garamond/OFL.txt) because the Google Fonts build drops onum and
+   smcp. Variable weight 400-800, subset to Latin, all OpenType features kept.
+   The version is in the file name, so a font update gets a new URL. */
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/eb-garamond/EBGaramond-VF-1.002.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/eb-garamond/EBGaramond-Italic-VF-1.002.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ==========================================================================
    Notes & Code: "Engraved Technical Plate"
    One copperplate edition that prints both a pianist's score and an
