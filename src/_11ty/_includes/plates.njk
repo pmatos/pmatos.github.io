@@ -14,7 +14,7 @@
 {#- A section cut line across the measure: letter, arrowhead, rule, arrowhead, letter. -#}
 {% macro cut(letter, title, id, note="") %}
 <div class="cut-head">
-    <div class="cut" aria-hidden="true"><span class="cut-l">{{ letter }}</span><span class="cut-rule"></span><span class="cut-l">{{ letter }}</span></div>
+    <div class="cut" aria-hidden="true"><span class="cut-l">{{ letter }}</span><span class="cut-end"></span><span class="cut-rule"></span><span class="cut-end"></span><span class="cut-l">{{ letter }}</span></div>
     <h2 id="{{ id }}" class="cut-title"><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
     {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
 </div>
@@ -23,7 +23,7 @@
 {#- A detail bubble heading: letter over the plate it refers to. -#}
 {% macro detail(letter, title, id, note="") %}
 <div class="det-head">
-    <span class="det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>I</i></span>
+    <span class="det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>1</i></span>
     <h2 id="{{ id }}" class="det-title"><span class="cut-k">Detail {{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
     {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
 </div>
@@ -36,10 +36,10 @@
 {%- set minutes = post.content | readingMinutes %}
 {%- set t = post.content | tally %}
 <li class="pl pl--{{ v }}">
-    <span class="pl-no"><abbr title="Plate">Pl.</abbr>&nbsp;{{ no | roman }}</span>
+    <span class="pl-no"><span aria-hidden="true">Pl.&nbsp;{{ no | roman }}</span><span class="visually-hidden">Plate {{ no }}</span></span>
     <span class="pl-mark" title="{{ voiceName(v) }}">{{ mark(v) }}<span class="visually-hidden">{{ voiceName(v) }}: </span></span>
     <div class="pl-body">
-        <p class="pl-line"><span class="pl-tl"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd | safe }}</a><span class="leader" aria-hidden="true"></span></span><time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
+        <p class="pl-line"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd(true) | safe }}</a><span class="leader" aria-hidden="true"></span><time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
         {% if post.data.description %}<p class="pl-desc">{{ post.data.description | inlineMd | safe }}</p>{% endif %}
         <p class="pl-meta">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {{ minutes }}&nbsp;min{% if t.examples %}, {{ t.examples }}&nbsp;music example{% if t.examples > 1 %}s{% endif %}{% endif %}{% else %}{{ minutes }}&nbsp;min{% if t.listings %}, {{ t.listings }}&nbsp;listing{% if t.listings > 1 %}s{% endif %}{% endif %}{% if t.figures %}, {{ t.figures }}&nbsp;fig{% if t.figures > 1 %}s{% endif %}.{% endif %}{% endif %}</p>
     </div>
@@ -48,7 +48,7 @@
 
 {#- Fig. 1, code: a section through the translator. Real lines from Plate XI
     (FEX x87 Stack Optimization): the guest x87 code and the IR FEX-Emu makes of it. -#}
-{% macro figCode(x87url, x87no) %}
+{% macro figCode(x87url, x87no, x87title) %}
 {%- set pairs = [
     ["fld [rsp]", "PushStack %10 i128"],
     ["fsincos", "F80SINCOSStack"],
@@ -60,16 +60,16 @@
 <figure class="pfig pfig--code" aria-labelledby="fig1-cap">
     <div class="pfig-field">
         <div class="xl">
-            <p class="xl-h xl-h--g"><span class="balloon" aria-hidden="true">a</span>x86-64 guest</p>
-            <p class="xl-h xl-h--i"><span class="balloon" aria-hidden="true">b</span>FEX-Emu IR</p>
-            <p class="xl-h xl-h--o"><span class="balloon" aria-hidden="true">c</span>ARM64 host</p>
+            <p class="xl-h xl-h--g"><span class="balloon" aria-hidden="true">a</span><span class="xl-ht">x86-64 <small>guest</small></span></p>
+            <p class="xl-h xl-h--i"><span class="balloon" aria-hidden="true">b</span><span class="xl-ht">FEX-Emu <small>IR</small></span></p>
+            <p class="xl-h xl-h--o"><span class="balloon" aria-hidden="true">c</span><span class="xl-ht">ARM64 <small>host</small></span></p>
             <ol class="xl-g" aria-label="x87 instructions">
-                {%- for p in pairs %}<li><code>{{ p[0] }}</code></li>{% endfor %}
+                {%- for p in pairs %}<li><code>{{ p[0] }}</code></li>{% endfor %}<li class="xl-etc" aria-hidden="true">&#8942;</li>
             </ol>
-            <div class="xl-l" aria-hidden="true">{% for p in pairs %}<span></span>{% endfor %}</div>
+            <div class="xl-l" aria-hidden="true">{% for p in pairs %}<span></span>{% endfor %}<span class="xl-etc"></span></div>
             <div class="xl-sect">
                 <ol class="xl-i" aria-label="FEX-Emu IR nodes">
-                    {%- for p in pairs %}<li><code>{{ p[1] }}</code></li>{% endfor %}
+                    {%- for p in pairs %}<li><code>{{ p[1] }}</code></li>{% endfor %}<li class="xl-etc" aria-hidden="true"><i>and three more nodes</i></li>
                 </ol>
             </div>
             <div class="xl-jit" aria-hidden="true"><span class="xl-jit-t">JIT</span><span class="xl-arrow"></span></div>
@@ -89,7 +89,7 @@
             <div class="xl-dim" aria-hidden="true"><span class="dim-line"></span><span class="dim-t">at run time</span></div>
         </div>
     </div>
-    <figcaption id="fig1-cap"><span class="fig-no">Fig. 1</span> <span class="fig-alt">Section through the translator. The x87 code of <a href="{{ x87url | url }}">Plate {{ x87no }}</a> (a) becomes FEX-Emu&rsquo;s intermediate representation (b), which is compiled to ARM64 at run time (c).</span></figcaption>
+    <figcaption id="fig1-cap"><span class="fig-no">Fig. 1</span> <span class="fig-alt">Section through the translator. The x87 code (a) from <a href="{{ x87url | url }}">{{ x87title | inlineMd | safe }}</a>, Pl.&nbsp;{{ x87no }}, becomes FEX-Emu&rsquo;s intermediate representation (b), which is compiled to <span class="lnum">ARM64</span> at run time (c).</span></figcaption>
 </figure>
 {% endmacro %}
 
@@ -103,7 +103,7 @@
                 <marker id="dim-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="1.1" markerHeight="1.1" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 10 5 0 8.4Z"/></marker>
             </defs>
             <g class="gs-lines">
-                {%- for y in [0, 1, 2, 3, 4, 9, 10, 11, 12, 13] %}<rect x="0" y="{{ y - 0.05 }}" width="44.4" height="0.1"/>{% endfor %}
+                {%- for y in [0, 1, 2, 3, 4, 9, 10, 11, 12, 13] %}<rect x="0" y="{{ y - 0.04 }}" width="44.4" height="0.08"/>{% endfor %}
             </g>
             <g class="gs-ink">
                 <rect x="-0.08" y="0" width="0.16" height="13"/>

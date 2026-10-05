@@ -6,7 +6,7 @@
     <div class="zones-y zones-y--right">{% for l in ["A", "B", "C", "D", "E", "F"] %}<span>{{ l }}</span>{% endfor %}</div>
 </div>
 <header class="rh" id="top">
-    <a class="rh-title" href="{{ '/' | url }}">{{ meta.siteName }}</a>
+    <a class="rh-title" href="{{ '/' | url }}">{% if page.url == "/" %}{{ meta.authorName }}{% else %}{{ meta.siteName }}{% endif %}</a>
     <nav class="rh-nav" aria-label="Main">
         {% set navPages = collections.all | eleventyNavigation %}
         <ul>

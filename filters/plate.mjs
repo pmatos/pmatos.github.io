@@ -44,10 +44,27 @@ const smarten = (text, state) => {
     .replace(/(\S) --? /g, "$1 – ")
     .replace(/(^|[^\s ])—(?=\S)/g, "$1 – ")
     .replace(/(\S) — /g, "$1 – ")
-    .replace(/(?<!\.)\.\.\.(?!\.)/g, "…");
+    .replace(/(?<!\.)\.\.\.(?!\.)/g, "…")
+    .replace(/(\d)x(?=[\s,.;:)]|$)/g, "$1×")
+    .replace(/(^|[\s(])~(?=\d)/g, "$1≈");
+};
+
+// Words that need help from the compositor: ISO dates and short hyphenated
+// compounds (x86-64, Middle-C) must not break; capitals with figures (ARM64,
+// S10, ST0) take lining figures so the digits stand on the cap line.
+const TIES = /(?<=^|\s)(the|a|an)\s+(?=[^\s<])/gi;
+const wrapTokens = (text, ties) => {
+  let out = text.replace(/(?<![\w&#;-])(\w+(?:-\w+)*)(?![\w-])/g, (tok) => {
+    const nobr = /^\d{4}-\d{2}-\d{2}$/.test(tok) || /^\w+-\w{1,2}$/.test(tok);
+    const lnum = /^[A-Za-z]/.test(tok) && /[A-Z]/.test(tok) && /\d/.test(tok);
+    const cls = [nobr ? "nobr" : "", lnum ? "lnum" : ""].filter(Boolean).join(" ");
+    return cls ? `<span class="${cls}">${tok}</span>` : tok;
+  });
+  if (ties) out = out.replace(TIES, "$1\u00a0");
+  return out;
 };
 const SKIP = /^<\/?(code|pre|kbd|samp|svg|script|style|textarea|math|tt)\b/i;
-export const finishHtml = (html) => {
+export const finishHtml = (html, ties = false) => {
   let depth = 0;
   const state = { prev: "" };
   return String(html ?? "")
@@ -57,7 +74,7 @@ export const finishHtml = (html) => {
         if (SKIP.test(part) && !part.endsWith("/>")) depth = part[1] === "/" ? Math.max(0, depth - 1) : depth + 1;
         return part;
       }
-      return depth ? part : smarten(part, state).replace(/(?<![\w-])(\w+-\w{1,2}|\d{4}-\d{2}-\d{2})(?![\w-])/g, '<span class="nobr">$1</span>');
+      return depth ? part : wrapTokens(smarten(part, state), ties);
     })
     .join("");
 };
@@ -73,33 +90,79 @@ const LANGS = {
 };
 const LETTERS = "ABCDEFGHJKLMNPQRSTUVWXYZ";
 
-const numericCell = (cell) =>
-  /^[~≈$+−-]?\s*\$?\d/.test(cell.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim());
+const cellText = (cell) => cell.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim();
+const strictNumber = (cell) =>
+  /^[~≈$+−-]?\s*\$?[\d.,]+\s*(%|×|x|ms|s|k|K|M|KB|MB|GB|min|h)?$/.test(cellText(cell));
 const setTables = (html) =>
   html.replace(/<table\b[\s\S]*?<\/table>/g, (table) => {
     const rows = table.match(/<tr\b[\s\S]*?<\/tr>/g) || [];
     const cells = (row) => row.match(/<(t[dh])\b[^>]*>[\s\S]*?<\/\1>/g) || [];
+    const inner = (v) => v.replace(/^<t[dh][^>]*>|<\/t[dh]>$/g, "");
     const body = rows.filter((r) => /<td\b/.test(r));
     let out = table;
+    let width = 0;
     if (body.length) {
-      const width = Math.max(...body.map((r) => cells(r).length));
+      width = Math.max(...body.map((r) => cells(r).length));
       const flush = [];
       for (let c = 0; c < width; c++) {
         const vals = body.map((r) => cells(r)[c]).filter(Boolean);
-        if (vals.filter((v) => numericCell(v.replace(/^<t[dh][^>]*>|<\/t[dh]>$/g, ""))).length * 2 > vals.length) flush.push(c);
+        if (vals.filter((v) => strictNumber(inner(v))).length * 5 >= vals.length * 4) flush.push(c);
       }
+      // A column of figures is set flush right; a column that mixes figures
+      // with dates or words stays flush left, with tabular figures.
       if (flush.length)
         out = table.replace(/<tr\b[\s\S]*?<\/tr>/g, (row) => {
           let c = -1;
-          return row.replace(/<(t[dh])\b([^>]*)>/g, (tag, name, attrs) => {
+          return row.replace(/<(t[dh])\b([^>]*)>([\s\S]*?)(?=<\/\1>)/g, (all, name, attrs, content) => {
             c++;
-            if (!flush.includes(c)) return tag;
-            return /class="/.test(attrs) ? tag.replace(/class="/, 'class="num ') : `<${name}${attrs} class="num">`;
+            if (!flush.includes(c)) return all;
+            if (name === "td" && !strictNumber(content)) return all;
+            const tag = /class="/.test(attrs) ? `<${name}${attrs.replace(/class="/, 'class="num ')}>` : `<${name}${attrs} class="num">`;
+            return tag + content;
           });
         });
     }
-    return `<div class="table-wrap">${out}</div>`;
+    return `<div class="table-wrap${width === 2 ? " table-wrap--pair" : ""}">${out}</div>`;
   });
+
+// Listings: the source's common indent is removed, and a listing without a
+// declared language is identified from its text where that is unambiguous.
+const dedent = (code) => {
+  let lines = code.split("\n").map((l) => l.replace(/^[ \u00a0\t]+/, (m) => m.replace(/\u00a0/g, " ")));
+  const live = () => lines.filter((l) => l.replace(/<[^>]+>/g, "").trim());
+  for (let guard = 0; guard < 40; guard++) {
+    const l = live();
+    if (!l.length) break;
+    if (l.every((x) => x.startsWith("\t"))) lines = lines.map((x) => x.replace(/^\t/, ""));
+    else if (l.every((x) => x.startsWith(" "))) lines = lines.map((x) => x.replace(/^ /, ""));
+    else break;
+  }
+  return lines.join("\n");
+};
+const X86 = /^\s*(mov\w*|sub|add|lea|push|pop|call|ret|jmp|j[a-z]{1,3}|cmp|test|xor|and|or|not|neg|nop|inc|dec|imul|mul|idiv|div|sh[lr]|sa[lr]|cvt\w+|f[a-z]{2,8})\s/;
+const guessLang = (text) => {
+  const lines = text.split("\n").filter((l) => l.trim());
+  if (!lines.length) return "";
+  if (lines.some((l) => /^\s*(\(%\d+ i\d+\)|%\d+ i\d+ =)/.test(l))) return "FEX-Emu IR";
+  if (lines.filter((l) => X86.test(l)).length / lines.length >= 0.6) return "x86 assembly";
+  if (lines.filter((l) => /^\s*\$ /.test(l)).length / lines.length >= 0.5) return "shell";
+  return "text";
+};
+
+const LETTER = (i) => LETTERS[i % LETTERS.length];
+const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
+
+// The section marks of a piece, in order, for the index of sections.
+export const sectionsOf = (html) => {
+  const s = String(html ?? "");
+  const level = headingLevel(s);
+  const out = [];
+  for (const m of s.matchAll(new RegExp(`<${level}\\b[^>]*>([\\s\\S]*?)<\\/${level}>`, "g"))) {
+    const L = LETTER(out.length);
+    out.push({ letter: L, id: `section-${L.toLowerCase()}`, title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
+  }
+  return out;
+};
 
 // The body pass: figures, listings, music examples and section marks are
 // numbered in reading order, and the text is finished.
@@ -109,33 +172,38 @@ export const engrave = (html, opts = {}) => {
   let fig = 0, lst = 0, ex = 0;
   let out = finishHtml(html);
 
-  // Listings: every <pre>, labelled and dimensioned by its line count.
   out = out.replace(/<pre\b([^>]*)>([\s\S]*?)<\/pre>/g, (all, attrs, inner) => {
     lst++;
+    const m = inner.match(/^(<code\b[^>]*>)([\s\S]*?)(<\/code>)?$/);
+    const body = m ? m[1] + dedent(m[2].replace(/\n+$/, "")) + (m[3] || "") : dedent(inner);
     const lang = (attrs.match(/language-([\w+-]+)/) || [])[1] || "";
-    const name = LANGS[lang.toLowerCase()] || (lang ? lang : "");
-    const text = inner.replace(/<[^>]+>/g, "").replace(/\n+$/, "");
-    const lines = text.split("\n").length;
+    const text = body.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+    const name = LANGS[lang.toLowerCase()] || lang || guessLang(text);
+    const lines = text.replace(/\n+$/, "").split("\n").length;
     const cap = `<figcaption class="lst-cap"><span class="lst-no">Listing ${lst}</span>${name ? `<span class="lst-lang">${name}</span>` : ""}</figcaption>`;
     const dim = lines > 2 ? `<span class="lst-dim" aria-hidden="true"><span>${lines} lines</span></span>` : "";
-    return `<figure class="listing">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${inner}</pre>${dim}</div></figure>`;
+    return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${body}</pre>${dim}</div></figure>`;
   });
 
   // Images alone in a paragraph or a wrapper div become numbered figures,
-  // captioned with their alt text. A narrow, right-aligned sketch is a side figure.
-  out = out.replace(/<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>/g, (all, tag, attrs, img) => {
-    fig++;
-    const alt = (img.match(/\balt="([^"]*)"/) || [])[1] || "";
-    const w = (img.match(/\bwidth="(\d+)%"/) || [])[1];
-    const side = w && Number(w) < 50 && /flex-end/.test(attrs);
-    const isSvg = /\.svg"/.test(img);
-    const cls = ["fig", side ? "fig--side" : "", w && !side ? "fig--narrow" : "", isSvg ? "fig--line" : ""].filter(Boolean).join(" ");
-    const style = w ? ` style="--fig-w:${w}%"` : "";
-    const cleanImg = img.replace(/\swidth="\d+%"/, "").replace(/<img\b/, '<img loading="lazy" decoding="async"');
-    return `<figure class="${cls}"${style}><div class="fig-frame">${cleanImg}</div><figcaption><span class="fig-no">Fig. ${fig}</span>${alt ? ` <span class="fig-alt">${alt}</span>` : ""}</figcaption></figure>`;
-  });
+  // captioned with their alt text (a narrow, right-aligned sketch is a side
+  // figure). Charts a post brings with its own caption share the numbering.
+  out = out.replace(
+    /<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>|(<figure class="jsse-chart"[^>]*>[\s\S]*?<figcaption>)([\s\S]*?)(<\/figcaption>)/g,
+    (all, tag, attrs, img, chartHead, chartCap, chartEnd) => {
+      fig++;
+      if (chartHead) return `${chartHead}<span class="fig-no">Fig. ${fig}</span> <span class="fig-alt">${chartCap}</span>${chartEnd}`;
+      const alt = (img.match(/\balt="([^"]*)"/) || [])[1] || "";
+      const w = (img.match(/\bwidth="(\d+)%"/) || [])[1];
+      const side = w && Number(w) < 50 && /flex-end/.test(attrs);
+      const isSvg = /\.svg"/.test(img);
+      const cls = ["fig", side ? "fig--side" : "", w && !side ? "fig--narrow" : "", isSvg ? "fig--line" : ""].filter(Boolean).join(" ");
+      const style = w ? ` style="--fig-w:${w}%"` : "";
+      const cleanImg = img.replace(/\swidth="\d+%"/, "").replace(/<img\b/, '<img loading="lazy" decoding="async"');
+      return `<figure class="${cls}"${style}><div class="fig-frame">${cleanImg}</div><figcaption><span class="fig-no">Fig. ${fig}</span>${alt ? ` <span class="fig-alt">${finishHtml(alt)}</span>` : ""}</figcaption></figure>`;
+    },
+  );
 
-  // LilyPond output: sized from its viewBox (10px per staff space) and numbered.
   out = out.replace(
     /<svg\b([^>]*?)\swidth="[\d.]+mm"\sheight="[\d.]+mm"\sviewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"([^>]*)>([\s\S]*?)<\/svg>/g,
     (all, pre, x, y, w, h, post, inner) => {
@@ -144,22 +212,21 @@ export const engrave = (html, opts = {}) => {
     },
   );
 
-  // Section marks on the top heading level of the piece: a drafting section
-  // bubble (letter over plate number) for code, a rehearsal letter for music.
-  const level = /<h1\b/.test(out) ? "h1" : "h2";
+  // Section marks on the top heading level: a drafting section bubble
+  // (letter over plate number) for code, a rehearsal letter for music.
+  const level = headingLevel(out);
   if (level === "h1") out = out.replace(/<(\/?)h3\b/g, "<$1h4").replace(/<(\/?)h2\b/g, "<$1h3");
   let sec = 0;
   out = out.replace(new RegExp(`<${level}\\b([^>]*)>([\\s\\S]*?)<\\/${level}>`, "g"), (all, attrs, inner) => {
-    const L = LETTERS[sec++ % LETTERS.length];
+    const L = LETTER(sec++);
     const mark =
       voice === "notes"
         ? `<span class="reh" aria-hidden="true">${L}</span>`
-        : `<span class="secmark" aria-hidden="true"><b>${L}</b>${plate ? `<i>${plate}</i>` : ""}</span>`;
+        : `<span class="secmark" aria-hidden="true"><b>${L}</b><i>${plate || "–"}</i></span>`;
     return `<h2 class="sec" id="section-${L.toLowerCase()}"${attrs}>${mark}<span class="sec-t">${inner}</span></h2>`;
   });
 
-  // Footnote references without brackets.
-  out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+)\](<\/a>)/g, "$1$2$3");
+  out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
   return setTables(out);
 };
 
@@ -172,7 +239,8 @@ export default function plate(eleventyConfig) {
   eleventyConfig.addFilter("engrave", (html, voice, plateNo) => engrave(html, { voice, plate: plateNo }));
 
   const inlineMd = markdownIt({ html: true });
-  eleventyConfig.addFilter("inlineMd", (s) => finishHtml(inlineMd.renderInline(String(s ?? "").trim())));
+  eleventyConfig.addFilter("inlineMd", (s, ties = false) => finishHtml(inlineMd.renderInline(String(s ?? "").trim()), ties));
+  eleventyConfig.addFilter("sections", sectionsOf);
   const plain = markdownIt("zero");
   eleventyConfig.addFilter("smartText", (s) => finishHtml(plain.renderInline(String(s ?? ""))));
 
@@ -185,7 +253,8 @@ export default function plate(eleventyConfig) {
     for (const m of html.matchAll(/[.!?:](&quot;|[”’)])*(?=\s)/g)) {
       const at = m.index + m[0].length;
       if (at > target + 40) break;
-      if (at >= 110) end = at;
+      // A head never ends on a colon: it would promise a list it then hides.
+      if (at >= 110 && m[0][0] !== ":") end = at;
     }
     if (end > 0) return done(html.slice(0, end), html.slice(end));
     const sp = html.lastIndexOf(" ", target);
@@ -197,6 +266,8 @@ export default function plate(eleventyConfig) {
     return i < 0 ? 0 : i + 1;
   });
   eleventyConfig.addFilter("voice", voiceOf);
+  eleventyConfig.addFilter("ofVoice", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v));
+  eleventyConfig.addFilter("byUrl", (collection, url) => (collection || []).find((p) => p.url === url));
   eleventyConfig.addFilter("voiceCount", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v).length);
 
   eleventyConfig.addFilter("readingMinutes", (html) => {
@@ -209,7 +280,7 @@ export default function plate(eleventyConfig) {
   eleventyConfig.addFilter("tally", (html) => {
     const s = String(html ?? "");
     return {
-      figures: (s.match(/<img\b/g) || []).length,
+      figures: (s.match(/<img\b/g) || []).length + (s.match(/<figure class="jsse-chart"/g) || []).length,
       listings: (s.match(/<pre\b/g) || []).length,
       examples: (s.match(/<svg\b[^>]*\swidth="[\d.]+mm"/g) || []).length,
       sections: (s.match(/<h1\b/g) || []).length || (s.match(/<h2\b/g) || []).length,

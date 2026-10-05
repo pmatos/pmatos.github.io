@@ -9,7 +9,7 @@
         </div>
         <div class="tb-cell">
             <span class="tb-k">Engraved by</span>
-            <span class="tb-v">{{ meta.authorName }}, Nuremberg</span>
+            <span class="tb-v">{{ meta.authorName }}<br>Nuremberg</span>
         </div>
         <div class="tb-cell">
             <span class="tb-k">Plates</span>
@@ -21,11 +21,11 @@
         </div>
         <div class="tb-cell">
             <span class="tb-k">Subscribe</span>
-            <span class="tb-v"><a href="{{ '/feed.xml' | url }}">Blog feed</a>, <a href="{{ '/linklog-feed.xml' | url }}">Link Log feed</a></span>
+            <span class="tb-v tb-list"><a href="{{ '/feed.xml' | url }}">Blog feed</a> <a href="{{ '/linklog-feed.xml' | url }}">Link Log feed</a></span>
         </div>
         <div class="tb-cell">
             <span class="tb-k">Elsewhere</span>
-            <span class="tb-v"><a href="https://github.com/{{ meta.githubUser }}" rel="noopener noreferrer">GitHub</a>, <a href="https://www.linkedin.com/in/{{ meta.linkedinkUser }}/" rel="noopener noreferrer">LinkedIn</a>, <a href="https://twitter.com/{{ meta.twitterUser }}" rel="noopener noreferrer">Twitter</a></span>
+            <span class="tb-v tb-list"><a href="https://github.com/{{ meta.githubUser }}" rel="noopener noreferrer">GitHub</a> <a href="https://www.linkedin.com/in/{{ meta.linkedinkUser }}/" rel="noopener noreferrer">LinkedIn</a> <a href="https://twitter.com/{{ meta.twitterUser }}" rel="noopener noreferrer">Twitter</a></span>
         </div>
     </div>
     <p class="tb-copy">&copy; {% year %}&nbsp;{{ meta.authorName }}</p>

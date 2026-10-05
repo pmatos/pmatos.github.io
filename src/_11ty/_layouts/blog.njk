@@ -23,21 +23,44 @@ type: website
             <dl class="tblock tblock--strip">
                 <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }}</dd></div>
                 <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd>{{ posts | voiceCount("code") }}</dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd>{{ posts | voiceCount("notes") }}</dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd><a href="#only-code" class="tb-filter">{{ posts | voiceCount("code") }} plates</a></dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd><a href="#only-notes" class="tb-filter">{{ posts | voiceCount("notes") }} plates</a></dd></div>
                 <div class="tb-row tb-row--wide"><dt>Subscribe</dt><dd><a href="{{ '/feed.xml' | url }}">RSS feed</a></dd></div>
             </dl>
         </header>
-        {%- for group in posts | reverse | groupByYear %}
-        <section class="year" aria-labelledby="y-{{ group.key }}">
-            <h2 class="year-h" id="y-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} plate{% if group.items | length > 1 %}s{% endif %}</span></h2>
-            <ol class="plates">
-                {%- for post in group.items %}
-                {{ plates.row(post, posts) }}
+        {%- set years = posts | reverse | groupByYear %}
+        <div class="cat-body">
+            <div class="cat-list">
+                <span id="only-code" class="filter-target"></span><span id="only-notes" class="filter-target"></span>
+                <p class="filter-note filter-note--code">Showing the {{ posts | voiceCount("code") }} code plates. <a href="#catalogue-all">Show every plate</a></p>
+                <p class="filter-note filter-note--notes">Showing the {{ posts | voiceCount("notes") }} notes plates. <a href="#catalogue-all">Show every plate</a></p>
+                <span id="catalogue-all" class="filter-target"></span>
+                {%- for group in years %}
+                <section class="year" aria-labelledby="y-{{ group.key }}">
+                    <h2 class="year-h" id="y-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} plate{% if group.items | length > 1 %}s{% endif %}</span></h2>
+                    <ol class="plates">
+                        {%- for post in group.items %}
+                        {{ plates.row(post, posts) }}
+                        {%- endfor %}
+                    </ol>
+                </section>
                 {%- endfor %}
-            </ol>
-        </section>
-        {%- endfor %}
+            </div>
+            <nav class="cat-index" aria-label="Plates by year">
+                <div class="cat-index-in">
+                    <p class="soi-h">Parts list</p>
+                    <ol class="soi-list">
+                        {%- for group in years %}<li><a href="#y-{{ group.key }}"><span class="soi-t">{{ group.label }}</span><span class="soi-z">Pl.&nbsp;{{ posts | plateNo((group.items | last).url) | roman }}{% if group.items | length > 1 %}&ndash;{{ posts | plateNo((group.items | first).url) | roman }}{% endif %}</span></a></li>{% endfor %}
+                    </ol>
+                    <p class="soi-h soi-h--sub">By topic</p>
+                    <ul class="soi-list">
+                        <li><a href="#only-code"><span class="soi-t">{{ plates.mark("code") }} Code</span><span class="soi-z">{{ posts | voiceCount("code") }}</span></a></li>
+                        <li><a href="#only-notes"><span class="soi-t">{{ plates.mark("notes") }} Notes</span><span class="soi-z">{{ posts | voiceCount("notes") }}</span></a></li>
+                        <li><a href="#catalogue-all"><span class="soi-t">Every plate</span><span class="soi-z">{{ total }}</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </main>
     {% include "footer.njk" %}
 </div>

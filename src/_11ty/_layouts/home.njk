@@ -12,6 +12,9 @@ type: website
 {%- set lastYear = latest.date | yearOf -%}
 {%- set x87url = "/blog/fex-x87-stack-optimization.html" -%}
 {%- set musicUrl = "/blog/from-middle-c-to-concert.html" -%}
+{%- set x87post = posts | byUrl(x87url) -%}
+{%- set notesPosts = posts | ofVoice("notes") -%}
+{%- set latestNotes = notesPosts | last -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
@@ -22,51 +25,41 @@ type: website
     <main id="main" class="home">
         <section class="frontis" aria-labelledby="site-title">
             <header class="cartouche">
-                <p class="ct-k">Programming, music, and the occasional tangent</p>
-                <h1 id="site-title" class="ct-title">Notes <span class="amp">&amp;</span> Code</h1>
-                <p class="ct-by">Plates drawn &amp; engraved by Paulo Matos, Nuremberg</p>
+                <h1 id="site-title" class="ct-title"><span class="ct-frame" aria-hidden="true"></span><span class="ct-c ct-c--tl" aria-hidden="true"></span><span class="ct-c ct-c--tr" aria-hidden="true"></span><span class="ct-c ct-c--bl" aria-hidden="true"></span><span class="ct-c ct-c--br" aria-hidden="true"></span>Notes <span class="amp">&amp;</span> Code</h1>
+                <p class="ct-by">Plates for compiler &amp; pianoforte, engraved by Paulo Matos, Nuremberg</p>
+                <p class="ct-now"><span class="ct-now-k">Latest</span> <a href="{{ latest.url | url }}">{{ latest.data.title | inlineMd | safe }}</a> <span class="ct-now-sub">(Pl.&nbsp;{{ total | roman }}, {{ latest.date | dayMonth }})</span><span class="ct-now-sep" aria-hidden="true"></span><span class="ct-now-k ct-now-k--bench">On the bench</span> <a href="https://rightkey.app" target="_blank" rel="noopener">Rightkey</a> <span class="ct-now-and">and</span> <a href="https://petovita.com" target="_blank" rel="noopener">PetoVita</a></p>
             </header>
 
             <div class="figs">
-                {{ plates.figCode(x87url, posts | plateNo(x87url) | roman) }}
+                {{ plates.figCode(x87url, posts | plateNo(x87url) | roman, x87post.data.title) }}
                 {{ plates.figNotes(musicUrl) }}
             </div>
 
             <div class="frontis-foot">
                 <div class="intro">
-                    <p class="intro-lead">I&rsquo;m Paulo Matos, a software engineer in Nuremberg. I work on compilers and dynamic binary translation as a freelance consultant with <a href="https://www.igalia.com/">Igalia</a>; my current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and x86-64 applications on ARM64, mainly games. By night I play the piano.</p>
+                    <p class="intro-lead">I&rsquo;m Paulo Matos, a software engineer in Nuremberg. I work on compilers and dynamic binary translation as a freelance consultant with <a href="https://www.igalia.com/">Igalia</a>; my current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. By night I play the piano.</p>
                     <p>This site is where I share technical notes, project updates, and occasional tangents about the things I&rsquo;m learning. Think of it as a public notebook: part documentation, part exploration.</p>
                 </div>
                 <dl class="tblock tblock--home" aria-label="About this edition">
-                    <div class="tb-row tb-row--wide"><dt>Edition</dt><dd>{{ meta.siteName }}</dd></div>
+                    <div class="tb-row tb-row--wide"><dt>Engraver</dt><dd>{{ meta.authorName }}, Nuremberg</dd></div>
                     <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }} <span class="tb-sub">({{ total }})</span></dd></div>
                     <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
-                    <div class="tb-row"><dt>Code</dt><dd>{{ posts | voiceCount("code") }} plates</dd></div>
-                    <div class="tb-row"><dt>Notes</dt><dd>{{ posts | voiceCount("notes") }} plates</dd></div>
-                    <div class="tb-row tb-row--wide"><dt>Latest</dt><dd><a href="{{ latest.url | url }}">Pl.&nbsp;{{ total | roman }}</a>, <time datetime="{{ latest.date | isoDate }}">{{ latest.date | plateDate }}</time></dd></div>
-                    <div class="tb-row tb-row--wide"><dt>Link Log</dt><dd>{{ linklog.entries | length }} references</dd></div>
+                    <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd>{{ posts | voiceCount("code") }} plates</dd></div>
+                    <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd>{{ notesPosts | length }} plates</dd></div>
+                    <div class="tb-row tb-row--wide"><dt>Latest</dt><dd><a href="{{ latest.url | url }}"><span aria-hidden="true">Pl.&nbsp;{{ total | roman }}</span><span class="visually-hidden">Plate {{ total }}</span>, {{ latest.data.title | inlineMd | safe }}</a> <span class="tb-sub">{{ latest.date | plateDate }}</span></dd></div>
+                    <div class="tb-row tb-row--wide"><dt>Works</dt><dd><a href="https://rightkey.app" target="_blank" rel="noopener">Rightkey<span class="ext" aria-hidden="true">&#8599;</span></a>, <a href="https://petovita.com" target="_blank" rel="noopener">PetoVita<span class="ext" aria-hidden="true">&#8599;</span></a></dd></div>
+                    <div class="tb-row tb-row--wide"><dt>Link Log</dt><dd><a href="{{ '/linklog.html' | url }}">{{ linklog.entries | length }} references</a></dd></div>
                 </dl>
             </div>
         </section>
 
-        {%- set newest = posts | reverse | limit(6) %}
-        <section class="index" aria-labelledby="index-title">
-            {{ plates.cut("A", "Index of plates", "index-title", "The six most recent, newest first. <span class=\"key\">" + plates.mark("code") + " code &ensp; " + plates.mark("notes") + " notes</span>") }}
-            <ol class="plates">
-                {%- for post in newest %}
-                {{ plates.row(post, posts, true) }}
-                {%- endfor %}
-            </ol>
-            <p class="more"><a href="{{ '/blog.html' | url }}">All {{ total }} plates, {{ firstYear }}&ndash;{{ lastYear }}</a> <span class="more-sep">or</span> <a href="{{ '/feed.xml' | url }}">subscribe by RSS</a></p>
-        </section>
-
         <section class="building" aria-labelledby="building-title">
-            {{ plates.detail("B", "Works in progress", "building-title", "<code class=\"shell\"><span aria-hidden=\"true\">$ </span>ls ~/building</code>") }}
+            {{ plates.detail("A", "Works in progress", "building-title", "On the bench, as listed by <code class=\"shell\">ls ~/building</code>") }}
             <div class="projects">
                 <a href="https://rightkey.app" target="_blank" rel="noopener" class="project project--rightkey">
                     <span class="project-medal"><img src="/img/projects/rightkey.webp" alt="" width="112" height="112"></span>
                     <span class="project-body">
-                        <span class="project-meta"><span class="project-name">Rightkey</span><span class="project-badge">Live</span></span>
+                        <span class="project-meta"><span class="project-name">Rightkey</span><span class="project-badge">Live</span><span class="project-marks" title="Code and notes">{{ plates.mark("code") }}{{ plates.mark("notes") }}</span></span>
                         <span class="project-tagline">Every practice session, remembered.</span>
                         <span class="project-desc">A calm practice log for musicians. Time your sessions, track your repertoire, and watch the hours add up, with no streaks and no pressure.</span>
                         <span class="project-link">rightkey.app <span class="ext" aria-hidden="true">&#8599;</span><span class="visually-hidden">(opens in new tab)</span></span>
@@ -75,13 +68,31 @@ type: website
                 <a href="https://petovita.com" target="_blank" rel="noopener" class="project project--petovita">
                     <span class="project-medal"><img src="/img/projects/petovita.webp" alt="" width="112" height="112"></span>
                     <span class="project-body">
-                        <span class="project-meta"><span class="project-name">PetoVita</span><span class="project-badge">Live</span></span>
+                        <span class="project-meta"><span class="project-name">PetoVita</span><span class="project-badge">Live</span><span class="project-marks" title="Code">{{ plates.mark("code") }}</span></span>
                         <span class="project-tagline">Your life story, one question at a time.</span>
                         <span class="project-desc">A story journal that emails you one question a week and turns your replies into a life narrative worth handing down.</span>
                         <span class="project-link">petovita.com <span class="ext" aria-hidden="true">&#8599;</span><span class="visually-hidden">(opens in new tab)</span></span>
                     </span>
                 </a>
             </div>
+        </section>
+
+        {%- set newest = posts | reverse | limit(5) %}
+        {%- set showNotes = latestNotes and (newest | ofVoice("notes") | length) == 0 %}
+        <section class="index" aria-labelledby="index-title">
+            {{ plates.cut("B", "Index of plates", "index-title", ("The five most recent, newest first" + (", then the latest from the notes." if showNotes else ".")) + " <span class=\"key\">" + plates.mark("code") + " code &ensp; " + plates.mark("notes") + " notes</span>") }}
+            <ol class="plates plates--home">
+                {%- for post in newest %}
+                {{ plates.row(post, posts, true) }}
+                {%- endfor %}
+            </ol>
+            {% if showNotes %}
+            <p class="plates-k">{{ plates.mark("notes") }} From the notes</p>
+            <ol class="plates plates--home plates--notes">
+                {{ plates.row(latestNotes, posts, true) }}
+            </ol>
+            {% endif %}
+            <p class="more"><a href="{{ '/blog.html' | url }}">All {{ total }} plates, {{ firstYear }}&ndash;{{ lastYear }}</a> <span class="more-sep">or</span> <a href="{{ '/feed.xml' | url }}">subscribe by RSS</a></p>
         </section>
 
         <section class="further" aria-labelledby="further-title">
