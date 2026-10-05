@@ -3940,6 +3940,43 @@ html.dark .fig--line img {
 }
 
 @media print {
+  /* A plate is printed in ink on white whatever the screen theme: the dark
+     tokens would set cream text on paper that prints white. */
+  html,
+  html.dark {
+    --paper: #fff;
+    --paper-out: #fff;
+    --tint: #f4f1ea;
+    --chip: #efebe2;
+    --ink: #1d1a15;
+    --ink-2: #4a4236;
+    --ink-3: #675d4d;
+    --rule: rgba(29, 26, 21, 0.62);
+    --hair: rgba(29, 26, 21, 0.22);
+    --hatch: rgba(29, 26, 21, 0.42);
+    --grid: rgba(29, 26, 21, 0.2);
+    --staff: rgba(29, 26, 21, 0.62);
+    --accent: #2b5475;
+    --accent-ink: #1c3d59;
+    --wash: rgba(43, 84, 117, 0.14);
+    --code-comment: #5a5141;
+    --code-punct: #544c40;
+    --code-string: #5f3f10;
+    --code-keyword: var(--accent);
+    --code-deleted: #7f2d22;
+    color-scheme: light;
+  }
+
+  html.dark .prose img[src$=".svg"],
+  html.dark .fig--line img,
+  html.dark .project-medal img {
+    filter: none;
+  }
+
+  html.dark .project-medal {
+    background: none;
+  }
+
   body {
     padding: 0;
     background: #fff;
