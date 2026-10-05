@@ -171,10 +171,15 @@ const asmTokens = (body) =>
 
 const LETTER = (i) => LETTERS[i % LETTERS.length];
 const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
+// A piece's only h1, when it opens the body, repeats the page title: it is
+// not a section, and keeping it would demote the real ## sections below it.
+const LEAD_H1 = /^\s*<h1\b[^>]*>[\s\S]*?<\/h1>/;
+const dropTitleRepeat = (html) =>
+  (html.match(/<h1\b/g) || []).length === 1 ? html.replace(LEAD_H1, "") : html;
 
 // The section marks of a piece, in order, for the index of sections.
 export const sectionsOf = (html) => {
-  const s = String(html ?? "");
+  const s = dropTitleRepeat(String(html ?? ""));
   const level = headingLevel(s);
   const out = [];
   for (const m of s.matchAll(new RegExp(`<${level}\\b[^>]*>([\\s\\S]*?)<\\/${level}>`, "g"))) {
@@ -193,7 +198,7 @@ export const engrave = (html, opts = {}) => {
   const voice = opts.voice || "code";
   const plate = opts.plate || "";
   let fig = 0, lst = 0, ex = 0;
-  let out = finishHtml(html);
+  let out = finishHtml(dropTitleRepeat(String(html ?? "")));
 
   out = out.replace(/<pre\b([^>]*)>([\s\S]*?)<\/pre>/g, (all, attrs, inner) => {
     lst++;
