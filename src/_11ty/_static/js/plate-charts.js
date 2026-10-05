@@ -3,8 +3,17 @@
 // and outlined; hatching keeps the post's meaning (a timed-out run). Every
 // colour is read from the theme tokens on each update, so a theme flip, which
 // makes the post redraw, re-engraves the charts too.
+//
+// Coupling: this script is written against the inline chart code of one post,
+// src/blog/2026-09-25-faster-with-guardrails.md. NEUTRALS lists that post's
+// hex neutrals and keyOf() its engine labels; change them together. The
+// article layout loads this file only on pages with a `jsse-chart` figure, and
+// it warns in the console when it recognises no series on such a page.
 (function () {
-  if (!window.Chart) return;
+  if (!window.Chart) {
+    console.warn("plate-charts: Chart.js is not loaded, so the jsse-chart figures were not engraved.");
+    return;
+  }
   var root = document.documentElement;
   var TEXT = '"EB Garamond", Garamond, Georgia, serif';
   var MONO = '"IBM Plex Mono", ui-monospace, Menlo, monospace';
@@ -53,6 +62,7 @@
     return t ? tok(t) : v;
   }
 
+  var recognised = 0;
   function keyOf(name) {
     var n = String(name || "");
     if (/bytecode/i.test(n)) return "bc";
@@ -92,10 +102,12 @@
       };
       if (perBar) {
         var keys = chart.data.labels.map(keyOf);
+        if (keys.some(Boolean)) recognised++;
         ds.backgroundColor = keys.map(function (k, i) { return styleAt(k, Array.isArray(bg) ? bg[i] : bg); });
         ds.borderColor = keys.map(function (k) { return (P.series[k] || {}).edge || P.ink; });
       } else {
         var k = keyOf(ds.label);
+        if (k) recognised++;
         ds.backgroundColor = Array.isArray(bg) ? bg.map(function (v) { return styleAt(k, v); }) : styleAt(k, bg);
         ds.borderColor = (P.series[k] || {}).edge || P.ink;
       }
@@ -182,6 +194,10 @@
       });
     } catch (e) {}
   }
+  function audit() {
+    if (!recognised) console.warn("plate-charts: no chart series matched the engine names in keyOf(); the charts keep the post's own colours. See the coupling note at the top of plate-charts.js.");
+  }
   all();
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(all);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(all).then(audit);
+  else audit();
 })();
