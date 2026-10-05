@@ -159,7 +159,13 @@ export const sectionsOf = (html) => {
   const out = [];
   for (const m of s.matchAll(new RegExp(`<${level}\\b[^>]*>([\\s\\S]*?)<\\/${level}>`, "g"))) {
     const L = LETTER(out.length);
-    out.push({ letter: L, id: `section-${L.toLowerCase()}`, title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
+    // Where the section starts: the reading minute (read against the scale
+    // bar) and the bar, counting each paragraph, list item or example before
+    // it as one bar.
+    const before = s.slice(0, m.index);
+    const words = before.replace(/<(script|style|svg)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+    const bar = (before.match(/<(p|li)\b|<svg\b[^>]*\swidth="[\d.]+mm"/g) || []).length + 1;
+    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), bar, title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
   }
   return out;
 };
@@ -227,6 +233,8 @@ export const engrave = (html, opts = {}) => {
   });
 
   out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
+  // A bare URL in the text is set as code, so its break reads as a code break.
+  out = out.replace(/<a\b((?![^>]*\bclass=)[^>]*)>(https?:\/\/[^<\s]+)<\/a>/g, '<a$1 class="url">$2</a>');
   return setTables(out);
 };
 

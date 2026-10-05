@@ -14,6 +14,10 @@
    ========================================================================== */
 
 :root {
+  /* Names a post's own embedded styles read (the guardrails charts). */
+  --color-accent: var(--accent);
+  --color-text: var(--ink);
+  --color-text-muted: var(--ink-2);
   --paper: #f4eddc;
   --paper-out: #e8dfc7;
   --tint: #ede5d0;
@@ -521,6 +525,7 @@ pre {
 
 .tb-sub {
   color: var(--ink-3);
+  white-space: nowrap;
 }
 
 .tblock a {
@@ -595,9 +600,9 @@ pre {
 
 .cut-rule {
   flex: 1;
-  height: 0.75px;
+  height: 1px;
   margin-top: 0.4rem;
-  opacity: 0.6;
+  opacity: 0.5;
   background: repeating-linear-gradient(
     90deg,
     var(--ink) 0 1.9rem,
@@ -659,38 +664,6 @@ pre {
 
 .det-head .cut-note {
   grid-column: 2;
-}
-
-.det-bubble {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  width: 3rem;
-  height: 3rem;
-  border: 1.3px solid var(--ink);
-  border-radius: 50%;
-  overflow: hidden;
-  font-family: var(--f-sc);
-  text-align: center;
-  line-height: 1;
-}
-
-.det-bubble b {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 0.18rem;
-  border-bottom: 1px solid var(--ink);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-
-.det-bubble i {
-  padding-top: 0.2rem;
-  font-style: normal;
-  font-size: 0.78rem;
-  color: var(--ink-2);
-  text-transform: lowercase;
 }
 
 /* ---------- Home: frontispiece ------------------------------------------ */
@@ -845,6 +818,7 @@ pre {
 .figs {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-auto-rows: auto;
   border-top: 1.5px solid var(--ink);
   border-bottom: 1.5px solid var(--ink);
   position: relative;
@@ -868,9 +842,14 @@ pre {
   bottom: 3px;
 }
 
+/* Each figure spans two rows of the plate grid (drawing, caption), so the
+   two captions hang from one line. */
 .pfig {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  align-content: start;
   margin: 0;
   padding: 1.5rem 2.1rem 1.25rem;
   min-width: 0;
@@ -889,6 +868,7 @@ pre {
 }
 
 .pfig figcaption {
+  align-self: start;
   margin-top: 0.9rem;
   font-size: 1rem;
   line-height: 1.45;
@@ -1206,12 +1186,66 @@ pre {
   fill: var(--ink-2);
 }
 
-.dim-tx {
+/* Fig. 2 is lettered in HTML over the drawing, to Fig. 1's standard, so its
+   lettering keeps one height while the staff scales. Positions are viewBox
+   coordinates as percentages: origin (-4.4, -9.2), size 51 x 27. */
+.gs-hd {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.gs-hd .xl-h {
+  margin-bottom: 0;
+}
+
+.pfig--notes .pfig-field {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.4rem;
+}
+
+.gfield {
+  position: relative;
+  width: 100%;
+  max-width: 36rem;
+  margin: auto;
+  padding-top: 0.6rem;
+}
+
+.gfield .gstaff {
+  max-width: none;
+}
+
+.g-dim,
+.g-b {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.g-dim {
+  left: 58.43%;
+  top: calc(0.6rem + (100% - 0.6rem) * 0.0741);
+  padding: 0 0.55rem;
+  background: var(--paper);
   font-family: var(--f-text);
   font-style: italic;
-  font-size: 1.5px;
-  fill: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--ink-2);
+  white-space: nowrap;
 }
+
+.g-b {
+  top: calc(0.6rem + (100% - 0.6rem) * 0.9556);
+  margin: 0;
+  background: var(--paper);
+}
+
+.g-b--a { left: 20.39%; }
+.g-b--b { left: 92.94%; }
 
 .lead-l {
   fill: none;
@@ -1220,19 +1254,6 @@ pre {
 }
 
 .lead-dot {
-  fill: var(--ink);
-}
-
-.lead-b {
-  fill: var(--paper);
-  stroke: var(--ink);
-  stroke-width: 0.08;
-}
-
-.lead-t {
-  font-family: var(--f-text);
-  font-style: italic;
-  font-size: 1.3px;
   fill: var(--ink);
 }
 
@@ -1247,6 +1268,7 @@ pre {
 .intro p {
   margin: 0 0 1rem;
   max-width: 38rem;
+  line-height: 1.55;
   color: var(--ink-2);
   hanging-punctuation: first;
 }
@@ -1280,6 +1302,11 @@ pre {
 }
 
 .plates {
+  max-width: 62rem;
+}
+
+/* The index section, cutting plane included, is one 62rem block. */
+.home > .index {
   max-width: 62rem;
 }
 
@@ -1320,10 +1347,11 @@ pre {
   color: var(--ink);
 }
 
+/* Title, leader and date share the title's first line: a wrapped title
+   keeps its date and leader beside its first line. */
 .pl-line {
-  display: grid;
-  grid-template-columns: auto minmax(2rem, 1fr) 7.2rem;
-  align-items: last baseline;
+  display: flex;
+  align-items: first baseline;
   gap: 0 0.6rem;
   margin: 0;
 }
@@ -1356,6 +1384,7 @@ pre {
 }
 
 .leader {
+  flex: 1 1 2rem;
   min-width: 2rem;
   height: 0.4em;
   opacity: 0.55;
@@ -1366,6 +1395,7 @@ pre {
 }
 
 .pl-date {
+  flex: none;
   white-space: nowrap;
   text-align: right;
   font-size: 1.02rem;
@@ -1537,9 +1567,27 @@ pre {
   filter: none;
 }
 
+.project--petovita .project-medal img {
+  flex: none;
+  width: 112%;
+  height: 112%;
+  max-width: none;
+}
+
+/* At night the enamel is toned down to the paper's key, so the medallions
+   sit below the cartouche instead of glowing. */
 html.dark .project-medal {
-  background: #ece3cd;
-  border-color: var(--ink);
+  background: #cfc5ad;
+  border-color: var(--ink-2);
+}
+
+html.dark .project-medal img {
+  filter: saturate(0.72) sepia(0.12) brightness(0.86);
+}
+
+html.dark .project:hover .project-medal img,
+html.dark .project:focus-visible .project-medal img {
+  filter: brightness(0.92);
 }
 
 .project-marks {
@@ -1585,6 +1633,7 @@ html.dark .project-medal {
 .project-tagline {
   font-size: 1.15rem;
   font-style: italic;
+  text-wrap: balance;
   color: var(--ink);
 }
 
@@ -1654,10 +1703,9 @@ code.shell {
 .ref-k {
   font-family: var(--f-sc);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   letter-spacing: 0.06em;
   color: var(--accent);
-  text-transform: lowercase;
 }
 
 .ref-t {
@@ -1848,9 +1896,11 @@ code.shell {
     font-size: 0.95rem;
   }
 
-  .xl-h--o { grid-column: 1 / -1; grid-row: 4; justify-self: start; margin-top: 0.2rem; }
-  .xl-jit { grid-column: 3; grid-row: 3; height: 2.4rem; }
-  .xl-host { grid-column: 1 / -1; grid-row: 5; justify-content: flex-start; gap: 1rem; }
+  /* The JIT arrow drops onto the chip: both hang 2.1rem into the IR column. */
+  .xl-h--o { grid-column: 1 / 3; grid-row: 4; justify-self: start; align-self: center; margin: 0; white-space: normal; }
+  .xl-h--o .xl-ht { display: inline-block; line-height: 1.1; }
+  .xl-jit { grid-column: 3; grid-row: 3; height: 2.4rem; justify-content: flex-start; padding-left: calc(2.1rem - 0.75px); }
+  .xl-host { grid-column: 3; grid-row: 4; justify-content: flex-start; gap: 0.8rem; }
 
   .xl-g li:nth-child(n + 4):not(.xl-etc),
   .xl-i li:nth-child(n + 4):not(.xl-etc),
@@ -1967,10 +2017,9 @@ code.shell {
   margin: 0 0 0.5rem;
   font-family: var(--f-sc);
   font-weight: 700;
-  font-size: 1.08rem;
-  letter-spacing: 0.08em;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
   color: var(--accent);
-  text-transform: lowercase;
 }
 
 .sh-title {
@@ -2032,13 +2081,6 @@ code.shell {
   font-size: 1rem;
   letter-spacing: 0.05em;
   color: var(--ink-3);
-}
-
-@media (max-width: 39.99rem) {
-  .prose {
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
 }
 
 .nobr {
@@ -2127,10 +2169,30 @@ code.shell {
   text-decoration: none;
 }
 
-.soi-list a:hover .soi-t {
-  color: var(--accent);
+.soi-t {
   text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
   text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.soi-list a:hover .soi-t,
+.soi-list a:focus-visible .soi-t {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* The section on screen, set by js/plate.js. */
+.soi-list a[aria-current] {
+  color: var(--ink);
+  box-shadow: inset 2px 0 0 var(--accent);
+  margin-left: -0.6rem;
+  padding-left: 0.6rem;
+}
+
+.soi-list a[aria-current] .soi-t {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .soi-l {
@@ -2144,20 +2206,30 @@ code.shell {
 }
 
 .soi-z {
-  font-family: var(--f-sc);
-  font-weight: 600;
+  min-width: 1.6rem;
+  text-align: right;
   font-size: 0.9rem;
-  letter-spacing: 0.03em;
   color: var(--ink-3);
-  font-variant-numeric: lining-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
-.soi-note {
-  margin: 0.6rem 0 0;
+.soi-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.soi-hu {
+  font-family: var(--f-text);
   font-style: italic;
+  font-weight: 400;
   font-size: 0.86rem;
-  line-height: 1.35;
+  letter-spacing: 0;
   color: var(--ink-3);
+}
+
+.soi-d summary .soi-hu {
+  margin-left: auto;
 }
 
 .soi-d {
@@ -2206,6 +2278,10 @@ code.shell {
   padding-bottom: 0.6rem;
 }
 
+.soi-d summary {
+  display: flex;
+}
+
 .prose details {
   margin: 1.2em 0;
   border-top: 1px solid var(--hair);
@@ -2215,39 +2291,77 @@ code.shell {
 /* Code plates open on a scale bar, graduated in minutes of reading: the
    drafting counterpart of the clef that opens a piece of music. */
 .scale {
-  margin-top: 1.9rem;
+  margin-top: 1.6rem;
 }
 
+/* An engraved scale: a hairline double rule with alternate fills, a tick
+   and a lining numeral at every graduation. */
 .scale-bar {
+  position: relative;
   display: flex;
-  height: 5px;
-  border: 1px solid var(--ink);
+  height: 4px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 1.55rem;
 }
 
 .scale-bar span {
+  position: relative;
   flex: 1;
-}
-
-.scale-bar span:nth-child(odd) {
-  background: var(--ink);
-}
-
-.scale-bar span + span {
   border-left: 1px solid var(--ink);
 }
 
-.scale-t {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 0.3rem;
-  font-size: 0.92rem;
+.scale-bar span:nth-child(odd) {
+  background: var(--ink-2);
+}
+
+.scale-bar::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -1px;
+  bottom: -5px;
+  border-left: 1px solid var(--ink);
+}
+
+.scale-bar span::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 100%;
+  height: 4px;
+  border-left: 1px solid var(--ink);
+}
+
+.scale-bar i {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: -1px;
+  transform: translateX(-50%);
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1;
   color: var(--ink-3);
-  font-variant-numeric: lining-nums;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.scale-bar .scale-end {
+  left: auto;
+  right: 0;
+  transform: translateX(50%);
 }
 
 .scale-k {
+  margin: 0;
+  text-align: center;
   font-style: italic;
+  font-size: 0.86rem;
+  line-height: 1.2;
+  color: var(--ink-3);
+}
+
+html.dark .scale-bar span:nth-child(odd) {
+  background: color-mix(in srgb, var(--ink-2) 70%, transparent);
 }
 
 .ph {
@@ -2315,17 +2429,43 @@ code.shell {
   margin-top: 2rem;
 }
 
+/* On a phone the text is set a size down, about 46 characters to the line,
+   and hyphenated. */
 @media (max-width: 39.99rem) {
-  .tblock--strip .tb-row--minor {
+  body {
+    font-size: 1.075rem;
+  }
+
+  body .prose,
+  .intro p {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .intro .intro-lead {
+    font-size: 1.16rem;
+    line-height: 1.48;
+  }
+}
+
+@media (max-width: 39.99rem) {
+  .tblock--strip .tb-row--minor,
+  .tblock--strip .tb-row--secs {
     display: none;
   }
+}
+
+/* A lead illustration is held to part of the screen, uncropped, so the
+   text begins sooner. */
+.prose > .fig:first-child .fig-frame img {
+  max-height: min(52vh, 30rem);
 }
 
 /* ---------- Prose ---------------------------------------------------------- */
 
 .prose {
   hyphens: manual;
-  hyphenate-limit-chars: 8 4 4;
+  hyphenate-limit-chars: 7 3 3;
   hanging-punctuation: first;
 }
 
@@ -2434,7 +2574,7 @@ code.shell {
   padding-top: 0.2rem;
   font-style: normal;
   font-weight: 700;
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   letter-spacing: 0.04em;
   color: var(--ink-2);
   font-variant-numeric: lining-nums;
@@ -2520,6 +2660,12 @@ code.shell {
   color: var(--accent);
 }
 
+.prose a.url {
+  font-family: var(--f-mono);
+  font-size: 0.78em;
+  overflow-wrap: anywhere;
+}
+
 .prose img,
 .prose video,
 .prose iframe {
@@ -2571,19 +2717,19 @@ code.shell {
   text-align: center;
 }
 
+/* A narrow sketch is set as a centred block: the text column never
+   narrows beside it. */
 .fig--side {
-  float: right;
-  width: min(var(--fig-w, 35%), 15rem);
-  margin: 0.3em 0 1em 1.6em;
-  clear: right;
+  width: min(100%, 16rem);
+  margin: 1.8em auto;
 }
 
 .fig--side .fig-frame {
-  padding: 4px;
+  padding: 5px;
 }
 
 .fig--side figcaption {
-  font-size: 0.92rem;
+  text-align: center;
 }
 
 .prose > h2,
@@ -2621,10 +2767,18 @@ html.dark .fig--line img {
   position: relative;
 }
 
+/* A listing that scrolls sideways shows a soft shadow at the hidden edge. */
 .listing pre {
+  --lst-bg: var(--tint);
+  --lst-sh: color-mix(in srgb, var(--ink) 16%, transparent);
   margin: 0;
   padding: 0.95rem 1.15rem 1rem;
-  background: var(--tint);
+  background:
+    linear-gradient(to right, var(--lst-bg) 40%, transparent) left / 1.6rem 100% no-repeat local,
+    linear-gradient(to left, var(--lst-bg) 40%, transparent) right / 1.6rem 100% no-repeat local,
+    linear-gradient(to right, var(--lst-sh), transparent) left / 0.8rem 100% no-repeat scroll,
+    linear-gradient(to left, var(--lst-sh), transparent) right / 0.8rem 100% no-repeat scroll,
+    var(--lst-bg);
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
   box-shadow: 0 -3px 0 -2px var(--ink), 0 3px 0 -2px var(--ink);
@@ -2642,8 +2796,8 @@ html.dark .listing pre {
 
 /* A one-line listing is set between single hairlines, without the panel. */
 .listing--line pre {
+  --lst-bg: var(--paper);
   padding: 0.55rem 0.2rem;
-  background: none;
   border-top-color: var(--rule);
   border-bottom-color: var(--rule);
   box-shadow: none;
@@ -2666,12 +2820,8 @@ html.dark .listing--line pre {
 }
 
 @media (min-width: 75rem) {
-  /* Listings and wide tables run out into the right margin; their labels
-     hang on the same left line as the section marks. */
-  .prose > .listing {
-    margin-right: -4rem;
-  }
-
+  /* Listing labels hang on the same left line as the section marks; the
+     listing itself keeps the text's right edge. */
   .lst-cap {
     position: absolute;
     right: calc(100% + 1.2rem);
@@ -2689,7 +2839,7 @@ html.dark .listing--line pre {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: calc(100% + 1rem);
+    left: calc(100% + 1.25rem);
     width: 0.9rem;
     border-top: 1px solid var(--ink-3);
     border-bottom: 1px solid var(--ink-3);
@@ -2860,8 +3010,16 @@ html.dark .listing--line pre {
   max-width: 100%;
 }
 
+/* Charts a post brings are captioned like every other figure. */
 .prose .jsse-chart figcaption {
-  font-style: italic;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.prose .jsse-filters {
+  font-size: 0.95rem;
 }
 
 .prose .lead {
@@ -2930,7 +3088,7 @@ html.dark .listing--line pre {
 .stamp dt {
   font-family: var(--f-sc);
   font-weight: 600;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
   line-height: 1.2;
   color: var(--ink-3);
@@ -3013,19 +3171,35 @@ html.dark .listing--line pre {
   font-weight: 600;
 }
 
+.nb-k {
+  white-space: nowrap;
+}
+
+.nb-arr {
+  font-family: var(--f-text);
+  font-weight: 400;
+}
+
 .nb-t {
   font-size: 1.1rem;
   line-height: 1.3;
+  color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  text-decoration-color: var(--hair);
+  text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent);
   text-wrap: pretty;
 }
 
-.nb:hover .nb-t {
-  color: var(--accent);
+.nb:hover .nb-t,
+.nb:focus-visible .nb-t {
   text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+}
+
+.nb--all .nb-t {
+  color: var(--ink);
+  text-decoration-color: var(--hair);
 }
 
 @media (max-width: 39.99rem) {
@@ -3037,7 +3211,9 @@ html.dark .listing--line pre {
   .nb--all {
     grid-column: 1 / -1;
     grid-row: 2;
-    text-align: left;
+    text-align: center;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--hair);
   }
 }
 
@@ -3085,10 +3261,11 @@ html.dark .listing--line pre {
   justify-content: center;
 }
 
+/* As on the home page, the title block sits on the plate's right edge. */
 .is-about .page-grid {
-  grid-template-columns: minmax(0, var(--measure)) 17rem;
+  grid-template-columns: minmax(0, var(--measure)) minmax(15rem, 19rem);
   gap: 4rem;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .is-page .sheet-head {
@@ -3687,6 +3864,42 @@ html.dark .listing--line pre {
 
 .tb-filter {
   font-variant-numeric: lining-nums;
+}
+
+.cat-index .soi-z {
+  font-family: var(--f-sc);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* The active topic filter is marked in the strip and the parts list. */
+.catalogue:has(#only-code:target) .cat-index a[href="#only-code"],
+.catalogue:has(#only-notes:target) .cat-index a[href="#only-notes"] {
+  box-shadow: inset 2px 0 0 var(--accent);
+  margin-left: -0.6rem;
+  padding-left: 0.6rem;
+}
+
+.catalogue:has(#only-code:target) .cat-index a[href="#only-code"] .soi-t,
+.catalogue:has(#only-notes:target) .cat-index a[href="#only-notes"] .soi-t {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.catalogue:has(#only-code:target) .tb-filter[href="#only-code"],
+.catalogue:has(#only-notes:target) .tb-filter[href="#only-notes"] {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.catalogue:has(#only-code:target) .tb-filter[href="#only-code"]::after,
+.catalogue:has(#only-notes:target) .tb-filter[href="#only-notes"]::after {
+  content: ", shown";
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-3);
 }
 
 @media (pointer: coarse) {

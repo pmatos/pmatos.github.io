@@ -39,23 +39,24 @@ type: article
                 {% else %}
                 <div class="tb-row"><dt>Reading</dt><dd>{{ minutes }}&nbsp;min</dd></div>
                 {% endif %}
-                {% if secs | length > 1 %}<div class="tb-row"><dt>{{ "Letters" if voice == "notes" else "Sections" }}</dt><dd><a href="#soi" class="tb-jump">{{ (secs | first).letter }}&ndash;{{ (secs | last).letter }} <span class="tb-sub">({{ secs | length }})</span></a></dd></div>{% endif %}
+                {% if secs | length > 1 %}<div class="tb-row tb-row--secs"><dt>{{ "Letters" if voice == "notes" else "Sections" }}</dt><dd><a href="#soi" class="tb-jump">{{ (secs | first).letter }}&ndash;{{ (secs | last).letter }} <span class="tb-sub">({{ secs | length }})</span></a></dd></div>{% endif %}
                 {% if t.listings %}<div class="tb-row tb-row--minor"><dt>Listings</dt><dd>{{ t.listings }}</dd></div>{% endif %}
                 {% if t.figures %}<div class="tb-row tb-row--minor"><dt>Figures</dt><dd>{{ t.figures }}</dd></div>{% endif %}
                 <div class="tb-row tb-row--minor"><dt>Plate</dt><dd>{{ no }} <span class="tb-sub">of {{ total }}</span></dd></div>
             </dl>
             {% if secs | length > 1 %}
             <details class="soi-d" id="soi">
-                <summary>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}</summary>
+                <summary>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}<span class="soi-hu">{{ "bar" if voice == "notes" else "min" }}</span></summary>
                 <ol class="soi-list">
-                    {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z" data-for="{{ sct.id }}"></span></a></li>{% endfor %}
+                    {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{% if voice == "notes" %}{{ sct.bar }}{% else %}{{ sct.minute }}&prime;{% endif %}</span></a></li>{% endfor %}
                 </ol>
             </details>
             {% endif %}
             {% if voice == "notes" %}{{ score.staffOpen("G") }}{% else %}
+            {%- set segs = (minutes / scaleUnit) | round(0, "ceil") %}
             <div class="scale" aria-hidden="true">
-                <div class="scale-bar">{% for i in range(0, (minutes / scaleUnit) | round(0, "ceil")) %}<span></span>{% endfor %}</div>
-                <div class="scale-t"><span>0</span><span class="scale-k">Scale of reading</span><span>{{ minutes }}&nbsp;min</span></div>
+                <div class="scale-bar">{% for i in range(0, segs) %}<span><i>{{ i * scaleUnit }}</i></span>{% endfor %}<i class="scale-end">{{ segs * scaleUnit }}</i></div>
+                <p class="scale-k">Scale of reading, in minutes</p>
             </div>
             {% endif %}
         </header>
@@ -79,11 +80,11 @@ type: article
             {% endif %}
             <nav class="neighbours" aria-label="Neighbouring plates">
                 {% if prevPlate %}{% set pn = all | plateNo(prevPlate.url) %}
-                <a class="nb nb--prev" href="{{ prevPlate.url | url }}" rel="prev"><span class="nb-k">Preceding plate, Pl.&nbsp;{{ pn | roman }}</span><span class="nb-t">{{ prevPlate.data.title | inlineMd | safe }}</span></a>
+                <a class="nb nb--prev" href="{{ prevPlate.url | url }}" rel="prev"><span class="nb-k"><span class="nb-arr" aria-hidden="true">&larr;</span> Preceding<span class="nb-sep" aria-hidden="true"> &middot; </span><span class="visually-hidden">, </span>Pl.&nbsp;{{ pn | roman }}</span><span class="nb-t">{{ prevPlate.data.title | inlineMd | safe }}</span></a>
                 {% else %}<span class="nb nb--prev nb--none"><span class="nb-k">The first plate</span></span>{% endif %}
                 <a class="nb nb--all" href="{{ '/blog.html' | url }}"><span class="nb-k">Catalogue</span><span class="nb-t">All plates</span></a>
                 {% if nextPlate %}{% set nn = all | plateNo(nextPlate.url) %}
-                <a class="nb nb--next" href="{{ nextPlate.url | url }}" rel="next"><span class="nb-k">Following plate, Pl.&nbsp;{{ nn | roman }}</span><span class="nb-t">{{ nextPlate.data.title | inlineMd | safe }}</span></a>
+                <a class="nb nb--next" href="{{ nextPlate.url | url }}" rel="next"><span class="nb-k">Following<span class="nb-sep" aria-hidden="true"> &middot; </span><span class="visually-hidden">, </span>Pl.&nbsp;{{ nn | roman }} <span class="nb-arr" aria-hidden="true">&rarr;</span></span><span class="nb-t">{{ nextPlate.data.title | inlineMd | safe }}</span></a>
                 {% else %}<span class="nb nb--next nb--none"><span class="nb-k">The most recent plate</span></span>{% endif %}
             </nav>
         </footer>
@@ -91,11 +92,10 @@ type: article
     {% if secs | length > 1 %}
     <aside class="soi-m" id="soi-m" aria-label="{{ 'Rehearsal letters' if voice == 'notes' else 'Index of sections' }}">
         <div class="soi-m-in">
-            <p class="soi-h">{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}</p>
+            <p class="soi-h"><span>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}</span><span class="soi-hu">{{ "bar" if voice == "notes" else "min" }}</span></p>
             <ol class="soi-list">
-                {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z" data-for="{{ sct.id }}"></span></a></li>{% endfor %}
+                {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{% if voice == "notes" %}{{ sct.bar }}{% else %}{{ sct.minute }}&prime;{% endif %}</span></a></li>{% endfor %}
             </ol>
-            <p class="soi-note">Zone references read against the letters and figures in the plate border.</p>
         </div>
     </aside>
     {% endif %}
@@ -131,11 +131,24 @@ type: article
     <script>
     (function () {
         if (!window.Chart) return;
+        var EB = '"EB Garamond", Garamond, Georgia, serif';
+        var fontProp = Object.getOwnPropertyDescriptor(CanvasRenderingContext2D.prototype, "font");
+        // The post's bar-value labels set a system font on the canvas directly;
+        // each chart's own context is given the edition's face instead.
+        function engraveCtx(ctx) {
+            if (!ctx || !fontProp || ctx.__plate) return;
+            ctx.__plate = true;
+            Object.defineProperty(ctx, "font", {
+                configurable: true,
+                get: function () { return fontProp.get.call(this); },
+                set: function (v) { fontProp.set.call(this, String(v).replace(/(\d+)px system-ui, sans-serif/, function (m, px) { return (+px + 1) + "px " + EB; })); }
+            });
+        }
         function set() {
             try {
-                Chart.defaults.font.family = '"EB Garamond", Garamond, Georgia, serif';
+                Chart.defaults.font.family = EB;
                 Chart.defaults.font.size = 13;
-                Object.values(Chart.instances || {}).forEach(function (c) { c.update(); });
+                Object.values(Chart.instances || {}).forEach(function (c) { engraveCtx(c.ctx); c.update(); });
             } catch (e) {}
         }
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(set); else set();

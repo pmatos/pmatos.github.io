@@ -23,7 +23,7 @@
 {#- A detail bubble heading: letter over the plate it refers to. -#}
 {% macro detail(letter, title, id, note="") %}
 <div class="det-head">
-    <span class="det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>1</i></span>
+    <span class="secmark det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>&ndash;</i></span>
     <h2 id="{{ id }}" class="det-title"><span class="cut-k">Detail {{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
     {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
 </div>
@@ -98,6 +98,11 @@
 {% macro figNotes(musicUrl) %}
 <figure class="pfig pfig--notes" aria-labelledby="fig2-cap">
     <div class="pfig-field">
+        <div class="gs-hd" aria-hidden="true">
+            <p class="xl-h"><span class="balloon">a</span><span class="xl-ht">First <small>lesson</small></span></p>
+            <p class="xl-h"><span class="balloon">b</span><span class="xl-ht">First <small>performance</small></span></p>
+        </div>
+        <div class="gfield">
         <svg class="gstaff" viewBox="-4.4 -9.2 51 27" role="img" aria-label="A grand staff. Middle C in the first bar, labelled a; a multi-measure rest of eight bars; middle C again under a fermata, labelled b. A dimension line above measures eight months from a to b." focusable="false">
             <defs>
                 <marker id="dim-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="1.1" markerHeight="1.1" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 10 5 0 8.4Z"/></marker>
@@ -126,17 +131,18 @@
             <text class="gs-num" x="25.4" y="-0.9" text-anchor="middle">8</text>
             <text class="gs-num" x="25.4" y="8.1" text-anchor="middle">8</text>
             <g class="dim">
-                <path class="dim-ext" d="M10.58 3.2V-8.4M38.38 -2.9V-8.4"/>
-                <path class="dim-l" d="M10.66 -7.2H21.6M29.2 -7.2H38.3" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
-                <text class="dim-tx" x="25.4" y="-6.62" text-anchor="middle">8 months</text>
+                <path class="dim-ext" d="M10.58 -0.7V-8.4M38.38 -3.4V-8.4"/>
+                <path class="dim-l" d="M10.66 -7.2H38.3" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
             </g>
             <g class="lead">
-                <path class="lead-l" d="M10.0 5.9 6.6 15.4"/><circle class="lead-dot" cx="10.0" cy="5.9" r="0.22"/>
-                <circle class="lead-b" cx="6" cy="16.6" r="1.2"/><text class="lead-t" x="6" y="17.05" text-anchor="middle">a</text>
-                <path class="lead-l" d="M38.9 5.9 42.4 15.4"/><circle class="lead-dot" cx="38.9" cy="5.9" r="0.22"/>
-                <circle class="lead-b" cx="43" cy="16.6" r="1.2"/><text class="lead-t" x="43" y="17.05" text-anchor="middle">b</text>
+                <path class="lead-l" d="M10.0 5.9 6 16.6"/><circle class="lead-dot" cx="10.0" cy="5.9" r="0.22"/>
+                <path class="lead-l" d="M38.9 5.9 43 16.6"/><circle class="lead-dot" cx="38.9" cy="5.9" r="0.22"/>
             </g>
         </svg>
+        <span class="g-dim" aria-hidden="true">8 months</span>
+        <span class="balloon g-b g-b--a" aria-hidden="true">a</span>
+        <span class="balloon g-b g-b--b" aria-hidden="true">b</span>
+        </div>
     </div>
     <figcaption id="fig2-cap"><span class="fig-no">Fig. 2</span> <span class="fig-alt">Elevation of a beginning. Middle C at the first lesson, January 2022 (a); the <a href="{{ musicUrl | url }}">first public performance</a>, eight months later (b).</span></figcaption>
 </figure>
