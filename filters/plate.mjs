@@ -217,8 +217,8 @@ export const sectionsOf = (html) => {
   return out;
 };
 
-// What the body pass numbers. tally() counts with the same patterns, so the
-// title strip and the catalogue agree with the captions.
+// What the body pass numbers. tally() counts engrave's own output, so the
+// title strip and the catalogue always agree with the captions.
 const LISTING = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/g;
 // An image alone in a paragraph or a wrapper div, an image written as its own
 // HTML block between block elements, or a chart a post brings with its own
@@ -226,17 +226,12 @@ const LISTING = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/g;
 const FIGURE = new RegExp(
   [
     /<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>/.source,
-    /(?<=^|<\/(?:p|div|figure|ul|ol|blockquote|table|h[1-6])>\n)(<img\b[^>]*>)[ \t]*(?=\n<|\n?$)/.source,
+    /(?<=^\s*|<\/(?:p|div|figure|ul|ol|blockquote|table|pre|h[1-6])>\n)(<img\b[^>]*>)[ \t]*(?=\n<|\n?$)/.source,
     /(<figure class="jsse-chart"[^>]*>[\s\S]*?<figcaption>)([\s\S]*?)(<\/figcaption>)/.source,
   ].join("|"),
   "g",
 );
 const EXAMPLE = /<svg\b([^>]*?)\swidth="[\d.]+mm"\sheight="[\d.]+mm"\sviewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"([^>]*)>([\s\S]*?)<\/svg>/g;
-const count = (s, re) => (s.match(re) || []).length;
-export const tally = (html) => {
-  const s = String(html ?? "");
-  return { figures: count(s, FIGURE), listings: count(s, LISTING), examples: count(s, EXAMPLE) };
-};
 
 // The body pass: figures, listings, music examples and section marks are
 // numbered in reading order, and the text is finished.
@@ -346,6 +341,16 @@ export const llSplit = (s, target = 260) => {
     return done(html.slice(0, sp), html.slice(sp));
   }
   return done(html, "");
+};
+
+const count = (s, re) => (s.match(re) || []).length;
+export const tally = (html) => {
+  const e = engrave(html);
+  return {
+    figures: count(e, /class="fig-no">Fig\. /g),
+    listings: count(e, /class="lst-no">/g),
+    examples: count(e, /class="fig-no">Ex\. /g),
+  };
 };
 
 export default function plate(eleventyConfig) {
