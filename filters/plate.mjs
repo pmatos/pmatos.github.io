@@ -269,6 +269,39 @@ export const engrave = (html, opts = {}) => {
   return setTables(out);
 };
 
+// A link log summary: a head of about two sentences and the remainder.
+const plain = markdownIt("zero");
+// Full stops that do not end a sentence: list numerals (1.), initials and
+// common abbreviations (vs., e.g., i.e.).
+const NOT_AN_END = /(?:^|[\s(])(?:\d+|[A-Za-z]|vs|etc|cf|approx|incl|al|e\.g|i\.e|Mr|Mrs|Ms|Dr|St|Jr|Sr|No|Fig|vol|pp)\.$/i;
+// A head cut mid-sentence must not end on one of these.
+const WEAK = new Set(("a an the and or but nor so yet of to in on at by for from with into onto upon over under " +
+  "as than that which who whom whose this these those its their his her our your my is are was were be been " +
+  "being has have had do does did can could will would should may might must not no such like via vs e.g. i.e.").split(" "));
+export const llSplit = (s, target = 260) => {
+  const html = plain.renderInline(String(s ?? "").replace(/\s+/g, " ").trim());
+  const done = (head, tail) => ({ head: finishHtml(head), tail: finishHtml(tail) });
+  if (html.length <= target + 80) return done(html, "");
+  let end = -1;
+  for (const m of html.matchAll(/[.!?:](&quot;|[”’)])*(?=\s)/g)) {
+    const at = m.index + m[0].length;
+    if (at > target + 40) break;
+    // A head never ends on a colon: it would promise a list it then hides.
+    if (at < 110 || m[0][0] === ":") continue;
+    if (m[0][0] === "." && NOT_AN_END.test(html.slice(Math.max(0, m.index - 12), m.index + 1))) continue;
+    end = at;
+  }
+  if (end > 0) return done(html.slice(0, end), html.slice(end));
+  // No sentence ends in reach: cut at a space after a word that can close a
+  // phrase, never after a comma or a function word.
+  for (let sp = html.lastIndexOf(" ", target); sp >= 110; sp = html.lastIndexOf(" ", sp - 1)) {
+    const word = html.slice(html.lastIndexOf(" ", sp - 1) + 1, sp);
+    if (/[,;(–—-]$/.test(word) || WEAK.has(word.toLowerCase())) continue;
+    return done(html.slice(0, sp), html.slice(sp));
+  }
+  return done(html, "");
+};
+
 export default function plate(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_11ty/_static/js": "js" });
   eleventyConfig.addGlobalData("build", () => ({ date: new Date() }));
@@ -280,25 +313,9 @@ export default function plate(eleventyConfig) {
   const inlineMd = markdownIt({ html: true });
   eleventyConfig.addFilter("inlineMd", (s, ties = false) => finishHtml(inlineMd.renderInline(String(s ?? "").trim()), ties));
   eleventyConfig.addFilter("sections", sectionsOf);
-  const plain = markdownIt("zero");
   eleventyConfig.addFilter("smartText", (s) => finishHtml(plain.renderInline(String(s ?? ""))));
 
-  // A link log summary: a head of about two sentences and the remainder.
-  eleventyConfig.addFilter("llSplit", (s, target = 260) => {
-    const html = plain.renderInline(String(s ?? "").replace(/\s+/g, " ").trim());
-    const done = (head, tail) => ({ head: finishHtml(head), tail: finishHtml(tail) });
-    if (html.length <= target + 80) return done(html, "");
-    let end = -1;
-    for (const m of html.matchAll(/[.!?:](&quot;|[”’)])*(?=\s)/g)) {
-      const at = m.index + m[0].length;
-      if (at > target + 40) break;
-      // A head never ends on a colon: it would promise a list it then hides.
-      if (at >= 110 && m[0][0] !== ":") end = at;
-    }
-    if (end > 0) return done(html.slice(0, end), html.slice(end));
-    const sp = html.lastIndexOf(" ", target);
-    return done(html.slice(0, sp), html.slice(sp));
-  });
+  eleventyConfig.addFilter("llSplit", llSplit);
 
   eleventyConfig.addFilter("plateNo", (collection, url) => {
     const i = (collection || []).findIndex((p) => p.url === url);
