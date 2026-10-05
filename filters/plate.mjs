@@ -204,6 +204,27 @@ export const sectionsOf = (html) => {
   return out;
 };
 
+// What the body pass numbers. tally() counts with the same patterns, so the
+// title strip and the catalogue agree with the captions.
+const LISTING = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/g;
+// An image alone in a paragraph or a wrapper div, an image written as its own
+// HTML block between block elements, or a chart a post brings with its own
+// caption.
+const FIGURE = new RegExp(
+  [
+    /<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>/.source,
+    /(?<=^|<\/(?:p|div|figure|ul|ol|blockquote|table|h[1-6])>\n)(<img\b[^>]*>)[ \t]*(?=\n<|\n?$)/.source,
+    /(<figure class="jsse-chart"[^>]*>[\s\S]*?<figcaption>)([\s\S]*?)(<\/figcaption>)/.source,
+  ].join("|"),
+  "g",
+);
+const EXAMPLE = /<svg\b([^>]*?)\swidth="[\d.]+mm"\sheight="[\d.]+mm"\sviewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"([^>]*)>([\s\S]*?)<\/svg>/g;
+const count = (s, re) => (s.match(re) || []).length;
+export const tally = (html) => {
+  const s = String(html ?? "");
+  return { figures: count(s, FIGURE), listings: count(s, LISTING), examples: count(s, EXAMPLE) };
+};
+
 // The body pass: figures, listings, music examples and section marks are
 // numbered in reading order, and the text is finished.
 export const engrave = (html, opts = {}) => {
@@ -212,7 +233,7 @@ export const engrave = (html, opts = {}) => {
   let fig = 0, lst = 0, ex = 0;
   let out = finishHtml(dropTitleRepeat(String(html ?? "")));
 
-  out = out.replace(/<pre\b([^>]*)>([\s\S]*?)<\/pre>/g, (all, attrs, inner) => {
+  out = out.replace(LISTING, (all, attrs, inner) => {
     lst++;
     const m = inner.match(/^(<code\b[^>]*>)([\s\S]*?)(<\/code>)?$/);
     const body = m ? m[1] + dedent(m[2].replace(/\n+$/, "")) + (m[3] || "") : dedent(inner);
@@ -226,13 +247,13 @@ export const engrave = (html, opts = {}) => {
     return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${lettered}</pre>${dim}</div></figure>`;
   });
 
-  // Images alone in a paragraph or a wrapper div become numbered figures,
-  // captioned with their alt text (a narrow, right-aligned sketch is a side
-  // figure). Charts a post brings with its own caption share the numbering.
+  // Images become numbered figures (a narrow, right-aligned sketch is a side
+  // figure); charts keep their own caption and share the numbering.
   out = out.replace(
-    /<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>|(<figure class="jsse-chart"[^>]*>[\s\S]*?<figcaption>)([\s\S]*?)(<\/figcaption>)/g,
-    (all, tag, attrs, img, chartHead, chartCap, chartEnd) => {
+    FIGURE,
+    (all, tag, attrs = "", wrapped, bare, chartHead, chartCap, chartEnd) => {
       fig++;
+      const img = wrapped || bare;
       if (chartHead) return `${chartHead}<span class="fig-no">Fig. ${fig}</span> <span class="fig-alt">${chartCap}</span>${chartEnd}`;
       const alt = (img.match(/\balt="([^"]*)"/) || [])[1] || "";
       const w = (img.match(/\bwidth="(\d+)%"/) || [])[1];
@@ -246,7 +267,7 @@ export const engrave = (html, opts = {}) => {
   );
 
   out = out.replace(
-    /<svg\b([^>]*?)\swidth="[\d.]+mm"\sheight="[\d.]+mm"\sviewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"([^>]*)>([\s\S]*?)<\/svg>/g,
+    EXAMPLE,
     (all, pre, x, y, w, h, post, inner) => {
       ex++;
       return `<figure class="ly-ex" style="--ly-w:${w}"><figcaption class="ly-cap"><span class="fig-no">Ex. ${ex}</span></figcaption><svg${pre} viewBox="${x} ${y} ${w} ${h}"${post} role="img" aria-label="Music example ${ex}, engraved with LilyPond">${inner}</svg></figure>`;
@@ -337,16 +358,7 @@ export default function plate(eleventyConfig) {
   eleventyConfig.addFilter("tempo", (m) =>
     m <= 2 ? "Presto" : m <= 4 ? "Allegro" : m <= 6 ? "Allegretto" : m <= 9 ? "Andante" : m <= 13 ? "Adagio" : "Largo",
   );
-  eleventyConfig.addFilter("tally", (html) => {
-    const s = String(html ?? "");
-    return {
-      figures: (s.match(/<img\b/g) || []).length + (s.match(/<figure class="jsse-chart"/g) || []).length,
-      listings: (s.match(/<pre\b/g) || []).length,
-      examples: (s.match(/<svg\b[^>]*\swidth="[\d.]+mm"/g) || []).length,
-      sections: (s.match(/<h1\b/g) || []).length || (s.match(/<h2\b/g) || []).length,
-      notes: (s.match(/class="footnote-item"/g) || []).length,
-    };
-  });
+  eleventyConfig.addFilter("tally", tally);
 
   const TAG_NAMES = {
     riscv: "RISC-V", webkit: "WebKit", javascript: "JavaScript", creduce: "C-Reduce", racket: "Racket",
