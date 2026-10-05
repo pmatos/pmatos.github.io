@@ -71,7 +71,11 @@ export const finishHtml = (html, ties = false) => {
     .split(/(<!--[\s\S]*?-->|<[^>]+>)/)
     .map((part, i) => {
       if (i % 2 === 1) {
-        if (SKIP.test(part) && !part.endsWith("/>")) depth = part[1] === "/" ? Math.max(0, depth - 1) : depth + 1;
+        if (SKIP.test(part) && !part.endsWith("/>")) {
+          depth = part[1] === "/" ? Math.max(0, depth - 1) : depth + 1;
+          // Skipped text is a word as far as quotes go: <code>cd</code>'d.
+          state.prev = "x";
+        }
         return part;
       }
       return depth ? part : wrapTokens(smarten(part, state), ties);
