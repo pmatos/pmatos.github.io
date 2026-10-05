@@ -46,9 +46,9 @@ type: article
             </dl>
             {% if secs | length > 1 %}
             <details class="soi-d" id="soi">
-                <summary>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}<span class="soi-hu">{{ "bar" if voice == "notes" else "min" }}</span></summary>
+                <summary>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}<span class="soi-hu">min</span></summary>
                 <ol class="soi-list">
-                    {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{% if voice == "notes" %}{{ sct.bar }}{% else %}{{ sct.minute }}&prime;{% endif %}</span></a></li>{% endfor %}
+                    {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{{ sct.minute }}&prime;</span></a></li>{% endfor %}
                 </ol>
             </details>
             {% endif %}
@@ -92,9 +92,9 @@ type: article
     {% if secs | length > 1 %}
     <aside class="soi-m" id="soi-m" aria-label="{{ 'Rehearsal letters' if voice == 'notes' else 'Index of sections' }}">
         <div class="soi-m-in">
-            <p class="soi-h"><span>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}</span><span class="soi-hu">{{ "bar" if voice == "notes" else "min" }}</span></p>
+            <p class="soi-h"><span>{{ "Rehearsal letters" if voice == "notes" else "Index of sections" }}</span><span class="soi-hu">min</span></p>
             <ol class="soi-list">
-                {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{% if voice == "notes" %}{{ sct.bar }}{% else %}{{ sct.minute }}&prime;{% endif %}</span></a></li>{% endfor %}
+                {%- for sct in secs %}<li><a href="#{{ sct.id }}"><span class="soi-l">{{ sct.letter }}</span><span class="soi-t">{{ sct.title | safe }}</span><span class="soi-z">{{ sct.minute }}&prime;</span></a></li>{% endfor %}
             </ol>
         </div>
     </aside>
@@ -127,34 +127,7 @@ type: article
     </main>
     {% include "footer.njk" %}
     {% if secs | length > 1 %}<script src="{{ '/js/plate.js' | url }}" defer></script>{% endif %}
-    {% if "jsse-chart" in content %}
-    <script>
-    (function () {
-        if (!window.Chart) return;
-        var EB = '"EB Garamond", Garamond, Georgia, serif';
-        var fontProp = Object.getOwnPropertyDescriptor(CanvasRenderingContext2D.prototype, "font");
-        // The post's bar-value labels set a system font on the canvas directly;
-        // each chart's own context is given the edition's face instead.
-        function engraveCtx(ctx) {
-            if (!ctx || !fontProp || ctx.__plate) return;
-            ctx.__plate = true;
-            Object.defineProperty(ctx, "font", {
-                configurable: true,
-                get: function () { return fontProp.get.call(this); },
-                set: function (v) { fontProp.set.call(this, String(v).replace(/(\d+)px system-ui, sans-serif/, function (m, px) { return (+px + 1) + "px " + EB; })); }
-            });
-        }
-        function set() {
-            try {
-                Chart.defaults.font.family = EB;
-                Chart.defaults.font.size = 13;
-                Object.values(Chart.instances || {}).forEach(function (c) { engraveCtx(c.ctx); c.update(); });
-            } catch (e) {}
-        }
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(set); else set();
-    })();
-    </script>
-    {% endif %}
+    {% if "jsse-chart" in content %}<script src="{{ '/js/plate-charts.js' | url }}" defer></script>{% endif %}
 </div>
 </body>
 <!-- End Body -->

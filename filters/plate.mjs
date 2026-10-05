@@ -149,6 +149,15 @@ const guessLang = (text) => {
   return "text";
 };
 
+// A bare x86 listing is lettered like a highlighted one: the mnemonic as a
+// keyword, immediates as numbers, brackets and commas as punctuation.
+const asmTokens = (body) =>
+  body.replace(/^([ \t]*)([a-z][a-z0-9]*)(?=[ \t]|$)(.*)$/gm, (all, ws, op, rest) =>
+    `${ws}<span class="token keyword">${op}</span>` +
+    rest
+      .replace(/(?<![\w#&])(#?(?:0x[0-9a-f]+|\d+))(?!\w)/gi, '<span class="token number">$1</span>')
+      .replace(/([[\],])/g, '<span class="token punctuation">$1</span>'));
+
 const LETTER = (i) => LETTERS[i % LETTERS.length];
 const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
 
@@ -159,13 +168,10 @@ export const sectionsOf = (html) => {
   const out = [];
   for (const m of s.matchAll(new RegExp(`<${level}\\b[^>]*>([\\s\\S]*?)<\\/${level}>`, "g"))) {
     const L = LETTER(out.length);
-    // Where the section starts: the reading minute (read against the scale
-    // bar) and the bar, counting each paragraph, list item or example before
-    // it as one bar.
+    // Where the section starts, in minutes of reading.
     const before = s.slice(0, m.index);
     const words = before.replace(/<(script|style|svg)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-    const bar = (before.match(/<(p|li)\b|<svg\b[^>]*\swidth="[\d.]+mm"/g) || []).length + 1;
-    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), bar, title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
+    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), title: finishHtml(m[1].replace(/<(?!\/?(code|em|i)\b)[^>]+>/g, "").replace(/\s*:\s*$/, "")) });
   }
   return out;
 };
@@ -185,10 +191,11 @@ export const engrave = (html, opts = {}) => {
     const lang = (attrs.match(/language-([\w+-]+)/) || [])[1] || "";
     const text = body.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
     const name = LANGS[lang.toLowerCase()] || lang || guessLang(text);
+    const lettered = !lang && name === "x86 assembly" && !/<span\b/.test(body) ? body.replace(/^(<code\b[^>]*>)?([\s\S]*?)(<\/code>)?$/, (a, o, t, c) => (o || "") + asmTokens(t) + (c || "")) : body;
     const lines = text.replace(/\n+$/, "").split("\n").length;
     const cap = `<figcaption class="lst-cap"><span class="lst-no">Listing ${lst}</span>${name ? `<span class="lst-lang">${name}</span>` : ""}</figcaption>`;
     const dim = lines > 2 ? `<span class="lst-dim" aria-hidden="true"><span>${lines} lines</span></span>` : "";
-    return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${body}</pre>${dim}</div></figure>`;
+    return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${lettered}</pre>${dim}</div></figure>`;
   });
 
   // Images alone in a paragraph or a wrapper div become numbered figures,
@@ -228,9 +235,16 @@ export const engrave = (html, opts = {}) => {
     const mark =
       voice === "notes"
         ? `<span class="reh" aria-hidden="true">${L}</span>`
-        : `<span class="secmark" aria-hidden="true"><b>${L}</b><i>${plate || "–"}</i></span>`;
-    return `<h2 class="sec" id="section-${L.toLowerCase()}"${attrs}>${mark}<span class="sec-t">${inner}</span></h2>`;
+        : `<span class="secmark" aria-hidden="true"><b>${L}</b>${plate ? `<i>${plate}</i>` : ""}</span>`;
+    return `<h2 class="sec" id="section-${L.toLowerCase()}"${attrs}>${mark}<span class="sec-t">${inner.replace(/\s*:\s*$/, "")}</span></h2>`;
   });
+
+  // A lead illustration follows the first paragraph, so the text starts on
+  // the first screen.
+  out = out.replace(
+    /^(\s*)(<figure class="fig\b[^"]*"[^>]*>[\s\S]*?<\/figure>)(\s*)(<p\b[\s\S]*?<\/p>)/,
+    (all, ws, figure, gap, para) => ws + para + gap + figure.replace('class="fig', 'class="fig fig--lead'),
+  );
 
   out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
   // A bare URL in the text is set as code, so its break reads as a code break.

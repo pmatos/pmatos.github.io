@@ -12,36 +12,45 @@
 {%- macro voiceName(voice) -%}{{ "Notes" if voice == "notes" else "Code" }}{%- endmacro %}
 
 {#- A section cut line across the measure: letter, arrowhead, rule, arrowhead, letter. -#}
-{% macro cut(letter, title, id, note="") %}
+{% macro cut(letter, title, id, note="", inline=false) %}
+{%- if inline %}
+<div class="cut-head cut-head--inline">
+    <h2 id="{{ id }}" class="cut cut--titled"><span class="cut-l" aria-hidden="true">{{ letter }}</span><span class="cut-end" aria-hidden="true"></span><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span><span class="cut-rule" aria-hidden="true"></span><span class="cut-end" aria-hidden="true"></span><span class="cut-l" aria-hidden="true">{{ letter }}</span></h2>
+    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
+</div>
+{%- else %}
 <div class="cut-head">
     <div class="cut" aria-hidden="true"><span class="cut-l">{{ letter }}</span><span class="cut-end"></span><span class="cut-rule"></span><span class="cut-end"></span><span class="cut-l">{{ letter }}</span></div>
     <h2 id="{{ id }}" class="cut-title"><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
     {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
 </div>
+{%- endif %}
 {% endmacro %}
 
 {#- A detail bubble heading: letter over the plate it refers to. -#}
 {% macro detail(letter, title, id, note="") %}
 <div class="det-head">
-    <span class="secmark det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>&ndash;</i></span>
+    <span class="secmark det-bubble" aria-hidden="true"><b>{{ letter }}</b></span>
     <h2 id="{{ id }}" class="det-title"><span class="cut-k">Detail {{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
     {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
 </div>
 {% endmacro %}
 
 {#- One row of the index of plates. -#}
-{% macro row(post, all, withYear=false) %}
+{% macro row(post, all, withYear=false, compact=false) %}
 {%- set no = all | plateNo(post.url) %}
 {%- set v = post.data.tags | voice %}
 {%- set minutes = post.content | readingMinutes %}
 {%- set t = post.content | tally %}
-<li class="pl pl--{{ v }}">
+<li class="pl pl--{{ v }}{% if compact %} pl--toc{% endif %}">
     <span class="pl-no"><span aria-hidden="true">Pl.&nbsp;{{ no | roman }}</span><span class="visually-hidden">Plate {{ no }}</span></span>
     <span class="pl-mark" title="{{ voiceName(v) }}">{{ mark(v) }}<span class="visually-hidden">{{ voiceName(v) }}: </span></span>
     <div class="pl-body">
-        <p class="pl-line"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd(true) | safe }}</a><span class="leader" aria-hidden="true"></span><time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
+        <p class="pl-line"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd(true) | safe }}</a><span class="leader" aria-hidden="true"></span>{% if compact %}<span class="pl-min">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {% endif %}{{ minutes }}&nbsp;min</span>{% endif %}<time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
+        {% if not compact %}
         {% if post.data.description %}<p class="pl-desc">{{ post.data.description | inlineMd | safe }}</p>{% endif %}
         <p class="pl-meta">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {{ minutes }}&nbsp;min{% if t.examples %}, {{ t.examples }}&nbsp;music example{% if t.examples > 1 %}s{% endif %}{% endif %}{% else %}{{ minutes }}&nbsp;min{% if t.listings %}, {{ t.listings }}&nbsp;listing{% if t.listings > 1 %}s{% endif %}{% endif %}{% if t.figures %}, {{ t.figures }}&nbsp;fig{% if t.figures > 1 %}s{% endif %}.{% endif %}{% endif %}</p>
+        {% endif %}
     </div>
 </li>
 {% endmacro %}
