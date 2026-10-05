@@ -14,10 +14,6 @@
    ========================================================================== */
 
 :root {
-  /* Names a post's own embedded styles read (the guardrails charts). */
-  --color-accent: var(--accent);
-  --color-text: var(--ink);
-  --color-text-muted: var(--ink-2);
   --paper: #f4eddc;
   --paper-out: #e8dfc7;
   --tint: #ede5d0;
@@ -40,7 +36,7 @@
   --code-keyword: var(--accent);
   --code-deleted: #7f2d22;
 
-  /* Legacy names read by inline post styles (the JSSE charts). */
+  /* Legacy names read by inline post styles (the JSSE and guardrails charts). */
   --color-text: var(--ink);
   --color-text-muted: var(--ink-2);
   --color-accent: var(--accent);
