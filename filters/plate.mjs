@@ -367,7 +367,13 @@ export default function plate(eleventyConfig) {
   });
   eleventyConfig.addFilter("voice", voiceOf);
   eleventyConfig.addFilter("ofVoice", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v));
-  eleventyConfig.addFilter("byUrl", (collection, url) => (collection || []).find((p) => p.url === url));
+  // A post named by its source file, which outlives title and permalink
+  // changes. A missing post fails the build rather than printing blanks.
+  eleventyConfig.addFilter("byFile", (collection, file) => {
+    const post = (collection || []).find((p) => p.inputPath.endsWith(`/${file}`));
+    if (!post) throw new Error(`plate: no post built from "${file}"; update the reference in home.njk`);
+    return post;
+  });
   eleventyConfig.addFilter("voiceCount", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v).length);
 
   eleventyConfig.addFilter("readingMinutes", (html) => {

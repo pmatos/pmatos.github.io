@@ -10,9 +10,11 @@ type: website
 {%- set latest = posts | last -%}
 {%- set firstYear = (posts | first).date | yearOf -%}
 {%- set lastYear = latest.date | yearOf -%}
-{%- set x87url = "/blog/fex-x87-stack-optimization.html" -%}
-{%- set musicUrl = "/blog/from-middle-c-to-concert.html" -%}
-{%- set x87post = posts | byUrl(x87url) -%}
+{#- The two posts the frontispiece figures cite, by source file. -#}
+{%- set x87post = posts | byFile("2024-09-25-fex-x87-stack-optimization.md") -%}
+{%- set musicPost = posts | byFile("2022-10-24-middlec-to-concert.md") -%}
+{%- set x87url = x87post.url -%}
+{%- set musicUrl = musicPost.url -%}
 {%- set notesPosts = posts | ofVoice("notes") -%}
 {%- set latestNotes = notesPosts | last -%}
 <!DOCTYPE html>
