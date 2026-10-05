@@ -101,7 +101,6 @@ The `tailwind.config.js` uses extensive custom theme configuration:
 - Custom screens breakpoints starting from 450px
 - Full color palette retained from default Tailwind
 - Custom font stacks with Roboto Serif for serif content
-- Typography plugin enabled for prose content
 
 ### Static Assets Organization
 Static files are organized under `src/_11ty/_static/`:
