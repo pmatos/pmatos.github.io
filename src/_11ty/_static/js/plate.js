@@ -2,7 +2,7 @@
 // lets the strip's Sections cell open the index. Without this script the
 // index still lists and links every section.
 (function () {
-  var links = Array.prototype.slice.call(document.querySelectorAll(".soi-list a[href^='#section-']"));
+  var links = Array.prototype.slice.call(document.querySelectorAll(".soi-list a[href^='#']"));
   if (!links.length) return;
 
   document.querySelectorAll('a[href="#soi"]').forEach(function (a) {

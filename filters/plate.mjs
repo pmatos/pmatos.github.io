@@ -181,7 +181,20 @@ const asmTokens = (body) =>
       .replace(/(?<![\w#&])(#?(?:0x[0-9a-f]+|\d+))(?!\w)/gi, '<span class="token number">$1</span>')
       .replace(/([[\],])/g, '<span class="token punctuation">$1</span>'));
 
-const LETTER = (i) => LETTERS[i % LETTERS.length];
+// A, B, ... Z (no I or O), then AA, AB, ...
+const LETTER = (i) => {
+  const n = LETTERS.length;
+  return i < n ? LETTERS[i] : LETTER(Math.floor(i / n) - 1) + LETTERS[i % n];
+};
+// A section keeps an id its author gave it, so #anchors into the piece still
+// work; otherwise it is named for its letter.
+const ID_ATTR = /\sid\s*=\s*(["'])(.*?)\1/;
+const CLASS_ATTR = /\sclass\s*=\s*"/;
+const sectionId = (attrs, L) => (attrs.match(ID_ATTR) || [])[2] || `section-${L.toLowerCase()}`;
+const sectionAttrs = (attrs, id) => {
+  const rest = attrs.replace(ID_ATTR, "");
+  return `${CLASS_ATTR.test(rest) ? rest.replace(CLASS_ATTR, ' class="sec ') : ` class="sec"${rest}`} id="${id}"`;
+};
 const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
 // A piece's only h1, when it opens the body, repeats the page title: it is
 // not a section, and keeping it would demote the real ## sections below it.
@@ -194,12 +207,12 @@ export const sectionsOf = (html) => {
   const s = dropTitleRepeat(String(html ?? ""));
   const level = headingLevel(s);
   const out = [];
-  for (const m of s.matchAll(new RegExp(`<${level}\\b[^>]*>([\\s\\S]*?)<\\/${level}>`, "g"))) {
+  for (const m of s.matchAll(new RegExp(`<${level}\\b([^>]*)>([\\s\\S]*?)<\\/${level}>`, "g"))) {
     const L = LETTER(out.length);
     // Where the section starts, in minutes of reading.
     const before = s.slice(0, m.index);
     const words = stripTags(stripTags(before, /<(script|style|svg)[\s\S]*?<\/\1>/gi, " "), /<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
-    out.push({ letter: L, id: `section-${L.toLowerCase()}`, minute: Math.floor(words / 230), title: finishHtml(stripTags(m[1], /<(?!\/?(code|em|i)\b)[^>]*>/g).replace(/\s*:\s*$/, "")) });
+    out.push({ letter: L, id: sectionId(m[1], L), minute: Math.floor(words / 230), title: finishHtml(stripTags(m[2], /<(?!\/?(code|em|i)\b)[^>]*>/g).replace(/\s*:\s*$/, "")) });
   }
   return out;
 };
@@ -291,7 +304,7 @@ export const engrave = (html, opts = {}) => {
       voice === "notes"
         ? `<span class="reh" aria-hidden="true">${L}</span>`
         : `<span class="secmark" aria-hidden="true"><b>${L}</b>${plate ? `<i>${plate}</i>` : ""}</span>`;
-    return `<h2 class="sec" id="section-${L.toLowerCase()}"${attrs}>${mark}<span class="sec-t">${inner.replace(/\s*:\s*$/, "")}</span></h2>`;
+    return `<h2${sectionAttrs(attrs, sectionId(attrs, L))}>${mark}<span class="sec-t">${inner.replace(/\s*:\s*$/, "")}</span></h2>`;
   });
 
   out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
