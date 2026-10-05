@@ -63,12 +63,16 @@ const wrapTokens = (text, ties) => {
   if (ties) out = out.replace(TIES, "$1\u00a0");
   return out;
 };
-const SKIP = /^<\/?(code|pre|kbd|samp|svg|script|style|textarea|math|tt)\b/i;
+const SKIP = /^<\/?(code|pre|kbd|samp|svg|textarea|math|tt)\b/i;
+// Comments, whole script and style elements, and tags whose quoted attribute
+// values may hold a `>`. Only non-capturing groups inside: split() keeps the
+// outer group, so tags stay at the odd indices.
+const TOKENS = /(<!--[\s\S]*?-->|<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>|<\/?[A-Za-z](?:[^>"']|"[^"]*"|'[^']*')*>)/i;
 export const finishHtml = (html, ties = false) => {
   let depth = 0;
   const state = { prev: "" };
   return String(html ?? "")
-    .split(/(<!--[\s\S]*?-->|<[^>]+>)/)
+    .split(TOKENS)
     .map((part, i) => {
       if (i % 2 === 1) {
         if (SKIP.test(part) && !part.endsWith("/>")) {
