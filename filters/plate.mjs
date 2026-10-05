@@ -267,7 +267,9 @@ export const engrave = (html, opts = {}) => {
     FIGURE,
     (all, tag, attrs = "", wrapped, bare, chartHead, chartCap, chartEnd) => {
       fig++;
-      const img = wrapped || bare;
+      // A width the post set inline (max-width: 50%) sizes the frame instead.
+      const inlineW = (bare || "").match(/\bstyle="[^"]*?\bmax-width:\s*(\d+)%;?/);
+      const img = inlineW ? bare.replace(/\s*\bmax-width:\s*\d+%;?\s*/, " ").replace(/\bstyle=" /, 'style="') : wrapped || bare;
       if (chartHead) return `${chartHead}<span class="fig-no">Fig. ${fig}</span> <span class="fig-alt">${chartCap}</span>${chartEnd}`;
       // The alt text stays on the image for screen readers; only a title
       // (![alt](src "title")) is set as a visible caption, so nothing is
@@ -275,7 +277,7 @@ export const engrave = (html, opts = {}) => {
       const alt = (img.match(/\balt="([^"]*)"/) || [])[1] || "";
       const title = ((img.match(/\btitle="([^"]*)"/) || [])[1] || "").trim();
       const cap = title && title !== alt && !/^(image|img|picture|photo|screenshot|figure)$/i.test(title) ? title : "";
-      const w = (img.match(/\bwidth="(\d+)%"/) || [])[1];
+      const w = (img.match(/\bwidth="(\d+)%"/) || [])[1] || (inlineW && inlineW[1]);
       const side = w && Number(w) < 50 && /flex-end/.test(attrs);
       const isSvg = /\.svg"/.test(img);
       const cls = ["fig", side ? "fig--side" : "", w && !side ? "fig--narrow" : "", isSvg ? "fig--line" : ""].filter(Boolean).join(" ");
