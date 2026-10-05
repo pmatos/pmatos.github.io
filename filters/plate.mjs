@@ -239,7 +239,8 @@ export const engrave = (html, opts = {}) => {
     const body = m ? m[1] + dedent(m[2].replace(/\n+$/, "")) + (m[3] || "") : dedent(inner);
     const lang = (attrs.match(/language-([\w+-]+)/) || [])[1] || "";
     const text = stripTags(body).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-    const name = LANGS[lang.toLowerCase()] || lang || guessLang(text);
+    const key = lang.toLowerCase();
+    const name = (Object.hasOwn(LANGS, key) && LANGS[key]) || lang || guessLang(text);
     const lettered = !lang && name === "x86 assembly" && !/<span\b/.test(body) ? body.replace(/^(<code\b[^>]*>)?([\s\S]*?)(<\/code>)?$/, (a, o, t, c) => (o || "") + asmTokens(t) + (c || "")) : body;
     const lines = text.replace(/\n+$/, "").split("\n").length;
     const cap = `<figcaption class="lst-cap"><span class="lst-no">Listing ${lst}</span>${name ? `<span class="lst-lang">${name}</span>` : ""}</figcaption>`;
@@ -378,7 +379,7 @@ export default function plate(eleventyConfig) {
       for (const part of String(t).split(/[\s,]+/)) {
         const slug = part.replace(/^#+/, "").trim().toLowerCase();
         if (!slug || slug === "post" || slug === "posts" || slug === "pages" || /^\d+$/.test(slug)) continue;
-        const name = TAG_NAMES[slug] || slug.replace(/-/g, " ");
+        const name = (Object.hasOwn(TAG_NAMES, slug) && TAG_NAMES[slug]) || slug.replace(/-/g, " ");
         if (!out.includes(name)) out.push(name);
       }
     return out;
