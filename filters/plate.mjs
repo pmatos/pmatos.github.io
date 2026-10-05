@@ -66,10 +66,11 @@ const wrapTokens = (text, ties) => {
   return out;
 };
 const SKIP = /^<\/?(code|pre|kbd|samp|svg|textarea|math|tt)\b/i;
-// Comments, whole script and style elements, and tags whose quoted attribute
+// Comments, whole script and style elements (or engrave's placeholders for
+// them), and tags whose quoted attribute
 // values may hold a `>`. Only non-capturing groups inside: split() keeps the
 // outer group, so tags stay at the odd indices.
-const TOKENS = /(<!--[\s\S]*?-->|<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>|<\/?[A-Za-z](?:[^>"']|"[^"]*"|'[^']*')*>)/i;
+const TOKENS = /(<!--[\s\S]*?-->|\uE000[\uE100-\uF8FF]\uE001|<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>|<\/?[A-Za-z](?:[^>"']|"[^"]*"|'[^']*')*>)/i;
 export const finishHtml = (html, ties = false) => {
   let depth = 0;
   const state = { prev: "" };
@@ -201,12 +202,22 @@ const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
 // A piece's only h1, when it opens the body, repeats the page title: it is
 // not a section, and keeping it would demote the real ## sections below it.
 const LEAD_H1 = /^\s*<h1\b[^>]*>[\s\S]*?<\/h1>/;
+// Script and style blocks are set aside while the structural passes run, so
+// markup inside a post's inline script (a "<h2>" in a JS string) is never
+// numbered or rewritten. The placeholders are private-use characters that
+// neither the passes nor the text finishing touch.
+const RAW_BLOCK = /<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>/gi;
+const shelve = (html) => {
+  const kept = [];
+  const out = html.replace(RAW_BLOCK, (m) => `\uE000${String.fromCharCode(0xe100 + kept.push(m) - 1)}\uE001`);
+  return { out, restore: (t) => t.replace(/\uE000([\uE100-\uF8FF])\uE001/g, (all, c) => kept[c.charCodeAt(0) - 0xe100]) };
+};
 const dropTitleRepeat = (html) =>
   (html.match(/<h1\b/g) || []).length === 1 ? html.replace(LEAD_H1, "") : html;
 
 // The section marks of a piece, in order, for the index of sections.
 export const sectionsOf = (html) => {
-  const s = dropTitleRepeat(String(html ?? ""));
+  const s = dropTitleRepeat(String(html ?? "").replace(RAW_BLOCK, " "));
   const level = headingLevel(s);
   const out = [];
   for (const m of s.matchAll(new RegExp(`<${level}\\b([^>]*)>([\\s\\S]*?)<\\/${level}>`, "g"))) {
@@ -241,7 +252,8 @@ export const engrave = (html, opts = {}) => {
   const voice = opts.voice || "code";
   const plate = opts.plate || "";
   let fig = 0, lst = 0, ex = 0;
-  let out = finishHtml(dropTitleRepeat(String(html ?? "")));
+  const shelf = shelve(String(html ?? ""));
+  let out = finishHtml(dropTitleRepeat(shelf.out));
 
   out = out.replace(LISTING, (all, attrs, inner) => {
     lst++;
@@ -309,7 +321,7 @@ export const engrave = (html, opts = {}) => {
   out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
   // A bare URL in the text is set as code, so its break reads as a code break.
   out = out.replace(/<a\b((?![^>]*\bclass=)[^>]*)>(https?:\/\/[^<\s]+)<\/a>/g, '<a$1 class="url">$2</a>');
-  return setTables(out);
+  return shelf.restore(setTables(out));
 };
 
 // A link log summary: a head of about two sentences and the remainder.
