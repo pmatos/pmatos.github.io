@@ -239,13 +239,6 @@ export const engrave = (html, opts = {}) => {
     return `<h2 class="sec" id="section-${L.toLowerCase()}"${attrs}>${mark}<span class="sec-t">${inner.replace(/\s*:\s*$/, "")}</span></h2>`;
   });
 
-  // A lead illustration follows the first paragraph, so the text starts on
-  // the first screen.
-  out = out.replace(
-    /^(\s*)(<figure class="fig\b[^"]*"[^>]*>[\s\S]*?<\/figure>)(\s*)(<p\b[\s\S]*?<\/p>)/,
-    (all, ws, figure, gap, para) => ws + para + gap + figure.replace('class="fig', 'class="fig fig--lead'),
-  );
-
   out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
   // A bare URL in the text is set as code, so its break reads as a code break.
   out = out.replace(/<a\b((?![^>]*\bclass=)[^>]*)>(https?:\/\/[^<\s]+)<\/a>/g, '<a$1 class="url">$2</a>');
