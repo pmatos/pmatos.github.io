@@ -126,8 +126,8 @@ type: article
     {% endif %}
     </main>
     {% include "footer.njk" %}
-    {% if secs | length > 1 %}<script src="{{ '/js/plate.js' | url }}" defer></script>{% endif %}
-    {% if "jsse-chart" in content %}<script src="{{ '/js/plate-charts.js' | url }}" defer></script>{% endif %}
+    {% if secs | length > 1 %}<script src="{{ '/js/plate.js' | bust | url }}" defer></script>{% endif %}
+    {% if "jsse-chart" in content %}<script src="{{ '/js/plate-charts.js' | bust | url }}" defer></script>{% endif %}
 </div>
 </body>
 <!-- End Body -->

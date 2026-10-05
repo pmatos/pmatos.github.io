@@ -1,0 +1,25 @@
+---
+permalink: sw.js
+eleventyExcludeFromCollections: true
+---
+importScripts("https://cdn.ampproject.org/sw/amp-sw.js");
+
+// Stylesheets and scripts are versioned by content hash (the `bust` filter),
+// so a new build is a new URL; stale-while-revalidate still refreshes any
+// unversioned script a post brings with it.
+AMP_SW.init({
+  assetCachingOptions: [
+    {
+      regexp: /\.(png|jpg|webp|woff2|woff|pdf|vcf)/,
+      cachingStrategy: "CACHE_FIRST",
+    },
+    {
+      regexp: /\.(css|js)/,
+      cachingStrategy: "STALE_WHILE_REVALIDATE",
+    },
+  ],
+  offlinePageOptions: {
+    url: "/offline.html",
+    assets: ["{{ '/css/style.css' | bust | url }}"],
+  },
+});

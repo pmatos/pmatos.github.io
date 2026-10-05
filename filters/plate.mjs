@@ -2,6 +2,8 @@
 // None of these touch collections, permalinks or markdown-it options, so
 // post.templateContent (and therefore the RSS feeds) is never changed: the
 // typographic finishing runs only where a layout calls `engrave`.
+import { createHash } from "node:crypto";
+import fs from "node:fs";
 import markdownIt from "markdown-it";
 import { DateTime } from "luxon";
 
@@ -356,6 +358,22 @@ export const tally = (html) => {
 export default function plate(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_11ty/_static/js": "js" });
   eleventyConfig.addGlobalData("build", () => ({ date: new Date() }));
+
+  // Asset URLs carry a hash of the file, so a new stylesheet or script is a
+  // new URL: the service worker's cache never hands a returning visitor last
+  // build's CSS with this build's markup. Tailwind writes public/css before
+  // Eleventy runs; scripts are read from their source. A file not yet built
+  // (a dev watch) falls back to a per-run token.
+  const runToken = Date.now().toString(36);
+  eleventyConfig.addFilter("bust", (url) => {
+    for (const root of ["public", "src/_11ty/_static"]) {
+      try {
+        const hash = createHash("sha256").update(fs.readFileSync(`${root}${url}`)).digest("hex").slice(0, 10);
+        return `${url}?v=${hash}`;
+      } catch {}
+    }
+    return `${url}?v=${runToken}`;
+  });
 
   eleventyConfig.addFilter("roman", roman);
   eleventyConfig.addFilter("finishHtml", finishHtml);
