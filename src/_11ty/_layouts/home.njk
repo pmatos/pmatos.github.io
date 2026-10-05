@@ -28,7 +28,7 @@ type: website
         <section class="frontis" aria-labelledby="site-title">
             <header class="cartouche">
                 <h1 id="site-title" class="ct-title"><span class="ct-frame" aria-hidden="true"></span><span class="ct-c ct-c--tl" aria-hidden="true"></span><span class="ct-c ct-c--tr" aria-hidden="true"></span><span class="ct-c ct-c--bl" aria-hidden="true"></span><span class="ct-c ct-c--br" aria-hidden="true"></span>Notes <span class="amp">&amp;</span> Code</h1>
-                <p class="ct-by">Plates for compiler &amp; pianoforte, engraved by Paulo Matos, Nuremberg</p>
+                <p class="ct-by">Plates for compiler &amp; pianoforte, engraved by {{ meta.authorName }}, {{ meta.location }}</p>
                 <p class="ct-now"><span class="ct-now-k">Latest</span> <a href="{{ latest.url | url }}">{{ latest.data.title | inlineMd | safe }}</a> <span class="ct-now-sub">(Pl.&nbsp;{{ total | roman }}, {{ latest.date | dayMonth }})</span><span class="ct-now-sep" aria-hidden="true"></span><span class="ct-now-k ct-now-k--bench">On the bench</span> <a href="https://rightkey.app" target="_blank" rel="noopener">Rightkey</a> <span class="ct-now-and">and</span> <a href="https://petovita.com" target="_blank" rel="noopener">PetoVita</a></p>
             </header>
 
@@ -58,11 +58,11 @@ type: website
 
         <section class="frontis-foot" aria-label="About this site">
             <div class="intro">
-                <p class="intro-lead">I&rsquo;m Paulo Matos, a software engineer in Nuremberg. I work on compilers and dynamic binary translation as a freelance consultant with <a href="https://www.igalia.com/">Igalia</a>; my current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. By night I play the piano.</p>
+                <p class="intro-lead">I&rsquo;m Paulo Matos, a software engineer in {{ meta.location }}. I work on compilers and dynamic binary translation as a freelance consultant with <a href="https://www.igalia.com/">Igalia</a>; my current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. By night I play the piano.</p>
                 <p>This site is where I share technical notes, project updates, and occasional tangents about the things I&rsquo;m learning. Think of it as a public notebook: part documentation, part exploration.</p>
             </div>
             <dl class="tblock tblock--home" aria-label="About this edition">
-                <div class="tb-row tb-row--wide"><dt>Engraver</dt><dd>{{ meta.authorName }}, Nuremberg</dd></div>
+                <div class="tb-row tb-row--wide"><dt>Engraver</dt><dd>{{ meta.authorName }}, {{ meta.location }}</dd></div>
                 <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }} <span class="tb-sub">({{ total }})</span></dd></div>
                 <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
                 <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd>{{ posts | voiceCount("code") }} plates</dd></div>

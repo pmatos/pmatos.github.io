@@ -8,6 +8,8 @@ module.exports = {
   shortName: "Notes & Code",
   motto: "Programming, music, and the occasional tangent",
   authorName: "Paulo Matos",
+  location: "Nuremberg",
+  country: "Germany",
   siteDescription: "",
   sitekeyword: "",
   creationDate: "06/07/2022",
