@@ -340,7 +340,7 @@ export default function plate(eleventyConfig) {
   eleventyConfig.addFilter("finishHtml", finishHtml);
   eleventyConfig.addFilter("engrave", (html, voice, plateNo) => engrave(html, { voice, plate: plateNo }));
 
-  const inlineMd = markdownIt({ html: true });
+  const inlineMd = markdownIt({ html: false });
   eleventyConfig.addFilter("inlineMd", (s, ties = false) => finishHtml(inlineMd.renderInline(String(s ?? "").trim()), ties));
   eleventyConfig.addFilter("sections", sectionsOf);
   eleventyConfig.addFilter("smartText", (s) => finishHtml(plain.renderInline(String(s ?? ""))));
