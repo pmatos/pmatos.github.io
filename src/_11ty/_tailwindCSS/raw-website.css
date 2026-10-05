@@ -3,22 +3,46 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* EB Garamond is self-hosted from the upstream release (OFL, see
-   /fonts/eb-garamond/OFL.txt) because the Google Fonts build drops onum and
-   smcp. Variable weight 400-800, subset to Latin, all OpenType features kept.
-   The version is in the file name, so a font update gets a new URL. */
+   /fonts/eb-garamond/OFL.txt) because the Google Fonts build drops onum.
+   Variable weight 400-700, kept features: kern, liga, clig, calt, ccmp, locl,
+   mark, mkmk, onum, lnum, pnum, tnum, case. Latin and Greek/Cyrillic are
+   separate files, so a page downloads the second only if it uses those
+   scripts. The upstream version (roman 1.002, italic 1.001) is in each file
+   name; the service worker caches fonts cache-first, so new files need new
+   names. URLs are relative to /css/style.css so they follow any pathPrefix.
+   The italic has no superscript digits (U+00B2, U+00B3, U+00B9, U+2070-2079);
+   use <sup> for those. */
 @font-face {
   font-family: "EB Garamond";
-  src: url("/fonts/eb-garamond/EBGaramond-VF-1.002.woff2") format("woff2");
-  font-weight: 400 800;
+  src: url("../fonts/eb-garamond/EBGaramond-VF-1.002-latin.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-024F, U+0259, U+02B0-02FF, U+0300-036F, U+1E00-1EFF, U+2000-20CF, U+2100-21FF, U+2200-22FF, U+FB00-FB06;
 }
 @font-face {
   font-family: "EB Garamond";
-  src: url("/fonts/eb-garamond/EBGaramond-Italic-VF-1.002.woff2") format("woff2");
-  font-weight: 400 800;
+  src: url("../fonts/eb-garamond/EBGaramond-VF-1.002-greek-cyrillic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0370-03FF, U+1F00-1FFF, U+0400-045F, U+0490-0491;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/eb-garamond/EBGaramond-Italic-VF-1.001-latin.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: italic;
   font-display: swap;
+  unicode-range: U+0000-024F, U+0259, U+02B0-02FF, U+0300-036F, U+1E00-1EFF, U+2000-20CF, U+2100-21FF, U+2200-22FF, U+FB00-FB06;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("../fonts/eb-garamond/EBGaramond-Italic-VF-1.001-greek-cyrillic.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0370-03FF, U+1F00-1FFF, U+0400-045F, U+0490-0491;
 }
 
 /* ==========================================================================
@@ -4174,4 +4198,26 @@ html.dark .fig--line img {
     font-size: 0.8rem;
     padding: 0.85rem 0.9rem 0.9rem;
   }
+}
+
+/* Drafting data takes lining figures. Running text keeps the body's old-style
+   figures, but dimensions, dates, reading times, counts, tags and diagram
+   lettering read as measurements and must sit on the line like the rest of
+   the plate's apparatus. */
+.g-dim,
+.dim-t,
+.lst-dim,
+.lac-t,
+.ly-ex svg text,
+.pl-min,
+.pl-meta,
+.ct-now-sub,
+.rf-src,
+.rf-tag,
+.jsse-filters label {
+  font-variant-numeric: lining-nums proportional-nums;
+}
+.pl-date,
+.rf-src time {
+  font-variant-numeric: lining-nums tabular-nums;
 }

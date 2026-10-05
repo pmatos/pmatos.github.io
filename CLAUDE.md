@@ -107,7 +107,7 @@ Static files are organized under `src/_11ty/_static/`:
 - `app/sw.js` - Service worker for PWA functionality
 - `favicon/` - Generated PWA icons and splash screens (created by pwa-asset-generator)
 - `img/` - Blog post images organized by date and topic
-- `fonts/eb-garamond/` - Self-hosted EB Garamond (upstream OFL build, Latin subset; Google's copy lacks old-style figures and small caps). The version is in the file name; bump it when replacing the files
+- `fonts/eb-garamond/` - Self-hosted EB Garamond (upstream OFL build; Google's copy lacks old-style figures). Latin and Greek/Cyrillic subsets per style; the upstream version is in each file name, so new files need new names (the service worker caches fonts cache-first). Build notes are in the `@font-face` comment in `raw-website.css`
 
 ### Content Processing
 - Markdown-it with footnote support for enhanced content
