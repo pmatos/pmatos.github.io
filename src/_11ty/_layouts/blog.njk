@@ -18,7 +18,8 @@ type: website
     <main id="main" class="catalogue">
         <header class="sheet-head">
             <p class="sh-k">Catalogue of plates</p>
-            <h1 class="sh-title">{{ (content | leadH1) or title }}</h1>
+            {%- set lead = content | leadH1 %}
+            <h1 class="sh-title">{% if lead %}{{ lead | finishHtml | safe }}{% else %}{{ title }}{% endif %}</h1>
             <div class="sh-lead">{{ content | dropLeadH1 | finishHtml | safe }}</div>
             <dl class="tblock tblock--strip">
                 <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }}</dd></div>

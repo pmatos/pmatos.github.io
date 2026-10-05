@@ -16,7 +16,8 @@ type: website
     <main id="main" class="register">
         <header class="sheet-head">
             <p class="sh-k">Register of references</p>
-            <h1 class="sh-title">{{ (content | leadH1) or title }}</h1>
+            {%- set lead = content | leadH1 %}
+            <h1 class="sh-title">{% if lead %}{{ lead | finishHtml | safe }}{% else %}{{ title }}{% endif %}</h1>
             <div class="sh-lead">{{ content | dropLeadH1 | finishHtml | safe }}</div>
             {% if count > 0 %}
             <dl class="tblock tblock--strip">
