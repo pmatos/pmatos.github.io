@@ -230,6 +230,8 @@ export const sectionsOf = (html) => {
   return out;
 };
 
+const PLACEHOLDER_ALT = /^(image|img|picture|photo|screenshot|figure)$/i;
+
 // What the body pass numbers. tally() counts engrave's own output, so the
 // title strip and the catalogue always agree with the captions.
 const LISTING = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/g;
@@ -270,6 +272,10 @@ export const engrave = (html, opts = {}) => {
     return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${lettered}</pre>${dim}</div></figure>`;
   });
 
+  // An alt repeated on three or more images ("Patch Details") says nothing
+  // about any one of them, so it is not used as a caption.
+  const altUses = {};
+  for (const m of out.matchAll(/<img\b[^>]*\balt="([^"]*)"/g)) altUses[m[1].trim()] = (altUses[m[1].trim()] || 0) + 1;
   // Images become numbered figures (a narrow, right-aligned sketch is a side
   // figure); charts keep their own caption and share the numbering.
   out = out.replace(
@@ -280,19 +286,22 @@ export const engrave = (html, opts = {}) => {
       const inlineW = (bare || "").match(/\bstyle="[^"]*?\bmax-width:\s*(\d+)%;?/);
       const img = inlineW ? bare.replace(/\s*\bmax-width:\s*\d+%;?\s*/, " ").replace(/\bstyle=" /, 'style="') : wrapped || bare;
       if (chartHead) return `${chartHead}<span class="fig-no">Fig. ${fig}</span> <span class="fig-alt">${chartCap}</span>${chartEnd}`;
-      // The alt text stays on the image for screen readers; only a title
-      // (![alt](src "title")) is set as a visible caption, so nothing is
-      // read twice and a placeholder alt like "image" never shows.
-      const alt = (img.match(/\balt="([^"]*)"/) || [])[1] || "";
+      // The caption is the image's title (![alt](src "title")), else its alt
+      // text. Text that repeats the alt is hidden from screen readers, which
+      // already read the alt on the image. Placeholder and repeated alts give
+      // just the figure number.
+      const alt = ((img.match(/\balt="([^"]*)"/) || [])[1] || "").trim();
       const title = ((img.match(/\btitle="([^"]*)"/) || [])[1] || "").trim();
-      const cap = title && title !== alt && !/^(image|img|picture|photo|screenshot|figure)$/i.test(title) ? title : "";
+      const usable = (t) => t && !PLACEHOLDER_ALT.test(t);
+      const cap = usable(title) ? title : usable(alt) && altUses[alt] < 3 ? alt : "";
+      const capAttrs = cap && cap === alt ? ' aria-hidden="true"' : "";
       const w = (img.match(/\bwidth="(\d+)%"/) || [])[1] || (inlineW && inlineW[1]);
       const side = w && Number(w) < 50 && /flex-end/.test(attrs);
       const isSvg = /\.svg"/.test(img);
       const cls = ["fig", side ? "fig--side" : "", w && !side ? "fig--narrow" : "", isSvg ? "fig--line" : ""].filter(Boolean).join(" ");
       const style = w ? ` style="--fig-w:${w}%"` : "";
       const cleanImg = img.replace(/\swidth="\d+%"/, "").replace(/<img\b/, '<img loading="lazy" decoding="async"');
-      return `<figure class="${cls}"${style}><div class="fig-frame">${cleanImg}</div><figcaption><span class="fig-no">Fig. ${fig}</span>${cap ? ` <span class="fig-alt">${finishHtml(cap)}</span>` : ""}</figcaption></figure>`;
+      return `<figure class="${cls}"${style}><div class="fig-frame">${cleanImg}</div><figcaption><span class="fig-no">Fig. ${fig}</span>${cap ? ` <span class="fig-alt"${capAttrs}>${finishHtml(cap)}</span>` : ""}</figcaption></figure>`;
     },
   );
 
