@@ -5,10 +5,16 @@ permalink: /404.html
 keyword: error 404
 eleventyExcludeFromCollections: true
 dynamicPermalink: false
+kicker: Error 404
+pageClass: is-missing
 ---
 
-<h1>404 error!</h1>
-<p>
-    <span class="lead">{{title}}</span></br>
-    This is where you should tell the user how to find their content. Maybe on the <a href="{{'/' | url}}">home page?</a>
-</p>
+<h1>This plate is missing</h1>
+
+<figure class="lacuna" aria-hidden="true">
+<svg viewBox="0 0 320 200" focusable="false"><defs><pattern id="lac-h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7"/></pattern></defs><rect class="lac-frame" x="40" y="30" width="240" height="140"/><rect class="lac-inner" x="48" y="38" width="224" height="124" fill="url(#lac-h)"/><path class="lac-x" d="M48 38 272 162M272 38 48 162"/><path class="lac-ext" d="M40 176V194M280 176V194"/><path class="lac-dim" d="M44 186H136M184 186H276"/><path class="lac-arrow" d="M40 186l8 -3v6zM280 186l-8 -3v6z"/><text class="lac-t" x="160" y="191" text-anchor="middle">404</text></svg>
+</figure>
+
+<p class="lead">There is nothing at this address. The page may have moved, or the link may have a typo.</p>
+
+<p>Try the <a href="{{ '/' | url }}">home page</a>, or browse <a href="{{ '/blog.html' | url }}">every post in the catalogue</a>.</p>

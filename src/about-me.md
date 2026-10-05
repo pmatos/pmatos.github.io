@@ -8,6 +8,22 @@ eleventyNavigation:
   key: "{{ title | slugify }}"
   title: About me
   order: 2
+kicker: Particulars of the engraver
+pageClass: is-about
+eleventyComputed:
+  particulars:
+    - term: Name
+      value: "{{ meta.authorName }}"
+    - term: Based in
+      value: "{{ meta.location }}, {{ meta.country }}"
+    - term: Practice
+      value: "Compilers & dynamic binary translation"
+    - term: Current work
+      value: "[FEX-Emu](https://fex-emu.com/), with [Igalia](https://www.igalia.com/)"
+    - term: Piano
+      value: "Since January 2022"
+    - term: Elsewhere
+      value: "[GitHub](https://github.com/{{ meta.githubUser }}), [LinkedIn](https://www.linkedin.com/in/{{ meta.linkedinkUser }}/)"
 ---
 
 # About Me

@@ -4,54 +4,60 @@ description: Interesting links from around the web, summarized and tagged
 keyword: links, linklog, bookmarks
 type: website
 ---
+{%- set entries = linklog.entries -%}
+{%- set count = entries | length -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
 <!-- Start Body -->
-<body>
+<body class="is-linklog">
+<div class="plate">
     {% include "nav.njk" %}
-    <main>
-        <div class="elenco-posts">
-            <div class="posts">
-                {{content | safe}}
-            </div>
-            
-            {% if linklog.entries.length > 0 %}
-                {% for entry in linklog.entries %}
-                <article class="posts linklog-entry" id="entry-{{entry.id}}">
-                    <header>
-                        <h2><a href="{{entry.url}}" target="_blank" rel="noopener noreferrer">{{entry.title}}</a></h2>
-                        <small class="info">
-                            <time datetime="{{entry.dateAdded}}">{{entry.dateAdded | readableDate}}</time>
-                            {% if entry.tags.length > 0 %}
-                                · 
-                                {% for tag in entry.tags %}
-                                    <span class="tag">#{{tag}}</span>{% if not loop.last %} {% endif %}
-                                {% endfor %}
-                            {% endif %}
-                        </small>
-                    </header>
-                    
-                    <div class="linklog-summary">
-                        <p>{{entry.summary}}</p>
-                    </div>
-                    
-                    <footer class="linklog-meta">
-                        <small class="external-link">
-                            🔗 <a href="{{entry.url}}" target="_blank" rel="noopener noreferrer">{{entry.url | truncate(60)}}</a>
-                        </small>
-                    </footer>
-                </article>
-                {% endfor %}
-            {% else %}
-                <div class="posts">
-                    <p class="no-entries">No links in the log yet. Use <code>llog &lt;url&gt; [#tags...]</code> to add some!</p>
-                </div>
+    <main id="main" class="register">
+        <header class="sheet-head">
+            <p class="sh-k">Register of references</p>
+            {%- set lead = content | leadH1 %}
+            <h1 class="sh-title">{% if lead %}{{ lead | finishHtml | safe }}{% else %}{{ title }}{% endif %}</h1>
+            <div class="sh-lead">{{ content | dropLeadH1 | finishHtml | safe }}</div>
+            {% if count > 0 %}
+            <dl class="tblock tblock--strip">
+                <div class="tb-row"><dt>References</dt><dd>{{ count }}</dd></div>
+                <div class="tb-row"><dt>Latest</dt><dd>{{ entries[0].dateAdded | plateDate }}</dd></div>
+                <div class="tb-row"><dt>Earliest</dt><dd>{{ entries[count - 1].dateAdded | plateDate }}</dd></div>
+                <div class="tb-row tb-row--wide"><dt>Subscribe</dt><dd><a href="{{ '/linklog-feed.xml' | url }}">RSS feed</a></dd></div>
+            </dl>
             {% endif %}
-        </div>
+        </header>
+
+        {% if count > 0 %}
+        {%- for group in entries | groupByMonth %}
+        <section class="month" aria-labelledby="m-{{ group.key }}">
+            <h2 class="year-h" id="m-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} reference{% if group.items | length > 1 %}s{% endif %}</span></h2>
+            <ol class="refs">
+                {%- for entry in group.items %}
+                {%- set parts = entry.summary | llSplit %}
+                <li class="rf" id="entry-{{ entry.id }}">
+                    <span class="rf-no"><abbr title="Reference">R.</abbr>&nbsp;{{ count - entries.indexOf(entry) }}</span>
+                    <div class="rf-body">
+                        <h3 class="rf-title"><a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ entry.title | smartText | safe }}<span class="ext" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p class="rf-src"><span class="rf-dom">{{ entry.url | domain }}</span><time datetime="{{ entry.dateAdded }}">{{ entry.dateAdded | plateDate }}</time></p>
+                        <div class="rf-sum">
+                            <p>{{ parts.head | safe }}</p>
+                            {% if parts.tail %}<details class="rf-more"><summary>Full summary</summary><p>{{ parts.tail | safe }}</p></details>{% endif %}
+                        </div>
+                        {% if entry.tags.length > 0 %}<p class="rf-tags"><span class="visually-hidden">Tags: </span>{% for tag in entry.tags %}<span class="rf-tag">{{ tag }}</span>{% if not loop.last %} {% endif %}{% endfor %}</p>{% endif %}
+                    </div>
+                </li>
+                {%- endfor %}
+            </ol>
+        </section>
+        {%- endfor %}
+        {% else %}
+        <p class="no-entries">No links in the log yet. Use <code>llog &lt;url&gt; [#tags...]</code> to add some!</p>
+        {% endif %}
     </main>
-    {% include "utterances.njk" %}
     {% include "footer.njk" %}
+</div>
 </body>
 <!-- End Body -->
 </html>

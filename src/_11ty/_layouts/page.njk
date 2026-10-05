@@ -4,16 +4,38 @@ description: è una pagina come tante, oppure tante pagine sono come lei?
 keyword: test
 type: website
 ---
+{%- set lead = content | leadH1 -%}
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 {% include "head-website.njk" %}
 <!-- Start Body -->
-<body>
+<body class="is-page{% if pageClass %} {{ pageClass }}{% endif %}">
+<div class="plate">
     {% include "nav.njk" %}
-    <main>
-        {{content | safe}}
+    <main id="main" class="page">
+        {% if lead %}
+        <header class="sheet-head sheet-head--page">
+            {% if kicker %}<p class="sh-k">{{ kicker }}</p>{% endif %}
+            <h1 class="sh-title">{{ lead | finishHtml | safe }}</h1>
+        </header>
+        {% endif %}
+        <div class="page-grid{% if particulars %} page-grid--side{% endif %}">
+            <div class="prose">
+                {{ content | dropLeadH1 | engrave("code", "") | safe }}
+            </div>
+            {% if particulars %}
+            <aside class="particulars" aria-label="Particulars">
+                <dl class="tblock tblock--side">
+                    {%- for p in particulars %}
+                    <div class="tb-row"><dt>{{ p.term }}</dt><dd>{{ p.value | inlineMd | safe }}</dd></div>
+                    {%- endfor %}
+                </dl>
+            </aside>
+            {% endif %}
+        </div>
     </main>
     {% include "footer.njk" %}
+</div>
 </body>
 <!-- End Body -->
 </html>

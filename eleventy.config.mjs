@@ -8,6 +8,7 @@ import htmlmin from "html-minifier-terser";
 import { DateTime } from "luxon";
 
 import lyInsert from "./filters/lyInsert.js";
+import plate from "./filters/plate.mjs";
 
 export default function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./filters");
@@ -30,10 +31,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPairedShortcode("lyInsert", lyInsert);
 
   eleventyConfig
-    .addPassthroughCopy({ "src/_11ty/_static/app/*.*": "/" })
     .addPassthroughCopy({ "src/_11ty/_static/favicon": "favicon" })
     .addPassthroughCopy({ "src/_11ty/_static/img": "img" })
     .addPassthroughCopy({ "src/_11ty/_static/examples": "examples" });
+
+  plate(eleventyConfig);
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 

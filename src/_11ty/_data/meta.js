@@ -8,16 +8,20 @@ module.exports = {
   shortName: "Notes & Code",
   motto: "Programming, music, and the occasional tangent",
   authorName: "Paulo Matos",
+  location: "Nuremberg",
+  country: "Germany",
   siteDescription: "",
   sitekeyword: "",
   creationDate: "06/07/2022",
   url: process.env.URL || "https://p.ocmatos.com",
   robots: "index, follow",
   //
-  // Color App
+  // Color App: the plate's paper, light and dark. Browser chrome, the PWA
+  // manifest and the Windows tile all read these.
   //
-  themeColor: "#000000",
-  backgroundColor: "#000000",
+  themeColor: "#F4EDDC",
+  themeColorDark: "#1A1916",
+  backgroundColor: "#F4EDDC",
   //
   // Contact me
   //

@@ -5,10 +5,12 @@ permalink: /offline.html
 keyword: no-network
 eleventyExcludeFromCollections: true
 dynamicPermalink: false
+kicker: No connection
+pageClass: is-missing
 ---
 
-<h1>No internet connection!</h1>
-<p>
-    <span class="lead">{{title}}</span></br>
-    Try connecting to a wifi network or mobile connection and reload the page. go to <a href="{{'/' | url}}">Home page.</a>
-</p>
+<h1>You are offline</h1>
+
+<p class="lead">This page needs a network connection, and none is available right now.</p>
+
+<p>Connect to a Wi-Fi or mobile network and reload the page, or go to the <a href="{{ '/' | url }}">home page</a>.</p>

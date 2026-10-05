@@ -1,0 +1,477 @@
+// Presentation filters for the "Engraved Technical Plate" templates.
+// None of these touch collections, permalinks or markdown-it options, so
+// post.templateContent (and therefore the RSS feeds) is never changed: the
+// typographic finishing runs only where a layout calls `engrave`.
+import { createHash } from "node:crypto";
+import fs from "node:fs";
+import markdownIt from "markdown-it";
+import { DateTime } from "luxon";
+
+const asDate = (d) =>
+  d instanceof Date
+    ? DateTime.fromJSDate(d, { zone: "utc" })
+    : DateTime.fromISO(String(d), { zone: "utc" });
+
+const ROMAN = [
+  [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
+  [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+];
+export const roman = (n) => {
+  let v = Number(n) || 0, out = "";
+  for (const [k, s] of ROMAN) while (v >= k) { out += s; v -= k; }
+  return out;
+};
+
+// Curly quotes, apostrophes, spaced en dashes, ellipses and ties on text
+// nodes only. `prev` carries the last character across nodes, so a quote
+// right after </em> still closes.
+const OPENERS = /[\s([{—– /]/;
+const smarten = (text, state) => {
+  let out = "";
+  const t = text.replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+  for (let i = 0; i < t.length; i++) {
+    const c = t[i];
+    const prev = i ? t[i - 1] : state.prev;
+    if (c === '"') {
+      out += !prev || OPENERS.test(prev) ? "“" : "”";
+    } else if (c === "'") {
+      const next = t[i + 1] || "";
+      if (/\w/.test(prev || "") && /\w/.test(next)) out += "’";
+      else out += !prev || OPENERS.test(prev) ? "‘" : "’";
+    } else out += c;
+  }
+  if (t.length) state.prev = t[t.length - 1];
+  return out
+    .replace(/(^|[\s(“‘])(a|A|I) (?=\S)/g, "$1$2 ")
+    .replace(/(\S) --? /g, "$1 – ")
+    .replace(/(^|[^\s ])—(?=\S)/g, "$1 – ")
+    .replace(/(\S) — /g, "$1 – ")
+    .replace(/(?<!\.)\.\.\.(?!\.)/g, "…")
+    .replace(/(\d)x(?=[\s,.;:)]|$)/g, "$1×")
+    .replace(/(^|[\s(])~(?=\d)/g, "$1≈");
+};
+
+// Words that need help from the compositor: ISO dates and short hyphenated
+// compounds (x86-64, Middle-C) must not break; capitals with figures (ARM64,
+// S10, ST0) take lining figures so the digits stand on the cap line.
+const TIES = /(?<=^|\s)(the|a|an)\s+(?=[^\s<])/gi;
+const wrapTokens = (text, ties) => {
+  let out = text.replace(/(?<![\w&#;-])(\w+(?:-\w+)*)(?![\w-])/g, (tok) => {
+    const nobr = /^\d{4}-\d{2}-\d{2}$/.test(tok) || /^\w+-\w{1,2}$/.test(tok);
+    const lnum = /^[A-Za-z]/.test(tok) && /[A-Z]/.test(tok) && /\d/.test(tok);
+    const cls = [nobr ? "nobr" : "", lnum ? "lnum" : ""].filter(Boolean).join(" ");
+    return cls ? `<span class="${cls}">${tok}</span>` : tok;
+  });
+  if (ties) out = out.replace(TIES, "$1\u00a0");
+  return out;
+};
+const SKIP = /^<\/?(code|pre|kbd|samp|svg|textarea|math|tt)\b/i;
+// Comments, whole script and style elements (or engrave's placeholders for
+// them), and tags whose quoted attribute
+// values may hold a `>`. Only non-capturing groups inside: split() keeps the
+// outer group, so tags stay at the odd indices.
+const TOKENS = /(<!--[\s\S]*?-->|\uE000[\uE100-\uF8FF]\uE001|<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>|<\/?[A-Za-z](?:[^>"']|"[^"]*"|'[^']*')*>)/i;
+export const finishHtml = (html, ties = false) => {
+  let depth = 0;
+  const state = { prev: "" };
+  return String(html ?? "")
+    .split(TOKENS)
+    .map((part, i) => {
+      if (i % 2 === 1) {
+        if (SKIP.test(part) && !part.endsWith("/>")) {
+          depth = part[1] === "/" ? Math.max(0, depth - 1) : depth + 1;
+          // Skipped text is a word as far as quotes go: <code>cd</code>'d.
+          state.prev = "x";
+        }
+        return part;
+      }
+      return depth ? part : wrapTokens(smarten(part, state), ties);
+    })
+    .join("");
+};
+
+const voiceOf = (tags) => (/\b(music|piano)/.test([].concat(tags || []).join(" ").toLowerCase()) ? "notes" : "code");
+
+const LANGS = {
+  c: "C", cpp: "C++", shell: "shell", bash: "shell", sh: "shell", nasm: "assembly", asm: "assembly",
+  js: "JavaScript", javascript: "JavaScript", rust: "Rust", python: "Python", py: "Python", racket: "Racket",
+  scheme: "Scheme", json: "JSON", yaml: "YAML", toml: "TOML", diff: "diff", text: "text", lisp: "Lisp",
+  wat: "WebAssembly text", wasm: "WebAssembly", llvm: "LLVM IR", ts: "TypeScript", typescript: "TypeScript",
+  html: "HTML", css: "CSS", vow: "Vow", ini: "INI", makefile: "Makefile", dockerfile: "Dockerfile",
+};
+const LETTERS = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+
+// Remove tags repeatedly until none remain, so a removal can never join
+// fragments into a new tag (inputs are the site's own build-time HTML).
+const stripTags = (html, re = /<[^>]*>/g, sub = "") => {
+  let prev;
+  do {
+    prev = html;
+    html = html.replace(re, sub);
+  } while (html !== prev);
+  return html;
+};
+
+const cellText = (cell) => stripTags(cell).replace(/&nbsp;/g, " ").trim();
+const strictNumber = (cell) =>
+  /^[~≈$+−-]?\s*\$?[\d.,]+\s*(%|×|x|ms|s|k|K|M|KB|MB|GB|min|h)?$/.test(cellText(cell));
+// Cells that stand in for a missing figure; they neither make nor break a
+// column of figures.
+const placeholder = (cell) => /^(timeout|timed out|n\/?a|none|tbd|[-–—?…]|\.\.\.)?$/i.test(cellText(cell));
+const setTables = (html) =>
+  html.replace(/<table\b[\s\S]*?<\/table>/g, (table) => {
+    const rows = table.match(/<tr\b[\s\S]*?<\/tr>/g) || [];
+    const cells = (row) => row.match(/<(t[dh])\b[^>]*>[\s\S]*?<\/\1>/g) || [];
+    const inner = (v) => v.replace(/^<t[dh][^>]*>|<\/t[dh]>$/g, "");
+    const body = rows.filter((r) => /<td\b/.test(r));
+    let out = table;
+    let width = 0;
+    if (body.length) {
+      width = Math.max(...body.map((r) => cells(r).length));
+      const flush = [];
+      for (let c = 0; c < width; c++) {
+        const vals = body.map((r) => inner(cells(r)[c] || "")).filter((v) => !placeholder(v));
+        const nums = vals.filter(strictNumber).length;
+        if (nums && nums * 5 >= vals.length * 4) flush.push(c);
+      }
+      // A column of figures is set flush right, placeholders and annotated
+      // figures with it; a column that mixes figures with dates or words
+      // stays flush left, with tabular figures.
+      if (flush.length)
+        out = table.replace(/<tr\b[\s\S]*?<\/tr>/g, (row) => {
+          let c = -1;
+          return row.replace(/<(t[dh])\b([^>]*)>([\s\S]*?)(?=<\/\1>)/g, (all, name, attrs, content) => {
+            c++;
+            if (!flush.includes(c)) return all;
+            const tag = /class="/.test(attrs) ? `<${name}${attrs.replace(/class="/, 'class="num ')}>` : `<${name}${attrs} class="num">`;
+            return tag + content;
+          });
+        });
+    }
+    return `<div class="table-wrap${width === 2 ? " table-wrap--pair" : ""}">${out}</div>`;
+  });
+
+// Listings: the source's common indent is removed, and a listing without a
+// declared language is identified from its text where that is unambiguous.
+const dedent = (code) => {
+  let lines = code.split("\n").map((l) => l.replace(/^[ \u00a0\t]+/, (m) => m.replace(/\u00a0/g, " ")));
+  const live = () => lines.filter((l) => stripTags(l).trim());
+  for (let guard = 0; guard < 40; guard++) {
+    const l = live();
+    if (!l.length) break;
+    if (l.every((x) => x.startsWith("\t"))) lines = lines.map((x) => x.replace(/^\t/, ""));
+    else if (l.every((x) => x.startsWith(" "))) lines = lines.map((x) => x.replace(/^ /, ""));
+    else break;
+  }
+  return lines.join("\n");
+};
+const X86 = /^\s*(mov\w*|sub|add|lea|push|pop|call|ret|jmp|j[a-z]{1,3}|cmp|test|xor|and|or|not|neg|nop|inc|dec|imul|mul|idiv|div|sh[lr]|sa[lr]|cvt\w+|f[a-z]{2,8})\s/;
+const guessLang = (text) => {
+  const lines = text.split("\n").filter((l) => l.trim());
+  if (!lines.length) return "";
+  if (lines.some((l) => /^\s*(\(%\d+ i\d+\)|%\d+ i\d+ =)/.test(l))) return "FEX-Emu IR";
+  if (lines.filter((l) => X86.test(l)).length / lines.length >= 0.6) return "x86 assembly";
+  if (lines.filter((l) => /^\s*\$ /.test(l)).length / lines.length >= 0.5) return "shell";
+  return "text";
+};
+
+// A bare x86 listing is lettered like a highlighted one: the mnemonic as a
+// keyword, immediates as numbers, brackets and commas as punctuation.
+const asmTokens = (body) =>
+  body.replace(/^([ \t]*)([a-z][a-z0-9]*)(?=[ \t]|$)(.*)$/gm, (all, ws, op, rest) =>
+    `${ws}<span class="token keyword">${op}</span>` +
+    rest
+      .replace(/(?<![\w#&])(#?(?:0x[0-9a-f]+|\d+))(?!\w)/gi, '<span class="token number">$1</span>')
+      .replace(/([[\],])/g, '<span class="token punctuation">$1</span>'));
+
+// A, B, ... Z (no I or O), then AA, AB, ...
+const LETTER = (i) => {
+  const n = LETTERS.length;
+  return i < n ? LETTERS[i] : LETTER(Math.floor(i / n) - 1) + LETTERS[i % n];
+};
+// A section keeps an id its author gave it, so #anchors into the piece still
+// work; otherwise it is named for its letter.
+const ID_ATTR = /\sid\s*=\s*(["'])(.*?)\1/;
+const CLASS_ATTR = /\sclass\s*=\s*"/;
+const sectionId = (attrs, L) => (attrs.match(ID_ATTR) || [])[2] || `section-${L.toLowerCase()}`;
+const sectionAttrs = (attrs, id) => {
+  const rest = attrs.replace(ID_ATTR, "");
+  return `${CLASS_ATTR.test(rest) ? rest.replace(CLASS_ATTR, ' class="sec ') : ` class="sec"${rest}`} id="${id}"`;
+};
+const headingLevel = (html) => (/<h1\b/.test(html) ? "h1" : "h2");
+// A piece's only h1, when it opens the body, repeats the page title: it is
+// not a section, and keeping it would demote the real ## sections below it.
+const LEAD_H1 = /^\s*<h1\b[^>]*>[\s\S]*?<\/h1>/;
+// Script and style blocks are set aside while the structural passes run, so
+// markup inside a post's inline script (a "<h2>" in a JS string) is never
+// numbered or rewritten. The placeholders are private-use characters that
+// neither the passes nor the text finishing touch.
+const RAW_BLOCK = /<script\b[\s\S]*?<\/script\b[^>]*>|<style\b[\s\S]*?<\/style\b[^>]*>/gi;
+const shelve = (html) => {
+  const kept = [];
+  const out = html.replace(RAW_BLOCK, (m) => `\uE000${String.fromCharCode(0xe100 + kept.push(m) - 1)}\uE001`);
+  return { out, restore: (t) => t.replace(/\uE000([\uE100-\uF8FF])\uE001/g, (all, c) => kept[c.charCodeAt(0) - 0xe100]) };
+};
+const dropTitleRepeat = (html) =>
+  (html.match(/<h1\b/g) || []).length === 1 ? html.replace(LEAD_H1, "") : html;
+
+// The section marks of a piece, in order, for the index of sections.
+export const sectionsOf = (html) => {
+  const s = dropTitleRepeat(String(html ?? "").replace(RAW_BLOCK, " "));
+  const level = headingLevel(s);
+  const out = [];
+  for (const m of s.matchAll(new RegExp(`<${level}\\b([^>]*)>([\\s\\S]*?)<\\/${level}>`, "g"))) {
+    const L = LETTER(out.length);
+    // Where the section starts, in minutes of reading.
+    const before = s.slice(0, m.index);
+    const words = stripTags(stripTags(before, /<(script|style|svg)[\s\S]*?<\/\1>/gi, " "), /<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
+    out.push({ letter: L, id: sectionId(m[1], L), minute: Math.floor(words / 230), title: finishHtml(stripTags(m[2], /<(?!\/?(code|em|i)\b)[^>]*>/g).replace(/\s*:\s*$/, "")) });
+  }
+  return out;
+};
+
+const PLACEHOLDER_ALT = /^(image|img|picture|photo|screenshot|figure)$/i;
+
+// What the body pass numbers. tally() counts engrave's own output, so the
+// title strip and the catalogue always agree with the captions.
+const LISTING = /<pre\b([^>]*)>([\s\S]*?)<\/pre>/g;
+// An image alone in a paragraph or a wrapper div, an image written as its own
+// HTML block between block elements, or a chart a post brings with its own
+// caption.
+const FIGURE = new RegExp(
+  [
+    /<(p|div)\b([^>]*)>\s*(<img\b[^>]*>)\s*<\/\1>/.source,
+    /(?<=^\s*|<\/(?:p|div|figure|ul|ol|blockquote|table|pre|h[1-6])>\n)(<img\b[^>]*>)[ \t]*(?=\n<|\n?$)/.source,
+    /(<figure class="jsse-chart"[^>]*>[\s\S]*?<figcaption>)([\s\S]*?)(<\/figcaption>)/.source,
+  ].join("|"),
+  "g",
+);
+const EXAMPLE = /<svg\b([^>]*?)\swidth="[\d.]+mm"\sheight="[\d.]+mm"\sviewBox="([-\d.]+) ([-\d.]+) ([\d.]+) ([\d.]+)"([^>]*)>([\s\S]*?)<\/svg>/g;
+
+// The body pass: figures, listings, music examples and section marks are
+// numbered in reading order, and the text is finished.
+export const engrave = (html, opts = {}) => {
+  const voice = opts.voice || "code";
+  const plate = opts.plate || "";
+  let fig = 0, lst = 0, ex = 0;
+  const shelf = shelve(String(html ?? ""));
+  let out = finishHtml(dropTitleRepeat(shelf.out));
+
+  out = out.replace(LISTING, (all, attrs, inner) => {
+    lst++;
+    const m = inner.match(/^(<code\b[^>]*>)([\s\S]*?)(<\/code>)?$/);
+    const body = m ? m[1] + dedent(m[2].replace(/\n+$/, "")) + (m[3] || "") : dedent(inner);
+    const lang = (attrs.match(/language-([\w+-]+)/) || [])[1] || "";
+    const text = stripTags(body).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
+    const key = lang.toLowerCase();
+    const name = (Object.hasOwn(LANGS, key) && LANGS[key]) || lang || guessLang(text);
+    const lettered = !lang && name === "x86 assembly" && !/<span\b/.test(body) ? body.replace(/^(<code\b[^>]*>)?([\s\S]*?)(<\/code>)?$/, (a, o, t, c) => (o || "") + asmTokens(t) + (c || "")) : body;
+    const lines = text.replace(/\n+$/, "").split("\n").length;
+    const cap = `<figcaption class="lst-cap"><span class="lst-no">Listing ${lst}</span>${name ? `<span class="lst-lang">${name}</span>` : ""}</figcaption>`;
+    const dim = lines > 2 ? `<span class="lst-dim" aria-hidden="true"><span>${lines} lines</span></span>` : "";
+    return `<figure class="listing${lines === 1 ? " listing--line" : ""}">${cap}<div class="lst-body"><pre${attrs} tabindex="0">${lettered}</pre>${dim}</div></figure>`;
+  });
+
+  // An alt repeated on three or more images ("Patch Details") says nothing
+  // about any one of them, so it is not used as a caption.
+  const altUses = {};
+  for (const m of out.matchAll(/<img\b[^>]*\balt="([^"]*)"/g)) altUses[m[1].trim()] = (altUses[m[1].trim()] || 0) + 1;
+  // Images become numbered figures (a narrow, right-aligned sketch is a side
+  // figure); charts keep their own caption and share the numbering.
+  out = out.replace(
+    FIGURE,
+    (all, tag, attrs = "", wrapped, bare, chartHead, chartCap, chartEnd) => {
+      fig++;
+      // A width the post set inline (max-width: 50%) sizes the frame instead.
+      const inlineW = (bare || "").match(/\bstyle="[^"]*?\bmax-width:\s*(\d+)%;?/);
+      const img = inlineW ? bare.replace(/\s*\bmax-width:\s*\d+%;?\s*/, " ").replace(/\bstyle=" /, 'style="') : wrapped || bare;
+      if (chartHead) return `${chartHead}<span class="fig-no">Fig. ${fig}</span> <span class="fig-alt">${chartCap}</span>${chartEnd}`;
+      // The caption is the image's title (![alt](src "title")), else its alt
+      // text. Text that repeats the alt is hidden from screen readers, which
+      // already read the alt on the image. Placeholder and repeated alts give
+      // just the figure number.
+      const alt = ((img.match(/\balt="([^"]*)"/) || [])[1] || "").trim();
+      const title = ((img.match(/\btitle="([^"]*)"/) || [])[1] || "").trim();
+      const usable = (t) => t && !PLACEHOLDER_ALT.test(t);
+      const cap = usable(title) ? title : usable(alt) && altUses[alt] < 3 ? alt : "";
+      const capAttrs = cap && cap === alt ? ' aria-hidden="true"' : "";
+      const w = (img.match(/\bwidth="(\d+)%"/) || [])[1] || (inlineW && inlineW[1]);
+      const side = w && Number(w) < 50 && /flex-end/.test(attrs);
+      const isSvg = /\.svg"/.test(img);
+      const cls = ["fig", side ? "fig--side" : "", w && !side ? "fig--narrow" : "", isSvg ? "fig--line" : ""].filter(Boolean).join(" ");
+      const style = w ? ` style="--fig-w:${w}%"` : "";
+      const cleanImg = img.replace(/\swidth="\d+%"/, "").replace(/<img\b/, '<img loading="lazy" decoding="async"');
+      return `<figure class="${cls}"${style}><div class="fig-frame">${cleanImg}</div><figcaption><span class="fig-no">Fig. ${fig}</span>${cap ? ` <span class="fig-alt"${capAttrs}>${finishHtml(cap)}</span>` : ""}</figcaption></figure>`;
+    },
+  );
+
+  out = out.replace(
+    EXAMPLE,
+    (all, pre, x, y, w, h, post, inner) => {
+      ex++;
+      return `<figure class="ly-ex" style="--ly-w:${w}"><figcaption class="ly-cap"><span class="fig-no">Ex. ${ex}</span></figcaption><svg${pre} viewBox="${x} ${y} ${w} ${h}"${post} role="img" aria-label="Music example ${ex}, engraved with LilyPond">${inner}</svg></figure>`;
+    },
+  );
+
+  // Section marks on the top heading level: a drafting section bubble
+  // (letter over plate number) for code, a rehearsal letter for music.
+  const level = headingLevel(out);
+  if (level === "h1") out = out.replace(/<(\/?)h3\b/g, "<$1h4").replace(/<(\/?)h2\b/g, "<$1h3");
+  let sec = 0;
+  out = out.replace(new RegExp(`<${level}\\b([^>]*)>([\\s\\S]*?)<\\/${level}>`, "g"), (all, attrs, inner) => {
+    const L = LETTER(sec++);
+    const mark =
+      voice === "notes"
+        ? `<span class="reh" aria-hidden="true">${L}</span>`
+        : `<span class="secmark" aria-hidden="true"><b>${L}</b>${plate ? `<i>${plate}</i>` : ""}</span>`;
+    return `<h2${sectionAttrs(attrs, sectionId(attrs, L))}>${mark}<span class="sec-t">${inner.replace(/\s*:\s*$/, "")}</span></h2>`;
+  });
+
+  out = out.replace(/(<sup class="footnote-ref"><a [^>]*>)\[(\d+(?::\d+)?)\](<\/a>)/g, "$1$2$3");
+  // A bare URL in the text is set as code, so its break reads as a code break.
+  out = out.replace(/<a\b((?![^>]*\bclass=)[^>]*)>(https?:\/\/[^<\s]+)<\/a>/g, '<a$1 class="url">$2</a>');
+  return shelf.restore(setTables(out));
+};
+
+// A link log summary: a head of about two sentences and the remainder.
+const plain = markdownIt("zero");
+// Full stops that do not end a sentence: list numerals (1.), initials and
+// common abbreviations (vs., e.g., i.e.).
+const NOT_AN_END = /(?:^|[\s(])(?:\d+|[A-Za-z]|vs|etc|cf|approx|incl|al|e\.g|i\.e|Mr|Mrs|Ms|Dr|St|Jr|Sr|No|Fig|vol|pp)\.$/i;
+// A head cut mid-sentence must not end on one of these.
+const WEAK = new Set(("a an the and or but nor so yet of to in on at by for from with into onto upon over under " +
+  "as than that which who whom whose this these those its their his her our your my is are was were be been " +
+  "being has have had do does did can could will would should may might must not no such like via vs e.g. i.e.").split(" "));
+export const llSplit = (s, target = 260) => {
+  const html = plain.renderInline(String(s ?? "").replace(/\s+/g, " ").trim());
+  const done = (head, tail) => ({ head: finishHtml(head), tail: finishHtml(tail) });
+  if (html.length <= target + 80) return done(html, "");
+  let end = -1;
+  for (const m of html.matchAll(/[.!?:](&quot;|[”’)])*(?=\s)/g)) {
+    const at = m.index + m[0].length;
+    if (at > target + 40) break;
+    // A head never ends on a colon: it would promise a list it then hides.
+    if (at < 110 || m[0][0] === ":") continue;
+    if (m[0][0] === "." && NOT_AN_END.test(html.slice(Math.max(0, m.index - 12), m.index + 1))) continue;
+    end = at;
+  }
+  if (end > 0) return done(html.slice(0, end), html.slice(end));
+  // No sentence ends in reach: cut at a space after a word that can close a
+  // phrase, never after a comma or a function word.
+  for (let sp = html.lastIndexOf(" ", target); sp >= 110; sp = html.lastIndexOf(" ", sp - 1)) {
+    const word = html.slice(html.lastIndexOf(" ", sp - 1) + 1, sp);
+    if (/[,;(–—-]$/.test(word) || WEAK.has(word.toLowerCase())) continue;
+    return done(html.slice(0, sp), html.slice(sp));
+  }
+  return done(html, "");
+};
+
+const count = (s, re) => (s.match(re) || []).length;
+export const tally = (html) => {
+  const e = engrave(html);
+  return {
+    figures: count(e, /class="fig-no">Fig\. /g),
+    listings: count(e, /class="lst-no">/g),
+    examples: count(e, /class="fig-no">Ex\. /g),
+  };
+};
+
+export default function plate(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy({ "src/_11ty/_static/js": "js" });
+  eleventyConfig.addGlobalData("build", () => ({ date: new Date() }));
+
+  // Asset URLs carry a hash of the file, so a new stylesheet or script is a
+  // new URL: the service worker's cache never hands a returning visitor last
+  // build's CSS with this build's markup. Tailwind writes public/css before
+  // Eleventy runs; scripts are read from their source. A file not yet built
+  // (a dev watch) falls back to a per-run token.
+  const runToken = Date.now().toString(36);
+  eleventyConfig.addFilter("bust", (url) => {
+    for (const root of ["public", "src/_11ty/_static"]) {
+      try {
+        const hash = createHash("sha256").update(fs.readFileSync(`${root}${url}`)).digest("hex").slice(0, 10);
+        return `${url}?v=${hash}`;
+      } catch {}
+    }
+    return `${url}?v=${runToken}`;
+  });
+
+  eleventyConfig.addFilter("roman", roman);
+  eleventyConfig.addFilter("finishHtml", finishHtml);
+  eleventyConfig.addFilter("engrave", (html, voice, plateNo) => engrave(html, { voice, plate: plateNo }));
+
+  const inlineMd = markdownIt({ html: false });
+  eleventyConfig.addFilter("inlineMd", (s, ties = false) => finishHtml(inlineMd.renderInline(String(s ?? "").trim()), ties));
+  eleventyConfig.addFilter("sections", sectionsOf);
+  eleventyConfig.addFilter("smartText", (s) => finishHtml(plain.renderInline(String(s ?? ""))));
+
+  eleventyConfig.addFilter("llSplit", llSplit);
+
+  eleventyConfig.addFilter("plateNo", (collection, url) => {
+    const i = (collection || []).findIndex((p) => p.url === url);
+    return i < 0 ? 0 : i + 1;
+  });
+  eleventyConfig.addFilter("voice", voiceOf);
+  eleventyConfig.addFilter("ofVoice", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v));
+  // A post named by its source file, which outlives title and permalink
+  // changes. A missing post fails the build rather than printing blanks.
+  eleventyConfig.addFilter("byFile", (collection, file) => {
+    const post = (collection || []).find((p) => p.inputPath.endsWith(`/${file}`));
+    if (!post) throw new Error(`plate: no post built from "${file}"; update the reference in home.njk`);
+    return post;
+  });
+  eleventyConfig.addFilter("voiceCount", (collection, v) => (collection || []).filter((p) => voiceOf(p.data?.tags) === v).length);
+
+  eleventyConfig.addFilter("readingMinutes", (html) => {
+    const text = String(html ?? "").replace(/<(script|style|svg)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " ");
+    return Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 230));
+  });
+  eleventyConfig.addFilter("tempo", (m) =>
+    m <= 2 ? "Presto" : m <= 4 ? "Allegro" : m <= 6 ? "Allegretto" : m <= 9 ? "Andante" : m <= 13 ? "Adagio" : "Largo",
+  );
+  eleventyConfig.addFilter("tally", tally);
+
+  const TAG_NAMES = {
+    riscv: "RISC-V", webkit: "WebKit", javascript: "JavaScript", creduce: "C-Reduce", racket: "Racket",
+    bitvector: "bitvectors", rosette: "Rosette", "piano-playing": "piano", webassembly: "WebAssembly",
+    llvm: "LLVM", "reference-types": "reference types", fex: "FEX-Emu", genai: "GenAI", claude: "Claude",
+    llms: "LLMs", waybar: "Waybar", linux: "Linux", esbmc: "ESBMC", rightkey: "Rightkey", rust: "Rust",
+    codex: "Codex", pewpew: "Pewpew", vow: "Vow", igalia: "Igalia", bv: "bv",
+  };
+  eleventyConfig.addFilter("indexTerms", (tags) => {
+    const out = [];
+    for (const t of [].concat(tags || []))
+      for (const part of String(t).split(/[\s,]+/)) {
+        const slug = part.replace(/^#+/, "").trim().toLowerCase();
+        if (!slug || slug === "post" || slug === "posts" || slug === "pages" || /^\d+$/.test(slug)) continue;
+        const name = (Object.hasOwn(TAG_NAMES, slug) && TAG_NAMES[slug]) || slug.replace(/-/g, " ");
+        if (!out.includes(name)) out.push(name);
+      }
+    return out;
+  });
+
+  const groupBy = (items, keyOf, labelOf) => {
+    const groups = [];
+    for (const item of items || []) {
+      const key = keyOf(item);
+      const last = groups.at(-1);
+      if (last && last.key === key) last.items.push(item);
+      else groups.push({ key, label: labelOf(item), items: [item] });
+    }
+    return groups;
+  };
+  eleventyConfig.addFilter("groupByYear", (posts) => groupBy(posts, (p) => asDate(p.date).year, (p) => String(asDate(p.date).year)));
+  eleventyConfig.addFilter("groupByMonth", (entries, field = "dateAdded") =>
+    groupBy(entries, (e) => asDate(e[field]).toFormat("yyyy-LL"), (e) => asDate(e[field]).toFormat("LLLL yyyy")),
+  );
+  eleventyConfig.addFilter("plateDate", (d) => asDate(d).toFormat("d LLL yyyy"));
+  eleventyConfig.addFilter("dayMonth", (d) => asDate(d).toFormat("d LLL"));
+  eleventyConfig.addFilter("isoDate", (d) => asDate(d).toISODate());
+  eleventyConfig.addFilter("yearOf", (d) => asDate(d).year);
+  eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+  eleventyConfig.addFilter("domain", (u) => {
+    try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; }
+  });
+  eleventyConfig.addFilter("leadH1", (html) => (String(html ?? "").match(/^\s*<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "");
+  eleventyConfig.addFilter("dropLeadH1", (html) => String(html ?? "").replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>/, ""));
+}
