@@ -1,34 +1,21 @@
-<header>
-    <hgroup>
-        <a href="/" title="Home">
-            <p class="title">{{meta.siteName}}</p>
-        </a>
-        <p class="motto">{{meta.motto}}</p>
-    </hgroup>
-    <nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="zones" aria-hidden="true">
+    <div class="zones-x zones-x--top">{% for n in range(1, 9) %}<span>{{ n }}</span>{% endfor %}</div>
+    <div class="zones-x zones-x--bottom">{% for n in range(1, 9) %}<span>{{ n }}</span>{% endfor %}</div>
+    <div class="zones-y zones-y--left">{% for l in ["A", "B", "C", "D", "E", "F"] %}<span>{{ l }}</span>{% endfor %}</div>
+    <div class="zones-y zones-y--right">{% for l in ["A", "B", "C", "D", "E", "F"] %}<span>{{ l }}</span>{% endfor %}</div>
+</div>
+<header class="rh" id="top">
+    <a class="rh-title" href="{{ '/' | url }}">{{ meta.siteName }}</a>
+    <nav class="rh-nav" aria-label="Main">
         {% set navPages = collections.all | eleventyNavigation %}
         <ul>
             {%- for entry in navPages %}
-            <li {% if entry.url == page.url %} class="active" {% endif %}>
-                {%- if entry.title == "Blog" %}
-                    <a href="{{'/feed.xml' | url}}" title="Blog RSS Feed" class="rss-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon">
-                            <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
-                        </svg>
-                    </a>
-                    <a href="{{ entry.url | url }}">{{entry.title}}</a>
-                {%- elif entry.title == "Link Log" %}
-                    <a href="{{'/linklog-feed.xml' | url}}" title="Link Log RSS Feed" class="rss-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="rss-icon">
-                            <path d="M3.429 2.571c9.794 0 17.714 7.92 17.714 17.714 0 .571-.429 1-.857 1H18.57c-.571 0-.857-.429-.857-1 0-8.286-6.429-14.714-14.714-14.714-.571 0-1-.429-1-.857V3.43c0-.572.429-1 1-1zm0 5.714c6.286 0 11.429 5.143 11.429 11.429 0 .571-.429 1-.857 1h-1.714c-.571 0-.857-.429-.857-1 0-4.714-3.714-8.429-8.429-8.429-.571 0-1-.429-1-.857V9.143c0-.572.429-.858 1-.858zm2.285 5.143c1.286 0 2.286 1 2.286 2.286s-1 2.286-2.286 2.286-2.286-1-2.286-2.286 1-2.286 2.286-2.286z"/>
-                        </svg>
-                    </a>
-                    <a href="{{ entry.url | url }}">{{entry.title}}</a>
-                {%- else %}
-                    <a href="{{ entry.url | url }}">{{entry.title}}</a>
-                {%- endif %}
-            </li>
+            {%- set isHere = entry.url == page.url %}
+            {%- set inSection = entry.title == "Blog" and page.url and page.url.startsWith("/blog/") %}
+            <li{% if isHere or inSection %} class="is-active"{% endif %}><a href="{{ entry.url | url }}"{% if isHere %} aria-current="page"{% elif inSection %} aria-current="true"{% endif %}>{{ entry.title }}</a></li>
             {%- endfor %}
         </ul>
     </nav>
+    <div class="rh-theme" id="theme-slot"></div>
 </header>

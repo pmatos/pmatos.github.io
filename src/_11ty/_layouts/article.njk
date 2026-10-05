@@ -5,31 +5,68 @@ tags: post
 date: Created
 type: article
 ---
+{%- import "plates.njk" as plates -%}
+{%- import "score.njk" as score -%}
+{%- set all = collections.post -%}
+{%- set no = all | plateNo(page.url) -%}
+{%- set total = all | length -%}
+{%- set minutes = content | readingMinutes -%}
+{%- set voice = tags | voice -%}
+{%- set t = content | tally -%}
+{%- set terms = tags | indexTerms -%}
+{%- set prevPlate = all | getPreviousCollectionItem(page) -%}
+{%- set nextPlate = all | getNextCollectionItem(page) -%}
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 {% include "head-article.njk" %}
 <!-- Start Body -->
-<body>
+<body class="is-article is-{{ voice }}">
+<div class="plate">
     {% include "nav.njk" %}
-    <article>
-        <small class="info">
-            <time datetime="{{page.date}}">{{page.date | readableDate}}</time>
-        </small>
-        <h1>{{ title }}</h1>
-        {% if tags | length %}
-        <div class="article-tags">
-            {%- for tag in tags -%}
-                {%- if tag != "post" -%}
-                <span class="tag">{{ tag }}</span>
-                {%- endif -%}
-            {%- endfor -%}
+    <main id="main" class="piece-wrap">
+    <article class="piece piece--{{ voice }}">
+        <header class="ph">
+            <p class="ph-k"><span class="ph-plate">Plate {{ no | roman }}</span><span class="ph-topic">{{ plates.mark(voice) }}{{ plates.voiceName(voice) }}</span></p>
+            <h1 class="ph-title">{{ title | inlineMd | safe }}</h1>
+            {% if description %}<p class="ph-deck">{{ description | inlineMd | safe }}</p>{% endif %}
+            <dl class="tblock tblock--strip">
+                <div class="tb-row"><dt>Plate</dt><dd>{{ no | roman }} <span class="tb-sub">of {{ total | roman }}</span></dd></div>
+                <div class="tb-row"><dt>Dated</dt><dd><time datetime="{{ page.date | isoDate }}">{{ page.date | plateDate }}</time></dd></div>
+                {% if voice == "notes" %}
+                <div class="tb-row"><dt>Tempo</dt><dd><i>{{ minutes | tempo }}</i>, {{ minutes }}&nbsp;min</dd></div>
+                {% if t.examples %}<div class="tb-row"><dt>Examples</dt><dd>{{ t.examples }}</dd></div>{% endif %}
+                {% else %}
+                <div class="tb-row"><dt>Reading</dt><dd>{{ minutes }}&nbsp;min</dd></div>
+                {% if t.sections %}<div class="tb-row"><dt>Sections</dt><dd>{{ t.sections }}</dd></div>{% endif %}
+                {% if t.listings %}<div class="tb-row"><dt>Listings</dt><dd>{{ t.listings }}</dd></div>{% endif %}
+                {% endif %}
+                {% if t.figures %}<div class="tb-row"><dt>Figures</dt><dd>{{ t.figures }}</dd></div>{% endif %}
+            </dl>
+            {% if voice == "notes" %}{{ score.staffOpen("G") }}{% endif %}
+        </header>
+        <div class="prose">
+            {{ content | engrave(voice, no | roman) | safe }}
         </div>
-        {% endif %}
-        {{content | safe}}
+        <footer class="piece-end">
+            {% if terms | length %}
+            <p class="terms"><span class="terms-k">Index terms</span> {% for term in terms %}<span class="term">{{ term }}</span>{% if not loop.last %}, {% endif %}{% endfor %}</p>
+            {% endif %}
+            {% if voice == "notes" %}{{ score.staffEnd("Fine") }}{% else %}<p class="endmark" aria-hidden="true"><span class="endmark-rule"></span><span class="endmark-t">End of Plate {{ no | roman }}</span><span class="endmark-rule"></span></p>{% endif %}
+            <nav class="neighbours" aria-label="Neighbouring plates">
+                {% if prevPlate %}{% set pn = all | plateNo(prevPlate.url) %}
+                <a class="nb nb--prev" href="{{ prevPlate.url | url }}" rel="prev"><span class="nb-k">Preceding plate, Pl.&nbsp;{{ pn | roman }}</span><span class="nb-t">{{ prevPlate.data.title | inlineMd | safe }}</span></a>
+                {% else %}<span class="nb nb--prev nb--none"><span class="nb-k">The first plate</span></span>{% endif %}
+                <a class="nb nb--all" href="{{ '/blog.html' | url }}"><span class="nb-k">Catalogue</span><span class="nb-t">All plates</span></a>
+                {% if nextPlate %}{% set nn = all | plateNo(nextPlate.url) %}
+                <a class="nb nb--next" href="{{ nextPlate.url | url }}" rel="next"><span class="nb-k">Following plate, Pl.&nbsp;{{ nn | roman }}</span><span class="nb-t">{{ nextPlate.data.title | inlineMd | safe }}</span></a>
+                {% else %}<span class="nb nb--next nb--none"><span class="nb-k">The most recent plate</span></span>{% endif %}
+            </nav>
+        </footer>
     </article>
     {% if comments %}
-    <section id="comments" class="mt-12">
-        <h2>Comments</h2>
+    <section id="comments" class="comments" aria-labelledby="comments-title">
+        <h2 id="comments-title" class="comments-h">Comments</h2>
+        <p class="comments-note">Notes from readers on Plate {{ no | roman }}.</p>
         <div id="remark42"></div>
         <script>
         var remark_config = {
@@ -37,7 +74,7 @@ type: article
             site_id: "p-ocmatos",
             url: "{{ meta.url }}{{ page.url }}",
             components: ["embed"],
-            theme: "light",
+            theme: document.documentElement.classList.contains("dark") ? "dark" : "light",
             locale: "en"
         };
         (function(c) {
@@ -51,7 +88,9 @@ type: article
         </script>
     </section>
     {% endif %}
+    </main>
     {% include "footer.njk" %}
+</div>
 </body>
 <!-- End Body -->
 </html>

@@ -4,30 +4,42 @@ description: In questa pagina troverai tutti i pots che ho pubblicato
 keyword: test
 type: website
 ---
+{%- import "plates.njk" as plates -%}
+{%- set posts = collections.post -%}
+{%- set total = posts | length -%}
+{%- set firstYear = (posts | first).date | yearOf -%}
+{%- set lastYear = (posts | last).date | yearOf -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
-<!-- Start Body -->
-<body>
+<body class="is-blog">
+<div class="plate">
     {% include "nav.njk" %}
-    <main>
-        <ul class="elenco-posts">
-            <li class="posts">
-                {{content | safe}}
-            </li>
-        {%- for post in collections.post | reverse -%}
-            <li class="posts">
-                <h2><a href="{{post.url}}">{{post.data.title}}</a></h2>
-                <p>{{post.data.description | safe}}</p>
-                <small class="info">
-                    <time datetime="{{post.date}}">{{post.date | readableDate}}</time>
-                </small>
-            </li>
-        {%- endfor -%}
-        </ul>
+    <main id="main" class="catalogue">
+        <header class="sheet-head">
+            <p class="sh-k">Catalogue of plates</p>
+            <h1 class="sh-title">{{ (content | leadH1) or title }}</h1>
+            <div class="sh-lead">{{ content | dropLeadH1 | finishHtml | safe }}</div>
+            <dl class="tblock tblock--strip">
+                <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }}</dd></div>
+                <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd>{{ posts | voiceCount("code") }}</dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd>{{ posts | voiceCount("notes") }}</dd></div>
+                <div class="tb-row tb-row--wide"><dt>Subscribe</dt><dd><a href="{{ '/feed.xml' | url }}">RSS feed</a></dd></div>
+            </dl>
+        </header>
+        {%- for group in posts | reverse | groupByYear %}
+        <section class="year" aria-labelledby="y-{{ group.key }}">
+            <h2 class="year-h" id="y-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} plate{% if group.items | length > 1 %}s{% endif %}</span></h2>
+            <ol class="plates">
+                {%- for post in group.items %}
+                {{ plates.row(post, posts) }}
+                {%- endfor %}
+            </ol>
+        </section>
+        {%- endfor %}
     </main>
-    {% include "utterances.njk" %}
     {% include "footer.njk" %}
+</div>
 </body>
-<!-- End Body -->
 </html>

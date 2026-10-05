@@ -1,0 +1,143 @@
+{%- import "score.njk" as score -%}
+
+{#- Topic marks. Code: a drafting centre mark. Notes: a G clef (Emmentaler outline). -#}
+{%- macro mark(voice) -%}
+{%- if voice == "notes" -%}
+<svg class="tmark tmark--notes" viewBox="-0.2 -4.6 3.4 8.2" aria-hidden="true" focusable="false">{{ score.gClef(0.1, 1.2) }}</svg>
+{%- else -%}
+<svg class="tmark tmark--code" viewBox="-8 -8 16 16" aria-hidden="true" focusable="false"><circle cx="0" cy="0" r="4.2"/><path d="M-7.5 0H-1.6M1.6 0H7.5M0 -7.5V-1.6M0 1.6V7.5"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{%- macro voiceName(voice) -%}{{ "Notes" if voice == "notes" else "Code" }}{%- endmacro %}
+
+{#- A section cut line across the measure: letter, arrowhead, rule, arrowhead, letter. -#}
+{% macro cut(letter, title, id, note="") %}
+<div class="cut-head">
+    <div class="cut" aria-hidden="true"><span class="cut-l">{{ letter }}</span><span class="cut-rule"></span><span class="cut-l">{{ letter }}</span></div>
+    <h2 id="{{ id }}" class="cut-title"><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
+    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{#- A detail bubble heading: letter over the plate it refers to. -#}
+{% macro detail(letter, title, id, note="") %}
+<div class="det-head">
+    <span class="det-bubble" aria-hidden="true"><b>{{ letter }}</b><i>I</i></span>
+    <h2 id="{{ id }}" class="det-title"><span class="cut-k">Detail {{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
+    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{#- One row of the index of plates. -#}
+{% macro row(post, all, withYear=false) %}
+{%- set no = all | plateNo(post.url) %}
+{%- set v = post.data.tags | voice %}
+{%- set minutes = post.content | readingMinutes %}
+{%- set t = post.content | tally %}
+<li class="pl pl--{{ v }}">
+    <span class="pl-no"><abbr title="Plate">Pl.</abbr>&nbsp;{{ no | roman }}</span>
+    <span class="pl-mark" title="{{ voiceName(v) }}">{{ mark(v) }}<span class="visually-hidden">{{ voiceName(v) }}: </span></span>
+    <div class="pl-body">
+        <p class="pl-line"><span class="pl-tl"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd | safe }}</a><span class="leader" aria-hidden="true"></span></span><time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
+        {% if post.data.description %}<p class="pl-desc">{{ post.data.description | inlineMd | safe }}</p>{% endif %}
+        <p class="pl-meta">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {{ minutes }}&nbsp;min{% if t.examples %}, {{ t.examples }}&nbsp;music example{% if t.examples > 1 %}s{% endif %}{% endif %}{% else %}{{ minutes }}&nbsp;min{% if t.listings %}, {{ t.listings }}&nbsp;listing{% if t.listings > 1 %}s{% endif %}{% endif %}{% if t.figures %}, {{ t.figures }}&nbsp;fig{% if t.figures > 1 %}s{% endif %}.{% endif %}{% endif %}</p>
+    </div>
+</li>
+{% endmacro %}
+
+{#- Fig. 1, code: a section through the translator. Real lines from Plate XI
+    (FEX x87 Stack Optimization): the guest x87 code and the IR FEX-Emu makes of it. -#}
+{% macro figCode(x87url, x87no) %}
+{%- set pairs = [
+    ["fld [rsp]", "PushStack %10 i128"],
+    ["fsincos", "F80SINCOSStack"],
+    ["fmul st0, st0", "F80MulStack #0x0, #0x0"],
+    ["fxch", "F80StackXchange #0x1"],
+    ["fmul st0, st0", "F80MulStack #0x0, #0x0"],
+    ["faddp", "F80AddStack #0x1, #0x0"]
+] -%}
+<figure class="pfig pfig--code" aria-labelledby="fig1-cap">
+    <div class="pfig-field">
+        <div class="xl">
+            <p class="xl-h xl-h--g"><span class="balloon" aria-hidden="true">a</span>x86-64 guest</p>
+            <p class="xl-h xl-h--i"><span class="balloon" aria-hidden="true">b</span>FEX-Emu IR</p>
+            <p class="xl-h xl-h--o"><span class="balloon" aria-hidden="true">c</span>ARM64 host</p>
+            <ol class="xl-g" aria-label="x87 instructions">
+                {%- for p in pairs %}<li><code>{{ p[0] }}</code></li>{% endfor %}
+            </ol>
+            <div class="xl-l" aria-hidden="true">{% for p in pairs %}<span></span>{% endfor %}</div>
+            <div class="xl-sect">
+                <ol class="xl-i" aria-label="FEX-Emu IR nodes">
+                    {%- for p in pairs %}<li><code>{{ p[1] }}</code></li>{% endfor %}
+                </ol>
+            </div>
+            <div class="xl-jit" aria-hidden="true"><span class="xl-jit-t">JIT</span><span class="xl-arrow"></span></div>
+            <div class="xl-host">
+                <svg class="chip" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+                    <defs><pattern id="chip-hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4"/></pattern></defs>
+                    {%- for i in range(0, 6) %}
+                    <path class="chip-pin" d="M{{ 27 + i * 13.2 }} 8V20M{{ 27 + i * 13.2 }} 100V112M8 {{ 27 + i * 13.2 }}H20M100 {{ 27 + i * 13.2 }}H112"/>
+                    {%- endfor %}
+                    <rect class="chip-body" x="20" y="20" width="80" height="80"/>
+                    <rect class="chip-die" x="34" y="34" width="52" height="52" fill="url(#chip-hatch)"/>
+                    <rect class="chip-die-edge" x="34" y="34" width="52" height="52"/>
+                    <circle class="chip-dot" cx="27" cy="27" r="2.2"/>
+                </svg>
+                <span class="xl-host-t">translated code runs natively</span>
+            </div>
+            <div class="xl-dim" aria-hidden="true"><span class="dim-line"></span><span class="dim-t">at run time</span></div>
+        </div>
+    </div>
+    <figcaption id="fig1-cap"><span class="fig-no">Fig. 1</span> <span class="fig-alt">Section through the translator. The x87 code of <a href="{{ x87url | url }}">Plate {{ x87no }}</a> (a) becomes FEX-Emu&rsquo;s intermediate representation (b), which is compiled to ARM64 at run time (c).</span></figcaption>
+</figure>
+{% endmacro %}
+
+{#- Fig. 2, notes: a grand staff in staff-space units. Middle C, then eight bars' rest, then middle C again
+    under a fermata; an engineer's dimension line measures the interval. -#}
+{% macro figNotes(musicUrl) %}
+<figure class="pfig pfig--notes" aria-labelledby="fig2-cap">
+    <div class="pfig-field">
+        <svg class="gstaff" viewBox="-4.4 -9.2 51 27" role="img" aria-label="A grand staff. Middle C in the first bar, labelled a; a multi-measure rest of eight bars; middle C again under a fermata, labelled b. A dimension line above measures eight months from a to b." focusable="false">
+            <defs>
+                <marker id="dim-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="1.1" markerHeight="1.1" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 1.6 10 5 0 8.4Z"/></marker>
+            </defs>
+            <g class="gs-lines">
+                {%- for y in [0, 1, 2, 3, 4, 9, 10, 11, 12, 13] %}<rect x="0" y="{{ y - 0.05 }}" width="44.4" height="0.1"/>{% endfor %}
+            </g>
+            <g class="gs-ink">
+                <rect x="-0.08" y="0" width="0.16" height="13"/>
+                {{ score.brace(-0.42, 6.5) }}
+                {{ score.gClef(0.8, 3) }}
+                {{ score.fClef(0.8, 10) }}
+                {{ score.commonTime(5, 2) }}
+                {{ score.commonTime(5, 11) }}
+                <g transform="translate(9.6 0)"><rect class="ledger" x="-0.5" y="4.92" width="2.96" height="0.16"/>{{ score.wholeNote(5) }}</g>
+                <g transform="translate(10.2 0)">{{ score.measureRest(10) }}</g>
+                <rect x="16.4" y="0" width="0.14" height="13"/>
+                <rect x="19.6" y="1.67" width="11.6" height="0.66"/><rect x="19.5" y="1" width="0.16" height="2"/><rect x="31.14" y="1" width="0.16" height="2"/>
+                <rect x="19.6" y="10.67" width="11.6" height="0.66"/><rect x="19.5" y="10" width="0.16" height="2"/><rect x="31.14" y="10" width="0.16" height="2"/>
+                <rect x="34" y="0" width="0.14" height="13"/>
+                <g transform="translate(37.4 0)"><rect class="ledger" x="-0.5" y="4.92" width="2.96" height="0.16"/>{{ score.wholeNote(5) }}</g>
+                <g transform="translate(38 0)">{{ score.measureRest(10) }}</g>
+                <path transform="translate(38.38 -1.1) scale(.004 -.004)" d="M-67 48c0 37 30 67 67 67s67 -30 67 -67s-30 -67 -67 -67s-67 30 -67 67zM-332 -3c0 35 77 366 332 366s332 -331 332 -366c0 -9 -10 -15 -19 -15s-17 5 -19 18c-26 148 -146 262 -294 262s-268 -114 -294 -262c-2 -13 -10 -18 -19 -18s-19 6 -19 15z"/>
+                <rect x="43.3" y="0" width="0.16" height="13"/><rect x="43.8" y="0" width="0.6" height="13"/>
+            </g>
+            <text class="gs-num" x="25.4" y="-0.9" text-anchor="middle">8</text>
+            <text class="gs-num" x="25.4" y="8.1" text-anchor="middle">8</text>
+            <g class="dim">
+                <path class="dim-ext" d="M10.58 3.2V-8.4M38.38 -2.9V-8.4"/>
+                <path class="dim-l" d="M10.66 -7.2H21.6M29.2 -7.2H38.3" marker-start="url(#dim-arrow)" marker-end="url(#dim-arrow)"/>
+                <text class="dim-tx" x="25.4" y="-6.62" text-anchor="middle">8 months</text>
+            </g>
+            <g class="lead">
+                <path class="lead-l" d="M10.0 5.9 6.6 15.4"/><circle class="lead-dot" cx="10.0" cy="5.9" r="0.22"/>
+                <circle class="lead-b" cx="6" cy="16.6" r="1.2"/><text class="lead-t" x="6" y="17.05" text-anchor="middle">a</text>
+                <path class="lead-l" d="M38.9 5.9 42.4 15.4"/><circle class="lead-dot" cx="38.9" cy="5.9" r="0.22"/>
+                <circle class="lead-b" cx="43" cy="16.6" r="1.2"/><text class="lead-t" x="43" y="17.05" text-anchor="middle">b</text>
+            </g>
+        </svg>
+    </div>
+    <figcaption id="fig2-cap"><span class="fig-no">Fig. 2</span> <span class="fig-alt">Elevation of a beginning. Middle C at the first lesson, January 2022 (a); the <a href="{{ musicUrl | url }}">first public performance</a>, eight months later (b).</span></figcaption>
+</figure>
+{% endmacro %}

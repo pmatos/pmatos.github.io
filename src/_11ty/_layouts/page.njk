@@ -4,16 +4,42 @@ description: è una pagina come tante, oppure tante pagine sono come lei?
 keyword: test
 type: website
 ---
+{%- set lead = content | leadH1 -%}
+{%- set isAbout = page.url == "/about-me.html" -%}
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 {% include "head-website.njk" %}
 <!-- Start Body -->
-<body>
+<body class="is-page{% if isAbout %} is-about{% endif %}{% if pageClass %} {{ pageClass }}{% endif %}">
+<div class="plate">
     {% include "nav.njk" %}
-    <main>
-        {{content | safe}}
+    <main id="main" class="page">
+        {% if lead %}
+        <header class="sheet-head sheet-head--page">
+            {% if kicker %}<p class="sh-k">{{ kicker }}</p>{% elif isAbout %}<p class="sh-k">Particulars of the engraver</p>{% endif %}
+            <h1 class="sh-title">{{ lead | finishHtml | safe }}</h1>
+        </header>
+        {% endif %}
+        <div class="page-grid">
+            <div class="prose">
+                {{ content | dropLeadH1 | engrave("code", "") | safe }}
+            </div>
+            {% if isAbout %}
+            <aside class="particulars" aria-label="Particulars">
+                <dl class="tblock tblock--side">
+                    <div class="tb-row"><dt>Name</dt><dd>{{ meta.authorName }}</dd></div>
+                    <div class="tb-row"><dt>Based in</dt><dd>Nuremberg, Germany</dd></div>
+                    <div class="tb-row"><dt>Practice</dt><dd>Compilers &amp; dynamic binary translation</dd></div>
+                    <div class="tb-row"><dt>Current work</dt><dd><a href="https://fex-emu.com/">FEX-Emu</a>, with <a href="https://www.igalia.com/">Igalia</a></dd></div>
+                    <div class="tb-row"><dt>Piano</dt><dd>Since January 2022</dd></div>
+                    <div class="tb-row"><dt>Elsewhere</dt><dd><a href="https://github.com/{{ meta.githubUser }}">GitHub</a>, <a href="https://www.linkedin.com/in/{{ meta.linkedinkUser }}/">LinkedIn</a></dd></div>
+                </dl>
+            </aside>
+            {% endif %}
+        </div>
     </main>
     {% include "footer.njk" %}
+</div>
 </body>
 <!-- End Body -->
 </html>
