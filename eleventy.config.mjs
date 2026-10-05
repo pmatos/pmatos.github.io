@@ -33,7 +33,8 @@ export default function (eleventyConfig) {
   eleventyConfig
     .addPassthroughCopy({ "src/_11ty/_static/favicon": "favicon" })
     .addPassthroughCopy({ "src/_11ty/_static/img": "img" })
-    .addPassthroughCopy({ "src/_11ty/_static/examples": "examples" });
+    .addPassthroughCopy({ "src/_11ty/_static/examples": "examples" })
+    .addPassthroughCopy({ "src/_11ty/_static/fonts": "fonts" });
 
   plate(eleventyConfig);
 
