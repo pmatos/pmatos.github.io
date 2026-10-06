@@ -24,7 +24,7 @@ Pewpew is still open on my desktop. When I know a task will need hand-holding, o
 
 Most of my other work starts as tickets. I write some myself; for larger ideas I ask an agent to turn an epic into smaller tickets using [`to-tickets` from Matt Pocock's skills](https://github.com/mattpocock/skills). Then I decide which of those tickets should go ahead. I mark suitable ones with a configurable pickup label, such as `ready-for-agent`, and Symphonika takes them from there. The label is not a declaration that the design no longer matters. It is my decision that this piece of work is specified well enough to let an agent try.
 
-The inspiration was [OpenAI's Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/). It began as a specification that invited people to build an orchestrator from it. I took that spec and built the version I could actually use. Symphony's early examples use Linear; my work already lives on GitHub. That is a circumstance, not the thesis. The choices I keep coming back to in Symphonika are **repository-owned state machines** for work that begins with an issue, and **Routines** for work that begins with a clock.
+The inspiration was [OpenAI's Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/). It began as a specification that invited people to build an orchestrator from it. I took that spec and built the version I could actually use. Symphony's early examples use Linear; I built Symphonika around GitHub because that's where I track my work. The two parts that matter most to me are **repository-owned state machines** for work that begins with an issue, and **Routines** for work that begins with a clock.
 
 ## What happens to one ticket
 
@@ -32,7 +32,7 @@ Take [JSSE issue #858](https://github.com/pmatos/jsse/issues/858). In an async f
 
 ![The JSSE-only project view shows issue 858 succeeded and PR 860 merged; other public issues include blocked runs](/img/2026/10/symphonika-jsse-overview.png)
 
-The diagram below redraws the **actual eleven-state workflow** stored with that JSSE run; it is not a generic flowchart drawn to sell the idea. The paths through it are easier to read than the YAML that defines them.
+The diagram below redraws the **actual eleven-state workflow** stored with that JSSE run. The paths through it are easier to read than the YAML that defines them.
 
 ![The eleven-state JSSE issue workflow: plan, implement, verify the PR exists, review, simplify, wait for checks, repair or resolve conflicts, merge, or stop blocked](/img/2026/10/symphonika-jsse-workflow.png)
 
@@ -58,7 +58,7 @@ Audit the codebase for the list of composers in the collection per instrument, t
    with the title: "New person: <NAME>"
 ```
 
-This is a `report` Routine. Its job is to look for missing people and create candidates for later work, not to edit the collection directly. It demonstrates a different direction of travel: an agent can *propose* work, while the decision to take it on remains separate.
+This `report` Routine looks for missing people and creates issues for later work; it does not edit the collection directly.
 
 Another Routine, `refactor-audit`, is a `git` Routine. The same prompt can be scheduled against several explicitly selected repositories. Here is the public-project-independent part of its instructions:
 
@@ -70,7 +70,7 @@ Do not re-prioritize its pick. Do not merge or approve the PR.
 If the skill is unavailable, stop rather than improvising a replacement.
 ```
 
-That is more than “ask an agent to refactor something.” The Routine delegates the search and the implementation, but specifies the selection rule and a stopping point. The full prompt also describes the repository's quality gate and resource limits; I have kept this excerpt free of project-specific details. A recurring task can have a contract without becoming a blank cheque.
+The Routine delegates the search and the implementation, but specifies the selection rule and a stopping point. The full prompt also describes the repository's quality gate and resource limits; I have kept this excerpt free of project-specific details.
 
 ## Where I still want to be in the loop
 
@@ -82,6 +82,6 @@ Nor does a green check mean the agent made every right decision. The JSSE PR is 
 
 ## The next instrument
 
-Symphonika has moved the start of much of my work from “open a session” to “decide which ticket is ready.” Routines move recurring searches and maintenance into the same rhythm. Pewpew remains my place for work that needs closer attention. Both are experiments, and neither is the end of this story.
+Symphonika has moved the start of much of my work from “open a session” to “decide which ticket is ready.” Routines move recurring searches and maintenance into the same rhythm. Pewpew remains my place for work that needs closer attention.
 
-The gap I am looking at next is not simply how to launch more agents. It is tooling for **software design and decisions**: making a choice, recording why it was made, and seeing where an agent made a consequential choice on its own. If implementation keeps getting cheaper, understanding those choices will matter more than counting how many agents ran overnight. The factory can build; we still need to know what it was asked to build, what it decided along the way, and whether we wanted that at all.
+I'm looking next at tooling for **software design and decisions**: recording why a choice was made and showing where an agent made a consequential choice on its own. When implementation gets cheaper, I want a better account of those choices before I let more work run unattended.
