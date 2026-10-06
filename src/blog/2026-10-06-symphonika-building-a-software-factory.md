@@ -5,9 +5,11 @@ tags: ["agentic-coding", "tooling", "symphonika", "pewpew"]
 date: 2026-10-06
 image: /img/2026/10/symphonika-conductor.png
 layout: article.njk
-permalink: false
+permalink: /blog/2026-10-06-symphonika-building-a-software-factory.html
 eleventyExcludeFromCollections: true
-comments: true
+robots: noindex, follow
+draft: true
+comments: false
 ---
 
 ![A conductor at a score desk directs a workshop of coding agents, with a second desk close enough for hands-on work](/img/2026/10/symphonika-conductor.png)

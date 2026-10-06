@@ -64,8 +64,8 @@ type: article
             {% if voice == "notes" %}{{ score.staffEnd("Fine") }}{% else %}
             <div class="endplate">
                 <span class="endplate-rule" aria-hidden="true"></span>
-                <dl class="stamp" aria-label="End of post {{ no }}">
-                    <div><dt>Post</dt><dd>{{ no | roman }}</dd></div>
+                <dl class="stamp" aria-label="End of {% if no %}post {{ no }}{% else %}draft{% endif %}">
+                    <div><dt>Post</dt><dd>{% if no %}{{ no | roman }}{% else %}Draft{% endif %}</dd></div>
                     <div><dt>By</dt><dd>P.&thinsp;M.</dd></div>
                     <div><dt>Dated</dt><dd>{{ page.date | yearOf }}</dd></div>
                     <div><dt>Sheet</dt><dd>1 of 1</dd></div>
