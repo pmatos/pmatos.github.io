@@ -3,7 +3,7 @@ title: "Symphonika: building a software factory"
 description: "From watching agents in Pewpew to giving them work: issue workflows, scheduled routines, and the decisions a software factory must leave to humans."
 tags: ["agentic-coding", "tooling", "symphonika", "pewpew"]
 date: 2026-10-06
-image: /img/2026/10/symphonika-conductor.png
+image: /img/2026/10/symphonika-orchestrator.jpg
 layout: article.njk
 permalink: /blog/2026-10-06-symphonika-building-a-software-factory.html
 eleventyExcludeFromCollections: true
@@ -12,7 +12,7 @@ draft: true
 comments: false
 ---
 
-![A conductor at a score desk directs a workshop of coding agents, with a second desk close enough for hands-on work](/img/2026/10/symphonika-conductor.png)
+![A software designer guides glowing musical pathways through a futuristic workshop where coding agents work at separate desks](/img/2026/10/symphonika-orchestrator.jpg)
 
 In [Pewpew: the terminals are down!](/blog/pewpew-the-terminals-are-down.html), I drew a spectrum of ways to work with coding agents. At one end, you sit with one agent in a terminal. In the middle, Pewpew gives you a canvas for seeing many sessions at once. Further along is orchestration: you describe the work, and something else starts the agents and follows it through. I said I had my own take on that last part, and promised a different post.
 
