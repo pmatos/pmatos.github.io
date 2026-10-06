@@ -9,55 +9,30 @@
 {%- endif -%}
 {%- endmacro %}
 
-{%- macro voiceName(voice) -%}{{ "Notes" if voice == "notes" else "Code" }}{%- endmacro %}
+{%- macro voiceName(voice) -%}{{ "Music" if voice == "notes" else "Code" }}{%- endmacro %}
 
-{#- A section cut line across the measure: letter, arrowhead, rule, arrowhead, letter. -#}
-{% macro cut(letter, title, id, note="", inline=false) %}
-{%- if inline %}
-<div class="cut-head cut-head--inline">
-    <h2 id="{{ id }}" class="cut cut--titled"><span class="cut-l" aria-hidden="true">{{ letter }}</span><span class="cut-end" aria-hidden="true"></span><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span><span class="cut-rule" aria-hidden="true"></span><span class="cut-end" aria-hidden="true"></span><span class="cut-l" aria-hidden="true">{{ letter }}</span></h2>
-    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
-</div>
-{%- else %}
-<div class="cut-head">
-    <div class="cut" aria-hidden="true"><span class="cut-l">{{ letter }}</span><span class="cut-end"></span><span class="cut-rule"></span><span class="cut-end"></span><span class="cut-l">{{ letter }}</span></div>
-    <h2 id="{{ id }}" class="cut-title"><span class="cut-k">Section {{ letter }}&ndash;{{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
-    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
-</div>
-{%- endif %}
-{% endmacro %}
-
-{#- A detail bubble heading: letter over the plate it refers to. -#}
-{% macro detail(letter, title, id, note="") %}
-<div class="det-head">
-    <span class="secmark det-bubble" aria-hidden="true"><b>{{ letter }}</b></span>
-    <h2 id="{{ id }}" class="det-title"><span class="cut-k">Detail {{ letter }}</span><span class="cut-name">{{ title }}</span></h2>
-    {% if note %}<p class="cut-note">{{ note | safe }}</p>{% endif %}
-</div>
-{% endmacro %}
-
-{#- One row of the index of plates. -#}
+{#- An article row; numbering is an editorial marginal mark, not navigation. -#}
 {% macro row(post, all, withYear=false, compact=false) %}
 {%- set no = all | plateNo(post.url) %}
 {%- set v = post.data.tags | voice %}
 {%- set minutes = post.content | readingMinutes %}
 {%- set t = post.content | tally %}
 <li class="pl pl--{{ v }}{% if compact %} pl--toc{% endif %}">
-    <span class="pl-no"><span aria-hidden="true">Pl.&nbsp;{{ no | roman }}</span><span class="visually-hidden">Plate {{ no }}</span></span>
+    <span class="pl-no"><span aria-hidden="true">{{ no | roman }}</span><span class="visually-hidden">Post {{ no }}</span></span>
     <span class="pl-mark" title="{{ voiceName(v) }}">{{ mark(v) }}<span class="visually-hidden">{{ voiceName(v) }}: </span></span>
     <div class="pl-body">
-        <p class="pl-line"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd(true) | safe }}</a><span class="leader" aria-hidden="true"></span>{% if compact %}<span class="pl-min">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {% endif %}{{ minutes }}&nbsp;min</span>{% endif %}<time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
+        <p class="pl-line"><a class="pl-title" href="{{ post.url | url }}">{{ post.data.title | inlineMd(true) | safe }}</a><span class="leader" aria-hidden="true"></span>{% if compact %}<span class="pl-min">{{ minutes }}&nbsp;min</span>{% endif %}<time class="pl-date" datetime="{{ post.date | isoDate }}">{% if withYear %}{{ post.date | plateDate }}{% else %}{{ post.date | dayMonth }}{% endif %}</time></p>
         {% if not compact %}
         {% if post.data.description %}<p class="pl-desc">{{ post.data.description | inlineMd | safe }}</p>{% endif %}
-        <p class="pl-meta">{% if v == "notes" %}<i>{{ minutes | tempo }}</i>, {{ minutes }}&nbsp;min{% if t.examples %}, {{ t.examples }}&nbsp;music example{% if t.examples > 1 %}s{% endif %}{% endif %}{% else %}{{ minutes }}&nbsp;min{% if t.listings %}, {{ t.listings }}&nbsp;listing{% if t.listings > 1 %}s{% endif %}{% endif %}{% if t.figures %}, {{ t.figures }}&nbsp;fig{% if t.figures > 1 %}s{% endif %}.{% endif %}{% endif %}</p>
+        <p class="pl-meta">{{ minutes }}&nbsp;min read{% if v == "notes" and t.examples %}, {{ t.examples }} music example{% if t.examples > 1 %}s{% endif %}{% elif v == "code" %}{% if t.listings %}, {{ t.listings }} listing{% if t.listings > 1 %}s{% endif %}{% endif %}{% if t.figures %}, {{ t.figures }} fig{% if t.figures > 1 %}s{% endif %}.{% endif %}{% endif %}</p>
         {% endif %}
     </div>
 </li>
 {% endmacro %}
 
-{#- Fig. 1, code: a section through the translator. Real lines from Plate XI
-    (FEX x87 Stack Optimization): the guest x87 code and the IR FEX-Emu makes of it. -#}
-{% macro figCode(x87url, x87no, x87title) %}
+{#- Fig. 1, code: a section through the translator. Real lines from the
+    FEX x87 Stack Optimization post: guest x87 code and the IR FEX-Emu makes of it. -#}
+{% macro figCode(x87url, x87title) %}
 {%- set pairs = [
     ["fld [rsp]", "PushStack %10 i128"],
     ["fsincos", "F80SINCOSStack"],
@@ -98,7 +73,7 @@
             <div class="xl-dim" aria-hidden="true"><span class="dim-line"></span><span class="dim-t">at run time</span></div>
         </div>
     </div>
-    <figcaption id="fig1-cap"><span class="fig-no">Fig. 1</span> <span class="fig-alt">Section through the translator. The x87 code (a) from <a href="{{ x87url | url }}">{{ x87title | inlineMd | safe }}</a>, Pl.&nbsp;{{ x87no }}, becomes FEX-Emu&rsquo;s intermediate representation (b), which is compiled to <span class="lnum">ARM64</span> at run time (c).</span></figcaption>
+    <figcaption id="fig1-cap"><span class="fig-no">Fig. 1</span> <span class="fig-alt">Section through the translator. The x87 code (a) from <a href="{{ x87url | url }}">{{ x87title | inlineMd | safe }}</a> becomes FEX-Emu&rsquo;s intermediate representation (b), which is compiled to <span class="lnum">ARM64</span> at run time (c).</span></figcaption>
 </figure>
 {% endmacro %}
 

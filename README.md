@@ -93,6 +93,12 @@ p.ocmatos.com/
 └── package.json           # Project dependencies and scripts
 ```
 
+## Editorial design
+
+The homepage introduces Paulo and offers an engineering post and a piano story before the illustrated figures. The figures retain the site's engraved music-and-engineering identity; the post list and navigation use familiar labels instead of requiring readers to interpret plate terminology. Roman numerals remain secondary marginal marks on post lists and in the article end stamp.
+
+The blog's Code and Music links filter posts by topic. Keep their visible action labels explicit when changing the catalogue, and keep the homepage's curated piano link pointed at a real music post.
+
 ## Deployment to GitHub Pages
 
 ### Method 1: GitHub Actions (Recommended)

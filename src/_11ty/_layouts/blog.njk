@@ -1,14 +1,12 @@
 ---
 title: Blog
-description: In questa pagina troverai tutti i pots che ho pubblicato
-keyword: test
+description: Essays on compilers, low-level software, and piano practice.
+keyword: programming, compilers, music, piano
 type: website
 ---
 {%- import "plates.njk" as plates -%}
 {%- set posts = collections.post -%}
 {%- set total = posts | length -%}
-{%- set firstYear = (posts | first).date | yearOf -%}
-{%- set lastYear = (posts | last).date | yearOf -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
@@ -17,15 +15,12 @@ type: website
     {% include "nav.njk" %}
     <main id="main" class="catalogue">
         <header class="sheet-head">
-            <p class="sh-k">Catalogue of plates</p>
             {%- set lead = content | leadH1 %}
             <h1 class="sh-title">{% if lead %}{{ lead | finishHtml | safe }}{% else %}{{ title }}{% endif %}</h1>
             <div class="sh-lead">{{ content | dropLeadH1 | finishHtml | safe }}</div>
             <dl class="tblock tblock--strip">
-                <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }}</dd></div>
-                <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd><a href="#only-code" class="tb-filter">{{ posts | voiceCount("code") }} plates</a></dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd><a href="#only-notes" class="tb-filter">{{ posts | voiceCount("notes") }} plates</a></dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd><a href="#only-code" class="tb-filter">Show {{ posts | voiceCount("code") }} code posts</a></dd></div>
+                <div class="tb-row"><dt>{{ plates.mark("notes") }} Music</dt><dd><a href="#only-notes" class="tb-filter">Show {{ posts | voiceCount("notes") }} music posts</a></dd></div>
                 <div class="tb-row tb-row--wide"><dt>Subscribe</dt><dd><a href="{{ '/feed.xml' | url }}">RSS feed</a></dd></div>
             </dl>
         </header>
@@ -33,12 +28,12 @@ type: website
         <div class="cat-body">
             <div class="cat-list">
                 <span id="only-code" class="filter-target"></span><span id="only-notes" class="filter-target"></span>
-                <p class="filter-note filter-note--code">Showing the {{ posts | voiceCount("code") }} code plates. <a href="#catalogue-all">Show every plate</a></p>
-                <p class="filter-note filter-note--notes">Showing the {{ posts | voiceCount("notes") }} notes plates. <a href="#catalogue-all">Show every plate</a></p>
+                <p class="filter-note filter-note--code">Showing {{ posts | voiceCount("code") }} code posts. <a href="#catalogue-all">Show all posts</a></p>
+                <p class="filter-note filter-note--notes">Showing {{ posts | voiceCount("notes") }} music posts. <a href="#catalogue-all">Show all posts</a></p>
                 <span id="catalogue-all" class="filter-target"></span>
                 {%- for group in years %}
                 <section class="year" aria-labelledby="y-{{ group.key }}">
-                    <h2 class="year-h" id="y-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} plate{% if group.items | length > 1 %}s{% endif %}</span></h2>
+                    <h2 class="year-h" id="y-{{ group.key }}"><span class="year-n">{{ group.label }}</span><span class="year-c">{{ group.items | length }} post{% if group.items | length > 1 %}s{% endif %}</span></h2>
                     <ol class="plates">
                         {%- for post in group.items %}
                         {{ plates.row(post, posts) }}
@@ -47,17 +42,17 @@ type: website
                 </section>
                 {%- endfor %}
             </div>
-            <nav class="cat-index" aria-label="Plates by year">
+            <nav class="cat-index" aria-label="Browse posts">
                 <div class="cat-index-in">
-                    <p class="soi-h">Parts list</p>
+                    <p class="soi-h">By year</p>
                     <ol class="soi-list">
-                        {%- for group in years %}<li><a href="#y-{{ group.key }}"><span class="soi-t">{{ group.label }}</span><span class="soi-z">Pl.&nbsp;{{ posts | plateNo((group.items | last).url) | roman }}{% if group.items | length > 1 %}&ndash;{{ posts | plateNo((group.items | first).url) | roman }}{% endif %}</span></a></li>{% endfor %}
+                        {%- for group in years %}<li><a href="#y-{{ group.key }}"><span class="soi-t">{{ group.label }}</span><span class="soi-z">{{ group.items | length }}</span></a></li>{% endfor %}
                     </ol>
                     <p class="soi-h soi-h--sub">By topic</p>
                     <ul class="soi-list">
                         <li><a href="#only-code"><span class="soi-t">{{ plates.mark("code") }} Code</span><span class="soi-z">{{ posts | voiceCount("code") }}</span></a></li>
-                        <li><a href="#only-notes"><span class="soi-t">{{ plates.mark("notes") }} Notes</span><span class="soi-z">{{ posts | voiceCount("notes") }}</span></a></li>
-                        <li><a href="#catalogue-all"><span class="soi-t">Every plate</span><span class="soi-z">{{ total }}</span></a></li>
+                        <li><a href="#only-notes"><span class="soi-t">{{ plates.mark("notes") }} Music</span><span class="soi-z">{{ posts | voiceCount("notes") }}</span></a></li>
+                        <li><a href="#catalogue-all"><span class="soi-t">All posts</span><span class="soi-z">{{ total }}</span></a></li>
                     </ul>
                 </div>
             </nav>

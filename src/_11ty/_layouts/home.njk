@@ -7,16 +7,12 @@ type: website
 {%- import "plates.njk" as plates -%}
 {%- set posts = collections.post -%}
 {%- set total = posts | length -%}
-{%- set latest = posts | last -%}
-{%- set firstYear = (posts | first).date | yearOf -%}
-{%- set lastYear = latest.date | yearOf -%}
-{#- The two posts the frontispiece figures cite, by source file. -#}
+{%- set latestCode = posts | ofVoice("code") | last -%}
+{#- The illustrated posts are linked by source file. -#}
 {%- set x87post = posts | byFile("2024-09-25-fex-x87-stack-optimization.md") -%}
 {%- set musicPost = posts | byFile("2022-10-24-middlec-to-concert.md") -%}
 {%- set x87url = x87post.url -%}
 {%- set musicUrl = musicPost.url -%}
-{%- set notesPosts = posts | ofVoice("notes") -%}
-{%- set latestNotes = notesPosts | last -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
@@ -28,53 +24,38 @@ type: website
         <section class="frontis" aria-labelledby="site-title">
             <header class="cartouche">
                 <h1 id="site-title" class="ct-title"><span class="ct-frame" aria-hidden="true"></span><span class="ct-c ct-c--tl" aria-hidden="true"></span><span class="ct-c ct-c--tr" aria-hidden="true"></span><span class="ct-c ct-c--bl" aria-hidden="true"></span><span class="ct-c ct-c--br" aria-hidden="true"></span>Notes <span class="amp">&amp;</span> Code</h1>
-                <p class="ct-by">Plates for compiler &amp; pianoforte, engraved by {{ meta.authorName }}, {{ meta.location }}</p>
-                <p class="ct-now"><span class="ct-now-k">Latest</span> <a href="{{ latest.url | url }}">{{ latest.data.title | inlineMd | safe }}</a> <span class="ct-now-sub">(Pl.&nbsp;{{ total | roman }}, {{ latest.date | dayMonth }})</span><span class="ct-now-sep" aria-hidden="true"></span><span class="ct-now-k ct-now-k--bench">On the bench</span> <a href="https://rightkey.app" target="_blank" rel="noopener">Rightkey</a> <span class="ct-now-and">and</span> <a href="https://petovita.com" target="_blank" rel="noopener">PetoVita</a></p>
+                <p class="ct-by">I&rsquo;m {{ meta.authorName }}, a software engineer and pianist. I write about compilers, the things I build, and learning music.</p>
+                <nav class="ct-features" aria-label="Start reading">
+                    <a href="{{ latestCode.url | url }}"><span class="ct-feature-k">{{ plates.mark("code") }} Engineering</span><span class="ct-feature-t">{{ latestCode.data.title | inlineMd(true) | safe }}</span></a>
+                    <a href="{{ musicUrl | url }}"><span class="ct-feature-k">{{ plates.mark("notes") }} At the piano</span><span class="ct-feature-t">{{ musicPost.data.title | inlineMd(true) | safe }}</span></a>
+                </nav>
             </header>
-
-            <div class="figs">
-                {{ plates.figCode(x87url, posts | plateNo(x87url) | roman, x87post.data.title) }}
-                {{ plates.figNotes(musicUrl) }}
-            </div>
         </section>
 
-        {%- set newest = posts | reverse | limit(5) %}
-        {%- set showNotes = latestNotes and (newest | ofVoice("notes") | length) == 0 %}
+        {%- set newest = posts | reverse | limit(4) %}
         <section class="index" aria-labelledby="index-title">
-            {{ plates.cut("A", "Index of plates", "index-title", "", true) }}
+            <h2 id="index-title" class="home-section-title">Recent posts</h2>
             <ol class="plates plates--home">
                 {%- for post in newest %}
-                {{ plates.row(post, posts, true, true) }}
+                {% if post.url != latestCode.url and post.url != musicUrl %}{{ plates.row(post, posts, true, true) }}{% endif %}
                 {%- endfor %}
             </ol>
-            {% if showNotes %}
-            <p class="plates-k">{{ plates.mark("notes") }} From the notes</p>
-            <ol class="plates plates--home plates--notes">
-                {{ plates.row(latestNotes, posts, true, true) }}
-            </ol>
-            {% endif %}
-            <p class="more"><a href="{{ '/blog.html' | url }}">All {{ total }} plates, {{ firstYear }}&ndash;{{ lastYear }}</a> <span class="more-sep">or</span> <a href="{{ '/feed.xml' | url }}">subscribe by RSS</a><span class="more-key" aria-label="Key">{{ plates.mark("code") }} code &ensp; {{ plates.mark("notes") }} notes</span></p>
+            <p class="more"><a href="{{ '/blog.html' | url }}">Browse all {{ total }} posts</a> <span class="more-sep">or</span> <a href="{{ '/feed.xml' | url }}">subscribe by RSS</a></p>
+        </section>
+
+        <section class="figs" aria-label="Engineering and music in drawings">
+            {{ plates.figCode(x87url, x87post.data.title) }}
+            {{ plates.figNotes(musicUrl) }}
         </section>
 
         <section class="frontis-foot" aria-label="About this site">
             <div class="intro">
-                <p class="intro-lead">I&rsquo;m Paulo Matos, a software engineer in {{ meta.location }}. I work on compilers and dynamic binary translation as a freelance consultant with <a href="https://www.igalia.com/">Igalia</a>; my current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. By night I play the piano.</p>
-                <p>This site is where I share technical notes, project updates, and occasional tangents about the things I&rsquo;m learning. Think of it as a public notebook: part documentation, part exploration.</p>
+                <p>I work on compilers and dynamic binary translation with <a href="https://www.igalia.com/">Igalia</a>. My current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. This site is my public notebook; <a href="{{ '/about-me.html' | url }}">more about me</a>.</p>
             </div>
-            <dl class="tblock tblock--home" aria-label="About this edition">
-                <div class="tb-row tb-row--wide"><dt>Engraver</dt><dd>{{ meta.authorName }}, {{ meta.location }}</dd></div>
-                <div class="tb-row"><dt>Plates</dt><dd>I&ndash;{{ total | roman }} <span class="tb-sub">({{ total }})</span></dd></div>
-                <div class="tb-row"><dt>Period</dt><dd>{{ firstYear }}&ndash;{{ lastYear }}</dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("code") }} Code</dt><dd>{{ posts | voiceCount("code") }} plates</dd></div>
-                <div class="tb-row"><dt>{{ plates.mark("notes") }} Notes</dt><dd>{{ notesPosts | length }} plates</dd></div>
-                <div class="tb-row tb-row--wide tb-row--dup"><dt>Latest</dt><dd><a href="{{ latest.url | url }}"><span aria-hidden="true">Pl.&nbsp;{{ total | roman }}</span><span class="visually-hidden">Plate {{ total }}</span>, {{ latest.data.title | inlineMd | safe }}</a> <span class="tb-sub">{{ latest.date | plateDate }}</span></dd></div>
-                <div class="tb-row tb-row--wide tb-row--dup"><dt>Works</dt><dd><a href="https://rightkey.app" target="_blank" rel="noopener">Rightkey<span class="ext" aria-hidden="true">&#8599;</span></a>, <a href="https://petovita.com" target="_blank" rel="noopener">PetoVita<span class="ext" aria-hidden="true">&#8599;</span></a></dd></div>
-                <div class="tb-row tb-row--wide"><dt>Link Log</dt><dd><a href="{{ '/linklog.html' | url }}">{{ linklog.entries | length }} references</a></dd></div>
-            </dl>
         </section>
 
         <section class="building" aria-labelledby="building-title">
-            {{ plates.detail("B", "Works in progress", "building-title", "On the bench, as listed by <code class=\"shell\">ls ~/building</code>") }}
+            <h2 id="building-title" class="home-section-title">Projects</h2>
             <div class="projects">
                 <a href="https://rightkey.app" target="_blank" rel="noopener" class="project project--rightkey">
                     <span class="project-medal"><img src="/img/projects/rightkey.webp" alt="" width="112" height="112"></span>
@@ -97,27 +78,6 @@ type: website
             </div>
         </section>
 
-        <section class="further" aria-labelledby="further-title">
-            {{ plates.cut("C", "Further reading", "further-title") }}
-            <div class="further-grid">
-                <a class="ref" href="{{ '/blog.html' | url }}">
-                    <span class="ref-k">Catalogue</span>
-                    <span class="ref-t">Blog</span>
-                    <span class="ref-d">Technical deep-dives into compiler internals, WebAssembly, and low-level systems, and notes from the piano bench</span>
-                </a>
-                <a class="ref" href="{{ '/linklog.html' | url }}">
-                    <span class="ref-k">Register</span>
-                    <span class="ref-t">Link Log</span>
-                    <span class="ref-d">Interesting reads, tools, and resources I&rsquo;ve collected along the way</span>
-                </a>
-                <a class="ref" href="{{ '/about-me.html' | url }}">
-                    <span class="ref-k">Particulars</span>
-                    <span class="ref-t">About me</span>
-                    <span class="ref-d">Compilers, binary translation, the piano, running and sim racing</span>
-                </a>
-            </div>
-            <p class="cta">Want to know more? Check out the <a href="{{ '/about-me.html' | url }}">About</a> page, or find me on <a href="https://github.com/{{ meta.githubUser }}" target="_blank" rel="noopener">GitHub</a>.</p>
-        </section>
     </main>
 
     {% include "footer.njk" %}

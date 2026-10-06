@@ -12,5 +12,5 @@ eleventyNavigation:
 # Blog
 
 <div class="lead">
-This is what I try to call a blog... we will see how it goes.
+Writing on compilers, low-level software, and piano practice. Browse by topic or year.
 </div>

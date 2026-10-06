@@ -8,12 +8,12 @@
             <span class="tb-motto">{{ meta.motto }}</span>
         </div>
         <div class="tb-cell">
-            <span class="tb-k">Engraved by</span>
+            <span class="tb-k">By</span>
             <span class="tb-v">{{ meta.authorName }}<br>{{ meta.location }}</span>
         </div>
         <div class="tb-cell">
-            <span class="tb-k">Plates</span>
-            <span class="tb-v">I&ndash;{{ fTotal | roman }}, {{ (fPosts | first).date | yearOf }}&ndash;{{ (fPosts | last).date | yearOf }}</span>
+            <span class="tb-k">Posts</span>
+            <span class="tb-v">{{ fTotal }}, {{ (fPosts | first).date | yearOf }}&ndash;{{ (fPosts | last).date | yearOf }}</span>
         </div>
         <div class="tb-cell">
             <span class="tb-k">Printed</span>
