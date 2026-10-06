@@ -10,9 +10,10 @@ type: website
 {%- set latestCode = posts | ofVoice("code") | last -%}
 {#- The illustrated posts are linked by source file. -#}
 {%- set x87post = posts | byFile("2024-09-25-fex-x87-stack-optimization.md") -%}
-{%- set musicPost = posts | byFile("2022-10-24-middlec-to-concert.md") -%}
+{%- set featuredMusic = posts | ofVoice("notes") | last -%}
+{%- set illustratedMusic = posts | byFile("2022-10-24-middlec-to-concert.md") -%}
 {%- set x87url = x87post.url -%}
-{%- set musicUrl = musicPost.url -%}
+{%- set musicUrl = illustratedMusic.url -%}
 <!DOCTYPE html>
 <html lang="en">
 {% include "head-website.njk" %}
@@ -27,7 +28,7 @@ type: website
                 <p class="ct-by">I&rsquo;m {{ meta.authorName }}, a software engineer and pianist. I write about compilers, the things I build, and learning music.</p>
                 <nav class="ct-features" aria-label="Start reading">
                     <a href="{{ latestCode.url | url }}"><span class="ct-feature-k">{{ plates.mark("code") }} Engineering</span><span class="ct-feature-t">{{ latestCode.data.title | inlineMd(true) | safe }}</span></a>
-                    <a href="{{ musicUrl | url }}"><span class="ct-feature-k">{{ plates.mark("notes") }} At the piano</span><span class="ct-feature-t">{{ musicPost.data.title | inlineMd(true) | safe }}</span></a>
+                    <a href="{{ featuredMusic.url | url }}"><span class="ct-feature-k">{{ plates.mark("notes") }} Music</span><span class="ct-feature-t">{{ featuredMusic.data.title | inlineMd(true) | safe }}</span></a>
                 </nav>
             </header>
         </section>
@@ -37,7 +38,7 @@ type: website
             <h2 id="index-title" class="home-section-title">Recent posts</h2>
             <ol class="plates plates--home">
                 {%- for post in newest %}
-                {% if post.url != latestCode.url and post.url != musicUrl %}{{ plates.row(post, posts, true, true) }}{% endif %}
+                {% if post.url != latestCode.url and post.url != featuredMusic.url %}{{ plates.row(post, posts, true, true) }}{% endif %}
                 {%- endfor %}
             </ol>
             <p class="more"><a href="{{ '/blog.html' | url }}">Browse all {{ total }} posts</a> <span class="more-sep">or</span> <a href="{{ '/feed.xml' | url }}">subscribe by RSS</a></p>
@@ -50,7 +51,7 @@ type: website
 
         <section class="frontis-foot" aria-label="About this site">
             <div class="intro">
-                <p>I work on compilers and dynamic binary translation with <a href="https://www.igalia.com/">Igalia</a>. My current focus is <a href="https://fex-emu.com/">FEX-Emu</a>, which runs x86 and <span class="nobr">x86-64</span> applications on <span class="lnum">ARM64</span>, mainly games. This site is my public notebook; <a href="{{ '/about-me.html' | url }}">more about me</a>.</p>
+                <p>I&rsquo;m a freelance software engineer focused on compiler engineering and low-level systems. This site is my public notebook; <a href="{{ '/about-me.html' | url }}">more about me</a>.</p>
             </div>
         </section>
 

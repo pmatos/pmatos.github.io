@@ -95,9 +95,9 @@ p.ocmatos.com/
 
 ## Editorial design
 
-The homepage introduces Paulo and offers an engineering post and a piano story before the illustrated figures. The figures retain the site's engraved music-and-engineering identity; the post list and navigation use familiar labels instead of requiring readers to interpret plate terminology. Roman numerals remain secondary marginal marks on post lists and in the article end stamp.
+The homepage introduces Paulo and features the latest Code and Music posts before the illustrated figures. The music figure still links to the older "From Middle-C to Concert" story because the drawing depicts that specific performance. The figures retain the site's engraved music-and-engineering identity; the post list and navigation use familiar labels instead of requiring readers to interpret plate terminology. Roman numerals remain secondary marginal marks on post lists and in the article end stamp.
 
-The blog's Code and Music links filter posts by topic. Keep their visible action labels explicit when changing the catalogue, and keep the homepage's curated piano link pointed at a real music post.
+The blog's Code and Music links filter posts by topic. Keep their visible action labels explicit when changing the catalogue.
 
 ## Deployment to GitHub Pages
 
@@ -223,6 +223,8 @@ tags:
 
 Your content here...
 ```
+
+Posts tagged `music` or `piano` appear under Music (the treble-clef mark); all other posts appear under Code. The homepage selects the latest post in each category. The Musiker announcement already has the `music` tag, so it is featured as the latest Music post.
 
 ### Using LilyPond for Music Notation
 
