@@ -41,7 +41,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
-    if (outputPath.endsWith(".html")) {
+    if (outputPath && outputPath.endsWith(".html")) {
       return htmlmin.minify(content, {
         collapseWhitespace: true,
         removeComments: true,

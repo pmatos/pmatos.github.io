@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">JSSE's eleven-state Symphonika workflow</title><desc id="desc">A plan and implementation move through PR confirmation, code review and simplification. A wait state branches to merge, autofix or conflict resolution; repair loops back to wait. Unmet gates or a closed PR stop blocked.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#607378"/></marker><marker id="gold" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#ad7c43"/></marker><style>text{font-family:Arial,sans-serif;fill:#283c40} .title{font-family:Georgia,serif;font-size:42px;font-weight:700;fill:#22383d}.sub{font-size:21px;fill:#536568}.node{stroke:#7b999b;stroke-width:2.5;fill:#f9f7ef}.agent{fill:#edf4ef}.wait{fill:#f6f4eb}.merge{fill:#e8f0e8;stroke:#6b9d82}.terminal{fill:#dfeee0;stroke:#6b9d82}.blocked{fill:#f8e9e2;stroke:#b3836e}.name{font-size:24px;font-weight:700}.kind{font-size:17px;fill:#5c6c69}.small{font-size:18px;fill:#506265}.tag{font-size:17px;font-weight:700;fill:#90672e}.edge{fill:none;stroke:#607378;stroke-width:3;marker-end:url(#arrow)}.retry{fill:none;stroke:#ad7c43;stroke-width:3;marker-end:url(#gold)} .failure{fill:none;stroke:#b3836e;stroke-width:2.3;stroke-dasharray:7 6}</style></defs>
+<rect width="1600" height="900" fill="#f5f2e9"/><path d="M46 98H1554M46 790H1554" stroke="#8f9d98" stroke-width="2"/><path d="M46 105H1554" stroke="#a5b1aa" stroke-width="1"/>
+<text x="54" y="66" class="title">One issue, eleven states</text><text x="895" y="63" class="sub">JSSE · jsse_plan_tdd_pr · actual workflow graph</text>
+<!-- forward path -->
+<path class="edge" d="M277 214H333"/><path class="edge" d="M579 214H631"/><path class="edge" d="M877 214H931"/><path class="edge" d="M1177 214H1231"/><path class="edge" d="M1354 262V345"/>
+<g transform="translate(54 166)"><rect class="node agent" width="223" height="96" rx="11"/><text x="18" y="41" class="name">Plan</text><text x="18" y="72" class="kind">PLAN.md + fresh commit</text></g>
+<g transform="translate(333 166)"><rect class="node agent" width="246" height="96" rx="11"/><text x="18" y="41" class="name">Implement</text><text x="18" y="72" class="kind">agent · new commit</text></g>
+<g transform="translate(631 166)"><rect class="node wait" width="246" height="96" rx="11"/><text x="18" y="41" class="name">Wait for PR open</text><text x="18" y="72" class="kind">wait · PR exists</text></g>
+<g transform="translate(931 166)"><rect class="node agent" width="246" height="96" rx="11"/><text x="18" y="41" class="name">Code review + fix</text><text x="18" y="72" class="kind">agent · review diff</text></g>
+<g transform="translate(1231 166)"><rect class="node agent" width="246" height="96" rx="11"/><text x="18" y="41" class="name">Simplify</text><text x="18" y="72" class="kind">agent · reduce complexity</text></g>
+<!-- branch hub -->
+<g transform="translate(1216 347)"><rect class="node wait" width="276" height="105" rx="11"/><text x="18" y="44" class="name">Wait for PR</text><text x="18" y="77" class="kind">checks · reviews · mergeability</text></g>
+<path class="edge" d="M1354 452V587"/><text x="1372" y="527" class="small">green, mergeable,</text><text x="1372" y="551" class="small">no open threads</text>
+<g transform="translate(1241 588)"><rect class="node merge" width="226" height="84" rx="11"/><text x="18" y="38" class="name">Merge</text><text x="18" y="66" class="kind">merge_pr</text></g>
+<path class="edge" d="M1354 672V731"/><g transform="translate(1251 733)"><rect class="node terminal" width="206" height="49" rx="10"/><text x="26" y="33" class="name">Merged</text></g>
+<!-- repair branches -->
+<path class="retry" d="M1216 393H994V530"/><text x="894" y="320" class="tag">checks fail / review feedback</text>
+<path class="retry" d="M1216 420H692V530"/><text x="752" y="448" class="tag">merge conflict</text>
+<g transform="translate(870 533)"><rect class="node agent" width="248" height="87" rx="11"/><text x="18" y="37" class="name">Autofix</text><text x="18" y="67" class="kind">agent · update existing PR</text></g>
+<g transform="translate(560 533)"><rect class="node agent" width="254" height="87" rx="11"/><text x="18" y="37" class="name">Resolve conflicts</text><text x="18" y="67" class="kind">agent · update existing PR</text></g>
+<path class="retry" d="M994 620V680H1174V441H1216"/><path class="retry" d="M687 620V710H1200V447H1216"/><text x="912" y="672" class="tag">re-observe PR</text>
+<!-- merge-action fallback -->
+<path class="retry" d="M1241 631H1164V590H1118"/><text x="1130" y="573" class="tag">checks fail</text>
+<!-- failure rule -->
+<g transform="translate(54 548)"><rect class="node blocked" width="423" height="167" rx="11"/><text x="22" y="44" class="name">Blocked</text><text x="22" y="79" class="small">An unmet agent gate or a closed PR</text><text x="22" y="106" class="small">stops this workflow. No silent advance.</text><text x="22" y="143" class="kind">terminal: blocked</text></g>
+<path class="failure" d="M60 262V506H265V548"/><path class="failure" d="M760 262V486H265V548"/>
+<text x="55" y="845" class="sub">Redrawn from pmatos/jsse/symphonika/workflow.yml · conditional transitions shown; parked states re-check GitHub</text>
+</svg>
