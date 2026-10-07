@@ -136,6 +136,17 @@ To flip the default to "on for all posts, opt-out per post", add `comments: true
 
 Comment threads are keyed by the canonical URL (`{{ meta.url }}{{ page.url }}` in `article.njk`), not by file path. Renaming a post URL detaches its existing comments — change URLs deliberately.
 
+## Things to remember when writing a blog post
+
+- **Voice**: write like the pre-2026 hand-written posts (roadmap opening, "Let's", rhetorical Q&A, connected sentences, no em dashes, light emphasis). Every post also gets a generated header illustration.
+- **Draft front matter**: `eleventyExcludeFromCollections: true`, `robots: noindex, follow`, `draft: true`, and a fixed `permalink` for the unlisted review URL.
+- **Publishing**: remove those three lines, set `date` to the publish day, and switch `permalink` to `"blog/{{ title | slugify }}.html"`. The review URL then returns 404, so tell reviewers.
+- **Commit messages**: commitlint runs on pushes to `main` and on PR titles, so use a conventional type (`docs: publish ...`, `fix: ...`, `ci: ...`). A bare subject fails the "Lint commits" check.
+- **Social previews**: tags come from `src/_11ty/_includes/head.njk`. `og:url` must be the page's own URL (`{{meta.url}}{{page.url}}`); when it was the site root, LinkedIn showed the homepage card instead of the post. After deploying, check `curl -s <post-url> | grep -o 'og:[a-z:]*" content="[^"]*"'`.
+- **Stale link cards**: LinkedIn caches link previews, and so can X and Bluesky. If a card looks wrong or was fetched before the post existed, re-scrape it with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) before posting.
+- **Deploy**: pushing to `main` deploys via GitHub Actions (Pages source is "GitHub Actions"; the old `gh-pages` branch is gone). Watch the "Build Eleventy" run and curl the live URL to confirm.
+- **Announcements**: draft X, Bluesky and LinkedIn posts after the post is live, using the final slugified URL.
+
 ## Write Dashboard
 
 A local FastAPI-based dashboard for drafting and publishing blog posts with AI assistance.
