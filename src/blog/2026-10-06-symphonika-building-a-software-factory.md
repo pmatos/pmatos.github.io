@@ -2,13 +2,10 @@
 title: "Symphonika: building a software factory"
 description: "From watching agents in Pewpew to giving them work: issue workflows, scheduled routines, and the decisions a software factory must leave to humans."
 tags: ["agentic-coding", "tooling", "symphonika", "pewpew"]
-date: 2026-10-06
+date: 2026-10-07
 image: /img/2026/10/symphonika-orchestrator.jpg
 layout: article.njk
-permalink: /blog/2026-10-06-symphonika-building-a-software-factory.html
-eleventyExcludeFromCollections: true
-robots: noindex, follow
-draft: true
+permalink: "blog/{{ title | slugify }}.html"
 comments: false
 ---
 
