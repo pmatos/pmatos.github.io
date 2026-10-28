@@ -77,7 +77,7 @@ Note that most of the percentages above are instruction counts (callgrind), not 
 Let's look at the same nine scripts as last time. Each one is timed as a whole process (startup included), and we take the median of five interleaved runs. This time Boa shows up twice: version 0.22.0, which I used in the last post, and its current `main` (commit `64c209f1`, which still calls itself 0.22.0), so that nobody can say I compared against something stale. Tick the boxes to add or remove columns.
 
 {% raw %}
-<figure class="jsse-chart" id="chart-micro"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better).</figcaption></figure>
+<figure class="jsse-chart" id="chart-micro" data-plate="duel"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better).</figcaption></figure>
 {% endraw %}
 
 <details>
@@ -102,7 +102,7 @@ Against v0.9.0, JSSE is 4.3x faster on `fib`, 4.2x on `closures`, 3.7x on `opmix
 JetStream is again the more realistic set. JSSE passes 48 of 48 workloads (`mandreel`, the one that timed out in the last post, now runs). Boa 0.22.0 and Boa `main` both pass 44, and fail `Basic`, `OfflineAssembler`, `typescript-octane` and `validatorjs`. On the 44 workloads that both engines run, JSSE is faster on every single one. The chart shows the time ratio per workload (JSSE's time divided by Boa's, so shorter bars mean a bigger JSSE win)[^jsbaseline].
 
 {% raw %}
-<figure class="jsse-chart" id="chart-js"><div class="jsse-filters" role="group" aria-label="Boa versions shown"></div><div class="jsse-canvas" style="height:1100px"><canvas role="img" aria-label="JetStream time ratio of JSSE over Boa per workload, log scale; table below"></canvas></div><figcaption>JetStream 3, JSSE time divided by Boa time per workload, log scale (left of 1.0 means JSSE is faster).</figcaption></figure>
+<figure class="jsse-chart" id="chart-js" data-plate="duel"><div class="jsse-filters" role="group" aria-label="Boa versions shown"></div><div class="jsse-canvas" style="height:1100px"><canvas role="img" aria-label="JetStream time ratio of JSSE over Boa per workload, log scale; table below"></canvas></div><figcaption>JetStream 3, JSSE time divided by Boa time per workload, log scale (left of 1.0 means JSSE is faster).</figcaption></figure>
 {% endraw %}
 
 <details>
@@ -207,17 +207,17 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
 (function () {
   if (!window.Chart) return;
   var ENGINES = [
-    { k: "v09", name: "JSSE v0.9.0", light: "#eb6834", dark: "#d95926" },
+    { k: "old", name: "JSSE v0.9.0", light: "#eb6834", dark: "#d95926" },
     { k: "now", name: "JSSE now", light: "#2a78d6", dark: "#3987e5" },
     { k: "nobc", name: "JSSE now --no-bytecode", light: "#eda100", dark: "#c98500" },
-    { k: "boa", name: "Boa 0.22.0", light: "#1baf7a", dark: "#199e70" },
-    { k: "boah", name: "Boa main", light: "#8a6fd6", dark: "#7a5fc6" }
+    { k: "b22", name: "Boa 0.22.0", light: "#1baf7a", dark: "#199e70" },
+    { k: "bhead", name: "Boa main", light: "#8a6fd6", dark: "#7a5fc6" }
   ];
   var byKey = {};
   ENGINES.forEach(function (e) { byKey[e.k] = e; });
 
   var BENCHES = ["fib", "closures", "opmix", "string", "array", "object", "loop", "json", "regex"];
-  var MICRO = {"v09": [4.011, 5.285, 25.764, 1.043, 27.54, 0.668, 2.093, 0.176, 0.104], "nobc": [2.022, 2.071, 53.123, 0.145, 0.269, 0.451, 1.233, 0.124, 0.077], "now": [0.941, 1.274, 6.93, 0.101, 0.179, 0.364, 0.576, 0.108, 0.067], "boa": [1.199, 2.086, 12.716, 0.496, 0.308, 0.546, 1.848, 0.313, 0.138], "boah": [1.207, 1.898, 10.864, 0.463, 0.31, 0.527, 1.538, 0.308, 0.16]};
+  var MICRO = {"old": [4.011, 5.285, 25.764, 1.043, 27.54, 0.668, 2.093, 0.176, 0.104], "nobc": [2.022, 2.071, 53.123, 0.145, 0.269, 0.451, 1.233, 0.124, 0.077], "now": [0.941, 1.274, 6.93, 0.101, 0.179, 0.364, 0.576, 0.108, 0.067], "b22": [1.199, 2.086, 12.716, 0.496, 0.308, 0.546, 1.848, 0.313, 0.138], "bhead": [1.207, 1.898, 10.864, 0.463, 0.31, 0.527, 1.538, 0.308, 0.16]};
   var JS = [["json-stringify-inspector", 0.11, 0.11], ["multi-inspector-code-load", 0.17, 0.18], ["first-inspector-code-load", 0.17, 0.18], ["js-tokens", 0.17, 0.18], ["regexp-octane", 0.25, 0.24], ["doxbee-promise", 0.39, 0.26], ["octane-code-load", 0.43, 0.44], ["doxbee-async", 0.47, 0.32], ["pdfjs", 0.5, 0.47], ["ML", 0.53, 0.52], ["Air", 0.53, 0.49], ["crypto", 0.56, 0.59], ["ai-astar", 0.56, 0.54], ["async-fs", 0.57, 0.43], ["raytrace", 0.57, 0.6], ["raytrace-private-class-fields", 0.59, 0.6], ["FlightPlanner", 0.6, 0.49], ["navier-stokes", 0.61, 0.63], ["json-parse-inspector", 0.61, 0.66], ["gbemu", 0.62, 0.6], ["stanford-crypto-aes", 0.63, 0.64], ["earley-boyer", 0.64, 0.57], ["raytrace-public-class-fields", 0.65, 0.66], ["cdjs", 0.65, 0.6], ["stanford-crypto-sha256", 0.66, 0.69], ["Babylon", 0.66, 0.63], ["stanford-crypto-pbkdf2", 0.67, 0.71], ["gaussian-blur", 0.69, 0.67], ["bigint-noble-bls12-381", 0.7, 0.68], ["bigint-paillier", 0.71, 0.56], ["UniPoker", 0.73, 0.65], ["bigint-bigdenary", 0.74, 0.74], ["delta-blue", 0.75, 0.77], ["sync-fs", 0.75, 0.56], ["mandreel", 0.76, 0.76], ["hash-map", 0.76, 0.81], ["lazy-collections", 0.76, 0.64], ["Box2D", 0.76, 0.73], ["splay", 0.78, 0.79], ["proxy-mobx", 0.81, 0.74], ["richards", 0.82, 0.84], ["bigint-noble-ed25519", 0.86, 0.88], ["proxy-vue", 0.87, 0.75], ["bigint-noble-secp256k1", 0.91, 0.89]];
 
   function isDark() { return document.documentElement.classList.contains("dark"); }
@@ -286,7 +286,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
   (function () {
     var fig = document.getElementById("chart-micro");
     if (!fig) return;
-    var order = ["v09", "now", "nobc", "boa", "boah"];
+    var order = ["old", "now", "nobc", "b22", "bhead"];
     var opts = baseOptions(false);
     opts.scales = {
       x: { grid: { display: false } },
@@ -321,7 +321,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
       styleScales(chart);
       chart.update();
     }
-    var state = buildFilters(fig, order, ["v09", "now", "boa"], refresh);
+    var state = buildFilters(fig, order, ["old", "now", "b22"], refresh);
     chart._refresh = function () { refresh(state); };
     refresh(state);
     charts.push(chart);
@@ -331,7 +331,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
   (function () {
     var fig = document.getElementById("chart-js");
     if (!fig) return;
-    var order = ["boa", "boah"];
+    var order = ["b22", "bhead"];
     var opts = baseOptions(true);
     opts.scales = {
       x: { type: "logarithmic", min: 0.08, max: 1.2, title: { display: true, text: "JSSE time / Boa time (log)" },
@@ -367,7 +367,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
       styleScales(chart, { x: function (c) { return c.tick && c.tick.value === 1 ? ink().muted : ink().grid; } });
       chart.update();
     }
-    var state = buildFilters(fig, order, ["boa"], refresh);
+    var state = buildFilters(fig, order, ["b22"], refresh);
     chart._refresh = function () { refresh(state); };
     refresh(state);
     charts.push(chart);

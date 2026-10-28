@@ -2915,6 +2915,11 @@ html.dark .fig--line img {
 .prose .jsse-swatch[data-k="boa"] { --sw: color-mix(in srgb, var(--ink) 20%, var(--paper)); }
 .prose .jsse-swatch[data-k="node"] { --sw: color-mix(in srgb, var(--ink) 55%, var(--paper)); }
 .prose .jsse-swatch[data-k="e262"] { --sw: var(--paper); }
+.prose .jsse-swatch[data-k="old"] { --sw: color-mix(in srgb, var(--accent) 42%, var(--paper)); --sw-edge: var(--accent); }
+.prose .jsse-swatch[data-k="now"] { --sw: var(--accent); --sw-edge: var(--accent); }
+.prose .jsse-swatch[data-k="nobc"] { --sw: var(--paper); --sw-edge: var(--accent); }
+.prose .jsse-swatch[data-k="b22"] { --sw: var(--ink); --sw-edge: var(--ink); }
+.prose .jsse-swatch[data-k="bhead"] { --sw: color-mix(in srgb, var(--ink) 55%, var(--paper)); --sw-edge: var(--ink); }
 
 .prose .lead {
   font-size: 1.25rem;

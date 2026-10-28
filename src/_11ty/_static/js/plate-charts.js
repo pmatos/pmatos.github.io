@@ -4,9 +4,10 @@
 // colour is read from the theme tokens on each update, so a theme flip, which
 // makes the post redraw, re-engraves the charts too.
 //
-// Coupling: this script is written against the inline chart code of one post,
-// src/blog/2026-09-25-faster-with-guardrails.md. NEUTRALS lists that post's
-// hex neutrals and keyOf() its engine labels; change them together. The
+// Coupling: this script is written against the inline chart code of two posts,
+// src/blog/2026-09-25-faster-with-guardrails.md and (figures marked
+// data-plate="duel") src/blog/2026-10-26-overtaking-boa.md. NEUTRALS lists
+// their hex neutrals and keyOf() their engine labels; change them together. The
 // article layout loads this file only on pages with a `jsse-chart` figure, and
 // it warns in the console when it recognises no series on such a page.
 (function () {
@@ -41,7 +42,12 @@
       mar: { fill: ink, edge: ink, line: ink },
       boa: { fill: tint(ink, paper, 0.2), edge: ink, line: ink },
       node: { fill: tint(ink, paper, 0.55), edge: ink, line: ink },
-      e262: { fill: paper, edge: ink, line: ink }
+      e262: { fill: paper, edge: ink, line: ink },
+      old: { fill: tint(blue, paper, 0.42), edge: blue, line: blue },
+      now: { fill: blue, edge: blue, line: blue },
+      nobc: { fill: paper, edge: blue, line: blue },
+      b22: { fill: ink, edge: ink, line: ink },
+      bhead: { fill: tint(ink, paper, 0.55), edge: ink, line: ink }
     };
     return {
       paper: paper, ink: ink, ink2: tok("--ink-2"), ink3: tok("--ink-3"),
@@ -63,8 +69,22 @@
   }
 
   var recognised = 0;
-  function keyOf(name) {
+  // A "duel" figure sets JSSE builds (the blue family) against two Boas (ink
+  // tones), so its labels map to their own series.
+  function isDuel(chart) {
+    var fig = chart.canvas && chart.canvas.closest && chart.canvas.closest(".jsse-chart");
+    return !!fig && fig.dataset.plate === "duel";
+  }
+  function keyOf(name, duel) {
     var n = String(name || "");
+    if (duel) {
+      if (/^boa main/i.test(n)) return "bhead";
+      if (/^boa/i.test(n)) return "b22";
+      if (/^jsse now.*bytecode/i.test(n)) return "nobc";
+      if (/^jsse now/i.test(n)) return "now";
+      if (/^jsse/i.test(n)) return "old";
+      return null;
+    }
     if (/bytecode/i.test(n)) return "bc";
     if (/march/i.test(n)) return "mar";
     if (/^boa/i.test(n)) return "boa";
@@ -92,7 +112,8 @@
 
   function engraveData(chart, P) {
     var sets = chart.data.datasets || [];
-    var perBar = sets.length === 1 && (chart.data.labels || []).some(function (l) { return keyOf(l); });
+    var duel = isDuel(chart);
+    var perBar = sets.length === 1 && (chart.data.labels || []).some(function (l) { return keyOf(l, duel); });
     sets.forEach(function (ds) {
       var bg = ds.backgroundColor;
       var styleAt = function (k, v) {
@@ -101,12 +122,12 @@
         return typeof v === "string" || v === undefined ? s.fill : hatch(s, P.paper);
       };
       if (perBar) {
-        var keys = chart.data.labels.map(keyOf);
+        var keys = chart.data.labels.map(function (l) { return keyOf(l, duel); });
         if (keys.some(Boolean)) recognised++;
         ds.backgroundColor = keys.map(function (k, i) { return styleAt(k, Array.isArray(bg) ? bg[i] : bg); });
         ds.borderColor = keys.map(function (k) { return (P.series[k] || {}).edge || P.ink; });
       } else {
-        var k = keyOf(ds.label);
+        var k = keyOf(ds.label, duel);
         if (k) recognised++;
         ds.backgroundColor = Array.isArray(bg) ? bg.map(function (v) { return styleAt(k, v); }) : styleAt(k, bg);
         ds.borderColor = (P.series[k] || {}).edge || P.ink;
