@@ -1,5 +1,5 @@
 {
   "model": "claude-opus-5-5",
   "effortLevel": "xhigh",
-  "advisorModel": "claude-fable-5-1"
+  "advisorModel": "opus"
 }
