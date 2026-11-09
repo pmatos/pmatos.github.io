@@ -65,7 +65,7 @@
     <meta property="og:title" content="{{pageTitle | safe}}" />
     <meta property="og:description" content="{{pageDescription | safe}}" />
     <meta property="og:url" content="{{meta.url}}{{page.url}}" />
-    <meta property="og:image:alt" content="Immagine per la condivisione sui social">
+    <meta property="og:image:alt" content="Social preview image for {{ (title or meta.siteName) | escape }}">
     <!-- Facebook -->
     <meta property="fb:admins" content="{{meta.facebookUsername}}" />
     <!-- Twitter -->
