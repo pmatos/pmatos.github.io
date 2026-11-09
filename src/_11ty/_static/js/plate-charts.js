@@ -142,6 +142,7 @@
   function engraveOptions(chart, P) {
     var o = chart.options;
     var valueAxis = o.indexAxis === "y" ? "x" : "y";
+    var fig = chart.canvas && chart.canvas.closest && chart.canvas.closest(".jsse-chart");
     Object.keys(o.scales || {}).forEach(function (id) {
       var s = o.scales[id];
       var ticks = s.ticks || {};
@@ -149,7 +150,7 @@
       s.ticks = Object.assign(ticks, {
         color: P.ink2,
         font: id === valueAxis ? { family: MONO, size: 10.5 } : { family: TEXT, size: Math.max(12, ticks.__size + 1) },
-        maxRotation: 0
+        maxRotation: fig && fig.dataset.rotateLabels !== undefined && chart.width < 480 ? 50 : 0
       });
       var grid = s.grid || {};
       var g = grid.__post || grid.color;

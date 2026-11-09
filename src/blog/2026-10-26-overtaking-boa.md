@@ -2,25 +2,22 @@
 title: "Overtaking Boa"
 description: "A month after v0.9.0, JSSE runs the micro-benchmarks about 5x faster, passes all 48 JetStream workloads and beats Boa on every one of the 44 that both engines run. test262 is still at 100%."
 tags: ["javascript", "claude", "rust", "agentic-coding", "performance"]
-date: 2026-10-26
+date: 2026-11-09
 image: /img/2026/10/jsse-overtaking-boa.png
 layout: article.njk
-permalink: /blog/2026-10-26-overtaking-boa.html
-eleventyExcludeFromCollections: true
-robots: noindex, follow
-draft: true
+permalink: "blog/{{ title | slugify }}.html"
 comments: true
 ---
 
 ![A small copper robot sprinting ahead of a mechanical boa towards a finish banner, on a track lined with glowing checkmark guardrails](/img/2026/10/jsse-overtaking-boa.png)
 
-JSSE v0.12.0 was tagged on October 26, a month after v0.9.0, so it is time to look at the numbers again. When I [took stock of JSSE](/blog/faster-with-guardrails.html) in September, the last section of that post was called "What's Still Bad", and it listed quadratic arrays, a bytecode VM that barely helped, no hidden classes and a benchmark that timed out. It also showed [Boa](https://github.com/boa-dev/boa) beating JSSE by 2x to 4x on calls, closures and strings.
+JSSE v0.12.0 was tagged on October 26, a month after v0.9.0, which makes it a good point to look at the numbers again (two more releases came out while this post sat in draft, and I will get to those at the end). When I [took stock of JSSE](/blog/faster-with-guardrails.html) in September, the last section of that post was called "What's Still Bad", and it listed quadratic arrays, a bytecode VM that barely helped, no hidden classes and a benchmark that timed out. It also showed [Boa](https://github.com/boa-dev/boa) beating JSSE by 2x to 4x on calls, closures and strings.
 
 Boa is the natural yardstick for JSSE. It is a mature JavaScript engine written in Rust which, like JSSE, doesn't JIT, and it has been around for much longer than JSSE has. Therefore, when I say that JSSE overtook it, keep in mind that this is one interpreter against another, on my benchmarks and on one machine, and not a verdict on Boa.
 
 In this post, I will go through what happened in that month. Between v0.9.0 (September 23) and the October 25 checkpoint used for the numbers below, the agents merged 271 commits into JSSE, 84 of which are performance work[^tag]. The short version: on my micro-benchmark suite, JSSE is about **5x faster than v0.9.0** and, while a month ago it was 2.2x slower than Boa 0.22, it is now **2.2x faster**[^eight]. On JetStream 3, it is faster than Boa on all 44 workloads that both engines run. And test262 still passes every one of the 99,911 scenarios.
 
-As before, I haven't written a line of JSSE, so this is a report on the results and not a how-to. Everything here comes from the data that [lives in the repository](https://github.com/pmatos/jsse/tree/main/docs/perf/2026-10-25), including the numbers that are less flattering.
+As before, I haven't written a line of JSSE, so this is a report on the results and not a how-to. Everything here comes from the data that [lives in the repository](https://github.com/pmatos/jsse/tree/main/docs/perf/2026-10-25), including the numbers that are less flattering. When the tables and charts below say "now", they mean the October 25 checkpoint.
 
 ## Still 100%
 
@@ -79,7 +76,7 @@ Note that most of the percentages above are instruction counts (callgrind), not 
 Let's look at the same nine scripts as last time. Each one is timed as a whole process (startup included), and we take the median of five interleaved runs. This time Boa shows up twice: version 0.22.0, which I used in the last post, and its current `main` (commit `64c209f1`, which still calls itself 0.22.0), so that nobody can say I compared against something stale. Tick the boxes to add or remove engines from the comparison.
 
 {% raw %}
-<figure class="jsse-chart" id="chart-micro" data-plate="duel"><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better).</figcaption></figure>
+<figure class="jsse-chart" id="chart-micro" data-plate="duel" data-rotate-labels><div class="jsse-filters" role="group" aria-label="Engines shown"></div><div class="jsse-canvas" style="height:380px"><canvas role="img" aria-label="Micro-benchmark times per engine on a log scale; table below"></canvas></div><figcaption>Micro-benchmarks, median wall-clock seconds, log scale (lower is better).</figcaption></figure>
 {% endraw %}
 
 <details>
@@ -165,18 +162,26 @@ The third set of numbers is a 343-case audit that the agent runs against Boa `ma
 
 ## Where Boa Still Wins
 
-None of this means JSSE is faster than Boa at everything. The 14 audit cases that are still more than 5% slower than Boa `main` fall into four groups:
+None of this means JSSE is faster than Boa at everything. At the checkpoint, 14 audit cases were still more than 5% slower than Boa `main`, and ten of them fall into four groups:
 
-- `bigint_compare_numeric_control` (1.89x Boa's time), `script_let_loop` (1.82x), `bigint_compare` (1.60x) and a few more, mostly top-level script loops over global lexical bindings. These are tracked in [#1210](https://github.com/pmatos/jsse/issues/1210).
-- Closure creation (`closures/create`, 1.42x), tracked in [#1211](https://github.com/pmatos/jsse/issues/1211).
-- Getter and setter calls (about 1.2x on the proxy case), tracked in [#1212](https://github.com/pmatos/jsse/issues/1212).
+- `bigint_compare_numeric_control` (1.89x Boa's time), `script_let_loop` (1.82x), `bigint_compare` (1.60x) and three more, all top-level script loops over global lexical bindings, tracked in [#1210](https://github.com/pmatos/jsse/issues/1210), which has since been closed.
+- Closure creation (`closures/create`, 1.42x), tracked in [#1211](https://github.com/pmatos/jsse/issues/1211), which has since been closed.
+- Getter and setter calls (about 1.2x on the proxy case, and 1.07x on `proxy_ownkeys_has`), tracked in [#1212](https://github.com/pmatos/jsse/issues/1212).
 - `strings/slice` (1.33x). It is a curious one: JSSE executes *fewer* instructions than Boa (529M against 652M), and which engine wins the wall-clock race depends on the CPU, so I believe it is a memory-system effect and not a real gap.
 
-On JetStream, the narrowest wins are `bigint-noble-secp256k1` (0.91), `proxy-vue` (0.87), `bigint-noble-ed25519` (0.86) and `richards` (0.82). The margin also depends on bytecode: with `--no-bytecode`, JSSE is only about 1.16x faster than Boa 0.22 over all nine micro scripts (geometric mean 0.865), and it is slower on `opmix` (4.2x) and `fib` (1.7x). And hidden classes still haven't landed: there are per-site slot hints and cached property order, but no hidden-class transitions. Boa, for comparison, has had hidden classes since v0.17.
+The other four are smaller gaps, between 1.09x and 1.16x, which have no issue of their own: BigInt `invert`, `mulmod256` and `ops_vm_add`, and `str_keys_control`.
+
+On JetStream, the narrowest wins are `bigint-noble-secp256k1` (0.91), `proxy-vue` (0.87), `bigint-noble-ed25519` (0.86) and `richards` (0.82). The margin also depends on bytecode: with `--no-bytecode`, JSSE is only about 1.16x faster than Boa 0.22 over all nine micro scripts (geometric mean 0.865), and it is slower on `opmix` (4.2x) and `fib` (1.7x). And at the checkpoint, hidden classes still hadn't landed: there were per-site slot hints and cached property order, but no hidden-class transitions. Boa, for comparison, has had hidden classes since v0.17.
+
+## Since the Checkpoint
+
+This post sat in draft for longer than I intended, so the numbers above are no longer the whole story. JSSE v0.13.0 came out on November 1 and v0.14.0 on November 8. I haven't re-run the full set of benchmarks against either of them, so everything above describes the October 25 checkpoint and nothing later.
+
+Three things in the previous section have already changed. The issue for the top-level script loops, #1210, was closed by [#1302](https://github.com/pmatos/jsse/pull/1302), which shipped in v0.13.0. The issue for closure creation, #1211, was closed by [#1593](https://github.com/pmatos/jsse/pull/1593) on November 9, after v0.14.0, so that change is waiting for the next release. On a reduced test case it brings the instruction count close to Boa's (644M against 636M), although Boa is still ahead on wall-clock time there (51 ms against 58 ms). And JSSE now has shapes with transitions, for objects that start out empty: [#1556](https://github.com/pmatos/jsse/pull/1556), which also shipped in v0.13.0. However, that was memory work and not speed work, since the inline caches still match per object and not per shape.
 
 ## What's Next
 
-The audit gaps are collected in the epic [#1213](https://github.com/pmatos/jsse/issues/1213), which is the next target. After that, I would like to look at real shapes.
+The audit gaps are collected in the epic [#1213](https://github.com/pmatos/jsse/issues/1213), which is still open and remains the next target. After that, I would like to see the inline caches match on shapes, which is where I would expect the speed benefit to show up.
 
 All the numbers come from [`docs/perf/2026-10-25`](https://github.com/pmatos/jsse/tree/main/docs/perf/2026-10-25) and [`docs/perf/2026-10-25-no-bytecode`](https://github.com/pmatos/jsse/tree/main/docs/perf/2026-10-25-no-bytecode)[^method].
 
@@ -196,7 +201,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
 
 [^noise]: Scripts that run for more than a second repeat to within about 1%, but scripts under half a second moved by up to about 20% between separate runs of the same binary, so treat differences of a few tens of milliseconds on those as noise.
 
-[^method]: Everything ran on a shared build machine (buildbox3). The micro-benchmarks are the median of five runs, with JSSE and Boa interleaved, and the load stayed at or below about 1.65. JetStream uses `--iterations 1` with a pinned JetStream commit, and each workload is the median of three runs, with JSSE and Boa run one after the other and without a load gate. The v0.9.0 column was measured on September 25 on the same machine, as the median of five runs that were not interleaved, with the load gate checked only once, and the load reached about 3 during that run. The same Boa 0.22.0 release ran about 8% slower in that September session than in October, so if JSSE was slowed down by the same amount, the speedups over v0.9.0 are overstated by up to about 10% (5.1x would be closer to 4.6x). The comparisons with Boa within each run are not affected in the same way. `bench_opmix` gained two loops in October, so the speedups over v0.9.0 use the other eight scripts, whereas the comparisons with Boa use all nine, since both engines ran the same script within each run. The headline "about 5x" covers both the 5.1x of the checkpoint run and the 5.4x of the `--no-bytecode` run.
+[^method]: Everything ran on a shared build machine (buildbox3). The micro-benchmarks are the median of five runs, with JSSE and Boa interleaved, and the load stayed at or below about 1.65. JetStream uses `--iterations 1` with a pinned JetStream commit, and each workload is the median of three runs, with JSSE and Boa run one after the other and without a load gate. The v0.9.0 column was measured on September 25 on the same machine, as the median of five runs that were not interleaved, with the load gate checked only once, and the load reached about 3 during that run. The same Boa 0.22.0 release ran about 8% slower in that September session than in October, so if JSSE was slowed down by the same amount, the speedups over v0.9.0 are overstated by up to about 10% (5.1x would be closer to 4.6x). The comparisons with Boa within each run are not affected in the same way. `bench_opmix` gained two loops in October, so the speedups over v0.9.0 use the other eight scripts, whereas the comparisons with Boa use all nine, since both engines ran the same script within each run. The headline "about 5x" covers both the 5.1x of the checkpoint run and the 5.4x of the `--no-bytecode` run. The JSSE column of the micro table comes from the run against Boa 0.22.0, and the comparison with Boa `main` was a separate run with its own JSSE times, so its 0.50 geometric mean is 0.49 if you compute it from the table. In the same way, the 0.865 for `--no-bytecode` comes from a run that timed Boa 0.22.0 alongside it, whereas the table gives 0.84.
 
 {% raw %}
 <style>
@@ -295,7 +300,7 @@ Comments are open below. As usual, I am happy to receive corrections, and if you
     var order = ["old", "now", "nobc", "b22", "bhead"];
     var opts = baseOptions(false);
     opts.scales = {
-      x: { grid: { display: false } },
+      x: { grid: { display: false }, ticks: { autoSkip: false } },
       y: { type: "logarithmic", min: 0.05, max: 100, title: { display: true, text: "seconds (log)" },
            ticks: { callback: function (v) { return [0.1, 1, 10, 100].indexOf(v) >= 0 ? v + " s" : ""; } } }
     };
